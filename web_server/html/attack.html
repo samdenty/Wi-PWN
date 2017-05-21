@@ -1,0 +1,86 @@
+<head>
+    <title>Attack - Wi-PWN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="main-header">
+            <img id="logo-img"><b style="color:#fff">Wi-</b>PWN
+        </div>
+        <div id="links">
+            <a href="apscan.html">Scan</a>
+            <a href="stations.html">Stations</a>
+            <a href="attack.html" class="active">Attack</a>
+            <a href="settings.html">Settings</a>
+            <a class="right" href="info.html">Info</a>
+        </div>
+    </nav>
+    <div class="main-wrap">
+        <div id="error"></div>
+        <div class="container">
+            <div class="card-container-basic">
+                <div class="settingsHeader">Attack overview</div>
+                <div class="card-basic">
+                    <b>Selected Wi-Fi networks:</b>
+                    <ul id="selectedAPs">
+                    </ul>
+                    <br>
+                    <b>Selected stations:</b>
+                    <ul id="selectedClients">
+                    </ul>
+                    <br>
+                </div>
+            </div>
+            <div class="card-container-basic">
+                <div class="settingsHeader">Initiate attack</div>
+                <div class="card-basic">
+                    <table>
+                    </table>
+                    <br>
+                    <p class="left">SSIDs: <span id="ssidCounter">0/48</span>
+                        <div class="right">
+                            <button class="button-warn" onclick="clearSSID()">clear</button>
+                            <button onclick="randomSSID()">random</button>
+                            <button onclick="cloneSSID(prompt('Enter new SSID:'))">clone</button>
+                            <button class="button-primary" onclick="addSSID()">add</button>
+                    </p>
+                    </div>
+                    <br>
+                    <table></table>
+                    <br>
+                    <button class="marginNull button-warn" onclick="resetSSID()">reset</button>
+                    <button class="marginNull button-primary right" onclick="saveSSID()">save</button>
+                    <p class="small" id="saved">saved</p>
+                </div>
+            </div>
+            <div class="card-container-basic">
+                <div class="settingsHeader">About attacks</div>
+                <div class="card-basic">
+                    <span class="warn">INFO: </span><b>Connection will be lost during attack</b>
+                    <br>Change the channel in the settings to the same of the selected AP to prevent this.
+                    <br>
+                    <br>
+                    <b>Deauth attack</i>:</b>
+                    <br>Sends deauthentication and dissociation frames to the selected station(s) and access point(s).
+                    <br>
+                    <br>
+                    <b>Beacon flood:</b>
+                    <br>Sends beacon frames with the SSIDs in the list below.
+                    <br>
+                    <br>
+                    <b>Probe-Request flood:</b>
+                    <br>Sends probe request frames with the SSIDs in the list below.
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+        <script src="js/functions.js"></script>
+        <script src="js/attack.js"></script>
+        
+    </div>
+</body>
+
+</html>

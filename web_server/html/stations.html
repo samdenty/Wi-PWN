@@ -1,0 +1,69 @@
+<head>
+    <title>Stations - Wi-PWN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="main-header">
+            <img id="logo-img"><b style="color:#fff">Wi-</b>PWN
+        </div>
+        <div id="links">
+            <a href="apscan.html">Scan</a>
+            <a href="stations.html" class="active">Stations</a>
+            <a href="attack.html">Attack</a>
+            <a href="settings.html">Settings</a>
+            <a class="right" href="info.html">Info</a>
+        </div>
+    </nav>
+    <div class="main-wrap">
+        <div id="error"></div>
+        <div id="spinner-container">
+            <svg class="spinner" viewBox="0 0 66 66">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="card-container-basic">
+                <div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Scan for Wi-Fi stations <span id="clientsFound"></span></div>
+                <button onclick="scan()" id="startScan" class="button-primary right">scan</button>
+                <div class="card-basic">
+                    <div class="input-container">
+                        <input placeholder=" " id="scanTime" type="number" required="" min="-1" max="255">
+                        <label for="scanTime">Scan time (seconds)</label>
+                    </div>
+                    <br>
+                    <table><tbody><tr><th>Pkts</th><th>Vendor</th><th>Name</th><th>MAC</th><th>AP</th><th>Select</th></tr><tr><td>444</td><td>Nintendo</td><td> <a onclick="changeName(0)">edit</a></td><td>40:d2:8a:22:ee:7a</td><td>network.SECURE</td><td><button class="marginNull" onclick="select(0)">select</button></td></tr><tr><td>77</td><td>IntelCor</td><td> <a onclick="changeName(1)">edit</a></td><td>2c:6e:85:b1:0b:98</td><td>network.SECURE</td><td><button class="marginNull" onclick="select(1)">select</button></td></tr><tr class="selected"><td>10</td><td>AirgoNet</td><td> <a onclick="changeName(2)">edit</a></td><td>00:0a:f5:fc:9a:d0</td><td>network.SECURE</td><td><button class="marginNull selectedBtn" onclick="select(2)">deselect</button></td></tr></tbody></table>
+                </div>
+                <div class="settingsHeader">Clients</div>
+                <div class="card-basic">
+                    Saved clients: <span id="clientNames"></span>
+                    <br>
+                    <br>
+                    <table id="nameList"></table>
+                    <button class="button-warn right" onclick="clearNameList()">Reset entries</button>
+                    <br class="clear" />
+                    <hr>
+                    <div class="row">
+                        <div class="input-container col-5">
+                            <input placeholder=" " id="cMac" type="text" required="" min="17" max="17">
+                            <label for="cMac">MAC Address</label>
+                        </div>
+                        <div class="input-container col-5">
+                            <input placeholder=" " id="cName" type="text" required="">
+                            <label for="cName">Name</label>
+                        </div>
+                        <div class="input-container col-3" style="text-align: right">
+                            <button class="button-primary" onclick="addClient()">add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+        <script src="js/functions.js"></script>
+        <script src="js/stations.js"></script>
+    </div>
+</body>

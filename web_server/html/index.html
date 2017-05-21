@@ -1,0 +1,53 @@
+<head>
+    <title>Wi-PWN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+<body>
+    <nav id="nav" class="disabled">
+        <div class="main-header">
+            <img id="logo-img"><b style="color:#fff">Wi-</b>PWN
+        </div>
+        <div id="links">
+            <a href="apscan.html">Scan</a>
+            <a href="stations.html">Stations</a>
+            <a href="attack.html">Attack</a>
+            <a href="settings.html">Settings</a>
+            <a class="right" href="info.html">Info</a>
+        </div>
+    </nav>
+    <div class="main-wrap">
+        <div id="error"></div>
+        <div class="container">
+            <div class="card-container-basic">
+                <div class="settingsHeader">WARNING</div>
+                <div class="card-basic">
+                    <img id="logo-img2" style="float:left;margin-right: 20px"> This software is for testing common vulnerabilities in the <i>802.11 standard</i>.
+                    <br> It can disrupt unprotected Wi-Fi connections, check the laws in your country before using it.
+                    <br>
+                    <br>
+                    <span class="warn">Use it only on your own networks and devices!</span>
+                    <br> The usage of this software against other networks without permission is illegal!
+                    <br>
+                    <br> You are self responsible for everything you do with this program!
+                    <br>
+                    <br>
+                    <button class="right" onclick="document.cookie = 'accepted=yes';window.location='apscan.html'">Continue</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+        <script src="js/functions.js"></script>
+        <script>
+        document.getElementById("logo-img2").src = logo;
+        var cookie = document.cookie;
+        if (cookie.indexOf('accepted=yes') >= 0) {
+            window.location = 'apscan.html'
+        }
+        </script>
+    </div>
+</body>

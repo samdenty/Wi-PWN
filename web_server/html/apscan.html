@@ -1,0 +1,55 @@
+<head>
+    <title>Scan - Wi-PWN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="main-header">
+            <img id="logo-img"><b style="color:#fff">Wi-</b>PWN
+        </div>
+        <div id="links">
+            <a href="apscan.html" class="active">Scan</a>
+            <a href="stations.html">Stations</a>
+            <a href="attack.html">Attack</a>
+            <a href="settings.html">Settings</a>
+            <a class="right" href="info.html">Info</a>
+        </div>
+    </nav>
+    <div class="main-wrap">
+        <div id="error"></div>
+        <div id="spinner-container">
+            <svg class="spinner" viewBox="0 0 66 66">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="card-container-basic">
+                <div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Scan for Wi-Fi networks
+                    <div class="network-info">
+                        <div id="networksFound"></div>
+                        <div id="apMAC"></div>
+                    </div>
+                </div>
+                <button onclick="scan()" id="apScanStart" class="right button-primary">Scan</button>
+                <div class="card-basic">
+                    <table id="apscan">
+                    </table>
+                    <hr>
+                    <div class="row">
+                        <div class="col-8">Select the Wi-Fi network(s) from above, to perform an attack on
+                        </div>
+                        <div class="col-4">
+                            <button onclick="window.location = 'attack.html'" class="right">Attack</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+    </div>
+    <script src="js/functions.js"></script>
+    <script src="js/apscan.js"></script>
+</body>

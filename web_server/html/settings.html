@@ -1,0 +1,137 @@
+<head>
+    <title>Settings - Wi-PWN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="main-header">
+            <img id="logo-img"><b style="color:#fff">Wi-</b>PWN
+        </div>
+        <div id="links">
+            <a href="apscan.html">Scan</a>
+            <a href="stations.html">Stations</a>
+            <a href="attack.html">Attack</a>
+            <a href="settings.html" class="active">Settings</a>
+            <a class="right" href="info.html">Info</a>
+        </div>
+    </nav>
+    <div class="main-wrap">
+        <div id="error"></div>
+        <div class="container settings">
+            <div class="card-container">
+                <div class="settingsHeader">Wi-Fi configuration</div>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="ssid" type="text" required="" minlength="1" maxlength="32">
+                                <label for="ssid">SSID</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32">
+                                <label for="ssid">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="apChannel" type="number" required="" min="1" max="14">
+                                <label for="apChannel">Channel</label>
+                            </div>
+                        </div>
+                        <div class="col1">
+                            <label for="ssidHidden">Hide SSID</label>
+                        </div>
+                        <div class="col right">
+                            <input type="checkbox" name="ssidHidden" id="ssidHidden" value="false">
+                            <label class="checkbox" for="ssidHidden"></label>
+                        </div>
+                        <div class="col-12-sm divider">
+                        </div>
+                        <div class="col1">
+                            <label for="apScanHidden">Show hidden networks</label>
+                        </div>
+                        <div class="col right">
+                            <input type="checkbox" name="apScanHidden" id="apScanHidden" value="false">
+                            <label class="checkbox" for="apScanHidden"></label>
+                        </div>
+                        <div class="col1">
+                            <label for="multiAPs">Scan multiple SSID</label>
+                        </div>
+                        <div class="col right">
+                            <input type="checkbox" name="multiAPs" id="multiAPs" value="false">
+                            <label class="checkbox" for="multiAPs"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="settingsHeader">Advanced</div>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="scanTime" type="number" required="" min="1" max="255">
+                                <label for="scanTime">Default station scan time (seconds)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="timeout" type="number" required="" min="-1" max="65536">
+                                <label for="timeout">Attack timeout (seconds)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="deauthReason" type="number" required="" min="1" max="45">
+                                <label for="deauthReason">Deauth reason code</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="packetRate" type="number" required="" min="1" max="50">
+                                <label for="packetRate">Packet rate UNSTABLE &nbsp; (pkts/s)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="ssidEnc">WPA2 Beacons</label>
+                        </div>
+                        <div class="col right">
+                            <input type="checkbox" name="ssidEnc" id="ssidEnc" value="false">
+                            <label class="checkbox" for="ssidEnc"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col1">
+                            <label for="useLed">Enable LED indicator</label>
+                        </div>
+                        <div class="col right">
+                            <input type="checkbox" name="useLed" id="useLed" value="false">
+                            <label class="checkbox" for="useLed"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="saved"></div>
+            <br>
+            <button onclick="resetSettings()">reset</button>
+            <button onclick="restart()">restart</button>
+            <button class="button-primary right" onclick="saveSettings()">save</button>
+        </div>
+        <footer></footer>
+        <script src="js/functions.js"></script>
+        <script src="js/settings.js"></script>
+    </div>
+</body>
