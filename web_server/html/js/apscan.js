@@ -33,8 +33,8 @@ function getResults() {
         var res = JSON.parse(responseText);
         res.aps = res.aps.sort(compare);
         networkInfo.innerHTML = '('+res.aps.length+' found)';
+        if (res.aps.length == 0) scan()
         apMAC.innerHTML = "";
-
         var tr = '';
         if (res.aps.length > 0) tr += '<tr><th>Ch</th><th>SSID</th><th>Signal</th><th>Type</th><th style="padding-left: 40px"></th></tr>';
 
