@@ -1,8 +1,13 @@
 #How to update web-server files
-**1** Minify the source code either by using `minifier.html` (Better compression rates available [here](https://github.com/kangax/html-minifier))  
-**2** paste the html code in the upper textfield  
-**3** click on `minifiy + byte-ify`  
-**4** copy the results  
-**5** go to data.h and replace the array (of the changed html file) with the copied bytes  
+**1** Open `minifier.html` and paste the HTML source in input field  
+**3** Click on <kbd>minifiy + byte-ify</kbd>  
+**4** Copy the results  
+**5** Go to [arduino/Wi-PWN/data.h](http://github.com/Wi-PWN/Wi-PWN/arduino/Wi-PWN/data.h) and replace the array (of the changed html file) with the copied bytes  
 
-**now compile and upload your new sketch :)**
+You can now compile the binary using the Arduino project file ([arduino/Wi-PWN/Wi-PWN.ino](http://github.com/Wi-PWN/Wi-PWN/arduino/Wi-PWN/Wi-PWN.ino))
+
+**Remember to upload your sketch :)**
+
+#Better compression rates
+
+It is possible to get better compression rates by using [kangax/html-minifier](https://github.com/kangax/html-minifier)

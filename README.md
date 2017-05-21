@@ -71,154 +71,103 @@ My intention with this project is to draw more attention to this issue.
 This attack shows how vulnerable the 802.11 Wi-Fi standard is and that it has to be fixed.  
 **A solution is already there, why don’t we use it?**  
 
-## Videos
-  
-[![Cheap Wi-Fi 'Jammer' Device | NodeMCU](https://img.youtube.com/vi/oQQhBdCQOTM/0.jpg)](https://www.youtube.com/watch?v=oQQhBdCQOTM)
-  
-[![Wifi 'Jammer' Device V1.1 | Setup Tutorial](https://img.youtube.com/vi/r5aoV5AolNo/0.jpg)](https://www.youtube.com/watch?v=r5aoV5AolNo)
-  
-[![WiFi Jamming Tutorial "Deauthing Made Simple" ](https://img.youtube.com/vi/SswI-J-M2SE/0.jpg)](https://www.youtube.com/watch?v=SswI-J-M2SE)
-  
-[![NodeMCU ESP8266 Tutorial 02: WiFi Hack with ESP8266 (NodeMCU WiFi Jammer)](https://img.youtube.com/vi/MOscKnm8IcY/0.jpg)](https://www.youtube.com/watch?v=MOscKnm8IcY)
+# Installation
 
-## Installation
+Requirements:
 
-The only thing you will need is a computer and an ESP8266.  
+- ESP8266 module (any board)  
+- Micro-USB cable
+- Computer
 
-I recommend you to buy a USB breakout/developer board, because they have 4Mb flash and are very simple to use.
-It doesn’t matter which board you use, as long as it has an ESP8266 on it.  
+I would recommend getting a USB breakout/developer board, mainly due to the 4Mb of flash and simplicity.  
 
-You have 2 choices here. Uploading the bin files is easier but not as good for debugging, so keep that in mind in case you want to open an new issue. 
+In order to upload the Wi-PWN firmware, you can use one of two methods. The first method is easier overall but using Arduino is better for debugging.
 **YOU ONLY NEED TO DO ONE OF THE INSTALLATION METHODS!**
 
-### Uploading the bin files  
+## Method 1: Flashing with NodeMCU-Flasher  
 
-**Note:** the 512kb version won't have the full MAC vendor list.  
-The NodeMCU and every other board which uses the ESP-12 has 4mb flash on it.
+1. [Download](https://github.com/Wi-PWN/Wi-PWN/releases)   the current release of Wi-PWN
 
-**0** Download the current release from [here](https://github.com/spacehuhn/esp8266_deauther/releases)  
+2. Upload the `.bin` file using the [nodemcu-flasher](https://github.com/nodemcu/nodemcu-flasher/raw/master/Win64/Release/ESP8266Flasher.exe). Alternatively you can use the official [esptool](https://github.com/espressif/esptool) from espressif.
 
-**1** Upload using the ESP8266 flash tool of your choice. I recommend using the [nodemcu-flasher](https://github.com/nodemcu/nodemcu-flasher). If this doesn't work you can also use the official [esptool](https://github.com/espressif/esptool) from espressif.
+3. Connect your ESP8266 (making sure the drivers are installed) and open up the *NodeMCU Flasher*
+4. Go to the `Advanced` tab and select the correct values for your board.
+5. Navigate to the `config` tab and click the gear icon for the first entry.
+6. Browse for the `.bin` file you just downloaded and click open.
+7. Switch back to the `Operation` tab and click <kbd>Flash(F)</kbd>.
 
-**That's all! :)**
+## Method 2: Compiling with Arduino
 
-Make sure you select the right com-port, the right upload size of your ESP8266 and the right bin file.  
+1. [Download the source code](https://github.com/Wi-PWN/Wi-PWN/archive/master.zip) of this project.
 
-If flashing the bin files with a flash tool is not working, try flashing the esp8266 with the Arduino IDE as shown below.
+2. Install [Arduino](https://www.arduino.cc/en/Main/Software) and open it.
 
-### Compiling the source with Arduino
+3. Go to `File` > `Preferences`
 
-**0** Download the source code of this project.
+4. Add `http://arduino.esp8266.com/stable/package_esp8266com_index.json` to the *Additional Boards Manager URLs.* (refer to [https://github.com/esp8266/Arduino](https://github.com/esp8266/Arduino))
 
-**1** Install [Arduino](https://www.arduino.cc/en/Main/Software) and open it.
+5. Go to `Tools` > `Board` > `Boards Manager`
 
-**2** Go to `File` > `Preferences`
+6. Type in `esp8266`
 
-**3** Add `http://arduino.esp8266.com/stable/package_esp8266com_index.json` to the Additional Boards Manager URLs. (source: https://github.com/esp8266/Arduino)
+7. Select version `2.0.0` and click on `Install` (**must be version 2.0.0!**)<br><br>
+![screenshot of arduino, selecting the right version](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/arduino_screenshot_1.JPG)
 
-**4** Go to `Tools` > `Board` > `Boards Manager`
+8. Go to `File` > `Preferences`
 
-**5** Type in `esp8266`
+9. Open the folder path under `More preferences can be edited directly in the file`<br><br>
+![screenshot of arduino, opening folder path](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/arduino_screenshot_2.JPG)
 
-**6** Select version `2.0.0` and click on `Install` (**must be version 2.0.0!**)
+10. Go to `packages` > `esp8266` > `hardware` > `esp8266` > `2.0.0` > `tools` > `sdk` > `include`
 
-![screenshot of arduino, selecting the right version](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/arduino_screenshot_1.JPG)
+11. Open `user_interface.h` with a text editor
 
-**7** Go to `File` > `Preferences`
+12. Just before the last line `#endif`, add the following:
 
-**8** Open the folder path under `More preferences can be edited directly in the file`
+    typedef void (*freedom_outside_cb_t)(uint8 status);
+    int wifi_register_send_pkt_freedom_cb(freedom_outside_cb_t cb);  
+    void wifi_unregister_send_pkt_freedom_cb(void);
+    int wifi_send_pkt_freedom(uint8 *buf, int len, bool sys_seq);  
+   <br>![screenshot of notepad, copy paste the right code](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/notepad_screenshot_1.JPG)
 
-![screenshot of arduino, opening folder path](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/arduino_screenshot_2.JPG)
+13. Go to the [arduino/SDK_fix](https://github.com/Wi-PWN/Wi-PWN/arduino/SDK_fix) folder of this project
 
-**9** Go to `packages` > `esp8266` > `hardware` > `esp8266` > `2.0.0` > `tools` > `sdk` > `include`
+14. Copy `ESP8266Wi-Fi.cpp` and `ESP8266Wi-Fi.h` to
+    `C:\%username%\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.0.0\libraries\ESP8266WiFi\src`
 
-**10** Open `user_interface.h` with a text editor
+16. Open `arduino/Wi-PWN/esp8266_deauther.ino` in Arduino
 
-**11** Scroll down and before `#endif` add following lines:
+17. Select your ESP8266 board at `Tools` > `Board` and the right port at `Tools` > `Port`  
+**If no port shows up you need to reinstall the drivers**, search online for chip part number + 'driver Windows' 
 
-`typedef void (*freedom_outside_cb_t)(uint8 status);`  
-`int wifi_register_send_pkt_freedom_cb(freedom_outside_cb_t cb);`  
-`void wifi_unregister_send_pkt_freedom_cb(void);`  
-`int wifi_send_pkt_freedom(uint8 *buf, int len, bool sys_seq);`  
+18. Depending on your board you may have to adjust the `Tools` > `Board` > `Flash Frequency` and the `Tools` > `Board` > `Flash Size`. I used the `80MHz` Flash Frequency, and the `4M (1M SPIFFS)` Flash Size
 
-![screenshot of notepad, copy paste the right code](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/notepad_screenshot_1.JPG)
+19. Upload! <kbd>CTRL-U</kbd>
 
-**don't forget to save!**
-
-**12** Go to the SDK_fix folder of this project
-
-**13** Copy ESP8266Wi-Fi.cpp and ESP8266Wi-Fi.h
-
-**14** Paste these files here `packages` > `esp8266` > `hardware` > `esp8266` > `2.0.0` > `libraries` > `ESP8266WiFi` > `src`
-
-**15** Open `esp8266_deauther` > `esp8266_deauther.ino` in Arduino
-
-**16** Select your ESP8266 board at `Tools` > `Board` and the right port at `Tools` > `Port`  
-If no port shows up you may have to reinstall the drivers.
-
-**17** Depending on your board you may have to adjust the `Tools` > `Board` > `Flash Frequency` and the `Tools` > `Board` > `Flash Size`. In my case i had to use a `80MHz` Flash Frequency, and a `4M (1M SPIFFS)` Flash Size
-
-**18** Upload!
-
-**Note:** If you use a 512kb version of the ESP8266, you need to comment out a part of the mac vendor list in data.h.
+**Note:** If you use a 512kb version of the ESP8266, you need to comment out a part of the mac vendor list in `data.h`
 
 **Your ESP8266 Deauther is now ready!**
 
+# How to use
 
-### Adding OLED display
+1. Connect your ESP8266 to a USB power source (you can power it with your phone using USB OTG cable)
 
-![image of the esp8266 deauther with an OLED and three buttons](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/esp8266_with_oled.jpg)
+2. Scan for Wi-Fi networks on your device and connect to `Wi-PWN`. The password is `rootaccess`.  
 
-**0** Follow the steps [above](#compiling-the-source-with-arduino) to get your Arduino environment ready.
+3. Once connected, open up your browser and go to `192.168.4.1`  
 
-**1** Install this OLED driver library: https://github.com/squix78/esp8266-oled-ssd1306
+4. Accept the warning<br><br>
+![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/web_screenshot_1.jpg)
 
-**2** Customize the code for your wiring.  
-		In `esp8266_deauther.ino` uncomment `#define USE_DISPLAY`.  
-		Then scroll down and customize these lines depending on your setup.  
-		I used a Wemos d1 mini with a SSD1306 128x64 OLED and 3 push buttons.  
+5. Click on the <kbd>Scan</kbd> to scan for Wi-Fi networks<br><br>
+![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/web_screenshot_2.jpg)<br>
+**Note: You may have to reconnect to the Wi-Fi network.**
 
-		  //include the library you need
-		  #include "SSD1306.h"
-		  //#include "SH1106.h"
+6. Select the WiFi network(s) you want to perform the attack on. Once finished, click on the <kbd>Attack</kbd> button
+7. Select the attack you wish to perform <br><br>
+![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/web_screenshot_3.jpg)<br>
 
-		  //button pins
-		  #define upBtn D6
-		  #define downBtn D7
-		  #define selectBtn D5
-
-		  #define buttonDelay 180 //delay in ms
-		  
-		  //render settings
-		  #define fontSize 8
-		  #define rowsPerSite 8
-
-		  //create display(Adr, SDA-pin, SCL-pin)
-		  SSD1306 display(0x3c, D2, D1);
-		  //SH1106 display(0x3c, D2, D1);
-
-## How to use it
-
-First start your ESP8266 by giving it power.  
-
-You can use your smartphone if you have a USB OTG cable.
-![esp8266 deauther with a smartphone](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/smartphone_esp_2.jpg)
-
-Scan for Wi-Fi networks and connect to `pwned`. The password is `deauther`.  
-Once connected, you can open up your browser and go to `192.168.4.1`.  
-
-You can now scan for networks...
-![webinterface AP scanner](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/web_screenshot_1.JPG)
-
-scan for client devices... 
-![webinterface client scanner](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/web_screenshot_2.JPG)
-
-Note: While scanning the ESP8266 will shut down its access point, so you may have to go to your settings and reconnect to the Wi-Fi network manually.
-
-...and start different attacks.
-![webinterface attack menu](https://raw.githubusercontent.com/spacehuhn/esp8266_deauther/master/screenshots/web_screenshot_3.JPG)
-
-Happy hacking :)
+**Happy hacking :)**
 
 ## FAQ
 
