@@ -8,7 +8,7 @@
 <body>
     <nav id="nav" class="disabled">
         <div class="main-header">
-            <img id="logo-img"><b style="color:#fff">Wi-</b>PWN
+            <div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
         </div>
         <div id="links">
             <a href="apscan.html">Scan</a>
@@ -24,7 +24,8 @@
             <div class="card-container-basic">
                 <div class="settingsHeader">WARNING</div>
                 <div class="card-basic">
-                    <img id="logo-img2" style="float:left;margin-right: 20px"> This software is for testing common vulnerabilities in the <i>802.11 standard</i>.
+                    <div id="logo-img2"></div>
+                    This software is for testing common vulnerabilities in the <i>802.11 standard</i>.
                     <br> It can disrupt unprotected Wi-Fi connections, check the laws in your country before using it.
                     <br>
                     <br>
@@ -43,7 +44,7 @@
         <footer></footer>
         <script src="js/functions.js"></script>
         <script>
-        document.getElementById("logo-img2").src = logo;
+       document.getElementById("logo-img2").innerHTML=svgLogo; 
         var cookie = document.cookie;
         if (cookie.indexOf('accepted=yes') >= 0) {
             window.location = 'apscan.html'

@@ -68,3 +68,4 @@ class Settings
 };
 
 #endif
+

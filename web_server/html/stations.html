@@ -8,7 +8,7 @@
 <body>
     <nav id="nav">
         <div class="main-header">
-            <img id="logo-img"><b style="color:#fff">Wi-</b>PWN
+            <div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
         </div>
         <div id="links">
             <a href="apscan.html">Scan</a>
@@ -35,9 +35,9 @@
                         <label for="scanTime">Scan time (seconds)</label>
                     </div>
                     <br>
-                    <table><tbody><tr><th>Pkts</th><th>Vendor</th><th>Name</th><th>MAC</th><th>AP</th><th>Select</th></tr><tr><td>444</td><td>Nintendo</td><td> <a onclick="changeName(0)">edit</a></td><td>40:d2:8a:22:ee:7a</td><td>network.SECURE</td><td><button class="marginNull" onclick="select(0)">select</button></td></tr><tr><td>77</td><td>IntelCor</td><td> <a onclick="changeName(1)">edit</a></td><td>2c:6e:85:b1:0b:98</td><td>network.SECURE</td><td><button class="marginNull" onclick="select(1)">select</button></td></tr><tr class="selected"><td>10</td><td>AirgoNet</td><td> <a onclick="changeName(2)">edit</a></td><td>00:0a:f5:fc:9a:d0</td><td>network.SECURE</td><td><button class="marginNull selectedBtn" onclick="select(2)">deselect</button></td></tr></tbody></table>
+                   <table id="stations"></table>
                 </div>
-                <div class="settingsHeader">Clients</div>
+                <div class="settingsHeader">Station handles</div>
                 <div class="card-basic">
                     Saved clients: <span id="clientNames"></span>
                     <br>

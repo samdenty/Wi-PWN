@@ -276,3 +276,4 @@ void APScan::select(int num) {
 bool APScan::isSelected(int num) {
   return selected[num];
 }
+
