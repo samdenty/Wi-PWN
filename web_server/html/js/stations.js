@@ -39,13 +39,18 @@ function getResults() {
 
         for (var i = 0; i < res.clients.length; i++) {
 
-            if (res.clients[i].s == 1) tr += '<tr class="selected" onclick="select(' + res.clients[i].i + ')">';
-            else tr += '<tr onclick="select(' + res.clients[i].i + ')">';
-            tr += '<td><b onclick="changeName(' + res.clients[i].i + ')">' + res.clients[i].n + '</b><br>' + res.clients[i].v + '</td>';
-            tr += '<td><b>' + res.clients[i].m + '</b><br>' + res.clients[i].a + '</td>';
-            tr += '<td>' + res.clients[i].p + '</td>';
-            if (res.clients[i].s == 1) tr += '<td><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false" checked><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
-            else tr += '<td><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false"><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
+            if (res.clients[i].s == 1) tr += '<tr class="selected">';
+            else tr += '<tr>';
+            if (res.clients[i].n == null) {
+                tr += '<td onclick="changeName(' + res.clients[i].i + ')"><a><b>' + res.clients[i].n + '</b></a></td>';
+            } else {
+                tr += '<td onclick="changeName(' + res.clients[i].i + ')"><a>' + res.clients[i].v + '</a></td>';
+            }
+            tr += '<td onclick="changeName(' + res.clients[i].i + ')"><a><b>' + res.clients[i].n + '</b><br>' + res.clients[i].v + '</a></td>';
+            tr += '<td onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' + res.clients[i].a + '</td>';
+            tr += '<td onclick="select(' + res.clients[i].i + ')">' + res.clients[i].p + '</td>';
+            if (res.clients[i].s == 1) tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false" checked><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
+            else tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false"><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
 
             tr += '</tr>';
         }
