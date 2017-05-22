@@ -216,3 +216,6 @@ Packet Injection with ESP8266:
 802.11w-2009: [https://en.wikipedia.org/wiki/IEEE_802.11w-2009](https://en.wikipedia.org/wiki/IEEE_802.11w-2009)
 
 `Wi-Fi_send_pkt_freedom` function limitations: [http://esp32.com/viewtopic.php?f=13&t=586&p=2648&hilit=Wi-Fi_send_pkt_freedom#p2648](http://esp32.com/viewtopic.php?f=13&t=586&p=2648&hilit=Wi-Fi_send_pkt_freedom#p2648)
+
+*G o o g l e  s e a r c h  t e r m s*
+WiPWN, WiPwner, Wi PWN, PWN Wi, Wi PAWN
