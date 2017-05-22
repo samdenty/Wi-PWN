@@ -36,13 +36,6 @@ nav .main-header {
   top: 13px;
   background: #42A5F5
 }
-#logo-img2 {
-  float: left;
-  margin-right: 20px;
-  padding: 40px;
-  height: 100px;
-  width: 100px
-}
 nav #links {
   height: 64px;
   width: calc(100% - 40px);
@@ -59,7 +52,6 @@ nav #links a {
   line-height: 64px;
   padding: 0 20px;
   display: inline-block;
-  text-decoration: none;
   transition: background 500ms ease;
   text-transform: uppercase;
   font-weight: 500;
@@ -113,14 +105,6 @@ h1 {
   margin-bottom: 10px;
   font-size: 14px
 }
-.avatar-header {
-  display: inline;
-  font-size: 20px
-}
-.profile {
-  height: 60px;
-  margin: 30px 0
-}
 meter {
   width: 45px
 }
@@ -159,6 +143,10 @@ hr {
   -webkit-margin-before: 2em;
   -webkit-margin-after: 2em;
   border: 1px solid rgba(0, 0, 0, 0.03)
+}
+hr.small {
+    -webkit-margin-before: 0.5em;
+  -webkit-margin-after: 1.3em;
 }
 .col1 {
   width: 70%
@@ -202,7 +190,8 @@ hr {
 }
 a {
   color: #2196F3;
-  cursor: pointer
+  cursor: pointer;
+  text-decoration: none;
 }
 a:focus {
   outline: 0
@@ -271,7 +260,6 @@ footer li {
 }
 footer a {
   color: #9e9e9e;
-  text-decoration: none;
   white-space: nowrap
 }
 .sub-section-attribution {
@@ -436,7 +424,23 @@ label.checkbox:active:before {
     top: 65px !important
   }
 }
+#logo-img2 {
+  float: none;
+  left: 50%;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 40px;
+  height: 100px;
+  width: 100px
+}
 @media (min-width:700px) {
+  #logo-img2 {
+    float: left;
+    margin-right: 30px;
+    padding: 40px;
+    height: 100px;
+    width: 100px
+  }
   .card-container {
     display: inline-block;
     width: calc(50% - 45px)
