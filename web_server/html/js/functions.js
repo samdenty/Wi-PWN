@@ -1,7 +1,9 @@
 function showMessage(msg, closeAfter){
+	if (msg) {document.body.className = "error"} else {document.body.className = "";}
 	document.getElementById("error").innerHTML = msg;
 	if(closeAfter !== undefined){
 		setTimeout(function(){
+			document.body.className = "";
 			document.getElementById("error").innerHTML = "";
 		},closeAfter);
 	}

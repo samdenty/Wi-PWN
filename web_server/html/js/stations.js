@@ -43,11 +43,11 @@ function getResults() {
             if (res.clients[i].s == 1) tr += '<tr class="selected">';
             else tr += '<tr>';
             if (res.clients[i].n) {
-                tr += '<td onclick="changeName(' + res.clients[i].i + ')"><b>' + res.clients[i].n + '</b></td>';
+                tr += '<td class="darken-on-hover" onclick="changeName(' + res.clients[i].i + ')"><b>' + res.clients[i].n + '</b></td>';
             } else {
-                tr += '<td onclick="changeName(' + res.clients[i].i + ')">' + res.clients[i].v + '</td>';
+                tr += '<td class="darken-on-hover" onclick="changeName(' + res.clients[i].i + ')">' + res.clients[i].v + '</td>';
             }
-            tr += '<td onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' + res.clients[i].a + '</td>';
+            tr += '<td class="select" onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' + res.clients[i].a + '</td>';
             tr += '<td onclick="select(' + res.clients[i].i + ')">' + res.clients[i].p + '</td>';
             if (res.clients[i].s == 1) tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false" checked><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
             else tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false"><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
@@ -64,7 +64,7 @@ function getResults() {
 
             tr += '<tr>';
             tr += '<td><b>' + res.nameList[i].n + '</b><br>' + res.nameList[i].m + '</td>';
-            tr += '<td><div class="edit delete" onclick="deleteName(' + i + ')">&times;</div><div class="edit add" onclick="add(' + i + ')">+</div><div class="edit" onclick="changeName(' + i + ')"><img src="' + edit + '"></div></td>';
+            tr += '<td><div class="edit delete" onclick="deleteName(' + i + ')">&times;</div><div class="clearfix"></div><div class="edit add" onclick="add(' + i + ')">+</div><div class="clearfix"></div><div class="edit" onclick="changeName(' + i + ')"><img src="' + edit + '"></div></td>';
             tr += '</tr>';
         }
 
@@ -116,7 +116,13 @@ function clearNameList() {
 
 function addClient() {
     getResponse("addClient.json?mac=" + cMac.value + "&name=" + cName.value, function(responseText) {
-        if (responseText == "true") getResults();
+        if (responseText == "true") {
+            getResults();
+            var macReset = document.getElementById('cMac');
+            var nameReset = document.getElementById('cName');
+            macReset.value='';
+            nameReset.value='';
+        }
         else showMessage("ERROR: Bad response 'addClient.json'");
     });
 }

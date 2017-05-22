@@ -34,7 +34,7 @@ nav .main-header {
   left: 25px;
   position: fixed;
   top: 13px;
-  background: #42A5F5
+  background: rgba(255,255,255,0.1)
 }
 nav #links {
   height: 64px;
@@ -173,17 +173,22 @@ hr.small {
 .padding {
   padding: 0 1rem
 }
-#error {
+body.error #error {
   line-height: 23px;
-  background: #c62828;
+  background: #E64A19;
   color: #fff;
   word-wrap: break-word;
   text-align: center;
   font-size: 11px;
-  margin-bottom: 30px
 }
-#error:empty {
-  opacity: 0
+body.error .main-wrap {
+  padding-top: 23px;
+}
+body.error nav {
+  background: #F4511E;
+}
+body.error .main-header {
+  background: #FF5722
 }
 #networksFound:empty, #apMAC:empty {
   display: none
@@ -212,7 +217,8 @@ a:focus {
   text-transform: uppercase;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   transition: .3s ease;
-  cursor: pointer
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .button:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
@@ -452,6 +458,9 @@ label.checkbox:active:before {
     min-height: 434px
   }
 }
+.card-container-basic {
+  margin-top: 20px;
+}
 @media (max-width:450px) {
   nav a {
     padding: 0 10px !important;
@@ -676,20 +685,35 @@ img, nav, td {
   -webkit-user-select: none;
   -ms-user-select: none
 }
+.clearfix {
+  display: none;
+}
+@media (max-width:361px) {
+  .clearfix {
+    display: block;
+    clear: both;
+  }
+}
 .edit:hover {
   background: rgba(0, 0, 0, 0.1)
 }
 .edit:active {
   background: rgba(0, 0, 0, 0.25)
 }
-tr td, tr {
+tr td, tr, .darken-on-hover {
   transition: all 0.3s ease
+}
+.darken-on-hover:hover {
+ background: rgba(0, 0, 0, 0.1) 
+}
+.darken-on-hover {
+  cursor: pointer;
 }
 tr:hover td {
   background: rgba(0, 0, 0, 0.03)
 }
 tr:nth-child(even) {
-  background: rgba(0, 0, 0, 0.02)
+  background: rgba(0, 0, 0, 0.05)
 }
 b {
   color: inherit
@@ -703,4 +727,7 @@ b {
 .edit.add, .edit.delete {
   font-size: 29px;
   line-height: 26px;
+}
+.select {
+    user-select: initial;
 }
