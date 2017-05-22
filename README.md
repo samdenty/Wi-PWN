@@ -1,7 +1,7 @@
 # Wi-PWN
-<img src="https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/Wi-PWN.png" height="120px">
+<img src="https:/raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/Wi-PWN.png" height="120px">
 
-Project based upon [spacehuhn/esp8266_deauther](http://github.com/spacehuhn/esp8266_deauther).<br>Deauthentication attack and other hacks using an ESP8266.
+ESP8266 Deauther with a Material Design UI and other features. [Based upon [spacehuhn/esp8266_deauther](http://github.com/spacehuhn/esp8266_deauther)].
 
 **Try a live demo at [https://Wi-PWN.github.io](https://Wi-PWN.github.io)**
 <br><br>
