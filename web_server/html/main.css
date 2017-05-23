@@ -13,7 +13,7 @@ nav {
   z-index: 100;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20)
 }
-nav a {
+nav a, svg {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
 }
 nav .main-header {
@@ -34,18 +34,12 @@ nav .main-header {
   left: 25px;
   position: fixed;
   top: 13px;
-  background: rgba(255,255,255,0.1)
+  background: rgba(255, 255, 255, 0.1)
 }
 nav #links {
   height: 64px;
   width: calc(100% - 40px);
   padding: 0 20px
-}
-nav.connectionError {
-  background: #d32f2f
-}
-nav.connectionError .main-header {
-  background: #f44336
 }
 nav #links a {
   color: rgba(255, 255, 255, 0.8);
@@ -145,11 +139,8 @@ hr {
   border: 1px solid rgba(0, 0, 0, 0.03)
 }
 hr.small {
-    -webkit-margin-before: 0.5em;
-  -webkit-margin-after: 1.3em;
-}
-.col1 {
-  width: 70%
+  -webkit-margin-before: 0.5em;
+  -webkit-margin-after: 1.3em
 }
 .bold {
   font-weight: 700
@@ -179,13 +170,13 @@ body.error #error {
   color: #fff;
   word-wrap: break-word;
   text-align: center;
-  font-size: 11px;
+  font-size: 11px
 }
 body.error .main-wrap {
-  padding-top: 23px;
+  padding-top: 35px
 }
 body.error nav {
-  background: #F4511E;
+  background: #F4511E
 }
 body.error .main-header {
   background: #FF5722
@@ -196,7 +187,7 @@ body.error .main-header {
 a {
   color: #2196F3;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none
 }
 a:focus {
   outline: 0
@@ -204,7 +195,7 @@ a:focus {
 .button, button, input[type="submit"], input[type="reset"], input[type="button"] {
   text-decoration: none;
   color: #fff;
-  background: #03A9F4;
+  background: #2196F3;
   text-align: center;
   letter-spacing: .5px;
   font-size: 1rem;
@@ -218,16 +209,10 @@ a:focus {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   transition: .3s ease;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
 }
-.button:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
+.button:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, .reboot:hover {
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
-  background: #039BE5
-}
-.button-primary {
-  background: #2196F3
-}
-.button-primary:hover {
   background: #1E88E5
 }
 .selectedBtn {
@@ -284,12 +269,18 @@ footer a {
   outline: none;
   transition: .2s ease-in-out;
   box-sizing: border-box;
-  margin-bottom: 15px
+  margin-bottom: 15px;
+  box-shadow: none;
 }
 .input-container input:placeholder-shown {
-  border-bottom: 2px solid #E1E1E1 !important
+  border-bottom: 2px solid #E1E1E1 !important;
 }
-.input-container input:placeholder-shown:focus {
+@-moz-document url-prefix() {
+  .input-container input:invalid {
+    border-bottom: 2px solid #E1E1E1 !important;
+  }
+}
+.input-container input:placeholder-shown:focus, .input-container input::-moz-placeholder:focus {
   border-bottom: 2px solid #2196F3 !important
 }
 .input-container label {
@@ -331,6 +322,10 @@ footer a {
   font-size: .8rem;
   top: -25px;
   pointer-events: none
+}
+.settings .checkbox {
+  float: right;
+  margin-top: 3px
 }
 input[type="checkbox"] {
   display: none
@@ -417,7 +412,7 @@ label.checkbox:active:before {
 }
 @media (max-width:520px) {
   .background {
-    display: none;
+    display: none
   }
   nav a {
     padding: 0 12px !important;
@@ -429,6 +424,9 @@ label.checkbox:active:before {
   .main-wrap {
     top: 65px !important
   }
+  .tooltip {
+    display: none !important;
+  }
 }
 #logo-img2 {
   float: none;
@@ -439,7 +437,7 @@ label.checkbox:active:before {
   height: 100px;
   width: 100px
 }
-@media (min-width:700px) {
+@media (min-width:800px) {
   #logo-img2 {
     float: left;
     margin-right: 30px;
@@ -459,7 +457,7 @@ label.checkbox:active:before {
   }
 }
 .card-container-basic {
-  margin-top: 20px;
+  margin-top: 20px
 }
 @media (max-width:450px) {
   nav a {
@@ -557,7 +555,7 @@ label.checkbox:active:before {
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .19), 0 6px 13px 0 rgba(0, 0, 0, .24);
   height: 30px;
   width: 30px;
-  transition: all .5s ease;
+  transition: box-shadow .5s ease, background .5s ease, margin-top .5s ease;
   z-index: 99;
   margin-top: -100px;
   opacity: 0
@@ -674,8 +672,8 @@ td, th {
   height: 24px;
   padding: 10px;
   display: inline-block;
-  transition: all 0.5s ease;
-  float: right;
+  transition: background .5s ease;
+  float: right
 }
 img, nav, td {
   user-drag: none;
@@ -686,12 +684,12 @@ img, nav, td {
   -ms-user-select: none
 }
 .clearfix {
-  display: none;
+  display: none
 }
 @media (max-width:361px) {
   .clearfix {
     display: block;
-    clear: both;
+    clear: both
   }
 }
 .edit:hover {
@@ -701,13 +699,13 @@ img, nav, td {
   background: rgba(0, 0, 0, 0.25)
 }
 tr td, tr, .darken-on-hover {
-  transition: all 0.3s ease
+  transition: box-shadow .5s ease, background .5s ease, color .5s ease
 }
 .darken-on-hover:hover {
- background: rgba(0, 0, 0, 0.1) 
+  background: rgba(0, 0, 0, 0.1)
 }
 .darken-on-hover {
-  cursor: pointer;
+  cursor: pointer
 }
 tr:hover td {
   background: rgba(0, 0, 0, 0.03)
@@ -722,12 +720,49 @@ b {
   position: absolute;
   width: 100%;
   max-height: 100vh;
-  overflow: hidden;
+  overflow: hidden
 }
 .edit.add, .edit.delete {
   font-size: 29px;
-  line-height: 26px;
+  line-height: 26px
 }
 .select {
-    user-select: initial;
+  user-select: initial
+}
+.reboot {
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  background: #2196F3;
+  border-radius: 1000px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  transition: box-shadow .3s ease, background .3s ease;
+  pointer-events: initial;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.reboot-container {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  z-index: 1;
+  pointer-events: none
+}
+.tooltip {
+  opacity: 0;
+  width: 80px;
+  background-color: #323232;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  transition: opacity .5s ease;
+  top: 10px;
+  right: 120%;
+}
+.reboot-container:hover .tooltip {
+  opacity: 1
 }

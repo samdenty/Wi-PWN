@@ -71,14 +71,10 @@ function resetSettings() {
   getResponse("settingsReset.json", function(responseText) {
     if (responseText == "true") {
       getData();
-      saved.innerHTML = "saved";
+      saved.innerHTML = "Settings saved!";
     }
     else showMessage("ERROR: Bad response 'settingsReset.json'");
   });
-}
-
-function restart(){
-	getResponse("restartESP.json?", function(){});
 }
 
 getData();
