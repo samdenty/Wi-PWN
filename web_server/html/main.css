@@ -467,7 +467,7 @@ label.checkbox:active:before {
   .card-basic {
     padding: 25px 20px
   }
-  table#stations td:nth-child(3), table#stations th:nth-child(3) {
+  table#users td:nth-child(3), table#users th:nth-child(3) {
     display: none
   }
 }

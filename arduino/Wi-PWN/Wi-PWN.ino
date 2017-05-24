@@ -1,8 +1,11 @@
 /*
-  ===========================================
-       Copyright (c) 2017 Stefan Kremser
-              github.com/spacehuhn
-  ===========================================
+ ************************************************
+ *         Wi-PWN firmware for ESP8266          *
+ *            (c) 2017 Samuel Denty             *
+ *----------------------------------------------*
+ *  Wi-PWN based on spacehuhn/esp8266_deauther  *
+ *            (c) 2017 Stefan Kremser           *
+ ************************************************
 */
 
 #include <Arduino.h>
@@ -25,7 +28,6 @@
   //button pins
   #define upBtn D6
   #define downBtn D7
-  #define selectBtn D5
   
   #define buttonDelay 180 //delay in ms
   
@@ -113,8 +115,8 @@ void loadAPScanHTML() {
   warning = false;
   sendFile(200, "text/html", data_apscanHTML, sizeof(data_apscanHTML));
 }
-void loadStationsHTML() {
-  sendFile(200, "text/html", data_stationHTML, sizeof(data_stationHTML));
+void loadUsersHTML() {
+  sendFile(200, "text/html", data_usersHTML, sizeof(data_usersHTML));
 }
 void loadAttackHTML() {
   sendFile(200, "text/html", data_attackHTML, sizeof(data_attackHTML));
@@ -138,8 +140,8 @@ void loadFunctionsJS() {
 void loadAPScanJS() {
   sendFile(200, "text/javascript", data_apscanJS, sizeof(data_apscanJS));
 }
-void loadStationsJS() {
-  sendFile(200, "text/javascript", data_stationsJS, sizeof(data_stationsJS));
+void loadUsersJS() {
+  sendFile(200, "text/javascript", data_usersJS, sizeof(data_usersJS));
 }
 void loadAttackJS() {
   sendFile(200, "text/javascript", data_attackJS, sizeof(data_attackJS));
@@ -161,7 +163,7 @@ void startWiFi(bool start) {
 
 //==========AP-Scan==========
 void startAPScan() {
-  scanMode = "scanning...";
+  scanMode = "Scanning...";
 #ifdef USE_DISPLAY
   drawInterface();
 #endif
@@ -199,7 +201,7 @@ void startClientScan() {
     server.send(200, "text/json", "true");
     clientScan.start(server.arg("time").toInt());
     attack.stopAll();
-  } else server.send( 200, "text/json", "Error: no selected access point");
+  } else server.send( 200, "text/json", "ERROR: No selected Wi-Fi networks!");
 }
 
 void sendClientResults() {
@@ -424,12 +426,13 @@ void setup() {
   drawInterface();
   pinMode(upBtn, INPUT_PULLUP);
   pinMode(downBtn, INPUT_PULLUP);
-  pinMode(selectBtn, INPUT_PULLUP);
 #endif
 
   attackMode = "START";
   pinMode(2, OUTPUT);
+  pinMode(5, OUTPUT);
   digitalWrite(2, HIGH);
+  digitalWrite(5, HIGH);
 
   EEPROM.begin(4096);
   SPIFFS.begin();
@@ -455,16 +458,16 @@ void setup() {
 
   server.on("/", loadIndexHTML);
   server.on("/index.html", loadIndexHTML);
-  server.on("/apscan.html", loadAPScanHTML);
-  server.on("/stations.html", loadStationsHTML);
+  server.on("/scan.html", loadAPScanHTML);
+  server.on("/users.html", loadUsersHTML);
   server.on("/attack.html", loadAttackHTML);
   server.on("/settings.html", loadSettingsHTML);
   server.on("/info.html", loadInfoHTML);
   server.on("/license", loadLicense);
 
   /* JS */
-  server.on("/js/apscan.js", loadAPScanJS);
-  server.on("/js/stations.js", loadStationsJS);
+  server.on("/js/scan.js", loadAPScanJS);
+  server.on("/js/users.js", loadUsersJS);
   server.on("/js/attack.js", loadAttackJS);
   server.on("/js/settings.js", loadSettingsJS);
   server.on("/js/functions.js", loadFunctionsJS);
