@@ -42,13 +42,14 @@ void Settings::load() {
   useLed = (bool)EEPROM.read(useLedAdr);
   channelHop = (bool)EEPROM.read(channelHopAdr);
   multiAPs = (bool)EEPROM.read(multiAPsAdr);
+  deauthAll = (bool)EEPROM.read(multiAPsAdr);
 }
 
 void Settings::reset() {
-  if (debug) Serial.print("reset settings...");
+  if (debug) Serial.print("Resetting settings...");
 
   ssid = "Wi-PWN";
-  password = "rootaccess"; //must have at least 8 characters
+  password = "rootaccess"; //at least 8 characters
   ssidHidden = false;
   apChannel = 1;
 
@@ -66,7 +67,7 @@ void Settings::reset() {
   channelHop = false;
   multiAPs = false;
 
-  if (debug) Serial.println("done");
+  if (debug) Serial.println("Reset settings successfully!");
 
   save();
 }

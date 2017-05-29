@@ -9,6 +9,13 @@ function showMessage(msg, closeAfter){
 	}
 }
 
+function checkConnection() {
+    getResponse("ClientScanTime.json", function(responseText) {
+        if (responseText) location.reload()
+    });
+    setTimeout(checkConnection, 2000);
+}
+
 function restart(){
   getResponse("restartESP.json?", function(responseText) {
     if (responseText == "true") {

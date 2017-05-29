@@ -47,7 +47,8 @@ function getResults() {
   }, function() {
     clearInterval(resultInterval);
     showMessage("ERROR: Failed to load 'attackInfo.json'");
-  });
+    checkConnection();
+  }, 3000);
 }
 
 function startStop(num) {

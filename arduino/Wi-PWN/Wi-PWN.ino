@@ -28,6 +28,7 @@
   //button pins
   #define upBtn D6
   #define downBtn D7
+  #define selectBtn D5
   
   #define buttonDelay 180 //delay in ms
   
@@ -426,13 +427,13 @@ void setup() {
   drawInterface();
   pinMode(upBtn, INPUT_PULLUP);
   pinMode(downBtn, INPUT_PULLUP);
+  pinMode(selectBtn, INPUT_PULLUP);
 #endif
 
   attackMode = "START";
+  pinMode(0, INPUT);
   pinMode(2, OUTPUT);
-  pinMode(5, OUTPUT);
   digitalWrite(2, HIGH);
-  digitalWrite(5, HIGH);
 
   EEPROM.begin(4096);
   SPIFFS.begin();
@@ -505,7 +506,6 @@ void setup() {
 
   server.begin();
 }
-
 void loop() {
   if (clientScan.sniffing) {
     if (clientScan.stop()) startWifi();
@@ -519,6 +519,12 @@ void loop() {
     if(input == "reset" || input == "reset\n" || input == "reset\r" || input == "reset\r\n"){
       settings.reset();
     }
+  }
+
+  if(digitalRead(0) == LOW) {
+    Serial.println("FLASH button (GPIO0) pressed, executing action...");
+    attack.start(0);
+    delay(2000);
   }
 
 #ifdef USE_DISPLAY

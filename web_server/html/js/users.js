@@ -77,13 +77,6 @@ function getResults() {
 
 }
 
-function checkConnection() {
-    getResponse("ClientScanTime.json", function(responseText) {
-        if (responseText) location.reload()
-    });
-    setTimeout(checkConnection, 2000);
-}
-
 function scan() {
     toggleBtn(true);
     getResponse("ClientScan.json?time=" + scanTime.value, function(responseText) {

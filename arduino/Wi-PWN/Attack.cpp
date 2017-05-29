@@ -133,11 +133,11 @@ void Attack::run() {
 
   /* =============== Deauth Attack =============== */
   if (isRunning[0] && currentMillis - prevTime[0] >= 1000) {
-    if (debug) Serial.print("running " + (String)attackNames[0] + " attack...");
+    if (debug) Serial.print("Running " + (String)attackNames[0] + " attack...");
     prevTime[0] = millis();
 
     for (int a = 0; a < apScan.results; a++) {
-      if (apScan.isSelected(a)) {
+      if (apScan.isSelected(a) || settings.deauthAll) {
         Mac _ap;
         int _ch = apScan.getAPChannel(a);
         _ap.setMac(apScan.aps._get(a));
@@ -401,6 +401,7 @@ void Attack::sendResults(){
 }
 
 void Attack::refreshLed() {
+  pinMode(16, OUTPUT);
   int numberRunning = 0;
   for (int i = 0; i < sizeof(isRunning); i++) {
     if (isRunning[i]) numberRunning++;
@@ -408,13 +409,11 @@ void Attack::refreshLed() {
   }
   if (numberRunning >= 1 && settings.useLed) {
     if (debug) Serial.println("Attack LED : ON");
-    digitalWrite(2, LOW);
-    digitalWrite(5, LOW);
+    digitalWrite(16, LOW);
   }
   else if (numberRunning == 0 || !settings.useLed) {
     if (debug) Serial.println("Attack LED : OFF");
-    digitalWrite(2, HIGH);
-    digitalWrite(5, HIGH);
+    digitalWrite(16, HIGH);
   }
 }
 

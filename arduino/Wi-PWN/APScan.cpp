@@ -1,7 +1,6 @@
 #include "APScan.h"
 
 APScan::APScan() {
-
 }
 
 bool APScan::start() {
