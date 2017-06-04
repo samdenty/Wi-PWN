@@ -27,7 +27,11 @@ nav .main-header {
 	height: 30px
 }
 #logo-img, #logo-img2 {
-	background: #359DF2;
+	background: #379df3;
+	background: -moz-linear-gradient(-45deg, #379df3 0%, #3f86f1 100%);
+	background: -webkit-linear-gradient(-45deg, #379df3 0%, #3f86f1 100%);
+	background: linear-gradient(135deg, #379df3 0%, #3f86f1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#379df3', endColorstr='#3f86f1', GradientType=1);
 	border-radius: 999px
 }
 #logo-img {
