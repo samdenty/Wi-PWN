@@ -28,9 +28,9 @@ nav .main-header {
 }
 #logo-img, #logo-img2 {
 	background: #379df3;
-	background: -moz-linear-gradient(-45deg, #379df3 0%, #3f86f1 100%);
-	background: -webkit-linear-gradient(-45deg, #379df3 0%, #3f86f1 100%);
-	background: linear-gradient(135deg, #379df3 0%, #3f86f1 100%);
+	background: -moz-linear-gradient(-45deg, #40bdff 0%, #3e80e4 100%);
+	background: -webkit-linear-gradient(-45deg, #40bdff 0%, #3e80e4 100%);
+	background: linear-gradient(135deg, #40bdff 0%, #3e80e4 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#379df3', endColorstr='#3f86f1', GradientType=1);
 	border-radius: 999px
 }
@@ -477,17 +477,15 @@ label.checkbox:active:before {
 	left: 50%;
 	margin: auto;
 	margin-bottom: 30px;
-	padding: 40px;
-	height: 100px;
-	width: 100px
+	padding: 35px;
+	height: 130px;
+	width: 130px
 }
 @media (min-width:800px) {
 	#logo-img2 {
 		float: left;
-		margin-right: 30px;
-		padding: 40px;
-		height: 100px;
-		width: 100px
+		margin-right: 50px;
+		margin-top: 35px
 	}
 	.card-container-basic.settings {
 		display: inline-block;
