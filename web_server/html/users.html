@@ -19,6 +19,9 @@
         </div>
         <div id="error"></div>
     </nav>
+    <script>
+    /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
+    </script>
     <div class="main-wrap">
         <div id="spinner-container">
             <svg class="spinner" viewBox="0 0 66 66">
@@ -28,21 +31,15 @@
         <div class="container">
             <div class="card-container-basic">
                 <div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Scan for Wi-Fi users <span id="clientsFound"></span></div>
-                <button onclick="scan()" id="startScan" class="button-primary right">scan</button>
-                <div class="card-basic">
-                    <div class="input-container">
-                        <input placeholder=" " id="scanTime" type="number" required="" min="-1" max="255">
-                        <label for="scanTime">Scan time (seconds)</label>
-                    </div>
-                    <br>
-                    <table id="users"></table>
-                </div>
-                <div class="settingsHeader">Saved users <span id="clientNames"></span></div>
-                <div class="card-basic">
+                <button onclick="scan()" id="startScan" class="button-primary right">Scan</button>
+                <table id="users"><tr><th>&nbsp;</th></tr></table>
+                <hr>
+                <div id="saved-users" class="dn">
+                    <div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Saved users <span id="clientNames"></span></div>
+                    <button class="button-warn right" onclick="clearNameList()">Reset</button>
                     <table id="nameList"></table>
-                    <button class="button-warn right" onclick="clearNameList()">Reset entries</button>
-                    <br class="clear" />
-                    <hr>
+                </div>
+                <div class="card-basic" style="padding:35px 40px">
                     <div class="row">
                         <div class="input-container col-5">
                             <input placeholder=" " id="cMac" type="text" required="" min="17" max="17">

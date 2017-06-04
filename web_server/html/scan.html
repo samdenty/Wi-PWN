@@ -19,6 +19,10 @@
         </div>
         <div id="error"></div>
     </nav>
+    <script>
+    var u = window.location.href; - 1 != u.indexOf("?minimal=true") && (document.body.id = "minimal", document.cookie = "minimal=true");
+    /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal")
+    </script>
     <div class="main-wrap">
         <div id="spinner-container">
             <svg class="spinner" viewBox="0 0 66 66">
@@ -34,15 +38,9 @@
                     </div>
                 </div>
                 <button onclick="scan()" id="apScanStart" class="right button-primary">Scan</button>
-                <div class="card-basic">
-                    <table id="apscan">
-                    </table>
-                    <hr>
-                    <div class="row">
-                        <div class="col-4">
-                            <button onclick="window.location = 'attack.html'" class="right">Attack</button>
-                        </div>
-                    </div>
+                <table id="apscan"><tr><th>&nbsp;</th></tr></table>
+                <div class="row">
+                        <button onclick="window.location = 'attack.html'" class="right">Attack</button>
                 </div>
             </div>
         </div>

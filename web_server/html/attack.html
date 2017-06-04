@@ -19,67 +19,44 @@
         </div>
         <div id="error"></div>
     </nav>
+    <script>
+    /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
+    </script>
     <div class="main-wrap">
         <div class="container">
             <div class="card-container-basic">
-                <div class="settingsHeader">Attack overview</div>
+                <div class="settingsHeader">Initiate Attack</div>
+                <table><tbody><tr><th>Attack</th><th>Status</th><th>Switch</th></tr><tr><td>Deauth</td><td class="red"></td><td><button class="marginNull" onclick="startStop(0)" disabled="">start</button></td></tr><tr><td>Network flood</td><td class="red"></td><td><button class="marginNull" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Probe-Request</td><td class="red"></td><td><button class="marginNull" onclick="startStop(2)" disabled="">start</button></td></tr></tbody></table>
+                <hr>
+            </div>
+            <div id="selectedNetworksDevices" class="card-container-basic dn">
+                <div class="settingsHeader">Selected networks &amp; devices</div>
                 <div class="card-basic">
-                    <b>Selected Wi-Fi networks:</b>
+                    Wi-Fi networks:
                     <ul id="selectedAPs">
                     </ul>
-                    <br>
-                    <b>Selected users:</b>
-                    <ul id="selectedClients">
-                    </ul>
-                    <br>
-                </div>
-            </div>
-            <div class="card-container-basic">
-                <div class="settingsHeader">Initiate attack</div>
-                <div class="card-basic">
-                    <table>
-                    </table>
-                    <br>
-                    <p class="left">SSIDs: <span id="ssidCounter">0/48</span>
-                        <div class="right">
-                            <button class="button-warn" onclick="clearSSID()">clear</button>
-                            <button onclick="randomSSID()">random</button>
-                            <button onclick="cloneSSID(prompt('Enter new SSID:'))">clone</button>
-                            <button class="button-primary" onclick="addSSID()">add</button>
-                    </p>
+                    <div id="users" class="dn">
+                        Users:
+                        <ul id="selectedClients">
+                        </ul>
                     </div>
-                    <br>
-                    <table></table>
-                    <br>
-                    <button class="marginNull button-warn" onclick="resetSSID()">reset</button>
-                    <button class="marginNull button-primary right" onclick="saveSSID()">save</button>
-                    <p class="small" id="saved">saved</p>
                 </div>
             </div>
             <div class="card-container-basic">
-                <div class="settingsHeader">About attacks</div>
-                <div class="card-basic">
-                    <span class="warn">INFO: </span><b>Connection will be lost during attack</b>
-                    <br>Change the channel in the settings to the same of the selected AP to prevent this.
-                    <br>
-                    <br>
-                    <b>Deauth attack</i>:</b>
-                    <br>Sends deauthentication and dissociation frames to the selected users(s) and access point(s).
-                    <br>
-                    <br>
-                    <b>Beacon flood:</b>
-                    <br>Sends beacon frames with the SSIDs in the list below.
-                    <br>
-                    <br>
-                    <b>Probe-Request flood:</b>
-                    <br>Sends probe request frames with the SSIDs in the list below.
-                </div>
+                <div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Network Flooding<span id="ssidCounter"> (0/48)</span></div>
+                <button class="button-warn right" onclick="clearSSID()">Reset</button>
+                <table><tr><th>&nbsp;</th></tr></table>
+                <br>
+                <button onclick="randomSSID()">Random</button>
+                <button class="button-primary" onclick="addSSID()">Add</button>
+                <button onclick="cloneSSID(prompt('Enter SSID:'))">Add (Multiple)</button>
+                <button class="button-primary right" onclick="saveSSID()">save</button>
+                <span id="saved"></span>
             </div>
         </div>
         <footer></footer>
         <script src="js/functions.js"></script>
         <script src="js/attack.js"></script>
-        
     </div>
 </body>
 

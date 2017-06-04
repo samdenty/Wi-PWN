@@ -5,6 +5,8 @@ var apMAC = getE('apMAC');
 var startStopScan = getE('startStopScan');
 var autoScan = false;
 
+var url = window.location.href;
+
 function toggleScan(onoff) {
     if (onoff && !autoScan) {
         scanInfo.classList.remove("show-loading")

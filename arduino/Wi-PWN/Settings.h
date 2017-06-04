@@ -62,7 +62,6 @@ class Settings
     bool useLed;
     bool channelHop;
     bool multiAPs;
-    bool deauthAll;
     
   private:
     size_t getSize();

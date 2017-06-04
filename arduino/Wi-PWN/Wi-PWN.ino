@@ -524,7 +524,7 @@ void loop() {
   if(digitalRead(0) == LOW) {
     Serial.println("FLASH button (GPIO0) pressed, executing action...");
     attack.start(0);
-    delay(2000);
+    delay(400);
   }
 
 #ifdef USE_DISPLAY

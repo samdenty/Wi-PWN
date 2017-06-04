@@ -135,9 +135,8 @@ void Attack::run() {
   if (isRunning[0] && currentMillis - prevTime[0] >= 1000) {
     if (debug) Serial.print("Running " + (String)attackNames[0] + " attack...");
     prevTime[0] = millis();
-
     for (int a = 0; a < apScan.results; a++) {
-      if (apScan.isSelected(a) || settings.deauthAll) {
+      if (apScan.isSelected(a)) {
         Mac _ap;
         int _ch = apScan.getAPChannel(a);
         _ap.setMac(apScan.aps._get(a));

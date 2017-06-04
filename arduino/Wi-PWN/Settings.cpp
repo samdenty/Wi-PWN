@@ -42,7 +42,6 @@ void Settings::load() {
   useLed = (bool)EEPROM.read(useLedAdr);
   channelHop = (bool)EEPROM.read(channelHopAdr);
   multiAPs = (bool)EEPROM.read(multiAPsAdr);
-  deauthAll = (bool)EEPROM.read(multiAPsAdr);
 }
 
 void Settings::reset() {
@@ -65,7 +64,7 @@ void Settings::reset() {
   attackEncrypted = false;
   useLed = true;
   channelHop = false;
-  multiAPs = false;
+  multiAPs = true;
 
   if (debug) Serial.println("Reset settings successfully!");
 

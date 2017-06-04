@@ -1,0 +1,31 @@
+{
+   "aps":[
+      {
+         "i":0,
+         "c":8,
+         "m":"EXAMPLE MAC",
+         "ss":"Example network 1",
+         "r":-90,
+         "e":4,
+         "se":1
+      },
+      {
+         "i":1,
+         "c":9,
+         "m":"EXAMPLE MAC",
+         "ss":"Example network 2",
+         "r":-70,
+         "e":4,
+         "se":1
+      },
+      {
+         "i":2,
+         "c":10,
+         "m":"EXAMPLE MAC",
+         "ss":"Example network 3",
+         "r":-5,
+         "e":2,
+         "se":0
+      }
+   ]
+}

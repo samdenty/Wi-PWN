@@ -1,0 +1,88 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        background: #F1F1F1;
+        margin: 15px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    svg {
+        display: block;
+        margin: 0 auto;
+        height: 40vh;
+        width: 100%;
+    }
+
+    .container {
+        font-family: Roboto, sans-serif;
+        background: #fff;
+        margin: 0 auto;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        border-radius: 2px;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    code {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 0 3px;
+    }
+
+    button {
+        text-decoration: none;
+        color: #fff;
+        background: #2196F3;
+        text-align: center;
+        letter-spacing: .5px;
+        font-size: 1rem;
+        outline: 0;
+        border: none;
+        border-radius: 2px;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 2rem;
+        text-transform: uppercase;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        transition: .3s ease;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        float: right;
+        margin-top: 20px;
+    }
+
+    button:active {
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+        background: #1E88E5;
+    }
+    </style>
+</head>
+
+<body>
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 862.899 862.9" xml:space="preserve" fill="#1976D2">
+        <g>
+            <g>
+                <circle cx="385.6" cy="656.1" r="79.8" />
+                <path d="M561.7,401c-15.801-10.3-32.601-19.2-50.2-26.6c-39.9-16.9-82.3-25.5-126-25.5c-44.601,0-87.9,8.9-128.6,26.6
+            c-39.3,17-74.3,41.3-104.1,72.2L253.5,545c34.899-36.1,81.8-56,132-56c49,0,95.1,19.1,129.8,53.8l25.4-25.399L493,469.7L561.7,401
+            z" />
+                <path d="M385.6,267.1c107.601,0,208.9,41.7,285.3,117.4l98.5-99.5c-50-49.5-108.1-88.4-172.699-115.6
+            c-66.9-28.1-138-42.4-211.101-42.4c-73.6,0-145,14.4-212.3,42.9c-65,27.5-123.3,66.8-173.3,116.9l99,99
+            C175.5,309.299,277.3,267.1,385.6,267.1z" />
+                <polygon points="616.8,402.5 549.7,469.599 639.2,559.099 549.7,648.599 616.8,715.7 706.3,626.2 795.8,715.7 862.899,648.599
+            773.399,559.099 862.899,469.599 795.8,402.5 706.3,492" />
+            </g>
+        </g>
+    </svg>
+<div class="container">
+    <b>Failed to connect to Wi-PWN!</b>
+    <p>
+        Make sure that you are connected to the <code>Wi-PWN</code> network and try again.
+    </p>
+</div>
+<button onclick="location.href = 'http://192.168.4.1/scan.html?minimal=true'">Retry</button>
+</body>

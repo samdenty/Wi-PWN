@@ -57,7 +57,7 @@ class Attack
     void sendDeauths(Mac from, Mac to);
     
     //attack declarations
-    const String attackNames[attacksNum] = {"Deauth", "Beacon", "Probe-Request"};
+    const String attackNames[attacksNum] = {"Deauth", "Network flood", "Probe-Request"};
 
     //attack infos
     String stati[attacksNum];

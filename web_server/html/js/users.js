@@ -1,6 +1,6 @@
 var table = document.getElementsByTagName('table')[0];
 var scanBtn = getE("startScan");
-var scanTime = getE("scanTime");
+var scanTime;
 var clientsFound = getE("clientsFound");
 var scanStatus = getE("spinner-container");
 var clientNames = getE('clientNames');
@@ -33,7 +33,7 @@ function getResults() {
 
         res.clients = res.clients.sort(compare);
 
-        clientsFound.innerHTML = '(' + res.clients.length + ' clients found)';
+        clientsFound.innerHTML = '(' + res.clients.length + ' found)';
 
         var tr = '';
         if (res.clients.length > 0) tr += '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th style="padding-left: 40px"></th></tr>';
@@ -55,11 +55,11 @@ function getResults() {
             tr += '</tr>';
         }
         table.innerHTML = tr;
-
+        if (res.nameList.length != 0) {
+            document.getElementById('saved-users').className = "";
+        }
         clientNames.innerHTML = "(" + res.nameList.length + "/50)";
-
         var tr = '<tr><th>Name</th><th>Action</th></tr>';
-
         for (var i = 0; i < res.nameList.length; i++) {
 
             tr += '<tr>';
@@ -79,12 +79,12 @@ function getResults() {
 
 function scan() {
     toggleBtn(true);
-    getResponse("ClientScan.json?time=" + scanTime.value, function(responseText) {
+    getResponse("ClientScan.json?time=" + scanTime, function(responseText) {
         if (responseText == "true") {
             setTimeout(function() {
                 toggleBtn(true);
                 getResults();
-            }, scanTime.value * 1000);
+            }, scanTime * 1000);
         } else {
             showMessage("INFO: No Wi-Fi network(s) selected!'");
             scanStatus.classList.remove("show-loading");
@@ -113,10 +113,9 @@ function addClient() {
             getResults();
             var macReset = document.getElementById('cMac');
             var nameReset = document.getElementById('cName');
-            macReset.value='';
-            nameReset.value='';
-        }
-        else showMessage("ERROR: Bad response 'addClient.json'");
+            macReset.value = '';
+            nameReset.value = '';
+        } else showMessage("ERROR: Bad response 'addClient.json'");
     });
 }
 
@@ -145,7 +144,7 @@ function add(id) {
 }
 
 getResponse("ClientScanTime.json", function(responseText) {
-    scanTime.value = responseText;
+    scanTime = responseText;
 });
 
 getResults();
