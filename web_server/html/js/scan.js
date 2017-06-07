@@ -3,8 +3,10 @@ var networkInfo = getE('networksFound');
 var scanInfo = getE('spinner-container');
 var apMAC = getE('apMAC');
 var startStopScan = getE('startStopScan');
+var selectAll = getE('selectAll');
 var autoScan = false;
-
+var tableHeaderHTML = '<tr><th>Ch</th><th>SSID</th><th>Signal</th><th>Type</th><th style="padding-left: 40px"></th></tr>';
+var selectAllState = 'not-checked';
 var url = window.location.href;
 
 function toggleScan(onoff) {
@@ -34,11 +36,12 @@ function getResults() {
     getResponse("APScanResults.json", function(responseText) {
         var res = JSON.parse(responseText);
         res.aps = res.aps.sort(compare);
-        networkInfo.innerHTML = '('+res.aps.length+' found)';
+        networkInfo.innerHTML = '(' + res.aps.length + ' found)';
         if (res.aps.length == 0) scan()
         apMAC.innerHTML = "";
-        var tr = '';
-        if (res.aps.length > 0) tr += '<tr><th>Ch</th><th>SSID</th><th>Signal</th><th>Type</th><th style="padding-left: 40px"></th></tr>';
+        if (res.multiAPs == 1) tableHeaderHTML = '<tr><th>Ch</th><th>SSID</th><th>Signal</th><th>Type</th><th><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th></tr>';
+         var tr = '';
+        if (res.aps.length > 0) tr += tableHeaderHTML;
 
         for (var i = 0; i < res.aps.length; i++) {
 
@@ -74,5 +77,16 @@ function select(num) {
         else showMessage("ERROR: Bad response 'APSelect.json'");
     });
 }
+
+function selAll() {
+    if (selectAllState == 'not-checked') {
+        select(-1);
+        selectAllState = 'checked';
+    } else {
+        select(-2);
+        selectAllState = 'not-checked';
+    }
+}
+
 
 getResults();

@@ -289,6 +289,10 @@ footer a {
 .input-container {
 	position: relative
 }
+.input-container.disabled {
+	opacity: 0.3;
+	touch-events: none;
+}
 .input-container input {
 	border: 0;
 	border-bottom: 2px solid #E1E1E1;
@@ -495,7 +499,7 @@ label.checkbox:active:before {
 		margin: 20px
 	}
 	.card {
-		min-height: 434px
+		min-height: 280px
 	}
 }
 .card-container-basic {
@@ -778,14 +782,16 @@ b {
 	overflow: hidden
 }
 .background svg {
-	height: 100%;
+	height: 200%;
 }
 .edit.add, .edit.delete {
 	font-size: 29px;
 	line-height: 26px
 }
-.select {
-	user-select: initial
+.attack-del-all {
+	font-weight: normal;
+    margin-right: -5px;
+    background: rgba(0,0,0,0.02);
 }
 .reboot {
 	height: 40px;

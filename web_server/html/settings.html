@@ -19,7 +19,9 @@
         </div>
         <div id="error"></div>
     </nav>
-    <script>/(^|;)\s*minimal=/.test(document.cookie)&&(document.body.id="minimal");</script>
+    <script>
+    /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
+    </script>
     <div class="main-wrap">
         <div class="container settings">
             <div class="card-container-basic settings">
@@ -49,17 +51,57 @@
                             <input type="checkbox" name="ssidHidden" id="ssidHidden" value="false">
                             <label class="checkbox" for="ssidHidden"></label>
                         </div>
-                        <div class="col-12 divider">
+                    </div>
+                </div>
+            </div>
+            <div class="card-container-basic settings">
+                <div class="settingsHeader">Scan &amp; Attack</div>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="scanTime" type="number" required="" min="1" max="255">
+                                <label for="scanTime">Scan timeout</label>
+                            </div>
                         </div>
                         <div class="col-12">
-                            <label for="apScanHidden">Show hidden networks</label>
+                            <div class="input-container">
+                                <input placeholder=" " id="timeout" type="number" required="" min="-1" max="65536">
+                                <label for="timeout">Attack timeout</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="apScanHidden">Scan for hidden networks</label>
                             <input type="checkbox" name="apScanHidden" id="apScanHidden" value="false">
                             <label class="checkbox" for="apScanHidden"></label>
                         </div>
                         <div class="col-12">
-                            <label for="multiAPs">Attack multiple networks</label>
+                            <label for="multiAPs">Select multiple networks</label>
                             <input type="checkbox" name="multiAPs" id="multiAPs" value="false">
                             <label class="checkbox" for="multiAPs"></label>
+                        </div>
+                        <div class="col-12">
+                            <label for="multiAttacks">Simultaneous attacks</label>
+                            <input type="checkbox" name="multiAttacks" id="multiAttacks" value="false">
+                            <label class="checkbox" for="multiAttacks"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div class="card-container-basic settings">
+                <div class="settingsHeader">Hardware configuration</div>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="useLed">Enable LED indicator</label>
+                            <input type="checkbox" name="useLed" id="useLed" value="false">
+                            <label class="checkbox" for="useLed"></label>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="ledPin" type="number" required="" min="0" max="18">
+                                <label for="ledPin">LED Pin (restart required)</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,47 +112,26 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="input-container">
-                                <input placeholder=" " id="scanTime" type="number" required="" min="1" max="255">
-                                <label for="scanTime">Default device scan time (seconds)</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="input-container">
-                                <input placeholder=" " id="timeout" type="number" required="" min="-1" max="65536">
-                                <label for="timeout">Attack timeout (seconds)</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="input-container">
                                 <input placeholder=" " id="deauthReason" type="number" required="" min="1" max="45">
-                                <label for="deauthReason">Deauth reason code</label>
+                                <label for="deauthReason">Deauth reason-code</label>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12">
                             <div class="input-container">
                                 <input placeholder=" " id="packetRate" type="number" required="" min="1" max="50">
-                                <label for="packetRate">Packet rate UNSTABLE &nbsp; (pkts/s)</label>
+                                <label for="packetRate">Packet rate (pkts/s)</label>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-container">
+                                <input placeholder=" " id="macInterval" type="number" required="" min="0" max="65000">
+                                <label for="packetRate">MAC Change Interval (beacons &amp; probes)</label>
+                            </div>
+                        </div>
                         <div class="col-12">
                             <label for="ssidEnc">WPA2 Beacons</label>
                             <input type="checkbox" name="ssidEnc" id="ssidEnc" value="false">
                             <label class="checkbox" for="ssidEnc"></label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <label for="useLed">Enable LED indicator</label>
-                            <input type="checkbox" name="useLed" id="useLed" value="false">
-                            <label class="checkbox" for="useLed"></label>
                         </div>
                     </div>
                 </div>

@@ -64,4 +64,3 @@ bool Mac::compare(Mac target) {
 }
 
 
-

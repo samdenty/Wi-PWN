@@ -21,7 +21,7 @@ function restart(){
     if (responseText == "true") {
       showMessage("Restarting Wi-PWN...");
     }
-    else showMessage("ERROR: Failed to restart Wi-PWN!");
+    else showMessage("Failed to restart Wi-PWN!");
   });
 }
 
@@ -32,7 +32,7 @@ function getE(name){
 function getResponse(adr, callback, timeoutCallback, timeout, method){
 	if(timeoutCallback === undefined) {
 		timeoutCallback = function(){
-			showMessage("INFO: Reconnect to WiFi and try again ('"+adr+")'");
+			showMessage("Reconnect to WiFi and refresh the page");
 		};
 	}
 	if(timeout === undefined) timeout = 8000; 

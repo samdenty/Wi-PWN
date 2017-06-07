@@ -13,31 +13,39 @@ var ssidEnc = getE('ssidEnc');
 var useLed = getE('useLed');
 /*var channelHop = getE('channelHop');*/
 var multiAPs = getE('multiAPs');
+var multiAttacks = getE('multiAttacks');
 var cMac = getE('cMac');
 var cName = getE('cName');
+var macInterval = getE('macInterval');
+var beaconInterval = getE('beaconInterval');
+var ledPin = getE('ledPin');
 var res;
 
 function getData() {
   getResponse("settings.json", function(responseText) {
-	try {
+  try {
         res = JSON.parse(responseText);
     } catch(e) {
         showMessage("ERROR: Reset the settings.");
-		return;
+    return;
     }
-	ssid.value = res.ssid;
-	ssidHidden.checked = res.ssidHidden;
-	password.value = res.password;
-	apChannel.value = res.apChannel;
-	apScanHidden.checked = res.apScanHidden;
-	scanTime.value = res.clientScanTime;
-	timeout.value = res.attackTimeout;
-	deauthReason.value = res.deauthReason;
-	packetRate.value = res.attackPacketRate;
-	ssidEnc.checked = res.attackEncrypted;
-	useLed.checked = res.useLed;
-	/*channelHop.checked = res.channelHop;*/
-	multiAPs.checked = res.multiAPs;
+  ssid.value = res.ssid;
+  ssidHidden.checked = res.ssidHidden;
+  password.value = res.password;
+  apChannel.value = res.apChannel;
+  apScanHidden.checked = res.apScanHidden;
+  scanTime.value = res.clientScanTime;
+  timeout.value = res.attackTimeout;
+  deauthReason.value = res.deauthReason;
+  packetRate.value = res.attackPacketRate;
+  ssidEnc.checked = res.attackEncrypted;
+  useLed.checked = res.useLed;
+  /*channelHop.checked = res.channelHop;*/
+  multiAPs.checked = res.multiAPs;
+  multiAttacks.checked = res.multiAttacks;
+  macInterval.value = res.macInterval;
+  beaconInterval.checked = res.beaconInterval;
+  ledPin.value = res.ledPin;
   });
 }
 
@@ -56,12 +64,16 @@ function saveSettings() {
   url += "&ssidEnc=" + ssidEnc.checked;
   url += "&useLed=" + useLed.checked;
   /*url += "&channelHop=" + channelHop.checked;*/
-  url += "&multiAPs="+ multiAPs.checked;
+  url += "&multiAPs="+multiAPs.checked;
+  url += "&multiAttacks="+multiAttacks.checked;
+  url += "&macInterval="+macInterval.value;
+  url += "&beaconInterval="+beaconInterval.checked;
+  url += "&ledPin="+ledPin.value;
 
   getResponse(url, function(responseText) {
     if (responseText == "true") {
       getData();
-      saved.innerHTML = "Settings saved successfully";
+      saved.innerHTML = "Saved successfully!";
     }
     else showMessage("ERROR: Bad response 'settingsSave.json'");
   });
@@ -71,10 +83,14 @@ function resetSettings() {
   getResponse("settingsReset.json", function(responseText) {
     if (responseText == "true") {
       getData();
-      saved.innerHTML = "Settings saved!";
+      saved.innerHTML = "Saved successfully!";
     }
     else showMessage("ERROR: Bad response 'settingsReset.json'");
   });
+}
+
+function restart(){
+  getResponse("restartESP.json?", function(){});
 }
 
 getData();

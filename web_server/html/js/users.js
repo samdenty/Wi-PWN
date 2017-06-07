@@ -6,6 +6,8 @@ var scanStatus = getE("spinner-container");
 var clientNames = getE('clientNames');
 var nameListTable = getE('nameList');
 var res;
+var selectAllState = 'not-checked';
+var tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th style="padding-left: 40px"></th></tr>';
 var edit = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUAgMAAADw5/WeAAAADFBMVEUAAAAAAAAAAAAAAAA16TeWAAAABHRSTlMB/phhN1gO+QAAADtJREFUeF5jQAM8YFIVTIo6AAkm1gIgyenYABIOAAlPjQAJhyaAhEPBwmFowrxgYU6wMGcEiOTbgGYPAPKdCT6Ht/q3AAAAAElFTkSuQmCC'
 
 function compare(a, b) {
@@ -36,18 +38,19 @@ function getResults() {
         clientsFound.innerHTML = '(' + res.clients.length + ' found)';
 
         var tr = '';
-        if (res.clients.length > 0) tr += '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th style="padding-left: 40px"></th></tr>';
+        if (res.multiAPs == 1) tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th></tr>';
+        tr += tableHeaderHTML;
 
         for (var i = 0; i < res.clients.length; i++) {
 
             if (res.clients[i].s == 1) tr += '<tr class="selected">';
             else tr += '<tr>';
             if (res.clients[i].n) {
-                tr += '<td class="darken-on-hover" onclick="changeName(' + res.clients[i].i + ')"><b>' + res.clients[i].n + '</b></td>';
+                tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><b>' + res.clients[i].n + '</b></td>';
             } else {
-                tr += '<td class="darken-on-hover" onclick="changeName(' + res.clients[i].i + ')">' + res.clients[i].v + '</td>';
+                tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')">' + res.clients[i].v + '</td>';
             }
-            tr += '<td class="select" onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' + res.clients[i].a + '</td>';
+            tr += '<td onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' + res.clients[i].a + '</td>';
             tr += '<td onclick="select(' + res.clients[i].i + ')">' + res.clients[i].p + '</td>';
             if (res.clients[i].s == 1) tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false" checked><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
             else tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false"><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
@@ -100,6 +103,16 @@ function select(num) {
     });
 }
 
+function selAll() {
+    if (selectAllState == 'not-checked') {
+        select(-1);
+        selectAllState = 'checked';
+    } else {
+        select(-2);
+        selectAllState = 'not-checked';
+    }
+}
+
 function clearNameList() {
     getResponse("clearNameList.json", function(responseText) {
         if (responseText == "true") getResults();
@@ -119,12 +132,24 @@ function addClient() {
     });
 }
 
-function changeName(id) {
+function setName(id) {
+    var newName = prompt("Name for " + res.clients[id].m);
+
+    if (newName != null) {
+        getResponse("setName.json?id=" + id + "&name=" + newName, function(responseText) {
+            if (responseText == "true") getResults();
+            else showMessage("ERROR: Bad response 'editNameList.json'");
+        });
+    }
+}
+
+function editNameList(id) {
     var newName = prompt("Name for " + res.nameList[id].m);
+
     if (newName != null) {
         getResponse("editNameList.json?id=" + id + "&name=" + newName, function(responseText) {
             if (responseText == "true") getResults();
-            else document.getElementById("mytext").value = "My value";
+            else showMessage("ERROR: Bad response 'editNameList.json'");
         });
     }
 }

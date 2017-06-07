@@ -1,4 +1,4 @@
-  #ifndef SSIDList_h
+#ifndef SSIDList_h
 #define SSIDList_h
 
 #include <EEPROM.h>
@@ -20,7 +20,7 @@ class SSIDList
     void load();
     void clear();
     void add(String name);
-    void addClone(String name);
+    void addClone(String name, int num);
     void edit(int num, String name);
     String get(int num);
     void remove(int num);
@@ -34,4 +34,3 @@ class SSIDList
 };
 
 #endif
-

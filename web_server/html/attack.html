@@ -26,7 +26,7 @@
         <div class="container">
             <div class="card-container-basic">
                 <div class="settingsHeader">Initiate Attack</div>
-                <table><tbody><tr><th>Attack</th><th>Status</th><th>Switch</th></tr><tr><td>Deauth</td><td class="red"></td><td><button class="marginNull" onclick="startStop(0)" disabled="">start</button></td></tr><tr><td>Network flood</td><td class="red"></td><td><button class="marginNull" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Probe-Request</td><td class="red"></td><td><button class="marginNull" onclick="startStop(2)" disabled="">start</button></td></tr></tbody></table>
+                <table><tbody><tr><th>Attack</th><th>Status</th><th>Switch</th></tr><tr><td>Deauth</td><td class="red"></td><td><button class="marginNull" onclick="startStop(0)" disabled="">start</button></td></tr><tr><td>Beacon</td><td class="red"></td><td><button class="marginNull" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Probe-Request</td><td class="red"></td><td><button class="marginNull" onclick="startStop(2)" disabled="">start</button></td></tr></tbody></table>
                 <hr>
             </div>
             <div id="selectedNetworksDevices" class="card-container-basic dn">
@@ -43,14 +43,45 @@
                 </div>
             </div>
             <div class="card-container-basic">
-                <div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Network Flooding<span id="ssidCounter"> (0/48)</span></div>
-                <button class="button-warn right" onclick="clearSSID()">Reset</button>
-                <table><tr><th>&nbsp;</th></tr></table>
+                <div class="settingsHeader">Add SSID</div>
+                <div class="card-basic">
+                    <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-6">
+                        <div class="input-container" id="ssidContainer">
+                            <input placeholder=" " id="ssid" required="" type="text" minlength="1" maxlength="32">
+                            <label for="ssid">SSID</label>
+                        </div>
+                    </div>
+                    <div class="col-6" style="margin-top:17px">
+                        <input onclick="switchRandom()" type="checkbox" name="randSSID" id="randSSID" value="false">
+                        <label class="checkbox" for="randSSID" style="margin-top:3px;float:left;margin-right:10px"></label>
+                        <label for="randSSID">Generate random</label>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-3">
+                        <div class="input-container">
+                            <input placeholder=" " type="number" required="" id="num" min="0" max="48" value="1">
+                            <label for="num">Number of clones</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-12">
+                        <button class="button-primary right" onclick="addSSID()">Add</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container-basic">
+                <div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Saved SSIDs<span id="ssidCounter"> (0/48)</span></div>
+                <table>
+                    <tr>
+                        <th>&nbsp;</th>
+                    </tr>
+                </table>
                 <br>
-                <button onclick="randomSSID()">Random</button>
-                <button class="button-primary" onclick="addSSID()">Add</button>
-                <button onclick="cloneSSID(prompt('Enter SSID:'))">Add (Multiple)</button>
-                <button class="button-primary right" onclick="saveSSID()">save</button>
+                <button class="button-primary right" onclick="saveSSID()">save</button><br>
                 <span id="saved"></span>
             </div>
         </div>
