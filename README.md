@@ -78,7 +78,7 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 
 ### Method 1: Flashing with NodeMCU-Flasher  
 
-1. [Download](https://github.com/Wi-PWN/Wi-PWN/releases)   the current release of Wi-PWN
+1. [Download](https://github.com/Wi-PWN/Wi-PWN/releases/latest)   the current release of Wi-PWN
 
 2. Upload the `.bin` file using the [nodemcu-flasher](https://github.com/nodemcu/nodemcu-flasher/raw/master/Win64/Release/ESP8266Flasher.exe). Alternatively you can use the official [esptool](https://github.com/espressif/esptool) from espressif.
 
