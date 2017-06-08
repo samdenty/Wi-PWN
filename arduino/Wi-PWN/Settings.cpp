@@ -62,7 +62,7 @@ void Settings::reset() {
   apScanHidden = true;
 
   deauthReason = 0x01;
-  attackTimeout = 5 * 60;
+  attackTimeout = 0;
   attackPacketRate = 10;
   clientScanTime = 15;
   attackEncrypted = false;

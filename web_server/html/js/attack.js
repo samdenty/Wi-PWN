@@ -9,9 +9,11 @@ var ssid = getE("ssid");
 var num = getE("num");
 var randomIntrvl = getE("randomIntrvl");
 var randomBtn = getE("randomBtn");
-var randomCheckboxStatus = false;
 var resultInterval;
 var data = {};
+
+var randSSID = document.getElementById('randSSID');
+randSSID.addEventListener("change", switchRandom, false);
 
 function getResults() {
     getResponse("attackInfo.json", function(responseText) {
@@ -40,8 +42,8 @@ function getResults() {
             tr += "<td>" + res.attacks[i].name + "</td>";
             if (res.attacks[i].status == "ready") tr += "<td class='green' id='status" + i + "'>" + res.attacks[i].status + "</td>";
             else tr += "<td class='red' id='status" + i + "'>" + res.attacks[i].status + "</td>";
-            if (res.attacks[i].running) tr += "<td><button class='marginNull selectedBtn' onclick='startStop(" + i + ")'>stop</button></td>";
-            else tr += "<td><button class='marginNull' onclick='startStop(" + i + ")'>start</button></td>";
+            if (res.attacks[i].running) tr += "<td><button class='attackBtn selectedBtn' onclick='startStop(" + i + ")'>stop</button></td>";
+            else tr += "<td><button class='attackBtn' onclick='startStop(" + i + ")'>start</button></td>";
 
             tr += "</tr>";
         }
@@ -70,15 +72,15 @@ function getResults() {
 
 function startStop(num) {
     getResponse("attackStart.json?num=" + num, function(responseText) {
-        getE("status" + num).innerHTML = "loading";
+        getE("status" + num).innerHTML = "Initialising...";
         if (responseText == "true") getResults();
-        else showMessage("No networks selected!");
+        else showMessage("No network(s) selected!");
     });
 }
 
 function addSSID() {
-    if (randomCheckboxStatus == true) {
-        randomCheckboxStatus = false;
+    var isChecked = randSSID.checked;
+    if (isChecked) {
         saved.innerHTML = "";
         getResponse("randomSSID.json", getResults);
     } else {
@@ -124,14 +126,11 @@ function random() {
 }
 
 function switchRandom() {
-    if (randomCheckboxStatus == false) {
-        randomCheckboxStatus = true;
+    var isChecked = randSSID.checked;
+    if (isChecked) {
         ssidContainer.classList.add("disabled");
-        ssid.disabled = true;
     } else {
-        randomCheckboxStatus = false;
         ssidContainer.classList.remove("disabled");
-        ssid.disabled = false;
     }
 }
 

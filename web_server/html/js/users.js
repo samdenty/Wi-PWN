@@ -38,7 +38,7 @@ function getResults() {
         clientsFound.innerHTML = '(' + res.clients.length + ' found)';
 
         var tr = '';
-        if (res.multiAPs == 1) tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th></tr>';
+        if (res.clients.length > 1) tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th></tr>';
         tr += tableHeaderHTML;
 
         for (var i = 0; i < res.clients.length; i++) {
@@ -74,7 +74,7 @@ function getResults() {
         nameListTable.innerHTML = tr;
 
     }, function() {
-        showMessage("Reconnect and reload this page");
+        showMessage("Reconnect to Wi-Fi network");
         checkConnection();
     }, 3000);
 

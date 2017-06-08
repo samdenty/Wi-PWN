@@ -83,7 +83,7 @@ bool APScan::start() {
 String APScan::getEncryption(int code) {
   switch (code) {
     case ENC_TYPE_NONE:
-      return "none";
+      return "Open";
       break;
     case ENC_TYPE_WEP:
       return "WEP";

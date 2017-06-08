@@ -26,17 +26,15 @@
         <div class="container">
             <div class="card-container-basic">
                 <div class="settingsHeader">Initiate Attack</div>
-                <table><tbody><tr><th>Attack</th><th>Status</th><th>Switch</th></tr><tr><td>Deauth</td><td class="red"></td><td><button class="marginNull" onclick="startStop(0)" disabled="">start</button></td></tr><tr><td>Beacon</td><td class="red"></td><td><button class="marginNull" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Probe-Request</td><td class="red"></td><td><button class="marginNull" onclick="startStop(2)" disabled="">start</button></td></tr></tbody></table>
+                <table><tbody><tr><th>Attack</th><th>Status</th><th>Switch</th></tr><tr><td>Deauth</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(0)" disabled="">start</button></td></tr><tr><td>Beacon</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Probe-Request</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(2)" disabled="">start</button></td></tr></tbody></table>
                 <hr>
             </div>
             <div id="selectedNetworksDevices" class="card-container-basic dn">
-                <div class="settingsHeader">Selected networks &amp; devices</div>
+                <div class="settingsHeader">Selected networks &amp; users</div>
                 <div class="card-basic">
-                    Wi-Fi networks:
                     <ul id="selectedAPs">
                     </ul>
                     <div id="users" class="dn">
-                        Users:
                         <ul id="selectedClients">
                         </ul>
                     </div>
@@ -53,7 +51,7 @@
                         </div>
                     </div>
                     <div class="col-6" style="margin-top:17px">
-                        <input onclick="switchRandom()" type="checkbox" name="randSSID" id="randSSID" value="false">
+                        <input type="checkbox" name="randSSID" id="randSSID" value="false">
                         <label class="checkbox" for="randSSID" style="margin-top:3px;float:left;margin-right:10px"></label>
                         <label for="randSSID">Generate random</label>
                     </div>

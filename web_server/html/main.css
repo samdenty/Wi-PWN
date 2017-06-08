@@ -9,6 +9,9 @@ html, body {
 	user-select: none !important;
 	-webkit-tap-highlight-color: transparent;
 }
+.oh, body {
+	overflow: hidden;
+}
 nav.disabled a {
 	color: rgba(255, 255, 255, 0.2) !important
 }
@@ -241,11 +244,15 @@ button:disabled, button:disabled:hover {
 	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 	background: #1E88E5
 }
+.attackBtn {
+	width: 110px;
+	padding: 0;
+}
 .selectedBtn {
-	background: #E91E63
+	background: #EC407A
 }
 .selectedBtn:hover {
-	background: #D81B60
+	background: #E91E63
 }
 .divider {
 	background: #f7f7f7;
@@ -505,6 +512,11 @@ label.checkbox:active:before {
 .card-container-basic {
 	margin-top: 20px
 }
+@media (max-width:539px) {
+	table#apscan td:nth-child(3), table#apscan th:nth-child(3) {
+		display: none;
+	}
+}
 @media (max-width:450px) {
 	nav a {
 		padding: 0 10px !important;
@@ -513,8 +525,8 @@ label.checkbox:active:before {
 	.card-basic {
 		padding: 25px 20px
 	}
-	table#users td:nth-child(3), table#users th:nth-child(3), table#apscan td:nth-child(1), table#apscan th:nth-child(1) {
-		display: none
+	table#users td:nth-child(3), table#users th:nth-child(3) {
+		display: none !important;
 	}
 }
 @media (max-width:385px) {
@@ -528,8 +540,23 @@ label.checkbox:active:before {
 		padding: 0 2px !important;
 		font-size: 10px !important
 	}
-	table#apscan td:nth-child(4), table#apscan th:nth-child(4) {
-		display: none
+}
+@media (max-width:320px) {
+	button.button-header-2 {
+		margin-bottom: 30px !important
+	}
+	div.button-header-2 {
+		display: block !important;
+		margin-bottom: 15px !important
+	}
+}
+@media (max-width:300px) {
+	button.button-header {
+		margin-bottom: 30px !important
+	}
+	div.button-header {
+		display: block !important;
+		margin-bottom: 15px !important
 	}
 }
 @media (max-width:260px) {
@@ -740,6 +767,7 @@ img, nav, td {
 }
 .clone-text {
 	font-size: 0.8rem;
+	font-family: Consolas, Courier New, monospace, sans-serif;
 }
 .clone-button {
 	float: right;
@@ -790,8 +818,8 @@ b {
 }
 .attack-del-all {
 	font-weight: normal;
-    margin-right: -5px;
-    background: rgba(0,0,0,0.02);
+	margin-right: -5px;
+	background: rgba(0, 0, 0, 0.02);
 }
 .reboot {
 	height: 40px;
@@ -829,4 +857,34 @@ b {
 }
 .reboot-container:hover .tooltip {
 	opacity: 1
+}
+.WiFi svg {
+	height: 35px;
+	width: 35px;
+	fill: #292929;
+}
+.WiFi div {
+	height: 35px;
+	line-height: 35px;
+	display: inline-block;
+	margin: 0 5px;
+}
+.WiFi span {
+	float: left;
+	width: 25px;
+	height: 25px;
+	display: block;
+	border-radius: 1000px;
+	border-top-left-radius: 0;
+	line-height: 25px;
+	color: #6b6b6b;
+	margin-top: 5px;
+	font-size: 10px;
+}
+.WiFi span:nth-child(1) {
+	background: rgba(0, 0, 0, 0.1);
+	position: absolute;
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
 }
