@@ -84,7 +84,7 @@ h1 {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	overflow-y: scroll
+	overflow-y: scroll;
 }
 #selectedClients li, #selectedAPs li {
 	list-style: none;
@@ -875,7 +875,6 @@ b {
 	height: 25px;
 	display: block;
 	border-radius: 1000px;
-	border-top-left-radius: 0;
 	line-height: 25px;
 	color: #6b6b6b;
 	margin-top: 5px;
@@ -887,4 +886,5 @@ b {
 	-ms-transform: rotate(-45deg);
 	-webkit-transform: rotate(-45deg);
 	transform: rotate(-45deg);
+	border-top-left-radius: 0;
 }

@@ -1,5 +1,4 @@
-# Wi-PWN
-<img src="https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/Wi-PWN.png" height="120px">
+<center><img src="https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/Wi-PWN.png" height="200px"><br><p><h1>Wi-PWN</h1></p></center>
 
 ESP8266 Deauther with a Material Design UI and other features. [Based upon [spacehuhn/esp8266_deauther](http://github.com/spacehuhn/esp8266_deauther)].
 
