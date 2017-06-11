@@ -47,7 +47,6 @@ void Settings::load() {
   beaconInterval = (bool)EEPROM.read(beaconIntervalAdr);
   ledPin = (int)EEPROM.read(ledPinAdr);
   darkMode = (int)EEPROM.read(darkModeAdr);
-  rebootButton = (int)EEPROM.read(rebootButtonAdr);
 }
 
 void Settings::reset() {
@@ -76,7 +75,6 @@ void Settings::reset() {
   beaconInterval = false;
   ledPin = 2;
   darkMode = false;
-  rebootButton = true;
 
   if (debug) Serial.println("done");
 
@@ -113,7 +111,6 @@ void Settings::save() {
   EEPROM.write(beaconIntervalAdr, beaconInterval);
   EEPROM.write(ledPinAdr, ledPin);
   EEPROM.write(darkModeAdr, darkMode);
-  EEPROM.write(rebootButtonAdr, rebootButton);
   EEPROM.commit();
 
   if (debug) {
@@ -144,7 +141,6 @@ void Settings::info() {
   Serial.println("1s beacon interval: " + (String)beaconInterval);
   Serial.println("LED Pin: " + (String)ledPin);
   Serial.println("dark mode: " + (String)darkMode);
-  Serial.println("reboot button: " + (String)rebootButton);
 }
 
 size_t Settings::getSize() {
@@ -168,8 +164,7 @@ size_t Settings::getSize() {
   json += "\"macInterval\":" + (String)macInterval + ",";
   json += "\"beaconInterval\":" + (String)beaconInterval + ",";
   json += "\"ledPin\":" + (String)ledPin + ",";
-  json += "\"darkMode\":" + (String)darkMode + ",";
-  json += "\"rebootButton\":" + (String)rebootButton + "}";
+  json += "\"darkMode\":" + (String)darkMode + "}";
   jsonSize += json.length();
 
   return jsonSize;
@@ -197,8 +192,7 @@ void Settings::send() {
   json += "\"macInterval\":" + (String)macInterval + ",";
   json += "\"beaconInterval\":" + (String)beaconInterval + ",";
   json += "\"ledPin\":" + (String)ledPin + ",";
-  json += "\"darkMode\":" + (String)darkMode + ",";
-  json += "\"rebootButton\":" + (String)rebootButton + "}";
+  json += "\"darkMode\":" + (String)darkMode + "}";
   sendToBuffer(json);
   sendBuffer();
 

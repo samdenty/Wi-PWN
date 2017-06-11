@@ -14,7 +14,7 @@ html, body {
 ::-webkit-scrollbar-track-color {
 	background: #000;
 }
-.oh, body {
+.oh {
 	overflow: hidden;
 }
 nav.disabled a {
@@ -25,6 +25,7 @@ nav {
 	position: fixed;
 	width: 100%;
 	z-index: 100;
+	top: 0;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20)
 }
 nav .main-header {
@@ -70,8 +71,7 @@ nav #links a {
 	font-size: 14px
 }
 nav #links a.active {
-	border-bottom: 3px solid #fff;
-	line-height: 61px;
+	box-shadow: 0 -3px 0 #fff inset;
 	color: rgba(255, 255, 255, 1);
 }
 nav #links a:hover {
@@ -95,6 +95,13 @@ h1 {
 	bottom: 0;
 	overflow-y: scroll;
 	min-height: calc(100vh - 300px);
+	opacity: 0;
+	margin-top: 30px;
+	transition: ease 0.3s margin-top, ease 0.4s opacity;
+}
+.fadeIn {
+	margin-top: 0;
+	opacity: 1
 }
 #selectedClients li, #selectedAPs li {
 	list-style: none;
@@ -178,27 +185,14 @@ hr.small {
 	-webkit-margin-before: 0.5em;
 	-webkit-margin-after: 1.3em
 }
-.bold {
-	font-weight: 700
-}
 .clear {
 	clear: both
 }
-.warn {
-	font-weight: 600;
-	color: #f44336
-}
-.middle {
-	text-align: center
+.green {
+	color: #4CAF50 !important;
 }
 .red {
-	color: red
-}
-.green {
-	color: #1ecb1e
-}
-.padding {
-	padding: 0 1rem
+	color: #e53935 !important
 }
 body.error #error {
 	line-height: 23px;
@@ -207,9 +201,6 @@ body.error #error {
 	word-wrap: break-word;
 	text-align: center;
 	font-size: 11px
-}
-body.error .main-wrap {
-	padding-top: 35px
 }
 body.error nav,
 body.error button,
@@ -220,6 +211,9 @@ body.error input[type="checkbox"]:checked + label {
 }
 body.error .main-header {
 	background: #f44336 !important
+}
+body.error .main-wrap {
+	padding-top: 20px;
 }
 #networksFound:empty, #apMAC:empty {
 	display: none
@@ -275,11 +269,11 @@ button:disabled, button:disabled:hover {
 	margin: .9rem 2% !important
 }
 footer {
-	margin-top: 30px
+	margin-top: 30px;
+	background: #2B2B31;
 }
 .footer, .sub-section-attribution {
 	padding: 16px 40px;
-	background: #2b2b31;
 	font-weight: 500;
 	display: block;
 }
@@ -302,7 +296,7 @@ footer a {
 	white-space: nowrap
 }
 .sub-section-attribution {
-	background: #222227;
+	background: rgba(0,0,0,0.15);
 	font-size: 14px;
 	width: calc(100% - 80px);
 }
@@ -442,7 +436,7 @@ label.checkbox:active:before {
 .container {
 	width: 95%;
 	margin-left: auto;
-	margin-right: auto
+	margin-right: auto;
 }
 .main-wrap .container:first-of-type {
 	margin-bottom: 20px;
@@ -478,9 +472,37 @@ label.checkbox:active:before {
 		top: 65px !important
 	}
 }
+@media (min-width: 520px) {
+	body {
+		overflow: hidden;
+	}
+
+::-webkit-scrollbar:not(:disabled) {
+	width: 14px;
+	background-color: #E8E8E8
+}
+::-webkit-scrollbar-thumb {
+	background-color: #a9a9a9;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #b5b5b5
+}
+::-webkit-scrollbar-thumb:active, ::-webkit-scrollbar-thumb:disabled {
+	background-color: #6d6d6d
+}
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	display: none
+}
+::-webkit-scrollbar-corner {
+	background-color: transparent
+}
+}
 @media (max-width:520px) {
 	body {
 		background: #F1F1F1;
+		overflow: visible;
 	}
 	.network-info {
 		display: none;
@@ -496,7 +518,8 @@ label.checkbox:active:before {
 		display: none
 	}
 	.main-wrap {
-		top: 65px !important
+		top: 65px !important;
+		position: relative !important;
 	}
 	.tooltip {
 		display: none !important;
@@ -985,4 +1008,7 @@ b {
 	text-align: center;
 	text-decoration: none;
 	z-index: 1
+}
+span.light {
+	opacity: 0.4;
 }

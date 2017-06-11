@@ -1,10 +1,4 @@
 function showMessage(msg, closeAfter) {
-    try {
-        var themeColor = getComputedStyle(document.body);
-        themeColor = themeColor.getPropertyValue('--theme-color');
-    } catch (err) {
-        var themeColor = '#1976D2';
-    }
     if (msg) {
         document.body.className = "error";
         metaColor("#E53935");
@@ -23,6 +17,14 @@ function showMessage(msg, closeAfter) {
     }
 }
 
+function defaultMetaColor() {
+    try {
+        themeColor = getComputedStyle(document.body);
+        themeColor = themeColor.getPropertyValue('--theme-color');
+    } catch (err) {
+        themeColor = '#1976D2';
+    }
+}
 
 function metaColor(metaThemeColorHEX) {
     var metaThemeColor = document.querySelector("meta[name=theme-color]");
@@ -30,30 +32,14 @@ function metaColor(metaThemeColorHEX) {
 }
 
 function checkConnection() {
-    setTimeout(function(){
-        getResponse("ClientScanTime.json", function(responseText) {
-            if (responseText) {
-                showMessage();
-            } else {
-                showMessage("Reconnect to Wi-Fi network");
-                setTimeout(continueCheckConnection, 2000);
-            }
-        });
-    }, 2000);
-
-}
-
-function continueCheckConnection() {
-    getResponse("ClientScanTime.json", function(responseText) {
-        if (responseText) location.reload()
-    });
-    setTimeout(continueCheckConnection, 1300);
+    getResponse("ClientScanTime.json", function(responseText) {window.location.reload()}, function() {showMessage("Reconnect to Wi-Fi network");setTimeout(checkConnection,6000);}, 2000 );
 }
 
 function restart() {
     getResponse("restartESP.json?", function(responseText) {
         if (responseText == "true") {
             showMessage("Restarting Wi-PWN...");
+            checkConnection();
         } else showMessage("Failed to restart Wi-PWN!");
     });
 }
@@ -85,6 +71,11 @@ function getResponse(adr, callback, timeoutCallback, timeout, method) {
     xmlhttp.ontimeout = timeoutCallback;
 }
 
+/* Set meta color */
+    var themeColor;
+    defaultMetaColor();
+    metaColor(themeColor);
+
 /* Dynamically add favicon (low-res) */
 var link = document.createElement('link');
 link.type = 'image/x-icon';
@@ -93,7 +84,7 @@ link.href = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyA
 document.getElementsByTagName('head')[0].appendChild(link);
 
 /* Dynamically add footer */
-document.getElementsByTagName("footer")[0].innerHTML = "<div class=footer><ul><li><a href=https://github.com/spacehuhn target=blank_ style=color:#fff;font-weight:400>Wi-PWN © 2017</a><li><a href=https://github.com/Wi-PWN/Wi-PWN target=blank_>GitHub</a><li><a href=https://github.com/Wi-PWN/Wi-PWN/blob/master/README.md target=blank_>Documentation</a></ul></div><a href=http://mirum.weebly.com/samuel-denty.html target=blank_ class=sub-section-attribution>Designed by Sam Denty - @samdenty99</a>";
+document.getElementsByTagName("footer")[0].innerHTML = "<div class=footer><ul><li><a href=https://github.com/spacehuhn target=blank_ style=color:#fff;font-weight:400><b>Wi-PWN</b> &copy; 2017</a><li><a href=https://github.com/Wi-PWN/Wi-PWN target=blank_>GitHub</a><li><a href=https://github.com/Wi-PWN/Wi-PWN/blob/master/README.md target=blank_>Documentation</a></ul></div><a href=http://mirum.weebly.com/samuel-denty.html target=blank_ class=sub-section-attribution>Designed by Sam Denty - @samdenty99</a>";
 
 /* Dynamically add SVG version of Wi-PWN logo */
 var svgLogo = '<svg height=100% viewBox="0 0 48 48"width=100% fill=#29363C><path d="M47.28 14c-.9-.68-9.85-8-23.28-8-3.01 0-5.78.38-8.3.96l20.66 20.64 10.92-13.6zm-40.73-11.11l-2.55 2.55 4.11 4.11c-4.28 1.97-6.92 4.1-7.39 4.46l23.26 28.98.02.01.02-.02 7.8-9.72 6.63 6.63 2.55-2.55-34.45-34.45z"></path></svg>'
@@ -313,3 +304,17 @@ Waves.attach('button', ['waves-light']);
 Waves.attach('.sub-section-attribution', ['waves-light']);
 Waves.attach('#apscan tr', ['waves-light']);
 Waves.init();
+
+/* Fade in body once loaded */
+    var stateCheck = setInterval(fadeIn, 100);
+    function fadeIn() {
+        if (document.readyState === 'complete') {
+            clearInterval(stateCheck);
+            var els = document.getElementsByClassName('main-wrap'),
+                i = els.length;
+
+            while (i--) {
+                els[i].className = 'main-wrap fadeIn';
+            }
+        }
+    }

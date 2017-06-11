@@ -282,7 +282,7 @@ void Attack::start(int num) {
   if(!isRunning[num]) {
     Serial.println(num);
     isRunning[num] = true;
-    stati[num] = "starting";
+    stati[num] = "...";
     prevTime[num] = millis();_log(num);
     attackTimeoutCounter[num] = 0;
     refreshLed();
@@ -331,7 +331,7 @@ void Attack::_log(int num){
 }
 
 size_t Attack::getSize(){
-  if(apScan.selectedSum == 0) stati[0] = "no AP";
+  if(apScan.selectedSum == 0) stati[0] = "No network(s)";
   
   size_t jsonSize = 0;
   

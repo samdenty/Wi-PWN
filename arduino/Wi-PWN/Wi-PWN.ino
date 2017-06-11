@@ -435,11 +435,6 @@ void saveSettings() {
     else settings.darkMode = true;
   }
   
-  if (server.hasArg("rebootButton")) {
-    if (server.arg("rebootButton") == "false") settings.rebootButton = false;
-    else settings.rebootButton = true;
-  }
-  
   settings.save();
   server.send( 200, "text/json", "true" );
 }

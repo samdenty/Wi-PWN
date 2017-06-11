@@ -7,9 +7,9 @@ var ssidCounter = getE("ssidCounter");
 var ssidContainer = getE("ssidContainer");
 var ssid = getE("ssid");
 var num = getE("num");
-var randomIntrvl = getE("randomIntrvl");
 var randomBtn = getE("randomBtn");
 var resultInterval;
+var randomIntrvl = 5;
 var data = {};
 
 var randSSID = document.getElementById('randSSID');
@@ -40,12 +40,28 @@ function getResults() {
             else tr += "<tr>";
 
             tr += "<td>" + res.attacks[i].name + "</td>";
-            if (res.attacks[i].status == "ready") tr += "<td class='green' id='status" + i + "'>" + res.attacks[i].status + "</td>";
-            else tr += "<td class='red' id='status" + i + "'>" + res.attacks[i].status + "</td>";
-            if (res.attacks[i].running) tr += "<td><button class='attackBtn selectedBtn' onclick='startStop(" + i + ")'>stop</button></td>";
-            else tr += "<td><button class='attackBtn' onclick='startStop(" + i + ")'>start</button></td>";
-
+            if (res.attacks[i].status == "ready") {
+                tr += "<td class='green' id='status" + i + "'>" + res.attacks[i].status + "</td>";
+            } else {
+                tr += "<td class='red' id='status" + i + "'>" + res.attacks[i].status + "</td>";
+            }
+            if (res.attacks[i].running) {
+                tr += "<td><button class='attackBtn selectedBtn' onclick='startStop(" + i + ")'>stop</button></td>";
+            } else {
+                if(res.attacks[i].status == "No network(s)") {
+                    tr += "<td><button class='attackBtn' disabled=''>start</button></td>";
+                } else {
+                    tr += "<td><button class='attackBtn' onclick='startStop(" + i + ")'>start</button></td>";
+                }
+            }
             tr += "</tr>";
+            if (~res.attacks[i].name.indexOf('Beacon')) {
+                if (res.randomMode == 1) {
+                    tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>running</td><td><button class='attackBtn selectedBtn' id='randomBtn' onclick='random()'>stop</button></td></tr>"
+                } else {
+                    tr += "<tr><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='green'>ready</td><td><button class='attackBtn' id='randomBtn' onclick='random()'>start</button></td></tr>"
+                }
+            }
         }
         table.innerHTML = tr;
         Waves.attach('button',['waves-light']);
@@ -72,7 +88,7 @@ function getResults() {
 
 function startStop(num) {
     getResponse("attackStart.json?num=" + num, function(responseText) {
-        getE("status" + num).innerHTML = "Initialising...";
+        getE("status" + num).innerHTML = "...";
         if (responseText == "true") getResults();
         else showMessage("No network(s) selected!");
     });
@@ -122,9 +138,16 @@ function resetSSID() {
 }
 
 function random() {
-    getResponse("enableRandom.json?interval=" + randomIntrvl.value, getResults);
+    getResponse("enableRandom.json?interval=" + randomIntrvl, getResults);
 }
 
+function changeInterval() {
+    var newRandomIntrvl = prompt("Random attack interval", randomIntrvl);
+    if (isNaN(newRandomIntrvl)=== false && newRandomIntrvl) {
+        randomIntrvl = newRandomIntrvl;
+        getResults();
+    }
+}
 function switchRandom() {
     var isChecked = randSSID.checked;
     if (isChecked) {

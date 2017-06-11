@@ -51,11 +51,8 @@ input[type="checkbox"]:checked + label {
 .input-container input:focus {
 	border-color: #fff !important
 }
-.footer, .sub-section-attribution {
+footer {
 	background: #2a2a31
-}
-.sub-section-attribution {
-	background: #25252b
 }
 h1 {
 	color: rgba(255, 255, 255, .66)
@@ -72,4 +69,40 @@ a {
 }
 :root {
 	--theme-color: #1B1B21;
+}
+::-webkit-scrollbar:not(:disabled) {
+	width: 14px;
+	background-color: #1D1D23
+}
+::-webkit-scrollbar-thumb {
+	background-color: #4B4B54;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #51515a
+}
+::-webkit-scrollbar-thumb:active, ::-webkit-scrollbar-thumb:disabled {
+	background-color: #393942
+}
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	display: none
+}
+::-webkit-scrollbar-corner {
+	background-color: transparent
+}
+
+.input-container input:valid,
+.input-container input:placeholder-shown,
+.input-container input:invalid:focus {
+	border-bottom: 2px solid #696973 !important;
+}
+nav #links a.active {
+	box-shadow: 0 -3px 0 #DADADA inset
+}
+.green {
+	color: #4CAF50 !important;
+}
+.red {
+	color: #f5716e !important
 }

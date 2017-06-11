@@ -81,16 +81,12 @@ function getResults() {
 }
 
 function scan() {
-    toggleBtn(true);
     getResponse("ClientScan.json?time=" + scanTime, function(responseText) {
         if (responseText == "true") {
-            setTimeout(function() {
-                toggleBtn(true);
-                getResults();
-            }, scanTime * 1000);
+            toggleBtn(true);
+            checkConnection();
         } else {
             showMessage("INFO: No Wi-Fi network(s) selected!'");
-            scanStatus.classList.remove("show-loading");
         }
 
     });

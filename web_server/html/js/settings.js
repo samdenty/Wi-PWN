@@ -20,7 +20,6 @@ var macInterval = getE('macInterval');
 var beaconInterval = getE('beaconInterval');
 var ledPin = getE('ledPin');
 var darkMode = getE('darkMode');
-var rebootButton = getE('rebootButton');
 var res;
 
 function getData() {
@@ -49,7 +48,6 @@ function getData() {
   beaconInterval.checked = res.beaconInterval;
   ledPin.value = res.ledPin;
   darkMode.checked = res.darkMode;
-  rebootButton.checked = res.rebootButton;
   });
 }
 
@@ -74,7 +72,6 @@ function saveSettings() {
   url += "&beaconInterval="+beaconInterval.checked;
   url += "&ledPin="+ledPin.value;
   url += "&darkMode="+darkMode.checked;
-  url += "&rebootButton="+rebootButton.checked;
 
   getResponse(url, function(responseText) {
     if (responseText == "true") {
