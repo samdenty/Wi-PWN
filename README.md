@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/Wi-PWN.png" height="100px"><h1>Wi-PWN</h1>
 
-![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork)&nbsp;&nbsp;![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star)&nbsp;&nbsp;![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)
+![GitHub forks](https://img.shields.io/github/forks/Wi-PWN/Wi-PWN.svg?style=social&label=Fork)&nbsp;&nbsp;![GitHub stars](https://img.shields.io/github/stars/Wi-PWN/Wi-PWN.svg?style=social&label=Star)&nbsp;&nbsp;![GitHub watchers](https://img.shields.io/github/watchers/Wi-PWN/Wi-PWN.svg?style=social&label=Watch)
 
 ESP8266 Deauther with a clean & minimalistic web interface, based on Material Design Guidelines — **[Online demo](https://Wi-PWN.github.io)**
 <br><br>
