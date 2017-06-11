@@ -66,7 +66,6 @@ function getResults() {
 
     }, function() {
         clearInterval(resultInterval);
-        showMessage("Reconnect to Wi-Fi network");
         checkConnection();
     }, 3000);
 }

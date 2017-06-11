@@ -2,7 +2,7 @@ function showMessage(msg, closeAfter) {
     try {
         var themeColor = getComputedStyle(document.body);
         themeColor = themeColor.getPropertyValue('--theme-color');
-    } catch(err) {
+    } catch (err) {
         var themeColor = '#1976D2';
     }
     if (msg) {
@@ -25,15 +25,29 @@ function showMessage(msg, closeAfter) {
 
 
 function metaColor(metaThemeColorHEX) {
-	var metaThemeColor = document.querySelector("meta[name=theme-color]");
+    var metaThemeColor = document.querySelector("meta[name=theme-color]");
     metaThemeColor.setAttribute("content", metaThemeColorHEX);
 }
 
 function checkConnection() {
+    setTimeout(function(){
+        getResponse("ClientScanTime.json", function(responseText) {
+            if (responseText) {
+                showMessage();
+            } else {
+                showMessage("Reconnect to Wi-Fi network");
+                setTimeout(continueCheckConnection, 2000);
+            }
+        });
+    }, 2000);
+
+}
+
+function continueCheckConnection() {
     getResponse("ClientScanTime.json", function(responseText) {
         if (responseText) location.reload()
     });
-    setTimeout(checkConnection, 2000);
+    setTimeout(continueCheckConnection, 1300);
 }
 
 function restart() {
@@ -122,38 +136,51 @@ var s3L = sS + '<path d="M41 19c.7 0 1.4.1 2.1.2l4.2-5.2c-.9-.7-9.8-8-23.3-8S1.6
 var s4L = sS + '<path d="M41 19c.72 0 1.41.08 2.09.22L47.28 14c-.9-.68-9.85-8-23.28-8S1.62 13.32.72 14l23.26 28.98.02.02.02-.02 6.98-8.7V29c0-5.52 4.48-10 10-10zm5 13v-3c0-2.76-2.24-5-5-5s-5 2.24-5 5v3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm-2 0h-6v-3c0-1.66 1.34-3 3-3s3 1.34 3 3v3z">' + sE;
 
 /* Waves Library */
-! function(a, b) { "use strict"; "function" == typeof define && define.amd ? define([], function() {
-        return b.apply(a) }) : "object" == typeof exports ? module.exports = b.call(a) : a.Waves = b.call(a) }("object" == typeof global ? global : this, function() { "use strict";
+! function(a, b) {
+    "use strict";
+    "function" == typeof define && define.amd ? define([], function() {
+        return b.apply(a)
+    }) : "object" == typeof exports ? module.exports = b.call(a) : a.Waves = b.call(a)
+}("object" == typeof global ? global : this, function() {
+    "use strict";
 
     function a(a) {
-        return null !== a && a === a.window }
+        return null !== a && a === a.window
+    }
 
     function b(b) {
-        return a(b) ? b : 9 === b.nodeType && b.defaultView }
+        return a(b) ? b : 9 === b.nodeType && b.defaultView
+    }
 
     function c(a) {
         var b = typeof a;
-        return "function" === b || "object" === b && !!a }
+        return "function" === b || "object" === b && !!a
+    }
 
     function d(a) {
-        return c(a) && a.nodeType > 0 }
+        return c(a) && a.nodeType > 0
+    }
 
     function e(a) {
         var b = m.call(a);
-        return "[object String]" === b ? l(a) : c(a) && /^\[object (Array|HTMLCollection|NodeList|Object)\]$/.test(b) && a.hasOwnProperty("length") ? a : d(a) ? [a] : [] }
+        return "[object String]" === b ? l(a) : c(a) && /^\[object (Array|HTMLCollection|NodeList|Object)\]$/.test(b) && a.hasOwnProperty("length") ? a : d(a) ? [a] : []
+    }
 
     function f(a) {
         var c, d, e = { top: 0, left: 0 },
             f = a && a.ownerDocument;
-        return c = f.documentElement, "undefined" != typeof a.getBoundingClientRect && (e = a.getBoundingClientRect()), d = b(f), { top: e.top + d.pageYOffset - c.clientTop, left: e.left + d.pageXOffset - c.clientLeft } }
+        return c = f.documentElement, "undefined" != typeof a.getBoundingClientRect && (e = a.getBoundingClientRect()), d = b(f), { top: e.top + d.pageYOffset - c.clientTop, left: e.left + d.pageXOffset - c.clientLeft }
+    }
 
     function g(a) {
         var b = "";
         for (var c in a) a.hasOwnProperty(c) && (b += c + ":" + a[c] + ";");
-        return b }
+        return b
+    }
 
     function h(a, b, c) {
-        if (c) { c.classList.remove("waves-rippling");
+        if (c) {
+            c.classList.remove("waves-rippling");
             var d = c.getAttribute("data-x"),
                 e = c.getAttribute("data-y"),
                 f = c.getAttribute("data-scale"),
@@ -166,15 +193,24 @@ var s4L = sS + '<path d="M41 19c.72 0 1.41.08 2.09.22L47.28 14c-.9-.68-9.85-8-23
                 var a = { top: e + "px", left: d + "px", opacity: "0", "-webkit-transition-duration": k + "ms", "-moz-transition-duration": k + "ms", "-o-transition-duration": k + "ms", "transition-duration": k + "ms", "-webkit-transform": f + " " + h, "-moz-transform": f + " " + h, "-ms-transform": f + " " + h, "-o-transform": f + " " + h, transform: f + " " + h };
                 c.setAttribute("style", g(a)), setTimeout(function() {
                     try { b.removeChild(c) } catch (a) {
-                        return !1 } }, k) }, j) } }
+                        return !1
+                    }
+                }, k)
+            }, j)
+        }
+    }
 
     function i(a) {
         if (q.allowEvent(a) === !1) return null;
         for (var b = null, c = a.target || a.srcElement; c.parentElement;) {
-            if (!(c instanceof SVGElement) && c.classList.contains("waves-effect")) { b = c;
-                break }
-            c = c.parentElement }
-        return b }
+            if (!(c instanceof SVGElement) && c.classList.contains("waves-effect")) {
+                b = c;
+                break
+            }
+            c = c.parentElement
+        }
+        return b
+    }
 
     function j(a) {
         var b = i(a);
@@ -185,28 +221,41 @@ var s4L = sS + '<path d="M41 19c.72 0 1.41.08 2.09.22L47.28 14c-.9-.68-9.85-8-23
                     d = setTimeout(function() { d = null, o.show(a, b) }, o.delay),
                     e = function(e) { d && (clearTimeout(d), d = null, o.show(a, b)), c || (c = !0, o.hide(e, b)) },
                     f = function(a) { d && (clearTimeout(d), d = null), e(a) };
-                b.addEventListener("touchmove", f, !1), b.addEventListener("touchend", e, !1), b.addEventListener("touchcancel", e, !1) } else o.show(a, b), n && (b.addEventListener("touchend", o.hide, !1), b.addEventListener("touchcancel", o.hide, !1)), b.addEventListener("mouseup", o.hide, !1), b.addEventListener("mouseleave", o.hide, !1) } }
+                b.addEventListener("touchmove", f, !1), b.addEventListener("touchend", e, !1), b.addEventListener("touchcancel", e, !1)
+            } else o.show(a, b), n && (b.addEventListener("touchend", o.hide, !1), b.addEventListener("touchcancel", o.hide, !1)), b.addEventListener("mouseup", o.hide, !1), b.addEventListener("mouseleave", o.hide, !1)
+        }
+    }
     var k = k || {},
         l = document.querySelectorAll.bind(document),
         m = Object.prototype.toString,
         n = "ontouchstart" in window,
-        o = { duration: 750, delay: 200, show: function(a, b, c) {
+        o = {
+            duration: 750,
+            delay: 200,
+            show: function(a, b, c) {
                 if (2 === a.button) return !1;
                 b = b || this;
                 var d = document.createElement("div");
                 d.className = "waves-ripple waves-rippling", b.appendChild(d);
                 var e = f(b),
                     h = 0,
-                    i = 0; "touches" in a && a.touches.length ? (h = a.touches[0].pageY - e.top, i = a.touches[0].pageX - e.left) : (h = a.pageY - e.top, i = a.pageX - e.left), i = i >= 0 ? i : 0, h = h >= 0 ? h : 0;
+                    i = 0;
+                "touches" in a && a.touches.length ? (h = a.touches[0].pageY - e.top, i = a.touches[0].pageX - e.left) : (h = a.pageY - e.top, i = a.pageX - e.left), i = i >= 0 ? i : 0, h = h >= 0 ? h : 0;
                 var j = "scale(" + b.clientWidth / 100 * 3 + ")",
                     k = "translate(0,0)";
                 c && (k = "translate(" + c.x + "px, " + c.y + "px)"), d.setAttribute("data-hold", Date.now()), d.setAttribute("data-x", i), d.setAttribute("data-y", h), d.setAttribute("data-scale", j), d.setAttribute("data-translate", k);
                 var l = { top: h + "px", left: i + "px" };
                 d.classList.add("waves-notransition"), d.setAttribute("style", g(l)), d.classList.remove("waves-notransition"), l["-webkit-transform"] = j + " " + k, l["-moz-transform"] = j + " " + k, l["-ms-transform"] = j + " " + k, l["-o-transform"] = j + " " + k, l.transform = j + " " + k, l.opacity = "1";
                 var m = "mousemove" === a.type ? 2500 : o.duration;
-                l["-webkit-transition-duration"] = m + "ms", l["-moz-transition-duration"] = m + "ms", l["-o-transition-duration"] = m + "ms", l["transition-duration"] = m + "ms", d.setAttribute("style", g(l)) }, hide: function(a, b) { b = b || this;
-                for (var c = b.getElementsByClassName("waves-rippling"), d = 0, e = c.length; e > d; d++) h(a, b, c[d]) } },
-        p = { input: function(a) {
+                l["-webkit-transition-duration"] = m + "ms", l["-moz-transition-duration"] = m + "ms", l["-o-transition-duration"] = m + "ms", l["transition-duration"] = m + "ms", d.setAttribute("style", g(l))
+            },
+            hide: function(a, b) {
+                b = b || this;
+                for (var c = b.getElementsByClassName("waves-rippling"), d = 0, e = c.length; e > d; d++) h(a, b, c[d])
+            }
+        },
+        p = {
+            input: function(a) {
                 var b = a.parentNode;
                 if ("i" !== b.tagName.toLowerCase() || !b.classList.contains("waves-effect")) {
                     var c = document.createElement("i");
@@ -214,27 +263,50 @@ var s4L = sS + '<path d="M41 19c.72 0 1.41.08 2.09.22L47.28 14c-.9-.68-9.85-8-23
                     var d = window.getComputedStyle(a, null),
                         e = d.color,
                         f = d.backgroundColor;
-                    c.setAttribute("style", "color:" + e + ";background:" + f), a.setAttribute("style", "background-color:rgba(0,0,0,0);") } }, img: function(a) {
+                    c.setAttribute("style", "color:" + e + ";background:" + f), a.setAttribute("style", "background-color:rgba(0,0,0,0);")
+                }
+            },
+            img: function(a) {
                 var b = a.parentNode;
                 if ("i" !== b.tagName.toLowerCase() || !b.classList.contains("waves-effect")) {
                     var c = document.createElement("i");
-                    b.replaceChild(c, a), c.appendChild(a) } } },
-        q = { touches: 0, allowEvent: function(a) {
+                    b.replaceChild(c, a), c.appendChild(a)
+                }
+            }
+        },
+        q = {
+            touches: 0,
+            allowEvent: function(a) {
                 var b = !0;
-                return /^(mousedown|mousemove)$/.test(a.type) && q.touches && (b = !1), b }, registerEvent: function(a) {
-                var b = a.type; "touchstart" === b ? q.touches += 1 : /^(touchend|touchcancel)$/.test(b) && setTimeout(function() { q.touches && (q.touches -= 1) }, 500) } };
+                return /^(mousedown|mousemove)$/.test(a.type) && q.touches && (b = !1), b
+            },
+            registerEvent: function(a) {
+                var b = a.type;
+                "touchstart" === b ? q.touches += 1 : /^(touchend|touchcancel)$/.test(b) && setTimeout(function() { q.touches && (q.touches -= 1) }, 500)
+            }
+        };
     return k.init = function(a) {
         var b = document.body;
-        a = a || {}, "duration" in a && (o.duration = a.duration), "delay" in a && (o.delay = a.delay), n && (b.addEventListener("touchstart", j, !1), b.addEventListener("touchcancel", q.registerEvent, !1), b.addEventListener("touchend", q.registerEvent, !1)), b.addEventListener("mousedown", j, !1) }, k.attach = function(a, b) { a = e(a), "[object Array]" === m.call(b) && (b = b.join(" ")), b = b ? " " + b : "";
-        for (var c, d, f = 0, g = a.length; g > f; f++) c = a[f], d = c.tagName.toLowerCase(), -1 !== ["input", "img"].indexOf(d) && (p[d](c), c = c.parentElement), -1 === c.className.indexOf("waves-effect") && (c.className += " waves-effect" + b) }, k.ripple = function(a, b) { a = e(a);
+        a = a || {}, "duration" in a && (o.duration = a.duration), "delay" in a && (o.delay = a.delay), n && (b.addEventListener("touchstart", j, !1), b.addEventListener("touchcancel", q.registerEvent, !1), b.addEventListener("touchend", q.registerEvent, !1)), b.addEventListener("mousedown", j, !1)
+    }, k.attach = function(a, b) {
+        a = e(a), "[object Array]" === m.call(b) && (b = b.join(" ")), b = b ? " " + b : "";
+        for (var c, d, f = 0, g = a.length; g > f; f++) c = a[f], d = c.tagName.toLowerCase(), -1 !== ["input", "img"].indexOf(d) && (p[d](c), c = c.parentElement), -1 === c.className.indexOf("waves-effect") && (c.className += " waves-effect" + b)
+    }, k.ripple = function(a, b) {
+        a = e(a);
         var c = a.length;
         if (b = b || {}, b.wait = b.wait || 0, b.position = b.position || null, c)
             for (var d, g, h, i = {}, j = 0, k = { type: "mousedown", button: 1 }, l = function(a, b) {
-                    return function() { o.hide(a, b) } }; c > j; j++)
+                    return function() { o.hide(a, b) }
+                }; c > j; j++)
                 if (d = a[j], g = b.position || { x: d.clientWidth / 2, y: d.clientHeight / 2 }, h = f(d), i.x = h.left + g.x, i.y = h.top + g.y, k.pageX = i.x, k.pageY = i.y, o.show(k, d), b.wait >= 0 && null !== b.wait) {
                     var m = { type: "mouseup", button: 1 };
-                    setTimeout(l(m, d), b.wait) } }, k.calm = function(a) { a = e(a);
-        for (var b = { type: "mouseup", button: 1 }, c = 0, d = a.length; d > c; c++) o.hide(b, a[c]) }, k.displayEffect = function(a) { k.init(a) }, k });
+                    setTimeout(l(m, d), b.wait)
+                }
+    }, k.calm = function(a) {
+        a = e(a);
+        for (var b = { type: "mouseup", button: 1 }, c = 0, d = a.length; d > c; c++) o.hide(b, a[c])
+    }, k.displayEffect = function(a) { k.init(a) }, k
+});
 /* Attach waves to elements */
 Waves.attach('#links a', ['waves-light']);
 Waves.attach('button', ['waves-light']);

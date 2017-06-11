@@ -1,19 +1,18 @@
-<center><img src="https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/Wi-PWN.png" height="200px"><br><p><h1>Wi-PWN</h1></p></center>
+<img src="https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/Wi-PWN.png" height="100px"><h1>Wi-PWN</h1>
 
-ESP8266 Deauther with a Material Design UI and other features. [Based upon [spacehuhn/esp8266_deauther](http://github.com/spacehuhn/esp8266_deauther)].
+![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork)&nbsp;&nbsp;![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star)&nbsp;&nbsp;![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)
 
-**Try a live demo at [https://Wi-PWN.github.io](https://Wi-PWN.github.io)**
+ESP8266 Deauther with a clean & minimalistic web interface, based on Material Design Guidelines — **[Online demo](https://Wi-PWN.github.io)**
 <br><br>
 
-![Deauther with phone](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/smartphone_esp_1.jpg)  
+![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/smartphone_esp_1.jpg)  
 
 
 ## Contents
 - [Introduction](#introduction)
-  - [What it is](#what-it-is)
+  - [What is Wi-PWN](#what-is-Wi-PWN)
   - [How it works](#how-it-works)
   - [How to protect against it](#how-to-protect-against-it)
-- [Disclaimer](#disclaimer)
 - [Installation](#installation)
   - [Flashing with NodeMCU-Flasher](#Method-1:-Flashing-with-NodeMCU-Flasher)  
   - [Compiling with Arduino](#Method-2:-Compiling-with-Arduino)
@@ -24,43 +23,27 @@ ESP8266 Deauther with a Material Design UI and other features. [Based upon [spac
 
 ## Introduction ##
 
-### What it is
+### What is Wi-PWN
 
-Basically it’s a device which performs a [deauth attack](https://en.wikipedia.org/wiki/Wi-Fi_deauthentication_attack).  
-You select the clients you want to disconnect from their network and start the attack. As long as the attack is running, the
-selected devices are unable to connect to their network.  
-Other attacks also have been implemented, such as beacon or probe request flooding.  
+Wi-PWN is a firmware that performs [deauth attacks](https://en.wikipedia.org/wiki/Wi-Fi_deauthentication_attack) on cheap Arduino boards. The [ESP8266](https://en.wikipedia.org/wiki/ESP8266) is a cheap micro controller with built-in Wi-Fi. It contains a powerful 160 MHz processor and it can be programmed using [Arduino](https://www.arduino.cc/en/Main/Software).
 
-
-The [ESP8266](https://en.wikipedia.org/wiki/ESP8266) is a cheap micro controller with built-in Wi-Fi. It contains a powerful 160 MHz processor and it can be programmed using [Arduino](https://www.arduino.cc/en/Main/Software).  
-
-You can buy these chips for under $2 from China!
+A deauthentication attack is often confused with [Wi-Fi jamming](https://en.wikipedia.org/wiki/Radio_jamming#Method), as they both block users from accessing Wi-Fi networks.
 
 ### How it works
 
 The 802.11 Wi-Fi protocol contains a so called [deauthentication frame](https://mrncciew.com/2014/10/11/802-11-mgmt-deauth-disassociation-frames/). It is used to disconnect clients safely from a wireless
 network.
 
-Because these management packets are unencrypted, you just need the mac address of the Wi-Fi router and of the client device which you want to disconnect from the network. You don’t need to be in the network or know the password, it’s enough to be in its range.
+Because these management packets are unencrypted, you just need the MAC address of the Wi-Fi router and of the client device which you want to disconnect from the network. You don’t need to be in the network or know the password, it’s enough to be in its range.
 
 
 ### How to protect against it
 
-With [802.11w-2009](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) Wi-Fi got an update to encrypt management frames.
-So make sure your router is up to date and has management frame protection enabled. But note that your client device needs to 
-support it too, both ends need to have it enabled!
+With the [802.11w-2009](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) updated standards, management frames are encrypted by default.
 
-The only problem is that most devices don’t use it. I tested it with different Wi-Fi networks and devices, it worked every time! It seems that even newer devices which support frame protection don’t use it by default.
+[802.11w](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) is rarely used in the real world as both the router **and the client device** need to support this standard, otherwise they won't be able to connect to the routers. 
 
-I made a [Deauth Detector](https://github.com/spacehuhn/DeauthDetector) using the same chip to indicate if such an attack is running against a nearby network. It doesn't protect you against it, but it can help you figure out if and when an attack is running.  
-
-## Disclaimer
-
-Use it only for testing purposes on your own devices!  
-**Wi-PWN and its contributors don't take any responsibility for what you do with this program.** 
-
-Any redistributing, advertising or selling of this project as "jammer" without clearly stating it as a pentesting device for testing purposes only, is prohibited!  
- 
+Updating to the [802.11w](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) standard is often expensive and difficult due to the vast devices of legacy devices not supporting the new standard. Because of the maintenance nightmare, over 95% of devices use the vulnerable 802.11 standard — even though newer devices support newer standards.
 
 ## Installation
 
@@ -158,40 +141,38 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 7. Select the attack you wish to perform <br><br>
 ![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/web_screenshot_3.jpg)<br>
 
-**Happy hacking :)**
 
 ## FAQ
 
-**Can it sniff handshakes?**
+####Only able to connect to Wi-Fi network on some devices
 
-The ESP8266 has a promiscuous mode in which you can sniff packets, but handshake packets are dropped and there is no other way to get them with the functions provided by the SDK.  
-Maybe someone will find a way around this barrier in the future.
+This happens due to a channel conflict. Simply navigate to `192.168.4.1/settings.html` on a device that is able to connect to the Wi-Fi network and **change the Channel number** from `1` to any number upto 14
 
-**espcomm_sync failed/espcomm_open when uploading**
+#### `espcomm_sync failed` / `espcomm_open` when uploading
 
-The ESP upload tool can't communicate with the chip, make sure the right port is selected!  
-You can also try out different USB ports and cables.  
-If this doesn't solve it you may have to install USB drivers.  
-Which drivers you need depends on the board, most boards use a cp2102 or ch340.
+The ESP upload tool can't communicate with the chip
 
-**AP scan doesn't work**
+- Reconnect the chip using a different USB port and cable.
+- Install the USB drivers (cp2102 or ch340)
+- Make sure the right COM port is selected.
 
-There is a reported issue on this: [https://github.com/spacehuhn/esp8266_deauther/issues/5  ](https://github.com/spacehuhn/esp8266_deauther/issues/5  )
-Try switching the browser or opening the website with another device.   
 
-**Deauth attack won't work**
+####Deauth attack won't work
 
 If you see 0 pkts/s on the website then you've made a mistake. Check that you have followed the the installation steps correctly and that the right SDK installed, it must be version 2.0.0!
 If it can send packets but your target doesn't loose its connection, then the Wi-Fi router either uses [802.11w](#how-to-protect-against-it) and it's protected against such attacks, or it communicates on the 5GHz band, which the ESP8266 doesn't support because of its 2.4GHz antenna.
 
-### If you have other questions or problems with the ESP8266 you can also check out the official [community forum](http://www.esp8266.com/).
+#### If you have other questions or problems with the ESP8266 you can also check out the official [community forum](http://www.esp8266.com/).
 
 ## License
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 
-This project is licensed under the MIT License - see the [license file](LICENSE) file for details.
+This project is licensed under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). See the license file for details.
 
-**The License file must be included in any redistributed version of this program!**  
-Any redistributing, advertising or selling of this project as "jammer" without clearly stating it as a pentesting device for testing purposes only, is prohibited!  
+**If you want to use my project for a commercial project, you can contact me and ask for permission.**
+
+Twitter: [twitter.com/sdenty_](http://twitter.com/sdenty_)<br>
+Email  : [WiPWN.official@gmail.com](mailto:WiPWN.official@gmail.com)
 
 ## Sources and additional links
 
@@ -216,5 +197,4 @@ Packet Injection with ESP8266:
 
 `Wi-Fi_send_pkt_freedom` function limitations: [http://esp32.com/viewtopic.php?f=13&t=586&p=2648&hilit=Wi-Fi_send_pkt_freedom#p2648](http://esp32.com/viewtopic.php?f=13&t=586&p=2648&hilit=Wi-Fi_send_pkt_freedom#p2648)
 
-*G o o g l e  s e a r c h  t e r m s*
 WiPWN, WiPwner, Wi PWN, PWN Wi, Wi PAWN
