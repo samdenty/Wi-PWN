@@ -157,9 +157,6 @@ void load404() {
 void loadInfoHTML(){
   sendFile(200, "text/html", data_infoHTML, sizeof(data_infoHTML));
 }
-void loadLicense(){
-  sendFile(200, "text/plain", data_license, sizeof(data_license));
-}
 
 void loadFunctionsJS() {
   sendFile(200, "text/javascript", data_functionsJS, sizeof(data_functionsJS));
@@ -180,6 +177,10 @@ void loadSettingsJS() {
 
 void loadStyle() {
   sendFile(200, "text/css;charset=UTF-8", data_styleCSS, sizeof(data_styleCSS));
+}
+
+void loadDarkMode() {
+  sendFile(200, "text/css;charset=UTF-8", data_darkModeCSS, sizeof(data_darkModeCSS));
 }
 
 
@@ -429,6 +430,16 @@ void saveSettings() {
   if (server.hasArg("ledPin")) settings.ledPin = server.arg("ledPin").toInt();
   if(server.hasArg("macInterval")) settings.macInterval = server.arg("macInterval").toInt();
 
+  if (server.hasArg("darkMode")) {
+    if (server.arg("darkMode") == "false") settings.darkMode = false;
+    else settings.darkMode = true;
+  }
+  
+  if (server.hasArg("rebootButton")) {
+    if (server.arg("rebootButton") == "false") settings.rebootButton = false;
+    else settings.rebootButton = true;
+  }
+  
   settings.save();
   server.send( 200, "text/json", "true" );
 }
@@ -473,7 +484,6 @@ void setup() {
   server.on("/attack.html", loadAttackHTML);
   server.on("/settings.html", loadSettingsHTML);
   server.on("/info.html", loadInfoHTML);
-  server.on("/license", loadLicense);
 
   /* JS */
   server.on("/js/scan.js", loadAPScanJS);
@@ -484,6 +494,7 @@ void setup() {
 
   /* CSS */
   server.on ("/main.css", loadStyle);
+  if(settings.darkMode) server.on ("/dark.css", loadDarkMode);
 
   /* JSON */
   server.on("/APScanResults.json", sendAPResults);

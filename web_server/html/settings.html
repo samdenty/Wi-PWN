@@ -2,6 +2,7 @@
     <title>Settings - Wi-PWN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="dark.css">
     <meta name="theme-color" content="#1976d2">
 </head>
 
@@ -89,9 +90,20 @@
                 </div>
             </div>
            <div class="card-container-basic settings">
-                <div class="settingsHeader">Hardware configuration</div>
+                <div class="settingsHeader">Customization</div>
                 <div class="card">
                     <div class="row">
+                        <div class="col-12">
+                            <label for="darkMode">Enable dark mode</label>
+                            <input type="checkbox" name="darkMode" id="darkMode" value="false">
+                            <label class="checkbox" for="darkMode"></label>
+                        </div>
+                        <div class="col-12">
+                            <label for="rebootButton">Show reboot button</label>
+                            <input type="checkbox" name="rebootButton" id="rebootButton" value="false">
+                            <label class="checkbox" for="rebootButton"></label>
+                        </div>
+                        <hr>
                         <div class="col-12">
                             <label for="useLed">Enable LED indicator</label>
                             <input type="checkbox" name="useLed" id="useLed" value="false">
@@ -141,11 +153,11 @@
                     </div>
                 </div>
             </div>
-            <div id="saved"></div>
-            <br>
-            <button onclick="resetSettings()">reset</button>
-            <button onclick="restart()">restart</button>
+                        <div class="card-container-basic">
+            <button onclick="resetSettings()">Reset</button>
             <button class="button-primary right" onclick="saveSettings()">save</button>
+            <div id="saved"></div>
+            </div>
         </div>
         <footer></footer>
         <script src="js/functions.js"></script>

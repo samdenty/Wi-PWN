@@ -19,6 +19,8 @@ var cName = getE('cName');
 var macInterval = getE('macInterval');
 var beaconInterval = getE('beaconInterval');
 var ledPin = getE('ledPin');
+var darkMode = getE('darkMode');
+var rebootButton = getE('rebootButton');
 var res;
 
 function getData() {
@@ -46,6 +48,8 @@ function getData() {
   macInterval.value = res.macInterval;
   beaconInterval.checked = res.beaconInterval;
   ledPin.value = res.ledPin;
+  darkMode.checked = res.darkMode;
+  rebootButton.checked = res.rebootButton;
   });
 }
 
@@ -69,13 +73,15 @@ function saveSettings() {
   url += "&macInterval="+macInterval.value;
   url += "&beaconInterval="+beaconInterval.checked;
   url += "&ledPin="+ledPin.value;
+  url += "&darkMode="+darkMode.checked;
+  url += "&rebootButton="+rebootButton.checked;
 
   getResponse(url, function(responseText) {
     if (responseText == "true") {
       getData();
       saved.innerHTML = "Saved successfully!";
     }
-    else showMessage("ERROR: Bad response 'settingsSave.json'");
+    else showMessage("Failed to save settings!");
   });
 }
 
@@ -83,9 +89,9 @@ function resetSettings() {
   getResponse("settingsReset.json", function(responseText) {
     if (responseText == "true") {
       getData();
-      saved.innerHTML = "Saved successfully!";
+      saved.innerHTML = "Reset successfully!";
     }
-    else showMessage("ERROR: Bad response 'settingsReset.json'");
+    else showMessage("Failed to reset settings!");
   });
 }
 

@@ -48,6 +48,7 @@ function getResults() {
             tr += "</tr>";
         }
         table.innerHTML = tr;
+        Waves.attach('button',['waves-light']);
 
         if (typeof res.ssid != 'undefined') {
             data = res.ssid;

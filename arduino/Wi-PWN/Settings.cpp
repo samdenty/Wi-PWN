@@ -46,6 +46,8 @@ void Settings::load() {
   macInterval = eepromReadInt(macIntervalAdr);
   beaconInterval = (bool)EEPROM.read(beaconIntervalAdr);
   ledPin = (int)EEPROM.read(ledPinAdr);
+  darkMode = (int)EEPROM.read(darkModeAdr);
+  rebootButton = (int)EEPROM.read(rebootButtonAdr);
 }
 
 void Settings::reset() {
@@ -73,6 +75,8 @@ void Settings::reset() {
   macInterval = 4;
   beaconInterval = false;
   ledPin = 2;
+  darkMode = false;
+  rebootButton = true;
 
   if (debug) Serial.println("done");
 
@@ -108,6 +112,8 @@ void Settings::save() {
   eepromWriteInt(macIntervalAdr, macInterval);
   EEPROM.write(beaconIntervalAdr, beaconInterval);
   EEPROM.write(ledPinAdr, ledPin);
+  EEPROM.write(darkModeAdr, darkMode);
+  EEPROM.write(rebootButtonAdr, rebootButton);
   EEPROM.commit();
 
   if (debug) {
@@ -137,6 +143,8 @@ void Settings::info() {
   Serial.println("mac change interval: " + (String)macInterval);
   Serial.println("1s beacon interval: " + (String)beaconInterval);
   Serial.println("LED Pin: " + (String)ledPin);
+  Serial.println("dark mode: " + (String)darkMode);
+  Serial.println("reboot button: " + (String)rebootButton);
 }
 
 size_t Settings::getSize() {
@@ -159,7 +167,9 @@ size_t Settings::getSize() {
   json += "\"multiAttacks\":" + (String)multiAttacks + ",";
   json += "\"macInterval\":" + (String)macInterval + ",";
   json += "\"beaconInterval\":" + (String)beaconInterval + ",";
-  json += "\"ledPin\":" + (String)ledPin + "}";
+  json += "\"ledPin\":" + (String)ledPin + ",";
+  json += "\"darkMode\":" + (String)darkMode + ",";
+  json += "\"rebootButton\":" + (String)rebootButton + "}";
   jsonSize += json.length();
 
   return jsonSize;
@@ -186,7 +196,9 @@ void Settings::send() {
   json += "\"multiAttacks\":" + (String)multiAttacks + ",";
   json += "\"macInterval\":" + (String)macInterval + ",";
   json += "\"beaconInterval\":" + (String)beaconInterval + ",";
-  json += "\"ledPin\":" + (String)ledPin + "}";
+  json += "\"ledPin\":" + (String)ledPin + ",";
+  json += "\"darkMode\":" + (String)darkMode + ",";
+  json += "\"rebootButton\":" + (String)rebootButton + "}";
   sendToBuffer(json);
   sendBuffer();
 

@@ -61,8 +61,7 @@ function getResults() {
                 wifiIndicator = 's4'+securityState
             }
             var signalPercent = Math.round((1-((res.aps[i].r+30)/-70))*100);
-            console.log(signalPercent);
-            tr += '<td class="WiFi"><div>' + eval(wifiIndicator) + '</div><div><span style="background:linear-gradient(135deg, rgba(0,0,0,0.2) '+signalPercent+'%,rgba(0,0,0,0.07) '+signalPercent+'%)"></span><span>' + res.aps[i].r + '</span></div></td>';
+            tr += '<td class="WiFi"><div>' + eval(wifiIndicator) + '</div><div><span style="background:linear-gradient(135deg, rgba(0,0,0,0.3) '+signalPercent+'%,rgba(0,0,0,0.07) '+signalPercent+'%)"></span><span>' + res.aps[i].r + '</span></div></td>';
             tr += '<td>' + res.aps[i].ss + '</td>';
             tr += '<td>' + getEncryption(res.aps[i].e) + '</td>';
             tr += '<td>' + res.aps[i].c + '</td>';

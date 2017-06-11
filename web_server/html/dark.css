@@ -1,0 +1,75 @@
+#logo-img {
+	background: none
+}
+#nav {
+	background: #1B1B21
+}
+body {
+	background: #202026;
+	color: #fff
+}
+nav .main-header {
+	background: #1B1B21 !important
+}
+button, .reboot {
+	background: #61616f
+}
+button:hover, .reboot:hover {
+	background: #6c6c79
+}
+*, .input-container label {
+	color: #dadada
+}
+.settingsHeader, .settingsHeader *, .main-wrap, .WiFi span, td, th, .input-container input:valid + label, .input-container input:invalid:not(:placeholder-shown) + label, .input-container input:focus + label {
+	color: #dadada !important
+}
+#networksFound, #apMAC {
+	background: rgba(255, 255, 255, 0.1)
+}
+.card, .card-basic, table {
+	background: #4B4B54
+}
+.WiFi svg {
+	fill: #ffffff
+}
+label.checkbox {
+	border-color: #E1E1E1
+}
+input[type="checkbox"]:checked + label {
+	background: #8b8b92;
+	border-color: #8b8b92
+}
+#spinner-container {
+	background: #3e3e3e
+}
+.edit {
+	fill: #dadada
+}
+.input-container input:placeholder-shown {
+	border-color: #dadada
+}
+.input-container input:focus {
+	border-color: #fff !important
+}
+.footer, .sub-section-attribution {
+	background: #2a2a31
+}
+.sub-section-attribution {
+	background: #25252b
+}
+h1 {
+	color: rgba(255, 255, 255, .66)
+}
+a {
+	color: #8aa0d4
+}
+#logo-img2 svg {
+	fill: #f9f9f9
+}
+#logo-img2 {
+	background: -webkit-linear-gradient(135deg, #41414a 0%, #2d2d31 100%);
+	background: linear-gradient(135deg, #41414a 0%, #2d2d31 100%)
+}
+:root {
+	--theme-color: #1B1B21;
+}
