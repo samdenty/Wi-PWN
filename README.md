@@ -165,11 +165,11 @@ If it can send packets but your target doesn't loose its connection, then the Wi
 #### If you have other questions or problems with the ESP8266 you can also check out the official [community forum](http://www.esp8266.com/).
 
 ## License
-![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc/4.0/)
 
 This project is licensed under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). See the license file for details.
 
-**If you want to use my project for a commercial project, you can contact me and ask for permission.**
+**If you want to use the Wi-PWN source code for a commercial project, you can contact me and ask for permission.**
 
 Twitter: [twitter.com/sdenty_](http://twitter.com/sdenty_)<br>
 Email  : [WiPWN.official@gmail.com](mailto:WiPWN.official@gmail.com)
