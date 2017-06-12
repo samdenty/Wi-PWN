@@ -1,7 +1,7 @@
 <p align="center"><img src="pictures/main-banner.png" height="140px"><br></p>
 
 <p align="center">
-<a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN"><img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg"></a>&nbsp;&nbsp;<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork">&nbsp;&nbsp;<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star">&nbsp;&nbsp;<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch"><hr></p>
+<a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN"><img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg"></a>&nbsp;&nbsp;<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch">&nbsp;&nbsp;<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star">&nbsp;&nbsp;<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork"><hr></p>
 
 ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](https://Wi-PWN.github.io)**
 
