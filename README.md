@@ -1,5 +1,3 @@
-![](https://c.statcounter.com/11368832/0/a7433704/1/)
-
 <p align="center"><img src="pictures/main-banner.png" height="140px"><br></p>
 
 <p align="center">
@@ -204,3 +202,5 @@ Packet Injection with ESP8266:
 `Wi-Fi_send_pkt_freedom` function limitations: [http://esp32.com/viewtopic.php?f=13&t=586&p=2648&hilit=Wi-Fi_send_pkt_freedom#p2648](http://esp32.com/viewtopic.php?f=13&t=586&p=2648&hilit=Wi-Fi_send_pkt_freedom#p2648)
 
 WiPWN, WiPwner, Wi PWN, PWN Wi, Wi PAWN
+
+![](https://c.statcounter.com/11368832/0/a7433704/1/)
