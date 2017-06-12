@@ -1,11 +1,16 @@
-<img src="https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/Wi-PWN.png" height="100px"><h1>Wi-PWN</h1>
+![](https://c.statcounter.com/11368832/0/a7433704/1/)
 
-![GitHub forks](https://img.shields.io/github/forks/Wi-PWN/Wi-PWN.svg?style=social&label=Fork)&nbsp;&nbsp;![GitHub stars](https://img.shields.io/github/stars/Wi-PWN/Wi-PWN.svg?style=social&label=Star)&nbsp;&nbsp;![GitHub watchers](https://img.shields.io/github/watchers/Wi-PWN/Wi-PWN.svg?style=social&label=Watch)
+![](pictures/main-banner.png)<hr>
 
-ESP8266 Deauther with a clean & minimalistic web interface, based on Material Design Guidelines — **[Online demo](https://Wi-PWN.github.io)**
-<br><br>
+[![Github All Releases](https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg)]()&nbsp;&nbsp;![GitHub forks](https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork)&nbsp;&nbsp;![GitHub stars](https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star)&nbsp;&nbsp;![GitHub watchers](https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch)
 
-![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/smartphone_esp_1.jpg)  
+ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](https://Wi-PWN.github.io)**
+
+
+- Fluent [Material Design](https://material.io/guidelines/) interface
+- Improved UX — with optional Dark Mode
+
+![](pictures/secondary-banner.png)
 
 
 ## Contents
@@ -60,7 +65,7 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 
 ### Method 1: Flashing with NodeMCU-Flasher  
 
-1. [Download](https://github.com/Wi-PWN/Wi-PWN/releases/latest)   the current release of Wi-PWN
+1. [Download](https://github.com/samdenty99/Wi-PWN/releases/latest)   the current release of Wi-PWN
 
 2. Upload the `.bin` file using the [nodemcu-flasher](https://github.com/nodemcu/nodemcu-flasher/raw/master/Win64/Release/ESP8266Flasher.exe). Alternatively you can use the official [esptool](https://github.com/espressif/esptool) from espressif.
 
@@ -72,7 +77,7 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 
 ### Method 2: Compiling with Arduino
 
-1. [Download the source code](https://github.com/Wi-PWN/Wi-PWN/archive/master.zip) of this project.
+1. [Download the source code](https://github.com/samdenty99/Wi-PWN/archive/master.zip) of this project.
 
 2. Install [Arduino](https://www.arduino.cc/en/Main/Software) and open it.
 
@@ -85,12 +90,12 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 6. Type in `esp8266`
 
 7. Select version `2.0.0` and click on `Install` (**must be version 2.0.0!**)<br><br>
-![screenshot of arduino, selecting the right version](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/arduino_screenshot_1.JPG)
+![screenshot of arduino, selecting the right version](pictures/arduino_screenshot_1.JPG)
 
 8. Go to `File` > `Preferences`
 
 9. Open the folder path under `More preferences can be edited directly in the file`<br><br>
-![screenshot of arduino, opening folder path](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/arduino_screenshot_2.JPG)
+![screenshot of arduino, opening folder path](pictures/arduino_screenshot_2.JPG)
 
 10. Go to `packages` > `esp8266` > `hardware` > `esp8266` > `2.0.0` > `tools` > `sdk` > `include`
 
@@ -102,9 +107,9 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
     int wifi_register_send_pkt_freedom_cb(freedom_outside_cb_t cb);  
     void wifi_unregister_send_pkt_freedom_cb(void);
     int wifi_send_pkt_freedom(uint8 *buf, int len, bool sys_seq);  
-   <br>![screenshot of notepad, copy paste the right code](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/notepad_screenshot_1.JPG)
+   <br>![screenshot of notepad, copy paste the right code](pictures/notepad_screenshot_1.JPG)
 
-13. Go to the [arduino/SDK_fix](https://github.com/Wi-PWN/Wi-PWN/arduino/SDK_fix) folder of this project
+13. Go to the [arduino/SDK_fix](https://github.com/samdenty99/Wi-PWN/arduino/SDK_fix) folder of this project
 
 14. Copy `ESP8266Wi-Fi.cpp` and `ESP8266Wi-Fi.h` to
     `C:\%username%\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.0.0\libraries\ESP8266WiFi\src`
@@ -131,15 +136,15 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 3. Once connected, open up your browser and go to `192.168.4.1`  
 
 4. Accept the warning<br><br>
-![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/web_screenshot_1.jpg)
+![](pictures/windows/chrome/default/index.png)
 
 5. Click on the <kbd>Scan</kbd> to scan for Wi-Fi networks<br><br>
-![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/web_screenshot_2.jpg)<br>
+![](pictures/windows/chrome/default/scan.png)<br>
 **Note: You may have to reconnect to the Wi-Fi network.**
 
 6. Select the WiFi network(s) you want to perform the attack on. Once finished, click on the <kbd>Attack</kbd> button
 7. Select the attack you wish to perform <br><br>
-![](https://raw.githubusercontent.com/Wi-PWN/Wi-PWN/master/screenshots/web_screenshot_3.jpg)<br>
+![](pictures/windows/chrome/default/attack.png)<br>
 
 
 ## FAQ
