@@ -1,11 +1,10 @@
 var table = document.getElementsByTagName('table')[0];
 var scanBtn = getE("startScan");
-var scanTime;
 var clientsFound = getE("clientsFound");
 var scanStatus = getE("spinner-container");
 var clientNames = getE('clientNames');
 var nameListTable = getE('nameList');
-var res;
+var res, scanTime;
 var selectAllState = 'not-checked';
 var tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th style="padding-left: 40px"></th></tr>';
 
