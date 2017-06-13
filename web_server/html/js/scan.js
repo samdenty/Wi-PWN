@@ -12,9 +12,9 @@ var wifiIndicator, securityState;
 
 function toggleScan(onoff) {
     if (onoff && !autoScan) {
-        scanInfo.classList.remove("show-loading")
+        showLoading("hide");
     } else {
-        scanInfo.classList.add("show-loading")
+        showLoading();
     }
 }
 

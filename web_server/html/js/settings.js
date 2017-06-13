@@ -7,7 +7,6 @@ var scanTime = getE('scanTime');
 var timeout = getE('timeout');
 var deauthReason = getE('deauthReason');
 var packetRate = getE('packetRate');
-var saved = getE('saved');
 var clientNames = getE('clientNames');
 var ssidEnc = getE('ssidEnc');
 var useLed = getE('useLed');
@@ -20,6 +19,7 @@ var macInterval = getE('macInterval');
 var beaconInterval = getE('beaconInterval');
 var ledPin = getE('ledPin');
 var darkMode = getE('darkMode');
+var saveStatus = getE('spinner-container');
 var res;
 
 function getData() {
@@ -52,7 +52,8 @@ function getData() {
 }
 
 function saveSettings() {
-  saved.innerHTML = "Saving settings...";
+  saveStatus.className = "";
+  showLoading();
   var url = "settingsSave.json";
   url += "?ssid=" + ssid.value;
   url += "&ssidHidden=" + ssidHidden.checked;
@@ -76,24 +77,32 @@ function saveSettings() {
   getResponse(url, function(responseText) {
     if (responseText == "true") {
       getData();
-      saved.innerHTML = "Saved successfully!";
+      saveStatus.classList.add("success-save");
+    } else {
+      saveStatus.classList.add("failed-save");
+      showMessage("Failed to save settings!");
     }
-    else showMessage("Failed to save settings!");
+  }, function() {
+      saveStatus.classList.add("failed-save");
+      showMessage("Failed to save settings!");
   });
 }
 
 function resetSettings() {
+  showLoading();
   getResponse("settingsReset.json", function(responseText) {
     if (responseText == "true") {
       getData();
-      saved.innerHTML = "Reset successfully!";
+      saveStatus.classList.add("success-save")
     }
-    else showMessage("Failed to reset settings!");
+    else {
+      showMessage("Failed to reset settings!");
+      saveStatus.classList.add("failed-save");
+    }
+  }, function() {
+      showMessage("Failed to reset settings!");
+      saveStatus.classList.add("failed-save");
   });
-}
-
-function restart(){
-  getResponse("restartESP.json?", function(){});
 }
 
 getData();

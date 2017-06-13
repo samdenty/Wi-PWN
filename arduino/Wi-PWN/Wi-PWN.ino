@@ -135,15 +135,15 @@ void loadIndexHTML() {
   if(warning){
     sendFile(200, "text/html", data_indexHTML, sizeof(data_indexHTML));
   }else{
-    sendFile(200, "text/html", data_apscanHTML, sizeof(data_apscanHTML));
+    sendFile(200, "text/html", data_scanHTML, sizeof(data_scanHTML));
   }
 }
-void loadAPScanHTML() {
+void loadScanHTML() {
   warning = false;
-  sendFile(200, "text/html", data_apscanHTML, sizeof(data_apscanHTML));
+  sendFile(200, "text/html", data_scanHTML, sizeof(data_scanHTML));
 }
-void loadStationsHTML() {
-  sendFile(200, "text/html", data_stationHTML, sizeof(data_stationHTML));
+void loadUsersHTML() {
+  sendFile(200, "text/html", data_usersHTML, sizeof(data_usersHTML));
 }
 void loadAttackHTML() {
   sendFile(200, "text/html", data_attackHTML, sizeof(data_attackHTML));
@@ -161,11 +161,11 @@ void loadInfoHTML(){
 void loadFunctionsJS() {
   sendFile(200, "text/javascript", data_functionsJS, sizeof(data_functionsJS));
 }
-void loadAPScanJS() {
-  sendFile(200, "text/javascript", data_apscanJS, sizeof(data_apscanJS));
+void loadScanJS() {
+  sendFile(200, "text/javascript", data_scanJS, sizeof(data_scanJS));
 }
-void loadStationsJS() {
-  sendFile(200, "text/javascript", data_stationsJS, sizeof(data_stationsJS));
+void loadUsersJS() {
+  sendFile(200, "text/javascript", data_usersJS, sizeof(data_usersJS));
 }
 void loadAttackJS() {
   attack.ssidChange = true;
@@ -474,15 +474,15 @@ void setup() {
 
   server.on("/", loadIndexHTML);
   server.on("/index.html", loadIndexHTML);
-  server.on("/scan.html", loadAPScanHTML);
-  server.on("/users.html", loadStationsHTML);
+  server.on("/scan.html", loadScanHTML);
+  server.on("/users.html", loadUsersHTML);
   server.on("/attack.html", loadAttackHTML);
   server.on("/settings.html", loadSettingsHTML);
   server.on("/info.html", loadInfoHTML);
 
   /* JS */
-  server.on("/js/scan.js", loadAPScanJS);
-  server.on("/js/users.js", loadStationsJS);
+  server.on("/js/scan.js", loadScanJS);
+  server.on("/js/users.js", loadUsersJS);
   server.on("/js/attack.js", loadAttackJS);
   server.on("/js/settings.js", loadSettingsJS);
   server.on("/js/functions.js", loadFunctionsJS);

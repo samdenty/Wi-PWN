@@ -17,9 +17,9 @@ function compare(a, b) {
 
 function toggleBtn(onoff) {
     if (onoff) {
-        scanStatus.classList.add("show-loading")
+        showLoading();
     } else {
-        scanStatus.classList.remove("show-loading")
+        showLoading("hide");
     }
 }
 
