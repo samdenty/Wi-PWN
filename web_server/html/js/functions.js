@@ -42,6 +42,7 @@ function autoReload() {
 }
 
 function restart() {
+    vibrate();
     sL.className = "";
     showLoading();
     autoReload();
@@ -91,6 +92,13 @@ function getResponse(adr, callback, timeoutCallback, timeout, method) {
     xmlhttp.ontimeout = timeoutCallback;
 }
 
+function vibrate() {
+    navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+    if (navigator.vibrate) {
+        navigator.vibrate(20);
+    }
+}
+
 /* Set meta color */
     var themeColor;
     defaultMetaColor();
@@ -104,7 +112,7 @@ function getResponse(adr, callback, timeoutCallback, timeout, method) {
     document.getElementsByTagName('head')[0].appendChild(link);
 
 /* Dynamically add footer */
-    document.getElementsByTagName("footer")[0].innerHTML = "<div class=footer><ul><li><a href=https://github.com/spacehuhn target=blank_ style=color:#fff;font-weight:400><b>Wi-PWN</b> &copy; 2017</a><li><a href=https://github.com/Wi-PWN/Wi-PWN target=blank_>GitHub</a><li><a href=https://github.com/Wi-PWN/Wi-PWN/blob/master/README.md target=blank_>Documentation</a></ul></div><a href=http://mirum.weebly.com/samuel-denty.html target=blank_ class=sub-section-attribution>Designed by Sam Denty - @samdenty99</a>";
+    document.getElementsByTagName("footer")[0].innerHTML = "<div class=footer><ul><li><a href=https://github.com/samdenty99/Wi-PWN target=blank_ style=color:#fff;font-weight:400><b>Wi-PWN</b> &copy; 2017</a><li><a href=https://github.com/samdenty99/Wi-PWN target=blank_>GitHub</a><li><a href=https://github.com/Wi-PWN/Wi-PWN/blob/master/README.md target=blank_>Documentation</a></ul></div><a href=http://mirum.weebly.com/samuel-denty target=blank_ class=sub-section-attribution>Designed by Sam Denty - @samdenty99</a>";
 
 /* Dynamically add spinner */
     document.getElementById("spinner-container").innerHTML = "<svg class=spinner viewBox='0 0 66 66'><circle class=path cx=33 cy=33 fill=none r=30 stroke-linecap=round stroke-width=6></circle></svg> <svg class=success-svg viewBox='0 0 1000 1000'><path d=M908.3,132.5L336.7,704.2l-245-245L10,540.8l326.7,326.7l81.7-81.7L990,214.2L908.3,132.5z /></svg> <svg class=failed-svg viewBox='0 0 19 19'><line stroke-width=2 x1=1 x2=18 y1=1 y2=18></line><line stroke-width=2 x1=18 x2=1 y1=1 y2=18></line></svg>"

@@ -7,7 +7,7 @@ APScan::APScan() {
 bool APScan::start() {
   if (debug) {
     Serial.println("starting AP scan...");
-    Serial.println("MAC - Ch - RSSI - Encrypt. - SSID - Hidden");// - Vendor");
+    Serial.println("C - MAC Address       - Signal - Type - SSID - Hidden");// - Vendor");
   }
   aps._clear();
   for (int i = 0; i < maxAPScanResults; i++) selected[i] = false;

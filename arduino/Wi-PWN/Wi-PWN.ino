@@ -1,19 +1,24 @@
 /*
-  ===========================================
-       Copyright (c) 2017 Stefan Kremser
-              github.com/spacehuhn
-  ===========================================
+ ************************************************
+ *         Wi-PWN firmware for ESP8266          *
+ *            (c) 2017 Samuel Denty             *
+ *----------------------------------------------*
+ *  Wi-PWN based on spacehuhn/esp8266_deauther  *
+ *            (c) 2017 Stefan Kremser           *
+ ************************************************
 */
 
 #include <Arduino.h>
-
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <FS.h>
 
-#define resetPin 4 /* <-- comment out or change if you need GPIO 4 for other purposes */
+#define resetPin 4    /* <-- comment out or change if you need GPIO 4 for other purposes */
 //#define USE_DISPLAY /* <-- uncomment that if you want to use the display */
-//#define USE_LED16 /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
+//#define USE_LED16   /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
+
+
+
 
 #ifdef USE_DISPLAY
   #include <Wire.h>
@@ -557,6 +562,7 @@ void setup() {
     Serial.println("\nStarting...\n");
 #ifndef USE_DISPLAY
     delay(2000);
+    pinMode(0, INPUT);
 #endif
   }
   
@@ -577,6 +583,15 @@ void loop() {
       settings.reset();
     }
   }
+
+#ifndef USE_DISPLAY
+    if(digitalRead(0) == LOW) {
+      Serial.println("FLASH button (GPIO0) pressed, executing action...");
+      attack.start(0);
+      delay(400);
+    }
+#endif
+  
 
 #ifdef USE_DISPLAY
 
