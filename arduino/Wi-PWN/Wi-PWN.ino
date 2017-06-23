@@ -160,6 +160,9 @@ void loadUsersHTML() {
 void loadAttackHTML() {
   sendFile(200, "text/html", data_attackHTML, sizeof(data_attackHTML));
 }
+void loadDetectorHTML() {
+  sendFile(200, "text/html", data_detectorHTML, sizeof(data_detectorHTML));
+}
 void loadSettingsHTML() {
   sendFile(200, "text/html", data_settingsHTML, sizeof(data_settingsHTML));
 }
@@ -192,7 +195,11 @@ void loadStyle() {
 }
 
 void loadDarkMode() {
-  sendFile(200, "text/css;charset=UTF-8", data_darkModeCSS, sizeof(data_darkModeCSS));
+  if (settings.darkMode) {
+    sendFile(200, "text/css;charset=UTF-8", data_darkModeCSS, sizeof(data_darkModeCSS));
+  } else {
+    sendFile(200, "text/html", data_error404, sizeof(data_error404));
+  }
 }
 
 
@@ -443,8 +450,11 @@ void saveSettings() {
   if(server.hasArg("macInterval")) settings.macInterval = server.arg("macInterval").toInt();
 
   if (server.hasArg("darkMode")) {
-    if (server.arg("darkMode") == "false") settings.darkMode = false;
-    else settings.darkMode = true;
+    if (server.arg("darkMode") == "false") {
+      settings.darkMode = false;
+    } else {
+      settings.darkMode = true;
+    }
   }
 
   if (server.hasArg("simplify")) {
@@ -456,6 +466,22 @@ void saveSettings() {
     if (server.arg("newUser") == "false") settings.newUser = false;
     else settings.newUser = true;
   }
+  
+  if (server.hasArg("detectorChannel")) settings.detectorChannel = server.arg("detectorChannel").toInt();
+
+  if (server.hasArg("detectorAllChannels")) {
+    if (server.arg("detectorAllChannels") == "false") settings.detectorAllChannels = false;
+    else settings.detectorAllChannels = true;
+  }
+  
+  if (server.hasArg("alertPin")) settings.alertPin = server.arg("alertPin").toInt();
+
+  if (server.hasArg("invertAlertPin")) {
+    if (server.arg("invertAlertPin") == "false") settings.invertAlertPin = false;
+    else settings.invertAlertPin = true;
+  }
+
+  if (server.hasArg("detectorScanTime")) settings.detectorScanTime = server.arg("detectorScanTime").toInt();
   
   settings.save();
   server.send( 200, "text/json", "true" );
@@ -507,6 +533,7 @@ void setup() {
     server.on("/index.html", loadIndexHTML);
     server.on("/users.html", loadUsersHTML);
     server.on("/attack.html", loadAttackHTML);
+    server.on("/detector.html", loadDetectorHTML);
     server.on("/settings.html", loadSettingsHTML);
     server.on("/info.html", loadInfoHTML);
   
@@ -519,7 +546,7 @@ void setup() {
   
     /* CSS */
     server.on ("/main.css", loadStyle);
-    if(settings.darkMode) server.on ("/dark.css", loadDarkMode);
+    server.on ("/dark.css", loadDarkMode);
   
     /* JSON */
     server.on("/APScanResults.json", sendAPResults);

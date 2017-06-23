@@ -1,0 +1,91 @@
+<head>
+    <title>Deauth Detector - Wi-PWN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="dark.css">
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+<body>
+    <nav id="nav">
+        <div class="main-header">
+            <div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
+        </div>
+        <div id="links">
+            <a href="/">Scan</a>
+            <a href="users.html">Users</a>
+            <a href="attack.html" class="active">Attack</a>
+            <a href="settings.html">Settings</a>
+            <a class="right" href="info.html">Info</a>
+        </div>
+        <div id="error"></div>
+    </nav>
+    <script>
+    /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
+    </script>
+    <div class="main-wrap">
+        <div id="spinner-container"></div>
+        <div class="container">
+            <div class="card-container-basic">
+                <div class="settingsHeader">Deauth Detector</div>
+                <div class="card-basic">
+                    <div class="row inputCheckbox">
+                        <div class="col-6">
+                            <div class="input-container disabled" id="channelContainer">
+                                <input placeholder=" " id="detectorChannel" required="" type="number" min="1" max="14">
+                                <label for="detectorChannel">Channel</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <input type="checkbox" name="detectorAllChannels" id="detectorAllChannels" value="false" checked>
+                            <label class="checkbox" for="detectorAllChannels"></label>
+                            <label for="detectorAllChannels">All channels</label>
+                        </div>
+                    </div>
+                    <div class="row inputCheckbox">
+                        <div class="col-6">
+                            <div class="input-container">
+                                <input placeholder=" " id="alertPin" required="" type="number" min="0">
+                                <label for="alertPin">Alert Pin</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <input type="checkbox" name="invertAlertPin" id="invertAlertPin" value="false">
+                            <label class="checkbox" for="invertAlertPin"></label>
+                            <label for="invertAlertPin">Invert HIGH/LOW</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-container">
+                                <input placeholder=" " id="detectorScanTime" required="detectorScanTime" type="number" min="10">
+                                <label for="detectorScanTime">Channel scan time</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="button-primary right" onclick="addSSID()">start</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+        <script src="js/functions.js"></script>
+        <script>
+        var allChannels = document.getElementById('allChannels');
+        allChannels.addEventListener("change", switchChannel, false);
+        var channel = getE("channel");
+
+        function switchChannel() {
+            var isChecked = allChannels.checked;
+            if (isChecked) {
+                channelContainer.classList.add("disabled");
+            } else {
+                channelContainer.classList.remove("disabled");
+            }
+        }
+        </script>
+    </div>
+</body>
+
+</html>

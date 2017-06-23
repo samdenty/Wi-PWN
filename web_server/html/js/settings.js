@@ -78,6 +78,7 @@ function saveSettings() {
     if (responseText == "true") {
       getData();
       saveStatus.classList.add("success-save");
+      var links = document.querySelectorAll("link[rel=stylesheet]"); for (var i = 0; i < links.length;i++) { var link = links[i]; if (link.rel === "stylesheet") {link.href += "?"; }} 
     } else {
       saveStatus.classList.add("failed-save");
       showMessage("Failed to save settings! (E18)");
@@ -89,20 +90,22 @@ function saveSettings() {
 }
 
 function resetSettings() {
-  showLoading();
-  getResponse("settingsReset.json", function(responseText) {
-    if (responseText == "true") {
-      getData();
-      saveStatus.classList.add("success-save")
-    }
-    else {
-      showMessage("Failed to reset settings! (E20)");
-      saveStatus.classList.add("failed-save");
-    }
-  }, function() {
-      showMessage("Failed to reset settings! (E21)");
-      saveStatus.classList.add("failed-save");
-  });
+  if (confirm("Reset Wi-PWN to default settings?") == true) {
+    showLoading();
+    getResponse("settingsReset.json", function(responseText) {
+      if (responseText == "true") {
+        getData();
+        saveStatus.classList.add("success-save")
+      }
+      else {
+        showMessage("Failed to reset settings! (E20)");
+        saveStatus.classList.add("failed-save");
+      }
+    }, function() {
+        showMessage("Failed to reset settings! (E21)");
+        saveStatus.classList.add("failed-save");
+    });
+  }
 }
 
 getData();

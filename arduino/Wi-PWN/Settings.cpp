@@ -31,7 +31,7 @@ void Settings::load() {
   } else {
     apChannel = 1;
   }
-
+  
   apScanHidden = (bool)EEPROM.read(apScanHiddenAdr);
 
   deauthReason = EEPROM.read(deauthReasonAdr);
@@ -46,9 +46,14 @@ void Settings::load() {
   macInterval = eepromReadInt(macIntervalAdr);
   beaconInterval = (bool)EEPROM.read(beaconIntervalAdr);
   ledPin = (int)EEPROM.read(ledPinAdr);
-  darkMode = (int)EEPROM.read(darkModeAdr);
-  simplify = (int)EEPROM.read(simplifyAdr);
-  newUser = (int)EEPROM.read(newUserAdr);
+  darkMode = (bool)EEPROM.read(darkModeAdr);
+  simplify = (bool)EEPROM.read(simplifyAdr);
+  newUser = (bool)EEPROM.read(newUserAdr);
+  detectorChannel = (int)EEPROM.read(detectorChannelAdr);
+  detectorAllChannels = (bool)EEPROM.read(detectorAllChannelsAdr);
+  alertPin = (int)EEPROM.read(alertPinAdr);
+  invertAlertPin = (bool)EEPROM.read(invertAlertPinAdr);
+  detectorScanTime = (int)EEPROM.read(detectorScanTimeAdr);
 }
 
 void Settings::reset() {
@@ -68,7 +73,7 @@ void Settings::reset() {
   attackTimeout = 0;
   attackPacketRate = 10;
   clientScanTime = 15;
-  attackEncrypted = false;
+  attackEncrypted = true;
   useLed = true;
   channelHop = false;
   multiAPs = true;
@@ -79,6 +84,11 @@ void Settings::reset() {
   darkMode = false;
   simplify = false;
   newUser = true;
+  detectorChannel = 1;
+  detectorAllChannels = true;
+  alertPin = 2;
+  invertAlertPin = true;
+  detectorScanTime = 200;
 
   if (debug) Serial.println("done");
 
@@ -117,6 +127,11 @@ void Settings::save() {
   EEPROM.write(darkModeAdr, darkMode);
   EEPROM.write(simplifyAdr, simplify);
   EEPROM.write(newUserAdr, newUser);
+  EEPROM.write(detectorChannelAdr, detectorChannel);
+  EEPROM.write(detectorAllChannelsAdr, detectorAllChannels);
+  EEPROM.write(alertPinAdr, alertPin);
+  EEPROM.write(invertAlertPinAdr, invertAlertPin);
+  EEPROM.write(detectorScanTimeAdr, detectorScanTime);
   EEPROM.commit();
 
   if (debug) {
@@ -149,6 +164,11 @@ void Settings::info() {
   Serial.println("dark mode: " + (String)darkMode);
   Serial.println("simplify: " + (String)simplify);
   Serial.println("new user: " + (String)newUser);
+  Serial.println("detector- channel: " + (String)detectorChannel);
+  Serial.println("detector- all channels: " + (String)detectorAllChannels);
+  Serial.println("detector- alert pin: " + (String)alertPin);
+  Serial.println("detector- invert alert pin: " + (String)invertAlertPin);
+  Serial.println("detector- scan time: " + (String)detectorScanTime);
 }
 
 size_t Settings::getSize() {
@@ -174,7 +194,12 @@ size_t Settings::getSize() {
   json += "\"ledPin\":" + (String)ledPin + ",";
   json += "\"darkMode\":" + (String)darkMode + ",";
   json += "\"simplify\":" + (String)simplify + ",";
-  json += "\"newUser\":" + (String)newUser + "}";
+  json += "\"newUser\":" + (String)newUser + ",";
+  json += "\"detectorChannel\":" + (String)detectorChannel + ",";
+  json += "\"detectorAllChannels\":" + (String)detectorAllChannels + ",";
+  json += "\"alertPin\":" + (String)alertPin + ",";
+  json += "\"invertAlertPin\":" + (String)invertAlertPin + ",";
+  json += "\"detectorScanTime\":" + (String)detectorScanTime + "}";
   jsonSize += json.length();
 
   return jsonSize;
@@ -204,7 +229,12 @@ void Settings::send() {
   json += "\"ledPin\":" + (String)ledPin + ",";
   json += "\"darkMode\":" + (String)darkMode + ",";
   json += "\"simplify\":" + (String)simplify + ",";
-  json += "\"newUser\":" + (String)newUser + "}";
+  json += "\"newUser\":" + (String)newUser + ",";
+  json += "\"detectorChannel\":" + (String)detectorChannel + ",";
+  json += "\"detectorAllChannels\":" + (String)detectorAllChannels + ",";
+  json += "\"alertPin\":" + (String)alertPin + ",";
+  json += "\"invertAlertPin\":" + (String)invertAlertPin + ",";
+  json += "\"detectorScanTime\":" + (String)detectorScanTime + "}";
   sendToBuffer(json);
   sendBuffer();
 

@@ -109,10 +109,12 @@ function selAll() {
 }
 
 function clearNameList() {
-    getResponse("clearNameList.json", function(responseText) {
-        if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'clearNameList.json' (E9)");
-    });
+    if (confirm("Remove all saved users?") == true) {
+        getResponse("clearNameList.json", function(responseText) {
+            if (responseText == "true") getResults();
+            else showMessage("ERROR: Bad response 'clearNameList.json' (E9)");
+        });
+    }
 }
 
 function addClient() {

@@ -3,11 +3,12 @@
 <p align="center">
 <a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN"><img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg"></a>&nbsp;&nbsp;<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch">&nbsp;&nbsp;<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star">&nbsp;&nbsp;<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork"><hr></p>
 
-ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](https://Wi-PWN.github.io)**
-
+ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](https://goo.gl/aegbCc)** &nbsp;
 
 - Fluent [Material Design](https://material.io/guidelines/) interface
 - Improved UX — with optional Dark Mode
+
+**List of [Upcoming features/Bug fixes](https://goo.gl/LQXQZw)**
 
 ![](pictures/secondary-banner.png)
 
@@ -128,21 +129,26 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 
 ## How to use
 
-1. Connect your ESP8266 to a USB power source (you can power it with your phone using USB OTG cable)
+1. Connect your ESP8266 to a USB power source (you can power it with your phone using an OTG cable)
 
-2. Scan for Wi-Fi networks on your device and connect to `Wi-PWN`. The password is `rootaccess`.  
+2. Scan for Wi-Fi networks on your device and connect to `Wi-PWN` (no password by default).  
 
-3. Once connected, open up your browser and go to `192.168.4.1`  
+3. Once connected, open up your browser and go to `http://192.168.4.1`  
 
-4. Accept the warning<br><br>
+4. Click on <kbd>ACCEPT</kbd> to accept the Terms &amp; Conditions<br><br>
 ![](pictures/windows/chrome/default/index.png)
 
-5. Click on the <kbd>Scan</kbd> to scan for Wi-Fi networks<br><br>
+5. Specify a SSID and password for Wi-PWN to use and click on <kbd>CONTINUE</kbd><br><br>
+![](pictures/windows/chrome/default/setup.png)
+
+6. Reconnect to the new network using the SSID &amp; Password you specified in the previous step.
+7. Go back to your browser and the page should reload (open `http://192.168.4.1` again if the page doesn't reload)<br><br>
+8. Click on the <kbd>Scan</kbd> button to scan for Wi-Fi networks<br><br>
 ![](pictures/windows/chrome/default/scan.png)<br>
 **Note: You may have to reconnect to the Wi-Fi network.**
 
-6. Select the WiFi network(s) you want to perform the attack on. Once finished, click on the <kbd>Attack</kbd> button
-7. Select the attack you wish to perform <br><br>
+9. Select the WiFi network(s) you want to perform the attack on. Once finished, click on the <kbd>Attack</kbd> button
+10. Select the attack you wish to perform <br><br>
 ![](pictures/windows/chrome/default/attack.png)<br>
 
 

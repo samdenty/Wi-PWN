@@ -40,6 +40,11 @@ extern NameList nameList;
 #define darkModeAdr 1107
 #define simplifyAdr 1108
 #define newUserAdr 1109
+#define detectorChannelAdr 1110
+#define detectorAllChannelsAdr 1111
+#define alertPinAdr 1112
+#define invertAlertPinAdr 1113
+#define detectorScanTimeAdr 1114
 
 #define checkNumAdr 2001
 #define checkNum 15
@@ -76,7 +81,11 @@ class Settings
     bool darkMode;
     bool simplify;
     bool newUser;
-    
+    int detectorChannel;
+    bool detectorAllChannels;
+    int alertPin;
+    bool invertAlertPin;
+    int detectorScanTime;
   private:
     size_t getSize();
 };

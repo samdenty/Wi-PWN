@@ -330,7 +330,7 @@ label {
 }
 .input-container.disabled {
 	opacity: 0.3;
-	touch-events: none;
+	pointer-events: none;
 }
 .input-container input {
 	border: 0;
@@ -397,8 +397,7 @@ label {
 	color: #F44336;
 }
 .settings .checkbox, #card-wrapper .checkbox {
-	float: right;
-	margin-top: 3px
+	float: right
 }
 input[type="checkbox"] {
 	display: none
@@ -446,6 +445,15 @@ label.checkbox:after {
 }
 label.checkbox:active:before {
 	background: #bfbfbf
+}
+.row.inputCheckbox .checkbox {
+	float: left;
+	margin-right: 10px
+}
+.row.inputCheckbox label:not(.checkbox),
+.settings  label:not(.checkbox),
+#card-wrapper label:not(.checkbox) {
+	line-height: 18px;
 }
 * {
 	font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
@@ -519,6 +527,9 @@ label.checkbox:active:before {
 	::-webkit-scrollbar-corner {
 		background-color: transparent
 	}
+	.row.inputCheckbox .col-6:nth-child(2) {
+		margin-top: 26px
+	}
 }
 @media (max-width:520px) {
 	body {
@@ -541,6 +552,9 @@ label.checkbox:active:before {
 	.main-wrap {
 		top: 65px !important;
 		position: relative !important;
+	}
+		.row.inputCheckbox .col-6:nth-child(2) {
+		margin-bottom: 20px
 	}
 }
 @media (min-width:800px) {
@@ -1048,6 +1062,9 @@ b {
 }
 #card-wrapper {
 	width: 300%;
+}
+#c1 svg {
+	fill: #29363C;
 }
 #c1, #c2, #c3 {
 	display: inline-block;
