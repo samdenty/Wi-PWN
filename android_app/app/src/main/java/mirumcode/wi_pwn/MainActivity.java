@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -63,8 +64,8 @@ public class MainActivity extends AppCompatActivity
         }).start();
 
         WebView view = (WebView) this.findViewById(R.id.WebView);
-        view.setWebViewClient(new WebViewClient());
-        if(isConnected = true) {view.loadUrl("http://192.168.4.1/scan.html?minimal=true");} else {view.loadUrl("file:///android_asset/404.html");}
+        view.setWebChromeClient(new WebChromeClient());
+        if(isConnected = true) {view.loadUrl("http://192.168.4.1/?minimal=true");} else {view.loadUrl("file:///android_asset/404.html");}
         view.getSettings().setJavaScriptEnabled(true);
         view.getSettings().setLoadWithOverviewMode(true);
         view.getSettings().setUseWideViewPort(true);
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity
         WebView view = (WebView) this.findViewById(R.id.WebView);
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-            view.loadUrl("http://192.168.4.1/scan.html?minimal=true");
+            view.loadUrl("http://192.168.4.1/?minimal=true");
         if (id == R.id.nav_scan) {
         } else if (id == R.id.nav_users) {
             view.loadUrl("http://192.168.4.1/users.html");
