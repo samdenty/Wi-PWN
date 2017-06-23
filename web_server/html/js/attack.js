@@ -21,7 +21,11 @@ function getResults() {
         var aps = "";
         var clients = "";
         var tr = "<tr><th>Attack</th><th>Status</th><th>Switch</th></tr>";
-        for (var i = 0; i < res.aps.length; i++) aps += "<li class='clone-container'><div class='clone-text'>" + res.aps[i] + "</div><div class='clone-button'><button class='clone' onclick='cloneSSID(\"" + res.aps[i] + "\")'>clone</button></div></li>";
+        for (var i = 0; i < res.aps.length; i++) {
+            var resApsI = res.aps[i].replace("'", "\\'"); // Escape single quotes from network name
+            resApsI = resApsI.replace("\"", "&quot;"); // Escape double quotes from network name
+            aps += "<li class='clone-container'><div class='clone-text'>" + res.aps[i] + "</div><div class='clone-button'><button class='clone' onclick=\"cloneSSID('" + resApsI + "')\">clone</button></div></li>";
+        }
         for (var i = 0; i < res.clients.length; i++) clients += "<li>" + res.clients[i] + "</li>";
 
         if (aps) {
@@ -90,7 +94,7 @@ function startStop(num) {
     getResponse("attackStart.json?num=" + num, function(responseText) {
         getE("status" + num).innerHTML = "...";
         if (responseText == "true") getResults();
-        else showMessage("No network(s) selected!");
+        else showMessage("No network(s) selected! (E15)");
     });
 }
 
@@ -102,7 +106,7 @@ function addSSID() {
     } else {
         var _ssidName = ssid.value;
         if (_ssidName.length > 0) {
-            if (data.length >= 64) showMessage("SSID list full", 2500);
+            if (data.length >= 64) showMessage("SSID list full (E16)", 2500);
             else {
                 saved.innerHTML = "";
                 getResponse("addSSID.json?ssid=" + _ssidName + "&num=" + num.value, getResults);

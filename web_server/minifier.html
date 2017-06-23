@@ -2,25 +2,9 @@
 
 <head>
     <script src="jquery.js"></script>
+    <script src="htmlminifier.min.js"></script>
     <script>
-    function miniEsc() {
-        var input = $('#input').val().replace(/\/\*(\*(?!\/)|[^*])*\*\//g, '').replace(/\r\n|\r|\n/g, " ").replace(/\s\s+/g, ' ').replace(/"/g, '\\"');
-        $('#output').val(input);
-        $("textarea").select();
-        document.execCommand('copy');
-        $('#info1').html($('#input').val().length);
-        $('#info2').html(input.length);
-    }
-
-    function mini() {
-        var input = $('#input').val().replace(/\/\*(\*(?!\/)|[^*])*\*\//g, '').replace(/\r\n|\r|\n/g, " ").replace(/\s\s+/g, ' ');
-        $('#output').val(input);
-        $("textarea").select();
-        document.execCommand('copy');
-        $('#info1').html($('#input').val().length);
-        $('#info2').html(input.length);
-    }
-
+    var minify = require('html-minifier').minify;
     String.prototype.convertToHex = function(delim) {
         return this.split("").map(function(c) {
             return ("0" + c.charCodeAt(0).toString(16)).slice(-2);
@@ -36,8 +20,28 @@
         $('#info2').html(input.length);
     }
 
-    function byteAndmini() {
-        var input = "0x" + $('#input').val().replace(/\/\*(\*(?!\/)|[^*])*\*\//g, '').replace(/\r\n|\r|\n/g, " ").replace(/\s\s+/g, ' ').convertToHex(",0x");
+    function byteifyHTML() {
+        var input = $('#input').val();
+        var input = "0x" + minify(input, {
+            collapseBooleanAttributes: true,
+            collapseWhitespace: true,
+            html5: true,
+            minifyCSS: true,
+            minifyJS: true,
+            processConditionalComments: true,
+            removeAttributeQuotes: true,
+            removeComments: true,
+            removeEmptyAttributes: true,
+            removeOptionalTags: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            removeTagWhitespace: true,
+            sortAttributes: true,
+            sortClassName: true,
+            trimCustomFragments: true,
+            useShortDoctype: true
+        }).convertToHex(",0x");;
         $('#output').val(input);
         $("textarea").select();
         document.execCommand('copy');
@@ -48,15 +52,13 @@
 </head>
 
 <body>
-    <textarea id="input" rows="5" cols="100"></textarea>
+    <textarea id="input" rows=10 cols="100"></textarea>
     <br />
     <p id="info1"></p>
-    <button onclick="mini()">minify</button>
-    <button onclick="miniEsc()">minify + escape</button>
-    <button onclick="byte()">byte-ify</button>
-    <button onclick="byteAndmini()">minify + byte-ify</button>
-    <br />
-    <textarea id="output" rows="5" cols="100"></textarea>
+    <button onclick="byte()">Byteify</button>
+    <button onclick="byteifyHTML()">Minify HTML + Byteify</button>
+    <br /><br>
+    <textarea id="output" rows=10 cols="100"></textarea>
     <br />
     <p id="info2"></p>
 </body>

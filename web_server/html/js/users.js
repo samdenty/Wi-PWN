@@ -27,7 +27,7 @@ function getResults() {
         try {
             res = JSON.parse(responseText);
         } catch (e) {
-            showMessage("ERROR: Clear the client list.");
+            showMessage("ERROR: Clear the client list. (E5)");
             return;
         }
 
@@ -73,7 +73,7 @@ function getResults() {
         Waves.attach('.edit');
 
     }, function() {
-        showMessage("Reconnect to Wi-Fi network");
+        showMessage("Reconnect to Wi-Fi network (E6)");
         checkConnection();
     }, 3000);
 
@@ -85,7 +85,7 @@ function scan() {
             toggleBtn(true);
             checkConnection();
         } else {
-            showMessage("INFO: No Wi-Fi network(s) selected!'");
+            showMessage("INFO: No Wi-Fi network(s) selected! (E7)'");
         }
 
     });
@@ -94,7 +94,7 @@ function scan() {
 function select(num) {
     getResponse("clientSelect.json?num=" + num, function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'clientSelect.json'");
+        else showMessage("ERROR: Bad response 'clientSelect.json' (E8)");
     });
 }
 
@@ -111,7 +111,7 @@ function selAll() {
 function clearNameList() {
     getResponse("clearNameList.json", function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'clearNameList.json'");
+        else showMessage("ERROR: Bad response 'clearNameList.json' (E9)");
     });
 }
 
@@ -123,7 +123,7 @@ function addClient() {
             var nameReset = document.getElementById('cName');
             macReset.value = '';
             nameReset.value = '';
-        } else showMessage("ERROR: Bad response 'addClient.json'");
+        } else showMessage("ERROR: Bad response 'addClient.json' (E10)");
     });
 }
 
@@ -133,7 +133,7 @@ function setName(id) {
     if (newName != null) {
         getResponse("setName.json?id=" + id + "&name=" + newName, function(responseText) {
             if (responseText == "true") getResults();
-            else showMessage("ERROR: Bad response 'editNameList.json'");
+            else showMessage("ERROR: Bad response 'editNameList.json' (E11)");
         });
     }
 }
@@ -144,7 +144,7 @@ function editNameList(id) {
     if (newName != null) {
         getResponse("editNameList.json?id=" + id + "&name=" + newName, function(responseText) {
             if (responseText == "true") getResults();
-            else showMessage("ERROR: Bad response 'editNameList.json'");
+            else showMessage("ERROR: Bad response 'editNameList.json' (E12)");
         });
     }
 }
@@ -152,14 +152,14 @@ function editNameList(id) {
 function deleteName(id) {
     getResponse("deleteName.json?num=" + id, function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'deleteName.json'");
+        else showMessage("ERROR: Bad response 'deleteName.json' (E13)");
     });
 }
 
 function add(id) {
     getResponse("addClientFromList.json?num=" + id, function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'addClientFromList.json'");
+        else showMessage("ERROR: Bad response 'addClientFromList.json' (E14)");
     });
 }
 

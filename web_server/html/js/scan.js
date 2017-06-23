@@ -80,15 +80,15 @@ function scan() {
     toggleScan(false);
     getResponse("APScan.json", function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'APScan.json'");
-        toggleScan(true);
+        else showMessage("ERROR: Bad response 'APScan.json' (E3)");
+        setTimeout(function(){toggleScan(true)}, 700);
     });
 }
 
 function select(num) {
     getResponse("APSelect.json?num=" + num, function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'APSelect.json'");
+        else showMessage("ERROR: Bad response 'APSelect.json' (E4)");
     });
 }
 

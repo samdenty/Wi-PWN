@@ -47,13 +47,15 @@ void Settings::load() {
   beaconInterval = (bool)EEPROM.read(beaconIntervalAdr);
   ledPin = (int)EEPROM.read(ledPinAdr);
   darkMode = (int)EEPROM.read(darkModeAdr);
+  simplify = (int)EEPROM.read(simplifyAdr);
+  newUser = (int)EEPROM.read(newUserAdr);
 }
 
 void Settings::reset() {
   if (debug) Serial.print("reset settings...");
 
   ssid = "Wi-PWN";
-  password = "rootaccess"; //must have at least 8 characters
+  password = "";
   ssidHidden = false;
   apChannel = 1;
 
@@ -75,6 +77,8 @@ void Settings::reset() {
   beaconInterval = false;
   ledPin = 2;
   darkMode = false;
+  simplify = false;
+  newUser = true;
 
   if (debug) Serial.println("done");
 
@@ -111,6 +115,8 @@ void Settings::save() {
   EEPROM.write(beaconIntervalAdr, beaconInterval);
   EEPROM.write(ledPinAdr, ledPin);
   EEPROM.write(darkModeAdr, darkMode);
+  EEPROM.write(simplifyAdr, simplify);
+  EEPROM.write(newUserAdr, newUser);
   EEPROM.commit();
 
   if (debug) {
@@ -141,6 +147,8 @@ void Settings::info() {
   Serial.println("1s beacon interval: " + (String)beaconInterval);
   Serial.println("LED Pin: " + (String)ledPin);
   Serial.println("dark mode: " + (String)darkMode);
+  Serial.println("simplify: " + (String)simplify);
+  Serial.println("new user: " + (String)newUser);
 }
 
 size_t Settings::getSize() {
@@ -164,7 +172,9 @@ size_t Settings::getSize() {
   json += "\"macInterval\":" + (String)macInterval + ",";
   json += "\"beaconInterval\":" + (String)beaconInterval + ",";
   json += "\"ledPin\":" + (String)ledPin + ",";
-  json += "\"darkMode\":" + (String)darkMode + "}";
+  json += "\"darkMode\":" + (String)darkMode + ",";
+  json += "\"simplify\":" + (String)simplify + ",";
+  json += "\"newUser\":" + (String)newUser + "}";
   jsonSize += json.length();
 
   return jsonSize;
@@ -192,7 +202,9 @@ void Settings::send() {
   json += "\"macInterval\":" + (String)macInterval + ",";
   json += "\"beaconInterval\":" + (String)beaconInterval + ",";
   json += "\"ledPin\":" + (String)ledPin + ",";
-  json += "\"darkMode\":" + (String)darkMode + "}";
+  json += "\"darkMode\":" + (String)darkMode + ",";
+  json += "\"simplify\":" + (String)simplify + ",";
+  json += "\"newUser\":" + (String)newUser + "}";
   sendToBuffer(json);
   sendBuffer();
 

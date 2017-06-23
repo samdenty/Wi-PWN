@@ -10,6 +10,7 @@
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
+#include "./DNSServer.h"       // Patched lib
 #include <ESP8266WebServer.h>
 #include <FS.h>
 
@@ -62,7 +63,11 @@ extern "C" {
   #include "user_interface.h"
 }
 
-ESP8266WebServer server(80);
+
+const byte        DNS_PORT = 53;          // Capture DNS requests on port 53
+IPAddress         apIP(192, 168, 4, 1);   // IP Address for Wi-PWN (Changing this will cause unwanted side effects - app malfunctioning)
+DNSServer         dnsServer;              // Create the DNS object
+ESP8266WebServer server(80);              // HTTP server
 
 #include <EEPROM.h>
 #include "data.h"
@@ -119,9 +124,11 @@ void startWifi() {
   Serial.println("\nStarting WiFi AP:");
   WiFi.mode(WIFI_STA);
   wifi_set_promiscuous_rx_cb(sniffer);
+  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
   WiFi.softAP((const char*)settings.ssid.c_str(), (const char*)settings.password.c_str(), settings.apChannel, settings.ssidHidden); //for an open network without a password change to:  WiFi.softAP(ssid);
-  Serial.println("SSID     : '" + settings.ssid+"'");
-  Serial.println("Password : '" + settings.password+"'");
+  Serial.println("SSID          : '" + settings.ssid+"'");
+  Serial.println("Password      : '" + settings.password+"'");
+  if (settings.newUser == 1) {dnsServer.start(DNS_PORT, "*", apIP);Serial.println("Captive Portal: Running");} else {Serial.println("Captive Portal: Stopped");}
   Serial.println("-----------------------------------------------");
   if (settings.password.length() < 8) Serial.println("WARNING: password must have at least 8 characters!");
   if (settings.ssid.length() < 1 || settings.ssid.length() > 32) Serial.println("WARNING: SSID length must be between 1 and 32 characters!");
@@ -136,16 +143,16 @@ void stopWifi() {
   wifiMode = "OFF";
 }
 
-void loadIndexHTML() {
+void loadSetupHTML() {
   if(warning){
-    sendFile(200, "text/html", data_indexHTML, sizeof(data_indexHTML));
+    sendFile(200, "text/html", data_setupHTML, sizeof(data_setupHTML));
   }else{
-    sendFile(200, "text/html", data_scanHTML, sizeof(data_scanHTML));
+    sendFile(200, "text/html", data_indexHTML, sizeof(data_indexHTML));
   }
 }
-void loadScanHTML() {
+void loadIndexHTML() {
   warning = false;
-  sendFile(200, "text/html", data_scanHTML, sizeof(data_scanHTML));
+  sendFile(200, "text/html", data_indexHTML, sizeof(data_indexHTML));
 }
 void loadUsersHTML() {
   sendFile(200, "text/html", data_usersHTML, sizeof(data_usersHTML));
@@ -439,6 +446,16 @@ void saveSettings() {
     if (server.arg("darkMode") == "false") settings.darkMode = false;
     else settings.darkMode = true;
   }
+
+  if (server.hasArg("simplify")) {
+    if (server.arg("simplify") == "false") settings.simplify = false;
+    else settings.simplify = true;
+  }
+
+  if (server.hasArg("newUser")) {
+    if (server.arg("newUser") == "false") settings.newUser = false;
+    else settings.newUser = true;
+  }
   
   settings.save();
   server.send( 200, "text/json", "true" );
@@ -473,57 +490,65 @@ void setup() {
   attack.generate();
 
   /* ========== Web Server ========== */
-
-  /* HTML */
-  server.onNotFound(load404);
-
-  server.on("/", loadIndexHTML);
-  server.on("/index.html", loadIndexHTML);
-  server.on("/scan.html", loadScanHTML);
-  server.on("/users.html", loadUsersHTML);
-  server.on("/attack.html", loadAttackHTML);
-  server.on("/settings.html", loadSettingsHTML);
-  server.on("/info.html", loadInfoHTML);
-
-  /* JS */
-  server.on("/js/scan.js", loadScanJS);
-  server.on("/js/users.js", loadUsersJS);
-  server.on("/js/attack.js", loadAttackJS);
-  server.on("/js/settings.js", loadSettingsJS);
-  server.on("/js/functions.js", loadFunctionsJS);
-
-  /* CSS */
-  server.on ("/main.css", loadStyle);
-  if(settings.darkMode) server.on ("/dark.css", loadDarkMode);
-
-  /* JSON */
-  server.on("/APScanResults.json", sendAPResults);
-  server.on("/APScan.json", startAPScan);
-  server.on("/APSelect.json", selectAP);
-  server.on("/ClientScan.json", startClientScan);
-  server.on("/ClientScanResults.json", sendClientResults);
-  server.on("/ClientScanTime.json", sendClientScanTime);
-  server.on("/clientSelect.json", selectClient);
-  server.on("/setName.json", setClientName);
-  server.on("/addClientFromList.json", addClientFromList);
-  server.on("/attackInfo.json", sendAttackInfo);
-  server.on("/attackStart.json", startAttack);
-  server.on("/settings.json", getSettings);
-  server.on("/settingsSave.json", saveSettings);
-  server.on("/settingsReset.json", resetSettings);
-  server.on("/deleteName.json", deleteName);
-  server.on("/clearNameList.json", clearNameList);
-  server.on("/editNameList.json", editClientName);
-  server.on("/addSSID.json", addSSID);
-  server.on("/deleteSSID.json", deleteSSID);
-  server.on("/randomSSID.json", randomSSID);
-  server.on("/clearSSID.json", clearSSID);
-  server.on("/resetSSID.json", resetSSID);
-  server.on("/saveSSID.json", saveSSID);
-  server.on("/restartESP.json", restartESP);
-  server.on("/addClient.json",addClient);
-  server.on("/enableRandom.json",enableRandom);
-
+  if (settings.newUser == 1) {
+    /* Load certain files (only if newUser) */
+    server.onNotFound(loadSetupHTML);
+    server.on("/js/functions.js", loadFunctionsJS);
+    server.on ("/main.css", loadStyle);
+    server.on ("/dark.css", loadDarkMode);
+    server.on("/ClientScanTime.json", sendClientScanTime);
+    server.on("/settingsSave.json", saveSettings);
+    server.on("/restartESP.json", restartESP);
+  } else {
+    /* HTML */
+    server.onNotFound(load404);
+  
+    server.on("/", loadIndexHTML);
+    server.on("/index.html", loadIndexHTML);
+    server.on("/users.html", loadUsersHTML);
+    server.on("/attack.html", loadAttackHTML);
+    server.on("/settings.html", loadSettingsHTML);
+    server.on("/info.html", loadInfoHTML);
+  
+    /* JS */
+    server.on("/js/scan.js", loadScanJS);
+    server.on("/js/users.js", loadUsersJS);
+    server.on("/js/attack.js", loadAttackJS);
+    server.on("/js/settings.js", loadSettingsJS);
+    server.on("/js/functions.js", loadFunctionsJS);
+  
+    /* CSS */
+    server.on ("/main.css", loadStyle);
+    if(settings.darkMode) server.on ("/dark.css", loadDarkMode);
+  
+    /* JSON */
+    server.on("/APScanResults.json", sendAPResults);
+    server.on("/APScan.json", startAPScan);
+    server.on("/APSelect.json", selectAP);
+    server.on("/ClientScan.json", startClientScan);
+    server.on("/ClientScanResults.json", sendClientResults);
+    server.on("/ClientScanTime.json", sendClientScanTime);
+    server.on("/clientSelect.json", selectClient);
+    server.on("/setName.json", setClientName);
+    server.on("/addClientFromList.json", addClientFromList);
+    server.on("/attackInfo.json", sendAttackInfo);
+    server.on("/attackStart.json", startAttack);
+    server.on("/settings.json", getSettings);
+    server.on("/settingsSave.json", saveSettings);
+    server.on("/settingsReset.json", resetSettings);
+    server.on("/deleteName.json", deleteName);
+    server.on("/clearNameList.json", clearNameList);
+    server.on("/editNameList.json", editClientName);
+    server.on("/addSSID.json", addSSID);
+    server.on("/deleteSSID.json", deleteSSID);
+    server.on("/randomSSID.json", randomSSID);
+    server.on("/clearSSID.json", clearSSID);
+    server.on("/resetSSID.json", resetSSID);
+    server.on("/saveSSID.json", saveSSID);
+    server.on("/restartESP.json", restartESP);
+    server.on("/addClient.json",addClient);
+    server.on("/enableRandom.json",enableRandom);
+  }
   server.begin();
 
 #ifdef USE_DISPLAY
@@ -573,6 +598,7 @@ void loop() {
   if (clientScan.sniffing) {
     if (clientScan.stop()) startWifi();
   } else {
+    if (settings.newUser == 1) dnsServer.processNextRequest();
     server.handleClient();
     attack.run();
   }

@@ -1,5 +1,5 @@
 <head>
-    <title>Wi-PWN</title>
+    <title>Scan - Wi-PWN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="dark.css">
@@ -7,12 +7,12 @@
 </head>
 
 <body>
-    <nav id="nav" class="disabled">
+    <nav id="nav">
         <div class="main-header">
             <div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
         </div>
         <div id="links">
-            <a href="scan.html">Scan</a>
+            <a href="/" class="active">Scan</a>
             <a href="users.html">Users</a>
             <a href="attack.html">Attack</a>
             <a href="settings.html">Settings</a>
@@ -20,37 +20,30 @@
         </div>
         <div id="error"></div>
     </nav>
-    <script>/(^|;)\s*minimal=/.test(document.cookie)&&(document.body.id="minimal");</script>
+    <script>
+    var u = window.location.href; - 1 != u.indexOf("?minimal=true") && (document.body.id = "minimal", document.cookie = "minimal=true");
+    /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal")
+    </script>
     <div class="main-wrap">
         <div id="spinner-container"></div>
         <div class="container">
             <div class="card-container-basic">
-                <div class="settingsHeader">Terms and Conditions</div>
-                <div class="card-basic">
-                    <div id="logo-img2"></div>
-                    <h1>Welcome to Wi-PWN</h1>
-                    <hr class="small"><b>This software is intended for trained professionals!</b>
-                    <br>It can perform deauth attacks on unprotected <i>802.11</i> Wi-Fi networks, <i>which could be perceived as using an illegal 'Wi-Fi Jammer'.</i>
-                    <p>Only use this software on networks you have sole permission to use it on.</p>
-                    <p>
-                    <b>By clicking <a>Accept</a> you agree to the terms and conditions</b>
-                    </p>
-                    <div class="row">
-                    <div class="col-12">
-                    <button class="right" onclick="document.cookie = 'accepted=yes';window.location='scan.html'">Accept</button>
+                <div class="settingsHeader button-header" style="display:inline-block;margin-bottom: 30px">Scan for Wi-Fi networks
+                    <div class="network-info">
+                        <div id="networksFound"></div>
+                        <div id="apMAC"></div>
                     </div>
-                    </div>
+                </div>
+                <button onclick="scan()" id="apScanStart" class="right button-primary button-header">Scan</button>
+                <table id="apscan"><tr><th><input type="checkbox" name="selectAll" id="selectAll" class="dn"></th></tr></table>
+                <div class="row">
+                        <button class="secondary" onclick="window.location = 'users.html'">Users</button>
+                        <button onclick="window.location = 'attack.html'" class="right">Attack</button>
                 </div>
             </div>
         </div>
         <footer></footer>
-        <script src="js/functions.js"></script>
-        <script>
-       document.getElementById("logo-img2").innerHTML=svgLogo; 
-        var cookie = document.cookie;
-        if (cookie.indexOf('accepted=yes') >= 0) {
-            window.location = 'scan.html'
-        }
-        </script>
     </div>
+    <script src="js/functions.js"></script>
+    <script src="js/scan.js"></script>
 </body>

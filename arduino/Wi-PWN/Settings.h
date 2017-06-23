@@ -38,6 +38,8 @@ extern NameList nameList;
 #define beaconIntervalAdr 1105
 #define ledPinAdr 1106
 #define darkModeAdr 1107
+#define simplifyAdr 1108
+#define newUserAdr 1109
 
 #define checkNumAdr 2001
 #define checkNum 15
@@ -72,6 +74,8 @@ class Settings
     bool beaconInterval;
     int ledPin;
     bool darkMode;
+    bool simplify;
+    bool newUser;
     
   private:
     size_t getSize();

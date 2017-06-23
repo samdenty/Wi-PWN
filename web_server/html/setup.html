@@ -1,0 +1,166 @@
+<head>
+    <title>Wi-PWN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="main.css">
+
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+<body>
+    <nav id="nav">
+        <div id="error"></div>
+    </nav>
+    <div class="main-wrap" style="top:0 !important">
+        <div id="spinner-container"></div>
+        <div class="container">
+            <div class="card-container-basic">
+                <div class="settingsHeader" id="h">Terms and Conditions</div>
+                <div id="ss" class="card-basic">
+                    <div id="card-wrapper">
+                        <div id="c1">
+                            <div id="logo-img"></div>
+                            <h1>Welcome to Wi-PWN</h1>
+                            <hr class="small"><b>This software is meant for pentesting only!</b>
+                            <br>Wi-PWN can perform deauth attacks on unprotected networks, <i>similar to using a Wi-Fi Jammer.</i><p>Only use this software on networks you are authorized to use it on.</p>
+                            <div class="row">
+                                <div class="col-12">
+                                    <button class="right" onclick="accept();">Accept</button>
+                                </div>
+                            </div>
+                        </div><div id="c2">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="input-container">
+                                        <input placeholder=" " id="ssid" type="text" required="" minlength="1" maxlength="32" value="Wi-PWN">
+                                        <label for="ssid">SSID</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-container">
+                                        <input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32">
+                                        <label for="ssid">Password</label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-12">
+                                    <label for="darkMode">Enable dark mode</label>
+                                    <input type="checkbox" name="darkMode" id="darkMode" value="false" onclick="toggleDarkmode();">
+                                    <label class="checkbox" for="darkMode"></label>
+                                </div>
+                                <div class="col-12">
+                                    <label for="simplify">Simplify interface</label>
+                                    <input type="checkbox" name="simplify" id="simplify" value="false">
+                                    <label class="checkbox" for="simplify"></label>
+                                </div>
+                            </div><hr>
+                            <div class="row">
+                                <div class="col-12">
+                                    <button class="right" onclick="cont();">Continue</button>
+                                </div>
+                            </div>
+                        </div><div id="c3">
+                            <div class="row" style="text-align:center;padding-top:32px">
+                                <svg class=success-svg viewBox='0 0 1000 1000'>
+                                    <path d=M908.3,132.5L336.7,704.2l-245-245L10,540.8l326.7,326.7l81.7-81.7L990,214.2L908.3,132.5z />
+                                </svg><br>
+                                <b style="font-size:18px">Setup complete!</b><br><span style="font-weight: 200">Reconnect to the new network</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="center"><button class="secondary center" onclick="location.href='http://mirum.weebly.com/samuel-denty.html'">Designed by Sam Denty</a></div>
+            </div>
+        </div>
+        <footer></footer>
+        <script src="js/functions.js"></script>
+        <script>
+        var ssid = getE('ssid');
+        var password = getE('password');
+        var darkMode = document.getElementById('darkMode');
+        var simplify = document.getElementById('simplify');
+        var link = document.createElement("link");
+        var cookie = document.cookie;
+        function accept() {
+            scroll(0, 0);
+            document.getElementById("card-wrapper").className = "accept";
+            document.getElementById("h").innerHTML = "Setup Wi-PWN";
+            document.title = "Setup Wi-PWN";
+            document.cookie = "accept=true";
+        }
+        if (cookie.indexOf("accept=true") >= 0) {
+            document.getElementById("c1").setAttribute("style", "transition: none;");
+            accept();
+        }
+        function toggleDarkmode() {
+            if (darkMode.checked) {
+                link.href = "dark.css";
+                link.type = "text/css";
+                link.rel = "stylesheet";
+                link.media = "screen,print";
+                link.onload = function(){defaultMetaColor()};
+                link.setAttribute("id","darkModeCSS");
+                document.getElementsByTagName("head")[0].appendChild(link);
+                setTimeout(function(){defaultMetaColor()},600);
+            } else {
+                var dM = document.getElementById("darkModeCSS");
+                dM.remove();
+                setTimeout(function(){defaultMetaColor()},600);
+            }
+        }
+        function cont() {
+            var url = "settingsSave.json";
+            url += "?ssid=" + ssid.value;
+            url += "&password=" + password.value;
+            url += "&darkMode="+darkMode.checked;
+            url += "&simplify="+simplify.checked;
+            url += "&newUser=false";
+            getResponse(url, function(responseText) {
+             if (responseText == "true") {
+                vibrate();
+                autoReload();
+                getResponse("restartESP.json?", function(responseText) {
+                        if (responseText == "true") {
+                            document.getElementById("ss").className = "card-basic s-s";
+                            document.getElementById("h").innerHTML = "Setup Complete";
+                        } else {
+                            showMessage("Failed to restart Wi-PWN! (E26)");
+                            showLoading("hide");
+                        }
+                    }, function() {
+                        showMessage("Failed to restart Wi-PWN! (E27)");
+                        showLoading("hide");
+                    });
+              } else {
+                showMessage("Failed to save settings! (E28)");
+               }
+          }, function() {
+                showMessage("Failed to save settings! (E29)");
+          });
+        }
+        </script>
+        <style>
+            body {
+                transition: background-color 0.3s ease;
+            }
+            footer, .reboot-container {
+                display: none;
+            }
+            @media (min-width:520px) {
+                .container {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    transform: -webkit-translate(-50%, -50%);
+                    transform: -moz-translate(-50%, -50%);
+                    transform: -ms-translate(-50%, -50%)
+                }
+            }
+            .success-svg {
+                opacity: 1;
+                height: 90px;
+                margin-bottom: 30px;
+            }
+        </style>
+    </div>
+</body>

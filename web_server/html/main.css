@@ -35,7 +35,7 @@ nav .main-header {
 	font-size: 20px;
 	height: 30px
 }
-#logo-img, #logo-img2 {
+#logo-img {
 	background: #379df3;
 	background: -moz-linear-gradient(-45deg, #40bdff 0%, #3e80e4 100%);
 	background: -webkit-linear-gradient(-45deg, #40bdff 0%, #3e80e4 100%);
@@ -43,7 +43,7 @@ nav .main-header {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#379df3', endColorstr='#3f86f1', GradientType=1);
 	border-radius: 999px
 }
-#logo-img {
+#nav #logo-img {
 	height: 31px;
 	width: 31px;
 	padding: 7px;
@@ -52,8 +52,17 @@ nav .main-header {
 	top: 13px;
 	background: none;
 }
+.card-basic #logo-img {
+	float: none;
+	left: 50%;
+	margin: auto;
+	margin-bottom: 30px;
+	padding: 35px;
+	height: 80px;
+	width: 80px
+}
 #logo-img svg {
-	fill: rgba(255,255,255,0.81);
+	fill: rgba(255, 255, 255, 0.81);
 }
 nav #links {
 	height: 64px;
@@ -82,6 +91,7 @@ nav #links a:hover {
 }
 #minimal .main-wrap {
 	top: 0 !important;
+	padding-bottom: 20px;
 }
 h1 {
 	color: rgba(0, 0, 0, .66);
@@ -125,6 +135,10 @@ h1 {
 	border-radius: 2px;
 	padding: 25px 40px;
 	margin-bottom: 40px
+}
+.card-basic {
+	overflow: hidden;
+	transition: background 0.3s ease;
 }
 .settingsHeader {
 	font-weight: 500;
@@ -249,6 +263,14 @@ button:disabled, button:disabled:hover {
 	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 	background: #1E88E5
 }
+.secondary {
+	background: none;
+	box-shadow: none !important;
+	color: #2196F3
+}
+.secondary:hover {
+	background: rgba(25, 118, 210, 0.2)
+}
 .attackBtn {
 	width: 110px;
 	padding: 0;
@@ -300,6 +322,9 @@ footer a {
 ::-webkit-input-placeholder {
 	color: #c7c7c7
 }
+label {
+	font-size: 14px;
+}
 .input-container {
 	position: relative
 }
@@ -309,7 +334,7 @@ footer a {
 }
 .input-container input {
 	border: 0;
-	border-bottom: 2px solid #E1E1E1;
+	border-bottom: 2px solid #E0E0E0;
 	outline: none;
 	transition: .2s ease-in-out;
 	box-sizing: border-box;
@@ -318,7 +343,7 @@ footer a {
 	background: none;
 }
 .input-container input:placeholder-shown {
-	border-bottom: 2px solid #E1E1E1 !important;
+	border-bottom: 2px solid #E0E0E0 !important;
 }
 @-moz-document url-prefix() {
 	.input-container input:invalid {
@@ -326,29 +351,29 @@ footer a {
 	}
 }
 .input-container input:placeholder-shown:focus, .input-container input::-moz-placeholder:focus {
-	border-bottom: 2px solid #2196F3 !important
+	border-bottom: 2px solid #4285F4 !important
 }
 .input-container label {
 	top: 0;
 	left: 0;
 	right: 0;
-	color: #BDBDBD;
+	color: #757575;
 	display: flex;
 	align-items: center;
 	position: absolute;
-	font-size: 1rem;
+	font-size: 14px;
 	cursor: text;
 	transition: .2s ease-in-out;
 	box-sizing: border-box
 }
 .input-container input, .input-container label {
 	width: 100%;
-	height: 35px;
-	font-size: 15px;
-	margin-top: 10px
+	height: 34px;
+	font-size: 14px;
+	margin-top: 15px
 }
 .input-container input:valid {
-	border-bottom: 2px solid #E1E1E1
+	border-bottom: 2px solid #E0E0E0
 }
 .input-container input:valid + label {
 	color: #969696 !important
@@ -360,10 +385,10 @@ footer a {
 	border-bottom: 2px solid #f44336
 }
 .input-container input:focus + label {
-	color: #2196F3 !important
+	color: #4285F4 !important
 }
 .input-container input:valid + label, .input-container input:invalid:not(:placeholder-shown) + label, .input-container input:focus + label {
-	color: #2196F3;
+	color: #4285F4;
 	font-size: .8rem;
 	top: -25px;
 	pointer-events: none
@@ -371,7 +396,7 @@ footer a {
 .input-container input:invalid:not(:placeholder-shown) + label {
 	color: #F44336;
 }
-.settings .checkbox {
+.settings .checkbox, #card-wrapper .checkbox {
 	float: right;
 	margin-top: 3px
 }
@@ -423,15 +448,15 @@ label.checkbox:active:before {
 	background: #bfbfbf
 }
 * {
-	font-family: 'Roboto', Helvetica, sans-serif;
+	font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 	color: #333447;
-	line-height: 1.5
+	line-height: 1.5;
 }
 .center {
-	text-align: center
+	text-align: center;
 }
 .container {
-	width: 95%;
+	width: 96%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -473,7 +498,7 @@ label.checkbox:active:before {
 	body {
 		overflow: hidden;
 	}
-	::-webkit-scrollbar:not(:disabled) {
+	::-webkit-scrollbar {
 		width: 14px;
 		background-color: #E8E8E8
 	}
@@ -518,17 +543,8 @@ label.checkbox:active:before {
 		position: relative !important;
 	}
 }
-#logo-img2 {
-	float: none;
-	left: 50%;
-	margin: auto;
-	margin-bottom: 30px;
-	padding: 35px;
-	height: 130px;
-	width: 130px
-}
 @media (min-width:800px) {
-	#logo-img2 {
+	.card-basic #logo-img {
 		float: left;
 		margin-right: 50px;
 		margin-top: 35px
@@ -541,7 +557,7 @@ label.checkbox:active:before {
 		margin: 20px
 	}
 	.card {
-		min-height: 360px
+		min-height: 330px
 	}
 }
 .card-container-basic {
@@ -664,7 +680,7 @@ label.checkbox:active:before {
 	box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .19), 0 6px 13px 0 rgba(0, 0, 0, .24);
 	height: 30px;
 	width: 30px;
-	transition: box-shadow .5s ease, background .5s ease, margin-top .5s ease;
+	transition: all .5s ease;
 	z-index: 99;
 	margin-top: -100px;
 	opacity: 0
@@ -1009,7 +1025,7 @@ b {
 	text-decoration: none;
 	z-index: 1
 }
-span.light {
+.light {
 	opacity: 0.4;
 }
 .failed-save {
@@ -1028,5 +1044,37 @@ span.light {
 	opacity: 0;
 }
 .failed-save .failed-svg, .success-save .success-svg {
+	opacity: 1;
+}
+#card-wrapper {
+	width: 300%;
+}
+#c1, #c2, #c3 {
+	display: inline-block;
+	width: 33.33333%;
+	vertical-align: top;
+	transition: margin 0.4s ease, opacity 0.15s ease;
+}
+#c2, #c3 {
+	opacity: 0;
+}
+.accept #c1 {
+	margin-left: -33.33333%;
+	opacity: 0;
+}
+.accept #c2 {
+	opacity: 1;
+}
+.s-s {
+	background: #499fe4;
+}
+.s-s .row * {
+	color: #e1f1fd
+}
+.s-s #c1, .s-s #c2 {
+	opacity: 0;
+	margin-left: -33.33333%;
+}
+.s-s #c3 {
 	opacity: 1;
 }

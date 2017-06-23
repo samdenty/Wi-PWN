@@ -27,7 +27,7 @@ function getData() {
   try {
         res = JSON.parse(responseText);
     } catch(e) {
-        showMessage("ERROR: Reset the settings.");
+        showMessage("ERROR: Reset the settings.  (E17)");
     return;
     }
   ssid.value = res.ssid;
@@ -80,11 +80,11 @@ function saveSettings() {
       saveStatus.classList.add("success-save");
     } else {
       saveStatus.classList.add("failed-save");
-      showMessage("Failed to save settings!");
+      showMessage("Failed to save settings! (E18)");
     }
   }, function() {
       saveStatus.classList.add("failed-save");
-      showMessage("Failed to save settings!");
+      showMessage("Failed to save settings! (E19)");
   });
 }
 
@@ -96,11 +96,11 @@ function resetSettings() {
       saveStatus.classList.add("success-save")
     }
     else {
-      showMessage("Failed to reset settings!");
+      showMessage("Failed to reset settings! (E20)");
       saveStatus.classList.add("failed-save");
     }
   }, function() {
-      showMessage("Failed to reset settings!");
+      showMessage("Failed to reset settings! (E21)");
       saveStatus.classList.add("failed-save");
   });
 }
