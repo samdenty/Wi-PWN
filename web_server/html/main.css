@@ -256,10 +256,10 @@ button:disabled, button:disabled:hover {
 }
 .clone svg {
 	height: 17px;
-    fill: #fff;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
+	fill: #fff;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 8px;
 }
 .secondary {
 	background: none;
@@ -288,11 +288,13 @@ button:disabled, button:disabled:hover {
 footer {
 	margin-top: 30px;
 	background: #2B2B31;
+	height: 120px;
 }
 .footer, .sub-section-attribution {
 	padding: 16px 40px;
 	font-weight: 500;
 	display: block;
+	height: 32px;
 }
 footer ul {
 	list-style: none;
@@ -316,6 +318,8 @@ footer a {
 	background: rgba(0, 0, 0, 0.15);
 	font-size: 14px;
 	width: calc(100% - 80px);
+	height: 20px;
+	padding: 18px 40px;
 }
 ::-webkit-input-placeholder {
 	color: #c7c7c7
@@ -449,9 +453,7 @@ label.checkbox:active:before {
 	float: left;
 	margin-right: 10px
 }
-.row.inputCheckbox label:not(.checkbox),
-.settings  label:not(.checkbox),
-#card-wrapper label:not(.checkbox) {
+.row.inputCheckbox label:not(.checkbox), .settings  label:not(.checkbox), #card-wrapper label:not(.checkbox) {
 	line-height: 18px;
 }
 * {
@@ -466,6 +468,7 @@ label.checkbox:active:before {
 	width: 96%;
 	margin-left: auto;
 	margin-right: auto;
+	min-height: calc(100% - 170px);
 }
 .main-wrap .container:first-of-type {
 	margin-bottom: 20px;
@@ -552,8 +555,14 @@ label.checkbox:active:before {
 		top: 65px !important;
 		position: relative !important;
 	}
-		.row.inputCheckbox .col-6:nth-child(2) {
+	.row.inputCheckbox .col-6:nth-child(2) {
 		margin-bottom: 20px
+	}
+	.container {
+		min-height: calc(100% - 235px);
+	}
+	.main-wrap {
+		overflow-y: hidden;
 	}
 }
 @media (min-width:800px) {
@@ -574,7 +583,8 @@ label.checkbox:active:before {
 	}
 }
 .card-container-basic {
-	margin-top: 20px
+	margin-top: 20px;
+	vertical-align: top
 }
 @media (max-width:539px) {
 	table#apscan td:nth-child(3), table#apscan th:nth-child(3) {

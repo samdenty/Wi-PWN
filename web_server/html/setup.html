@@ -89,11 +89,7 @@
         var cookie = document.cookie;
 
         function accept() {
-            window.scrollTo({
-                'behavior': 'smooth',
-                'left': 0,
-                'top': 10
-            });
+            toTop()
             document.getElementById("card-wrapper").className = "accept";
             document.getElementById("h").innerHTML = "Setup Wi-PWN";
             document.title = "Setup Wi-PWN";
@@ -128,11 +124,7 @@
         }
 
         function cont() {
-            window.scrollTo({
-                'behavior': 'smooth',
-                'left': 0,
-                'top': 10
-            });
+            toTop()
             var url = "settingsSave.json";
             url += "?ssid=" + ssid.value;
             url += "&password=" + password.value;
@@ -161,6 +153,15 @@
             }, function() {
                 showMessage("Failed to save settings! (E29)");
             });
+        }
+        function toTop() {
+            try{window.scrollTo({
+                'behavior': 'smooth',
+                'left': 0,
+                'top': 10
+            });} catch(err) {
+                scroll(0,0)
+            }
         }
         </script>
         <style>

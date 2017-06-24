@@ -55,7 +55,7 @@ function getResults() {
 
             tr += '</tr>';
         }
-        table.innerHTML = tr;
+        if (tr != tableHeaderHTML) table.innerHTML = tr;
         if (res.nameList.length != 0) {
             document.getElementById('saved-users').className = "";
         }

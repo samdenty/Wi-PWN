@@ -95,13 +95,24 @@ function getResponse(adr, callback, timeoutCallback, timeout, method) {
     xmlhttp.ontimeout = timeoutCallback;
 }
 
-function scrollIt(element) {  
-  document.getElementsByClassName("main-wrap")[0].scrollTo({
-    'behavior': 'smooth',
-    'left': 0,
-    'top': element.offsetTop - 25
-  });
+function scrollIt(element) {
+    if (window.innerWidth <= 520) {
+        var displayType = window
+    } else {
+        var displayType = document.getElementsByClassName("main-wrap")[0]
+    }
+    try {
+        displayType.scrollTo({
+            'behavior': 'smooth',
+            'left': 0,
+            'top': element.offsetTop - 25
+        });
+    } catch(err) {
+        element.scrollIntoView()
+        window.scrollBy(0, -75);
+    }
 }
+
 
 function vibrate() {
     navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;

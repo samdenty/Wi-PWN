@@ -18,7 +18,7 @@ randSSID.addEventListener("change", switchRandom, false);
 function getResults() {
     getResponse("attackInfo.json", function(responseText) {
         var res = JSON.parse(responseText);
-        var aps = "<tr><th>SSID</th><th></th></tr>";
+        if (res.aps.length == 0) {document.getElementById("selectedNetworksDevices").className = "dn";var aps = ""} else {document.getElementById("selectedNetworksDevices").className = "card-container-basic";var aps = "<tr><th>SSID</th><th></th></tr>"}
         var clients = "<tr><th>MAC Address</th><th>Vendor</th></tr>";
         var tr = "<tr><th>Attack</th><th>Status</th><th>Switch</th></tr>";
         for (var i = 0; i < res.aps.length; i++) {
@@ -33,11 +33,11 @@ function getResults() {
         if (aps) {
             document.getElementById("selectedNetworksDevices").className = "card-container-basic";
             selectedAPs.innerHTML = aps;
-            if (clients != '<li>FF:FF:FF:FF:FF:FF - BROADCAST</li>') {
+            if (clients.indexOf('FF:FF:FF:FF:FF:FF') >= 0) {
+                document.getElementById("selectedClients").className = "dn";
+            } else {
                 selectedClients.innerHTML = clients;
                 document.getElementById("selectedClients").className = "";
-            } else {
-                document.getElementById("selectedClients").className = "dn";
             }
         }
 
