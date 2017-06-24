@@ -95,7 +95,7 @@ function resetSettings() {
     getResponse("settingsReset.json", function(responseText) {
       if (responseText == "true") {
         getData();
-        saveStatus.classList.add("success-save")
+        saveStatus.classList.add("success-save");
       }
       else {
         showMessage("Failed to reset settings! (E20)");

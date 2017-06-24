@@ -113,15 +113,6 @@ h1 {
 	margin-top: 0;
 	opacity: 1
 }
-#selectedClients li, #selectedAPs li {
-	list-style: none;
-	font-family: Consolas, Courier New, monospace, sans-serif;
-	padding: 3px
-}
-#selectedAPs, #selectedClients {
-	background-color: rgba(255, 255, 255, 0.04);
-	-webkit-padding-start: 5px
-}
 #networksFound, #apMAC {
 	background: rgba(0, 0, 0, 0.05);
 	padding: 6px;
@@ -263,6 +254,13 @@ button:disabled, button:disabled:hover {
 	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 	background: #1E88E5
 }
+.clone svg {
+	height: 17px;
+    fill: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
 .secondary {
 	background: none;
 	box-shadow: none !important;
@@ -326,7 +324,8 @@ label {
 	font-size: 14px;
 }
 .input-container {
-	position: relative
+	position: relative;
+	transition: opacity 0.5s ease
 }
 .input-container.disabled {
 	opacity: 0.3;
@@ -828,22 +827,6 @@ img, nav, td {
 }
 .clearfix, .dn {
 	display: none
-}
-.clone-text, .clone-button {
-	display: inline-block;
-	line-height: 36px;
-	padding: 3px;
-}
-.clone-text {
-	font-size: 0.8rem;
-	font-family: Consolas, Courier New, monospace, sans-serif;
-}
-.clone-button {
-	float: right;
-	margin-right: 2px;
-}
-.clone-container {
-	display: block;
 }
 @media (max-width:361px) {
 	.clearfix {

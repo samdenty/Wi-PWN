@@ -95,10 +95,18 @@ function getResponse(adr, callback, timeoutCallback, timeout, method) {
     xmlhttp.ontimeout = timeoutCallback;
 }
 
+function scrollIt(element) {  
+  document.getElementsByClassName("main-wrap")[0].scrollTo({
+    'behavior': 'smooth',
+    'left': 0,
+    'top': element.offsetTop - 25
+  });
+}
+
 function vibrate() {
     navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
     if (navigator.vibrate) {
-        navigator.vibrate(20);
+        navigator.vibrate(50);
     }
 }
 

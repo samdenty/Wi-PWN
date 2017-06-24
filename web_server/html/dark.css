@@ -118,3 +118,6 @@ nav #links a.active {
 .s-s .row * {
 	color: #d5edff
 }
+hr {
+	border: 1px solid rgba(0, 0, 0, 0.1)
+}

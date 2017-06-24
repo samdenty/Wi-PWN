@@ -72,10 +72,29 @@
         <footer></footer>
         <script src="js/functions.js"></script>
         <script>
-        var allChannels = document.getElementById('allChannels');
-        allChannels.addEventListener("change", switchChannel, false);
-        var channel = getE("channel");
+        var allChannels = document.getElementById("detectorAllChannels");
+        var channel = document.getElementById("detectorChannel");
+        var alertPin = document.getElementById("alertPin");
+        var invert = document.getElementById("invertAlertPin");
+        var scanTime = document.getElementById("detectorScanTime");
+        var res;
 
+        getResponse("settings.json", function(responseText) {
+            try {
+                res = JSON.parse(responseText);
+            } catch (e) {
+                showMessage("ERROR: Reset the settings.  (E25)");
+                return;
+            }
+
+            allChannels.checked = res.detectorAllChannels;
+            channel.value = res.detectorChannel;
+            alertPin.value = res.alertPin;
+            invert.checked = res.invertAlertPin;
+            scanTime.value = res.detectorScanTime;
+        });
+        
+        allChannels.addEventListener("change", switchChannel, false);
         function switchChannel() {
             var isChecked = allChannels.checked;
             if (isChecked) {

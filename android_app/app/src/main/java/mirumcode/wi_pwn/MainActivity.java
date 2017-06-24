@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.4.1/scan.html")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.4.1/?minimal=true")));
         }
 
         return super.onOptionsItemSelected(item);

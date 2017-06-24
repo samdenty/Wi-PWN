@@ -1,7 +1,7 @@
 var selectedAPs = getE("selectedAPs");
 var selectedClients = getE("selectedClients");
 var table = document.getElementsByTagName("table")[0];
-var ssidList = document.getElementsByTagName("table")[1];
+var ssidList = document.getElementsByTagName("table")[3];
 var saved = getE("saved");
 var ssidCounter = getE("ssidCounter");
 var ssidContainer = getE("ssidContainer");
@@ -18,24 +18,26 @@ randSSID.addEventListener("change", switchRandom, false);
 function getResults() {
     getResponse("attackInfo.json", function(responseText) {
         var res = JSON.parse(responseText);
-        var aps = "";
-        var clients = "";
+        var aps = "<tr><th>SSID</th><th></th></tr>";
+        var clients = "<tr><th>MAC Address</th><th>Vendor</th></tr>";
         var tr = "<tr><th>Attack</th><th>Status</th><th>Switch</th></tr>";
         for (var i = 0; i < res.aps.length; i++) {
             var resApsI = res.aps[i].replace("'", "\\'"); // Escape single quotes from network name
             resApsI = resApsI.replace("\"", "&quot;"); // Escape double quotes from network name
-            aps += "<li class='clone-container'><div class='clone-text'>" + res.aps[i] + "</div><div class='clone-button'><button class='clone' onclick=\"cloneSSID('" + resApsI + "')\">clone</button></div></li>";
+            aps += "<tr><td>" + res.aps[i] + "</td><td><button class='clone' onclick=\"cloneSSID('" + resApsI + "')\"><svg viewBox='0 0 1000 1000'xmlns=http://www.w3.org/2000/svg><path d='M700.5,10H165.9c-49.2,0-89.1,39.9-89.1,89.1v623.6h89.1V99.1h534.5V10L700.5,10z M834.1,188.2h-490c-49.2,0-89.1,39.9-89.1,89.1v623.6c0,49.2,39.9,89.1,89.1,89.1h490c49.2,0,89.1-39.9,89.1-89.1V277.3C923.2,228.1,883.3,188.2,834.1,188.2z M834.1,900.9h-490V277.3h490V900.9z'/></svg>clone</button></td></tr>";
         }
-        for (var i = 0; i < res.clients.length; i++) clients += "<li>" + res.clients[i] + "</li>";
+        for (var i = 0; i < res.clients.length; i++) {
+            clients += "<tr><td>" + res.clients[i].substr(0,res.clients[i].indexOf(' ')) + "</td><td>" + res.clients[i].substr(res.clients[i].indexOf(' ')+1).split("-", 1) + "</td></tr>";
+        }
 
         if (aps) {
             document.getElementById("selectedNetworksDevices").className = "card-container-basic";
             selectedAPs.innerHTML = aps;
             if (clients != '<li>FF:FF:FF:FF:FF:FF - BROADCAST</li>') {
                 selectedClients.innerHTML = clients;
-                document.getElementById("users").className = "";
+                document.getElementById("selectedClients").className = "";
             } else {
-                document.getElementById("users").className = "dn";
+                document.getElementById("selectedClients").className = "dn";
             }
         }
 
@@ -119,6 +121,8 @@ function cloneSSID(_ssidName) {
     ssid.value = _ssidName;
     if (data.length > 0) num.value = 48 - data.length;
     else num.value = 48;
+    var section2 = document.getElementById("section2");
+    scrollIt(section2);
 }
 
 function deleteSSID(num) {
