@@ -63,7 +63,9 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="button-primary right" onclick="addSSID()">start</button>
+                            <br>
+                            <button class="secondary" onclick="saveSettings()">save</button>
+                            <button class="button-primary right" onclick="saveSettings(true)">Save &amp; Start</button>
                         </div>
                     </div>
                 </div>
@@ -77,6 +79,7 @@
         var alertPin = document.getElementById("alertPin");
         var invert = document.getElementById("invertAlertPin");
         var scanTime = document.getElementById("detectorScanTime");
+        var saveStatus = getE('spinner-container');
         var res;
 
         getResponse("settings.json", function(responseText) {
@@ -87,14 +90,15 @@
                 return;
             }
 
-            allChannels.checked = res.detectorAllChannels;
+            if (res.detectorAllChannels == 1) {allChannels.checked = true;switchChannel()} else {allChannels.checked = false;switchChannel()}
             channel.value = res.detectorChannel;
             alertPin.value = res.alertPin;
-            invert.checked = res.invertAlertPin;
+            if (res.invertAlertPin == 1) {invert.checked = true} else {invert.checked = false}
             scanTime.value = res.detectorScanTime;
         });
-        
+
         allChannels.addEventListener("change", switchChannel, false);
+
         function switchChannel() {
             var isChecked = allChannels.checked;
             if (isChecked) {
@@ -102,6 +106,41 @@
             } else {
                 channelContainer.classList.remove("disabled");
             }
+        }
+
+        function saveSettings(run) {
+            saveStatus.className = "";
+            showLoading();
+            var url = "settingsSave.json";
+            url += "?detectorAllChannels=" + allChannels.checked;
+            url += "&detectorChannel=" + channel.value;
+            url += "&alertPin=" + alertPin.value;
+            url += "&invertAlertPin=" + invert.checked;invert.checked
+            url += "&detectorScanTime=" + scanTime.value;
+
+            getResponse(url, function(responseText) {
+                if (responseText == "true") {
+                    if (run == true) {
+                        getResponse("detectorStart.json", function(responseText) {
+                            if (responseText == "true") {
+                                showLoading("hide");
+                            } else {
+                                showMessage("Failed to start detector! (E26)");
+                            }
+                        }, function() {
+                            showMessage("Failed to start detector! (E27)");
+                        });
+                    } else {
+                        saveStatus.classList.add("success-save");
+                    }
+                } else {
+                    if (run == false) saveStatus.classList.add("failed-save");
+                    showMessage("Failed to save settings! (E18)");
+                }
+            }, function() {
+                if (run == false) saveStatus.classList.add("failed-save");
+                showMessage("Failed to save settings! (E19)");
+            });
         }
         </script>
     </div>

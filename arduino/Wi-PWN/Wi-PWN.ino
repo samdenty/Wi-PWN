@@ -77,6 +77,7 @@ ESP8266WebServer server(80);              // HTTP server
 #include "Attack.h"
 #include "Settings.h"
 #include "SSIDList.h"
+#include "Detector.h"
 
 /* ========== DEBUG ========== */
 const bool debug = true;
@@ -89,6 +90,7 @@ ClientScan clientScan;
 Attack attack;
 Settings settings;
 SSIDList ssidList;
+Detector detector;
 
 void sniffer(uint8_t *buf, uint16_t len) {
   clientScan.packetSniffer(buf, len);
@@ -390,9 +392,15 @@ void restartESP() {
   ESP.reset();
 }
 
-void enableRandom(){
-  attack.changeRandom(server.arg("interval").toInt());
+void enableRandom() {
   server.send( 200, "text/json", "true");
+  attack.changeRandom(server.arg("interval").toInt());
+}
+
+void startDetector() {
+  Serial.println("Starting Deauth Detector...");
+  server.send( 200, "text/json", "true");
+  detector.start();
 }
 
 //==========Settings==========
@@ -573,8 +581,9 @@ void setup() {
     server.on("/resetSSID.json", resetSSID);
     server.on("/saveSSID.json", saveSSID);
     server.on("/restartESP.json", restartESP);
-    server.on("/addClient.json",addClient);
-    server.on("/enableRandom.json",enableRandom);
+    server.on("/addClient.json", addClient);
+    server.on("/enableRandom.json", enableRandom);
+    server.on("/detectorStart.json", startDetector);
   }
   server.begin();
 
@@ -621,92 +630,113 @@ void setup() {
 }
 
 void loop() {
-  
-  if (clientScan.sniffing) {
-    if (clientScan.stop()) startWifi();
-  } else {
-    if (settings.newUser == 1) dnsServer.processNextRequest();
-    server.handleClient();
-    attack.run();
-  }
-
-  if(Serial.available()){
-    String input = Serial.readString();
-    if(input == "reset" || input == "reset\n" || input == "reset\r" || input == "reset\r\n"){
-      settings.reset();
-    }
-  }
-
-#ifndef USE_DISPLAY
-    if(digitalRead(0) == LOW) {
-      Serial.println("FLASH button (GPIO0) pressed, executing action...");
-      attack.start(0);
-      delay(400);
-    }
-#endif
-  
-
-#ifdef USE_DISPLAY
-
-  if (digitalRead(upBtn) == LOW || digitalRead(downBtn) == LOW || digitalRead(selectBtn) == LOW || digitalRead(displayBtn) == LOW){
-    if(canBtnPress){
-      if(digitalRead(upBtn) == LOW) buttonPressed = 0;
-      else if(digitalRead(downBtn) == LOW) buttonPressed = 1;
-      else if(digitalRead(selectBtn) == LOW) buttonPressed = 2;
-      else if(digitalRead(displayBtn) == LOW) buttonPressed = 3;
-      canBtnPress = false;
-    }
-  }else if(!canBtnPress){
-    canBtnPress = true;
-    
-    // ===== UP =====
-    if (buttonPressed == 0 && curRow > 0) {
-      curRow--;
-      if (lrow - 1 < 0) {
-        lrow = rowsPerSite - 1;
-        curSite--;
-      } else lrow--;
-  
-    // ===== DOWN ===== 
-    } else if (buttonPressed == 1 && curRow < rows - 1) {
-      curRow++;
-      if (lrow + 1 >= rowsPerSite) {
-        lrow = 0;
-        curSite++;
-      } else lrow++;
+  if (detector.detecting) {
+    detector.curTime = millis();
+    if(detector.curTime - detector.prevTime >= settings.detectorScanTime){
+      detector.prevTime = detector.curTime;
+      Serial.println((String)detector.c+" - channel "+(String)detector.curChannel);
       
-    // ===== SELECT ===== 
-    } else if (buttonPressed == 2) {
-      //WiFi on/off
-      if (curRow == 0) {
-        if (wifiMode == "ON") stopWifi();
-        else startWifi();
+      if(detector.c >= 2){
+        if(settings.invertAlertPin) digitalWrite(settings.alertPin, LOW);
+        else digitalWrite(settings.alertPin, HIGH);
+      }else{
+        if(settings.invertAlertPin) digitalWrite(settings.alertPin, HIGH);
+        else digitalWrite(settings.alertPin, LOW);
+      }
       
-      // ===== scan for APs ===== 
-      } else if (curRow == 1) {
-        startAPScan();
-        drawInterface();
-  
-      // ===== start,stop attack ===== 
-      } else if (curRow == 2) {
-        if (attackMode == "START" && apScan.getFirstTarget() > -1) attack.start(0);
-        else if (attackMode == "STOP") attack.stop(0);
-      } 
-      
-      // ===== select APs ===== 
-      else if (curRow >= 3) {
-        attack.stop(0);
-        apScan.select(curRow - 3);
+      detector.c = 0;
+      if(settings.detectorAllChannels){
+        detector.curChannel++;
+        if(detector.curChannel > 14) detector.curChannel = 1;
+        wifi_set_channel(detector.curChannel);
       }
     }
-    // ===== DISPLAY ===== 
-    else if (buttonPressed == 3) {
-      displayOn = !displayOn;
-      display.clear();
-      display.display();
+  } else {
+    if (clientScan.sniffing) {
+      if (clientScan.stop()) startWifi();
+    } else {
+      if (settings.newUser == 1) dnsServer.processNextRequest();
+      server.handleClient();
+      attack.run();
     }
+  
+    if(Serial.available()){
+      String input = Serial.readString();
+      if(input == "reset" || input == "reset\n" || input == "reset\r" || input == "reset\r\n"){
+        settings.reset();
+      }
+    }
+  
+  #ifndef USE_DISPLAY
+      if(digitalRead(0) == LOW) {
+        Serial.println("FLASH button (GPIO0) pressed, executing action...");
+        attack.start(0);
+        delay(400);
+      }
+  #endif
+    
+  
+  #ifdef USE_DISPLAY
+  
+    if (digitalRead(upBtn) == LOW || digitalRead(downBtn) == LOW || digitalRead(selectBtn) == LOW || digitalRead(displayBtn) == LOW){
+      if(canBtnPress){
+        if(digitalRead(upBtn) == LOW) buttonPressed = 0;
+        else if(digitalRead(downBtn) == LOW) buttonPressed = 1;
+        else if(digitalRead(selectBtn) == LOW) buttonPressed = 2;
+        else if(digitalRead(displayBtn) == LOW) buttonPressed = 3;
+        canBtnPress = false;
+      }
+    }else if(!canBtnPress){
+      canBtnPress = true;
+      
+      // ===== UP =====
+      if (buttonPressed == 0 && curRow > 0) {
+        curRow--;
+        if (lrow - 1 < 0) {
+          lrow = rowsPerSite - 1;
+          curSite--;
+        } else lrow--;
+    
+      // ===== DOWN ===== 
+      } else if (buttonPressed == 1 && curRow < rows - 1) {
+        curRow++;
+        if (lrow + 1 >= rowsPerSite) {
+          lrow = 0;
+          curSite++;
+        } else lrow++;
+        
+      // ===== SELECT ===== 
+      } else if (buttonPressed == 2) {
+        //WiFi on/off
+        if (curRow == 0) {
+          if (wifiMode == "ON") stopWifi();
+          else startWifi();
+        
+        // ===== scan for APs ===== 
+        } else if (curRow == 1) {
+          startAPScan();
+          drawInterface();
+    
+        // ===== start,stop attack ===== 
+        } else if (curRow == 2) {
+          if (attackMode == "START" && apScan.getFirstTarget() > -1) attack.start(0);
+          else if (attackMode == "STOP") attack.stop(0);
+        } 
+        
+        // ===== select APs ===== 
+        else if (curRow >= 3) {
+          attack.stop(0);
+          apScan.select(curRow - 3);
+        }
+      }
+      // ===== DISPLAY ===== 
+      else if (buttonPressed == 3) {
+        displayOn = !displayOn;
+        display.clear();
+        display.display();
+      }
+    }
+    drawInterface();
+  #endif
   }
-  drawInterface();
-#endif
-
 }
