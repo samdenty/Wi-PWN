@@ -43,11 +43,13 @@ function autoReload() {
     setTimeout(function() {getResponse("ClientScanTime.json", function(responseText) {window.location.reload()}, function() {autoReload()})}, 3000);
 }
 
-function restart() {
+function restart(noIndication) {
     vibrate();
-    sL.className = "";
-    showLoading();
-    autoReload();
+    if (noIndication != true){
+        sL.className = "";
+        showLoading();
+        autoReload();
+    }
     getResponse("restartESP.json?", function(responseText) {
         if (responseText !== "true") {
             showMessage("Failed to restart Wi-PWN! (E23)");

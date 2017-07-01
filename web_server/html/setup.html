@@ -68,7 +68,7 @@
                                 </svg>
                                 <br>
                                 <b style="font-size:18px">Setup complete!</b>
-                                <br><span style="font-weight: 200">Reconnect to the new network</span>
+                                <br><span style="font-weight: 300">Reconnect to the new network</span>
                             </div>
                         </div>
                     </div>
@@ -94,6 +94,7 @@
             document.getElementById("h").innerHTML = "Setup Wi-PWN";
             document.title = "Setup Wi-PWN";
             document.cookie = "accept=true";
+            setTimeout(function(){document.getElementById("c3").className = "away"}, 500);
         }
         if (cookie.indexOf("accept=true") >= 0) {
             document.getElementById("c1").setAttribute("style", "transition: none;");
@@ -167,6 +168,7 @@
         <style>
         body {
             transition: background-color 0.3s ease;
+            padding-bottom: 15px;
         }
         
         footer,
@@ -190,6 +192,9 @@
             opacity: 1;
             height: 90px;
             margin-bottom: 30px;
+        }
+        .container {
+            min-height: initial;
         }
         </style>
     </div>

@@ -1056,7 +1056,7 @@ b {
 #card-wrapper {
 	width: 300%;
 }
-#card-wrapper:not(.accept) #c3 {
+#c3:not(.away) {
 	display: none;
 }
 #c1 svg {

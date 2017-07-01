@@ -97,6 +97,8 @@ function resetSettings() {
       if (responseText == "true") {
         getData();
         saveStatus.classList.add("success-save");
+        restart(true);
+        setTimeout(function(){window.location = "/"}, 5000)
       }
       else {
         showMessage("Failed to reset settings! (E20)");
