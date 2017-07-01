@@ -78,7 +78,8 @@ function saveSettings() {
     if (responseText == "true") {
       getData();
       saveStatus.classList.add("success-save");
-      var links = document.querySelectorAll("link[rel=stylesheet]"); for (var i = 0; i < links.length;i++) { var link = links[i]; if (link.rel === "stylesheet") {link.href += "?"; }} 
+      var uniqueKey = new Date();
+      document.getElementById('darkStyle').setAttribute('href', 'dark.css?' + uniqueKey.getTime());
     } else {
       saveStatus.classList.add("failed-save");
       showMessage("Failed to save settings! (E18)");

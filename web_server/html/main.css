@@ -207,7 +207,7 @@ body.error #error {
 	text-align: center;
 	font-size: 11px
 }
-body.error nav, body.error button, body.error .reboot, body.error input[type="checkbox"]:checked + label {
+body.error nav, body.error button:not(.secondary), body.error .reboot, body.error input[type="checkbox"]:checked + label {
 	background: #e53935 !important;
 	border-color: #e53935;
 }
@@ -1055,6 +1055,9 @@ b {
 }
 #card-wrapper {
 	width: 300%;
+}
+#card-wrapper:not(.accept) #c3 {
+	display: none;
 }
 #c1 svg {
 	fill: #29363C;

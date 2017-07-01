@@ -169,7 +169,7 @@ void loadSettingsHTML() {
   sendFile(200, "text/html", data_settingsHTML, sizeof(data_settingsHTML));
 }
 void load404() {
-  sendFile(200, "text/html", data_error404, sizeof(data_error404));
+  sendFile(404, "text/html", data_error404, sizeof(data_error404));
 }
 void loadInfoHTML(){
   sendFile(200, "text/html", data_infoHTML, sizeof(data_infoHTML));
@@ -200,8 +200,16 @@ void loadDarkMode() {
   if (settings.darkMode) {
     sendFile(200, "text/css;charset=UTF-8", data_darkModeCSS, sizeof(data_darkModeCSS));
   } else {
-    sendFile(200, "text/html", data_error404, sizeof(data_error404));
+    server.send(200, "text/html", "/* Dark mode disabled */");
   }
+}
+
+void loadDarkModeForce() {
+   sendFile(200, "text/css;charset=UTF-8", data_darkModeCSS, sizeof(data_darkModeCSS));
+}
+
+void loadRedirectHTML() {
+    server.send(302, "text/html", "<meta content='0; url=http://192.168.4.1'http-equiv='refresh'>");
 }
 
 
@@ -389,7 +397,7 @@ void saveSSID() {
 
 void restartESP() {
   server.send( 200, "text/json", "true");
-  ESP.reset();
+  ESP.restart();
 }
 
 void enableRandom() {
@@ -526,10 +534,12 @@ void setup() {
   /* ========== Web Server ========== */
   if (settings.newUser == 1) {
     /* Load certain files (only if newUser) */
-    server.onNotFound(loadSetupHTML);
+    server.onNotFound(loadRedirectHTML);
     server.on("/js/functions.js", loadFunctionsJS);
     server.on ("/main.css", loadStyle);
-    server.on ("/dark.css", loadDarkMode);
+    server.on ("/", loadSetupHTML);
+    server.on ("/index.html", loadSetupHTML);
+    server.on ("/dark.css", loadDarkModeForce);
     server.on("/ClientScanTime.json", sendClientScanTime);
     server.on("/settingsSave.json", saveSettings);
     server.on("/restartESP.json", restartESP);
