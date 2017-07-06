@@ -169,43 +169,43 @@ void loadSettingsHTML() {
   sendFile(200, "text/html", data_settingsHTML, sizeof(data_settingsHTML));
 }
 void load404() {
-  sendFile(404, "text/html", data_error404, sizeof(data_error404));
+  sendFile(404, "text/html", data_errorHTML, sizeof(data_errorHTML));
 }
 void loadInfoHTML(){
   sendFile(200, "text/html", data_infoHTML, sizeof(data_infoHTML));
 }
 
 void loadFunctionsJS() {
-  sendFile(200, "text/javascript", data_functionsJS, sizeof(data_functionsJS));
+  sendFile(200, "text/javascript", data_js_functionsJS, sizeof(data_js_functionsJS));
 }
 void loadScanJS() {
-  sendFile(200, "text/javascript", data_scanJS, sizeof(data_scanJS));
+  sendFile(200, "text/javascript", data_js_scanJS, sizeof(data_js_scanJS));
 }
 void loadUsersJS() {
-  sendFile(200, "text/javascript", data_usersJS, sizeof(data_usersJS));
+  sendFile(200, "text/javascript", data_js_usersJS, sizeof(data_js_usersJS));
 }
 void loadAttackJS() {
   attack.ssidChange = true;
-  sendFile(200, "text/javascript", data_attackJS, sizeof(data_attackJS));
+  sendFile(200, "text/javascript", data_js_attackJS, sizeof(data_js_attackJS));
 }
 void loadSettingsJS() {
-  sendFile(200, "text/javascript", data_settingsJS, sizeof(data_settingsJS));
+  sendFile(200, "text/javascript", data_js_settingsJS, sizeof(data_js_settingsJS));
 }
 
 void loadStyle() {
-  sendFile(200, "text/css;charset=UTF-8", data_styleCSS, sizeof(data_styleCSS));
+  sendFile(200, "text/css;charset=UTF-8", data_mainCSS, sizeof(data_mainCSS));
 }
 
 void loadDarkMode() {
   if (settings.darkMode) {
-    sendFile(200, "text/css;charset=UTF-8", data_darkModeCSS, sizeof(data_darkModeCSS));
+    sendFile(200, "text/css;charset=UTF-8", data_darkCSS, sizeof(data_darkCSS));
   } else {
     server.send(200, "text/html", "/* Dark mode disabled */");
   }
 }
 
 void loadDarkModeForce() {
-   sendFile(200, "text/css;charset=UTF-8", data_darkModeCSS, sizeof(data_darkModeCSS));
+   sendFile(200, "text/css;charset=UTF-8", data_darkCSS, sizeof(data_darkCSS));
 }
 
 void loadRedirectHTML() {
