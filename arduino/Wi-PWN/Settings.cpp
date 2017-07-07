@@ -136,7 +136,7 @@ void Settings::save() {
 
   if (debug) {
     info();
-    Serial.println("settings saved");
+    Serial.println("settings saved!");
   }
 }
 
@@ -149,7 +149,7 @@ void Settings::info() {
   Serial.println("password length: " + (String)passwordLen);
   Serial.println("channel: " + (String)apChannel);
   Serial.println("Scan hidden APs: " + (String)apScanHidden);
-  Serial.println("deauth reson: " + (String)(int)deauthReason);
+  Serial.println("deauth reason: " + (String)(int)deauthReason);
   Serial.println("attack timeout: " + (String)attackTimeout);
   Serial.println("attack packet rate: " + (String)attackPacketRate);
   Serial.println("client scan time: " + (String)clientScanTime);

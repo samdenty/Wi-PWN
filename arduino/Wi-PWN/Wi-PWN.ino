@@ -147,65 +147,65 @@ void stopWifi() {
 
 void loadSetupHTML() {
   if(warning){
-    sendFile(200, "text/html", data_setupHTML, sizeof(data_setupHTML));
+    sendFile(200, "text/html", data_setup_HTML, sizeof(data_setup_HTML));
   }else{
-    sendFile(200, "text/html", data_indexHTML, sizeof(data_indexHTML));
+    sendFile(200, "text/html", data_index_HTML, sizeof(data_index_HTML));
   }
 }
 void loadIndexHTML() {
   warning = false;
-  sendFile(200, "text/html", data_indexHTML, sizeof(data_indexHTML));
+  sendFile(200, "text/html", data_index_HTML, sizeof(data_index_HTML));
 }
 void loadUsersHTML() {
-  sendFile(200, "text/html", data_usersHTML, sizeof(data_usersHTML));
+  sendFile(200, "text/html", data_users_HTML, sizeof(data_users_HTML));
 }
 void loadAttackHTML() {
-  sendFile(200, "text/html", data_attackHTML, sizeof(data_attackHTML));
+  sendFile(200, "text/html", data_attack_HTML, sizeof(data_attack_HTML));
 }
 void loadDetectorHTML() {
-  sendFile(200, "text/html", data_detectorHTML, sizeof(data_detectorHTML));
+  sendFile(200, "text/html", data_detector_HTML, sizeof(data_detector_HTML));
 }
 void loadSettingsHTML() {
-  sendFile(200, "text/html", data_settingsHTML, sizeof(data_settingsHTML));
+  sendFile(200, "text/html", data_settings_HTML, sizeof(data_settings_HTML));
 }
 void load404() {
-  sendFile(404, "text/html", data_errorHTML, sizeof(data_errorHTML));
+  sendFile(404, "text/html", data_error_HTML, sizeof(data_error_HTML));
 }
 void loadInfoHTML(){
-  sendFile(200, "text/html", data_infoHTML, sizeof(data_infoHTML));
+  sendFile(200, "text/html", data_info_HTML, sizeof(data_info_HTML));
 }
 
 void loadFunctionsJS() {
-  sendFile(200, "text/javascript", data_js_functionsJS, sizeof(data_js_functionsJS));
+  sendFile(200, "text/javascript", data_functions_JS, sizeof(data_functions_JS));
 }
 void loadScanJS() {
-  sendFile(200, "text/javascript", data_js_scanJS, sizeof(data_js_scanJS));
+  sendFile(200, "text/javascript", data_scan_JS, sizeof(data_scan_JS));
 }
 void loadUsersJS() {
-  sendFile(200, "text/javascript", data_js_usersJS, sizeof(data_js_usersJS));
+  sendFile(200, "text/javascript", data_users_JS, sizeof(data_users_JS));
 }
 void loadAttackJS() {
   attack.ssidChange = true;
-  sendFile(200, "text/javascript", data_js_attackJS, sizeof(data_js_attackJS));
+  sendFile(200, "text/javascript", data_attack_JS, sizeof(data_attack_JS));
 }
 void loadSettingsJS() {
-  sendFile(200, "text/javascript", data_js_settingsJS, sizeof(data_js_settingsJS));
+  sendFile(200, "text/javascript", data_settings_JS, sizeof(data_settings_JS));
 }
 
 void loadStyle() {
-  sendFile(200, "text/css;charset=UTF-8", data_mainCSS, sizeof(data_mainCSS));
+  sendFile(200, "text/css;charset=UTF-8", data_main_CSS, sizeof(data_main_CSS));
 }
 
 void loadDarkMode() {
   if (settings.darkMode) {
-    sendFile(200, "text/css;charset=UTF-8", data_darkCSS, sizeof(data_darkCSS));
+    sendFile(200, "text/css;charset=UTF-8", data_dark_CSS, sizeof(data_dark_CSS));
   } else {
     server.send(200, "text/html", "/* Dark mode disabled */");
   }
 }
 
 void loadDarkModeForce() {
-   sendFile(200, "text/css;charset=UTF-8", data_darkCSS, sizeof(data_darkCSS));
+   sendFile(200, "text/css;charset=UTF-8", data_dark_CSS, sizeof(data_dark_CSS));
 }
 
 void loadRedirectHTML() {
@@ -661,11 +661,13 @@ void loop() {
         wifi_set_channel(detector.curChannel);
       }
     }
+  } else if (settings.newUser == 1) {
+    dnsServer.processNextRequest();
+    server.handleClient();
   } else {
     if (clientScan.sniffing) {
       if (clientScan.stop()) startWifi();
     } else {
-      if (settings.newUser == 1) dnsServer.processNextRequest();
       server.handleClient();
       attack.run();
     }
