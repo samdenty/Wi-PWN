@@ -6,9 +6,6 @@
 </head>
 
 <body>
-    <nav id="nav">
-        <div id="error"></div>
-    </nav>
     <div class="main-wrap" style="top:0 !important">
         <div id="spinner-container"></div>
         <div class="container">
@@ -78,6 +75,7 @@
                 </div>
             </div>
         </div>
+        <div id="notification"></div>
         <footer></footer>
         <script src="js/functions.js"></script>
         <script>
@@ -141,18 +139,18 @@
                             document.getElementById("ss").className = "card-basic s-s";
                             document.getElementById("h").innerHTML = "Setup Complete";
                         } else {
-                            showMessage("Failed to restart Wi-PWN! (E26)");
+                            notify("Failed to restart Wi-PWN! (E26)");
                             showLoading("hide");
                         }
                     }, function() {
-                        showMessage("Failed to restart Wi-PWN! (E27)");
+                        notify("Failed to restart Wi-PWN! (E27)");
                         showLoading("hide");
                     });
                 } else {
-                    showMessage("Failed to save settings! (E28)");
+                    notify("Failed to save settings! (E28)");
                 }
             }, function() {
-                showMessage("Failed to save settings! (E29)");
+                notify("Failed to save settings! (E29)");
             });
         }
         function toTop() {
@@ -170,12 +168,12 @@
             transition: background-color 0.3s ease;
             padding-bottom: 15px;
         }
-        
+
         footer,
         .reboot-container {
             display: none;
         }
-        
+
         @media (min-width:520px) {
             .container {
                 position: fixed;
@@ -187,7 +185,7 @@
                 transform: -ms-translate(-50%, -50%)
             }
         }
-        
+
         .success-svg {
             opacity: 1;
             height: 90px;

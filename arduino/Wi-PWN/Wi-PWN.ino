@@ -10,13 +10,16 @@
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
-#include "./DNSServer.h"       // Patched lib
+#ifdef USE_CAPTIVE_PORTAL
+  #include "./DNSServer.h"       // Patched lib
+#endif
 #include <ESP8266WebServer.h>
 #include <FS.h>
 
-#define resetPin 4    /* <-- comment out or change if you need GPIO 4 for other purposes */
-//#define USE_DISPLAY /* <-- uncomment that if you want to use the display */
-//#define USE_LED16   /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
+#define resetPin 4           /* <-- comment out or change if you need GPIO 4 for other purposes */
+//#define USE_DISPLAY        /* <-- uncomment that if you want to use the display */
+//#define USE_LED16          /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
+//#define USE_CAPTIVE_PORTAL /* <-- enable captive portal (redirects all pages to 192.168.4.1) - most devices flood the ESP8266 with requests */
 
 
 
@@ -63,10 +66,11 @@ extern "C" {
   #include "user_interface.h"
 }
 
-
-const byte        DNS_PORT = 53;          // Capture DNS requests on port 53
-IPAddress         apIP(192, 168, 4, 1);   // IP Address for Wi-PWN (Changing this will cause unwanted side effects - app malfunctioning)
-DNSServer         dnsServer;              // Create the DNS object
+#ifdef USE_CAPTIVE_PORTAL
+  const byte        DNS_PORT = 53;          // Capture DNS requests on port 53
+  IPAddress         apIP(192, 168, 4, 1);   // IP Address for Wi-PWN (Changing this will cause unwanted side effects - app malfunctioning)
+  DNSServer         dnsServer;              // Create the DNS object
+#endif
 ESP8266WebServer server(80);              // HTTP server
 
 #include <EEPROM.h>
@@ -126,11 +130,16 @@ void startWifi() {
   Serial.println("\nStarting WiFi AP:");
   WiFi.mode(WIFI_STA);
   wifi_set_promiscuous_rx_cb(sniffer);
-  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
+  #ifdef USE_CAPTIVE_PORTAL
+    WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
+  #endif
   WiFi.softAP((const char*)settings.ssid.c_str(), (const char*)settings.password.c_str(), settings.apChannel, settings.ssidHidden); //for an open network without a password change to:  WiFi.softAP(ssid);
   Serial.println("SSID          : '" + settings.ssid+"'");
   Serial.println("Password      : '" + settings.password+"'");
-  if (settings.newUser == 1) {dnsServer.start(DNS_PORT, "*", apIP);Serial.println("Captive Portal: Running");} else {Serial.println("Captive Portal: Stopped");}
+  #ifdef USE_CAPTIVE_PORTAL
+    if (settings.newUser == 1) {dnsServer.start(DNS_PORT, "*", apIP);Serial.println("Captive Portal: Running");} else {Serial.println("Captive Portal: Stopped");}
+  #endif
+  if (settings.newUser == 1) {Serial.println("Redirecting to setup page");}
   Serial.println("-----------------------------------------------");
   if (settings.password.length() < 8) Serial.println("WARNING: password must have at least 8 characters!");
   if (settings.ssid.length() < 1 || settings.ssid.length() > 32) Serial.println("WARNING: SSID length must be between 1 and 32 characters!");
@@ -662,7 +671,9 @@ void loop() {
       }
     }
   } else if (settings.newUser == 1) {
-    dnsServer.processNextRequest();
+    #ifdef USE_CAPTIVE_PORTAL
+      dnsServer.processNextRequest();
+    #endif
     server.handleClient();
   } else {
     if (clientScan.sniffing) {

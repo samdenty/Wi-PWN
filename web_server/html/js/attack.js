@@ -1,16 +1,16 @@
-var selectedAPs = getE("selectedAPs");
-var selectedClients = getE("selectedClients");
-var table = document.getElementsByTagName("table")[0];
-var ssidList = document.getElementsByTagName("table")[3];
-var saved = getE("saved");
-var ssidCounter = getE("ssidCounter");
-var ssidContainer = getE("ssidContainer");
-var ssid = getE("ssid");
-var num = getE("num");
-var randomBtn = getE("randomBtn");
-var resultInterval;
-var randomIntrvl = 5;
-var data = {};
+var selectedAPs = getE("selectedAPs"),
+    selectedClients = getE("selectedClients"),
+    table = document.getElementsByTagName("table")[0],
+    ssidList = document.getElementsByTagName("table")[3],
+    saved = getE("saved"),
+    ssidCounter = getE("ssidCounter"),
+    ssidContainer = getE("ssidContainer"),
+    ssid = getE("ssid"),
+    num = getE("num"),
+    randomBtn = getE("randomBtn"),
+    resultInterval = '',
+    randomIntrvl = 5,
+    data = {};
 
 var randSSID = document.getElementById('randSSID');
 randSSID.addEventListener("change", switchRandom, false);
@@ -96,7 +96,7 @@ function startStop(num) {
     getResponse("attackStart.json?num=" + num, function(responseText) {
         getE("status" + num).innerHTML = "...";
         if (responseText == "true") getResults();
-        else showMessage("No network(s) selected! (E15)");
+        else notify("No network(s) selected! (E15)");
     });
 }
 
@@ -108,7 +108,7 @@ function addSSID() {
     } else {
         var _ssidName = ssid.value;
         if (_ssidName.length > 0) {
-            if (data.length >= 64) showMessage("SSID list full (E16)", 2500);
+            if (data.length >= 64) notify("SSID list full (E16)", 2500);
             else {
                 saved.innerHTML = "";
                 getResponse("addSSID.json?ssid=" + _ssidName + "&num=" + num.value, getResults);
@@ -126,22 +126,20 @@ function cloneSSID(_ssidName) {
 }
 
 function deleteSSID(num) {
-    saved.innerHTML = "";
     getResponse("deleteSSID.json?num=" + num, getResults);
 }
 
 function clearSSID() {
-    saved.innerHTML = "";
     getResponse("clearSSID.json", getResults);
 }
 
 function saveSSID() {
-    saved.innerHTML = "Saved successfully!";
+    indicate(true);
     getResponse("saveSSID.json", getResults);
 }
 
 function resetSSID() {
-    saved.innerHTML = "Saved successfully!";
+    indicate(true);
     getResponse("resetSSID.json", getResults);
 }
 

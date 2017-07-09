@@ -1,12 +1,12 @@
-var table = document.getElementsByTagName('table')[0];
-var scanBtn = getE("startScan");
-var clientsFound = getE("clientsFound");
-var scanStatus = getE("spinner-container");
-var clientNames = getE('clientNames');
-var nameListTable = getE('nameList');
-var res, scanTime;
-var selectAllState = 'not-checked';
-var tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th style="padding-left: 40px"></th></tr>';
+var table = document.getElementsByTagName('table')[0],
+    scanBtn = getE("startScan"),
+    clientsFound = getE("clientsFound"),
+    scanStatus = getE("spinner-container"),
+    clientNames = getE('clientNames'),
+    nameListTable = getE('nameList'),
+    res = '', scanTime = '',
+    selectAllState = 'not-checked',
+    tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th style="padding-left: 40px"></th></tr>';
 
 function compare(a, b) {
     if (a.p > b.p) return -1;
@@ -27,7 +27,7 @@ function getResults() {
         try {
             res = JSON.parse(responseText);
         } catch (e) {
-            showMessage("ERROR: Clear the client list. (E5)");
+            notify("ERROR: Clear the client list. (E5)");
             return;
         }
 
@@ -73,7 +73,7 @@ function getResults() {
         Waves.attach('.edit');
 
     }, function() {
-        showMessage("Reconnect to Wi-Fi network (E6)");
+        notify("Reconnect to Wi-Fi network (E6)");
         checkConnection();
     }, 3000);
 
@@ -85,7 +85,7 @@ function scan() {
             toggleBtn(true);
             checkConnection();
         } else {
-            showMessage("INFO: No Wi-Fi network(s) selected! (E7)'");
+            notify("INFO: No Wi-Fi network(s) selected! (E7)'");
         }
 
     });
@@ -94,7 +94,7 @@ function scan() {
 function select(num) {
     getResponse("clientSelect.json?num=" + num, function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'clientSelect.json' (E8)");
+        else notify("ERROR: Bad response 'clientSelect.json' (E8)");
     });
 }
 
@@ -112,7 +112,7 @@ function clearNameList() {
     if (confirm("Remove all saved users?") == true) {
         getResponse("clearNameList.json", function(responseText) {
             if (responseText == "true") getResults();
-            else showMessage("ERROR: Bad response 'clearNameList.json' (E9)");
+            else notify("ERROR: Bad response 'clearNameList.json' (E9)");
         });
     }
 }
@@ -125,7 +125,7 @@ function addClient() {
             var nameReset = document.getElementById('cName');
             macReset.value = '';
             nameReset.value = '';
-        } else showMessage("ERROR: Bad response 'addClient.json' (E10)");
+        } else notify("ERROR: Bad response 'addClient.json' (E10)");
     });
 }
 
@@ -135,7 +135,7 @@ function setName(id) {
     if (newName != null) {
         getResponse("setName.json?id=" + id + "&name=" + newName, function(responseText) {
             if (responseText == "true") getResults();
-            else showMessage("ERROR: Bad response 'editNameList.json' (E11)");
+            else notify("ERROR: Bad response 'editNameList.json' (E11)");
         });
     }
 }
@@ -146,7 +146,7 @@ function editNameList(id) {
     if (newName != null) {
         getResponse("editNameList.json?id=" + id + "&name=" + newName, function(responseText) {
             if (responseText == "true") getResults();
-            else showMessage("ERROR: Bad response 'editNameList.json' (E12)");
+            else notify("ERROR: Bad response 'editNameList.json' (E12)");
         });
     }
 }
@@ -154,14 +154,14 @@ function editNameList(id) {
 function deleteName(id) {
     getResponse("deleteName.json?num=" + id, function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'deleteName.json' (E13)");
+        else notify("ERROR: Bad response 'deleteName.json' (E13)");
     });
 }
 
 function add(id) {
     getResponse("addClientFromList.json?num=" + id, function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'addClientFromList.json' (E14)");
+        else notify("ERROR: Bad response 'addClientFromList.json' (E14)");
     });
 }
 

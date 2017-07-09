@@ -1,14 +1,14 @@
-var table = document.getElementsByTagName('table')[0];
-var networkInfo = getE('networksFound');
-var scanInfo = getE('spinner-container');
-var apMAC = getE('apMAC');
-var startStopScan = getE('startStopScan');
-var selectAll = getE('selectAll');
-var autoScan = false;
-var tableHeaderHTML = '<tr><th>Signal</th><th>SSID</th><th>Security</th><th>Ch.</th><th style="padding-left: 40px"></th></tr>';
-var selectAllState = 'not-checked';
-var url = window.location.href;
-var wifiIndicator, securityState;
+var table = document.getElementsByTagName('table')[0],
+    networkInfo = getE('networksFound'),
+    scanInfo = getE('spinner-container'),
+    apMAC = getE('apMAC'),
+    startStopScan = getE('startStopScan'),
+    selectAll = getE('selectAll'),
+    autoScan = false,
+    tableHeaderHTML = '<tr><th>Signal</th><th>SSID</th><th>Security</th><th>Ch.</th><th style="padding-left: 40px"></th></tr>',
+    selectAllState = 'not-checked',
+    url = window.location.href,
+    wifiIndicator, securityState;
 
 function toggleScan(onoff) {
     if (onoff && !autoScan) {
@@ -80,7 +80,7 @@ function scan() {
     toggleScan(false);
     getResponse("APScan.json", function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'APScan.json' (E3)");
+        else notify("ERROR: Bad response 'APScan.json' (E3)");
         setTimeout(function(){toggleScan(true)}, 700);
     });
 }
@@ -88,7 +88,7 @@ function scan() {
 function select(num) {
     getResponse("APSelect.json?num=" + num, function(responseText) {
         if (responseText == "true") getResults();
-        else showMessage("ERROR: Bad response 'APSelect.json' (E4)");
+        else notify("ERROR: Bad response 'APSelect.json' (E4)");
     });
 }
 

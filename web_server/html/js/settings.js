@@ -1,33 +1,32 @@
-var ssid = getE('ssid');
-var ssidHidden = getE('ssidHidden');
-var password = getE('password');
-var apChannel = getE('apChannel');
-var apScanHidden = getE('apScanHidden');
-var scanTime = getE('scanTime');
-var timeout = getE('timeout');
-var deauthReason = getE('deauthReason');
-var packetRate = getE('packetRate');
-var clientNames = getE('clientNames');
-var ssidEnc = getE('ssidEnc');
-var useLed = getE('useLed');
-/*var channelHop = getE('channelHop');*/
-var multiAPs = getE('multiAPs');
-var multiAttacks = getE('multiAttacks');
-var cMac = getE('cMac');
-var cName = getE('cName');
-var macInterval = getE('macInterval');
-var beaconInterval = getE('beaconInterval');
-var ledPin = getE('ledPin');
-var darkMode = getE('darkMode');
-var saveStatus = getE('spinner-container');
-var res;
+var ssid = getE('ssid'),
+    ssidHidden = getE('ssidHidden'),
+    password = getE('password'),
+    apChannel = getE('apChannel'),
+    apScanHidden = getE('apScanHidden'),
+    scanTime = getE('scanTime'),
+    timeout = getE('timeout'),
+    deauthReason = getE('deauthReason'),
+    packetRate = getE('packetRate'),
+    clientNames = getE('clientNames'),
+    ssidEnc = getE('ssidEnc'),
+    useLed = getE('useLed'),
+    channelHop = getE('channelHop'),
+    multiAPs = getE('multiAPs'),
+    multiAttacks = getE('multiAttacks'),
+    cMac = getE('cMac'),
+    cName = getE('cName'),
+    macInterval = getE('macInterval'),
+    beaconInterval = getE('beaconInterval'),
+    ledPin = getE('ledPin'),
+    darkMode = getE('darkMode'),
+    res = '';
 
 function getData() {
   getResponse("settings.json", function(responseText) {
   try {
         res = JSON.parse(responseText);
     } catch(e) {
-        showMessage("ERROR: Reset the settings.  (E17)");
+        notify("ERROR: Reset the settings.  (E17)");
     return;
     }
   ssid.value = res.ssid;
@@ -52,7 +51,7 @@ function getData() {
 }
 
 function saveSettings() {
-  saveStatus.className = "";
+  indicate();
   showLoading();
   var url = "settingsSave.json";
   url += "?ssid=" + ssid.value;
@@ -77,16 +76,16 @@ function saveSettings() {
   getResponse(url, function(responseText) {
     if (responseText == "true") {
       getData();
-      saveStatus.classList.add("success-save");
+      indicate(true);
       var uniqueKey = new Date();
       document.getElementById('darkStyle').setAttribute('href', 'dark.css?' + uniqueKey.getTime());
     } else {
-      saveStatus.classList.add("failed-save");
-      showMessage("Failed to save settings! (E18)");
+      indicate(false);
+      notify("Failed to save settings! (E18)");
     }
   }, function() {
-      saveStatus.classList.add("failed-save");
-      showMessage("Failed to save settings! (E19)");
+      indicate(false);
+      notify("Failed to save settings! (E19)");
   });
 }
 
@@ -96,17 +95,17 @@ function resetSettings() {
     getResponse("settingsReset.json", function(responseText) {
       if (responseText == "true") {
         getData();
-        saveStatus.classList.add("success-save");
+        indicate(true);
         restart(true);
-        setTimeout(function(){window.location = "/"}, 5000)
+        setTimeout(function(){window.location = "/"}, 3000)
       }
       else {
-        showMessage("Failed to reset settings! (E20)");
-        saveStatus.classList.add("failed-save");
+        notify("Failed to reset settings! (E20)");
+        indicate(false);
       }
     }, function() {
-        showMessage("Failed to reset settings! (E21)");
-        saveStatus.classList.add("failed-save");
+        notify("Failed to reset settings! (E21)");
+        indicate(false);
     });
   }
 }

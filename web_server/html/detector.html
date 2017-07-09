@@ -18,7 +18,6 @@
             <a href="settings.html">Settings</a>
             <a class="right" href="info.html">Info</a>
         </div>
-        <div id="error"></div>
     </nav>
     <script>
     /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
@@ -71,6 +70,7 @@
                 </div>
             </div>
         </div>
+        <div id="notification"></div>
         <footer></footer>
         <script src="js/functions.js"></script>
         <script>
@@ -86,7 +86,7 @@
             try {
                 res = JSON.parse(responseText);
             } catch (e) {
-                showMessage("ERROR: Reset the settings.  (E25)");
+                notify("ERROR: Reset the settings.  (E25)");
                 return;
             }
 
@@ -125,21 +125,21 @@
                             if (responseText == "true") {
                                 showLoading("hide");
                             } else {
-                                showMessage("Failed to start detector! (E26)");
+                                notify("Failed to start detector! (E26)");
                             }
                         }, function() {
-                            showMessage("Failed to start detector! (E27)");
+                            notify("Failed to start detector! (E27)");
                         });
                     } else {
                         saveStatus.classList.add("success-save");
                     }
                 } else {
                     if (run == false) saveStatus.classList.add("failed-save");
-                    showMessage("Failed to save settings! (E18)");
+                    notify("Failed to save settings! (E18)");
                 }
             }, function() {
                 if (run == false) saveStatus.classList.add("failed-save");
-                showMessage("Failed to save settings! (E19)");
+                notify("Failed to save settings! (E19)");
             });
         }
         </script>
