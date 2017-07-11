@@ -30,8 +30,8 @@ function ascii2hexCstyle {
 
 function constFileName {
    extension=$(echo $1 | egrep -io "(css|js|html)$" | tr "[:lower:]" "[:upper:]")
-   file=$(echo $1 | sed 's/\.css//' | sed 's/\.html//' | sed 's/\.js//' | sed 's/\.\///' | tr '/' '_' | tr '.' '_')
-   echo $file$extension
+   file=$(echo $1 | sed 's/\.\///' | sed 's/js\///' | cut -d '.' -f 1)
+   echo ${file}_${extension}
 }
 
 
