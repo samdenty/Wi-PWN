@@ -35,7 +35,7 @@
 13. Go to the [arduino/SDK_fix](https://github.com/samdenty99/Wi-PWN/arduino/SDK_fix) folder of this project
 
 14. Copy `ESP8266Wi-Fi.cpp` and `ESP8266Wi-Fi.h` to
-    `C:\%username%\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.0.0\libraries\ESP8266WiFi\src`
+    `C:\Users\%username%\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.0.0\libraries\ESP8266WiFi\src`
 
 16. Open `arduino/Wi-PWN/esp8266_deauther.ino` in Arduino
 

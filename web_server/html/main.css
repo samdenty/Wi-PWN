@@ -13,7 +13,6 @@ body
        -moz-user-select: none !important;
         -ms-user-select: none !important;
             user-select: none !important;
-    transition: background .3s ease;
 
     -webkit-touch-callout: none !important;
     -webkit-tap-highlight-color: transparent;
@@ -149,15 +148,15 @@ h1
     overflow-y: scroll;
 
     min-height: calc(100vh - 300px);
-    margin-top: 30px;
+    transform: translate(0,30px);
 
-    transition: ease .3s margin-top, ease .4s opacity;
+    transition: ease .3s transform, ease .3s opacity;
 
     opacity: 0;
 }
 .fadeIn
 {
-    margin-top: 0;
+    transform: translate(0);
 
     opacity: 1;
 }
@@ -704,11 +703,12 @@ label.checkbox:active:before
 
     position: fixed;
     z-index: 1;
-    bottom: -70px;
+    bottom: 0;
+    transform: translate(0,70px);
 
     padding: 10px 25px;
 
-    transition: bottom .3s ease, opacity .5s ease;
+    transition: transform .3s ease, opacity .5s ease;
 
     opacity: 0;
     color: #fff;
@@ -716,7 +716,7 @@ label.checkbox:active:before
 }
 .show #notification
 {
-    bottom: 0;
+    transform: translate(0);
 
     opacity: 1;
 }
@@ -754,7 +754,7 @@ label.checkbox:active:before
     }
     .show #notification
     {
-        bottom: 15px;
+        transform: translate(0,-15px);
     }
     ::-webkit-scrollbar
     {

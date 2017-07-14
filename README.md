@@ -7,6 +7,7 @@ ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](h
 
 - Fluent [Material Design](https://material.io/guidelines/) interface
 - Improved UX — with optional Dark Mode
+- Integrated [deauth detector](https://github.com/spacehuhn/deauth_detector)
 
 **List of [Upcoming features/Bug fixes](https://goo.gl/LQXQZw)**
 
@@ -19,8 +20,8 @@ ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](h
   - [How it works](#how-it-works)
   - [How to protect against it](#how-to-protect-against-it)
 - [Installation](#installation)
-  - [Flashing with NodeMCU-Flasher](#Method-1:-Flashing-with-NodeMCU-Flasher)  
-  - [Compiling with Arduino](#Method-2:-Compiling-with-Arduino)
+  - [Flashing with NodeMCU-Flasher](#nodemcu)  
+  - [Compiling with Arduino](#arduino)
 - [How to use it](#how-to-use)
 - [FAQ](#faq)
 - [License](#license)
@@ -46,7 +47,7 @@ Because these management packets are unencrypted, you just need the MAC address 
 
 With the [802.11w-2009](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) updated standards, management frames are encrypted by default.
 
-[802.11w](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) is rarely used in the real world as both the router **and the client device** need to support this standard, otherwise they won't be able to connect to the routers. 
+[802.11w](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) is rarely used in the real world as both the router **and the client device** need to support this standard, otherwise they won't be able to connect to the routers.
 
 Updating to the [802.11w](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) standard is often expensive and difficult due to the vast devices of legacy devices not supporting the new standard. Because of the maintenance nightmare, over 95% of devices use the vulnerable 802.11 standard — even though newer devices support newer standards.
 
@@ -63,7 +64,7 @@ I would recommend getting a USB breakout/developer board, mainly due to the 4Mb 
 In order to upload the Wi-PWN firmware, you can use one of two methods. The first method is easier overall but using Arduino is better for debugging.
 **YOU ONLY NEED TO DO ONE OF THE INSTALLATION METHODS!**
 
-### Method 1: Flashing with NodeMCU-Flasher  
+### <a name="nodemcu"></a>Method 1: Flashing with NodeMCU-Flasher  
 
 1. [Download](https://github.com/samdenty99/Wi-PWN/releases/latest)   the current release of Wi-PWN
 
@@ -75,7 +76,7 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 6. Browse for the `.bin` file you just downloaded and click open.
 7. Switch back to the `Operation` tab and click <kbd>Flash(F)</kbd>.
 
-### Method 2: Compiling with Arduino
+### <a name="arduino"></a>Method 2: Compiling with Arduino
 
 1. [Download the source code](https://github.com/samdenty99/Wi-PWN/archive/master.zip) of this project.
 
@@ -103,21 +104,24 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 
 12. Just before the last line `#endif`, add the following:
 
+<b></b>
+
     typedef void (*freedom_outside_cb_t)(uint8 status);
-    int wifi_register_send_pkt_freedom_cb(freedom_outside_cb_t cb);  
+    int wifi_register_send_pkt_freedom_cb(freedom_outside_cb_t cb);
     void wifi_unregister_send_pkt_freedom_cb(void);
-    int wifi_send_pkt_freedom(uint8 *buf, int len, bool sys_seq);  
-   <br>![screenshot of notepad, copy paste the right code](pictures/notepad_screenshot_1.JPG)
+    int wifi_send_pkt_freedom(uint8 *buf, int len, bool sys_seq);
+
+![screenshot of notepad, copy paste the right code](pictures/notepad_screenshot_1.JPG)
 
 13. Go to the [arduino/SDK_fix](https://github.com/samdenty99/Wi-PWN/arduino/SDK_fix) folder of this project
 
 14. Copy `ESP8266Wi-Fi.cpp` and `ESP8266Wi-Fi.h` to
-    `C:\%username%\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.0.0\libraries\ESP8266WiFi\src`
+    `C:\Users\%username%\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.0.0\libraries\ESP8266WiFi\src`
 
 16. Open `arduino/Wi-PWN/esp8266_deauther.ino` in Arduino
 
 17. Select your ESP8266 board at `Tools` > `Board` and the right port at `Tools` > `Port`  
-**If no port shows up you need to reinstall the drivers**, search online for chip part number + 'driver Windows' 
+**If no port shows up you need to reinstall the drivers**, search online for chip part number + 'driver Windows'
 
 18. Depending on your board you may have to adjust the `Tools` > `Board` > `Flash Frequency` and the `Tools` > `Board` > `Flash Size`. I used the `80MHz` Flash Frequency, and the `4M (1M SPIFFS)` Flash Size
 
@@ -154,7 +158,7 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 
 ## FAQ
 
-####Only able to connect to Wi-Fi network on some devices
+#### Only able to connect to Wi-Fi network on some devices
 
 This happens due to a channel conflict. Simply navigate to `192.168.4.1/settings.html` on a device that is able to connect to the Wi-Fi network and **change the Channel number** from `1` to any number upto 14
 
@@ -167,7 +171,7 @@ The ESP upload tool can't communicate with the chip
 - Make sure the right COM port is selected.
 
 
-####Deauth attack won't work
+#### Deauth attack won't work
 
 If you see 0 pkts/s on the website then you've made a mistake. Check that you have followed the the installation steps correctly and that the right SDK installed, it must be version 2.0.0!
 If it can send packets but your target doesn't loose its connection, then the Wi-Fi router either uses [802.11w](#how-to-protect-against-it) and it's protected against such attacks, or it communicates on the 5GHz band, which the ESP8266 doesn't support because of its 2.4GHz antenna.
@@ -193,12 +197,12 @@ Deauth attack: [https://en.wikipedia.org/wiki/Wi-Fi-deauthentication-attack](htt
 Deauth frame: [https://mrncciew.com/2014/10/11/802-11-mgmt-deauth-disassociation-frames/](https://mrncciew.com/2014/10/11/802-11-mgmt-deauth-disassociation-frames/)
 
 ESP8266:
- 
+
 - [https://wikipedia.org/wiki/ESP8266](https://wikipedia.org/wiki/ESP8266)
 - [https://espressif.com/en/products/hardware/esp8266ex/overview](https://espressif.com/en/products/hardware/esp8266ex/overview)
 
 Packet Injection with ESP8266:
- 
+
 - [http://hackaday.com/2016/01/14/inject-packets-with-an-esp8266/](http://hackaday.com/2016/01/14/inject-packets-with-an-esp8266/)
 - [http://bbs.espressif.com/viewtopic.php?f=7&t=1357&p=10205&hilit=Wi-Fi_pkt_freedom#p10205](http://bbs.espressif.com/viewtopic.php?f=7&t=1357&p=10205&hilit=Wi-Fi_pkt_freedom#p10205)
 - [https://github.com/pulkin/esp8266-injection-example](https://github.com/pulkin/esp8266-injection-example)

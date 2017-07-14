@@ -1,10 +1,11 @@
 /*
  ************************************************
  *         Wi-PWN firmware for ESP8266          *
+ *     https://github.com/samdenty99/Wi-PWN     *
  *            (c) 2017 Samuel Denty             *
  *----------------------------------------------*
  *  Wi-PWN based on spacehuhn/esp8266_deauther  *
- *            (c) 2017 Stefan Kremser           *
+ *              (c) Stefan Kremser              *
  ************************************************
 */
 
