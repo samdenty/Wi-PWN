@@ -15,8 +15,8 @@ install:
   - arduino --install-boards esp8266:esp8266
   - arduino --board $BD --save-prefs
   - arduino --pref "compiler.warning_level=all" --save-prefs
-  - git clone https://github.com/esp8266/Arduino/tree/master/libraries temp
-  - mv temp/.git /usr/local/share/arduino/libraries/.git
+  - git clone https://github.com/esp8266/Arduino temp
+  - mv temp/libraries /usr/local/share/arduino/libraries
   - rm -rf temp
   
 script:
