@@ -15,8 +15,9 @@ install:
   - arduino --install-boards esp8266:esp8266
   - arduino --board $BD --save-prefs
   - arduino --pref "compiler.warning_level=all" --save-prefs
-  
-  - git clone https://github.com/esp8266/Arduino/tree/master/libraries /usr/local/share/arduino/libraries
+  - git clone https://github.com/esp8266/Arduino/tree/master/libraries temp
+  - mv temp/.git /usr/local/share/arduino/libraries/.git
+  - rm -rf temp
   
 script:
   - arduino --verify --board $BD $PWD/arduino/Wi-PWN/Wi-PWN.ino
