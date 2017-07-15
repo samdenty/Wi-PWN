@@ -7,13 +7,20 @@ APScan::APScan() {
 bool APScan::start() {
   if (debug) {
     Serial.println("starting AP scan...");
-    Serial.println("C - MAC Address       - Signal - Type - SSID - Hidden");// - Vendor");
+    Serial.println("MAC - Ch - RSSI - Encrypt. - SSID - Hidden");// - Vendor");
   }
   aps._clear();
-  for (int i = 0; i < maxAPScanResults; i++) selected[i] = false;
+  results = 0;
+  for (int i = 0; i < maxAPScanResults; i++){
+    selected[i] = false;
+    String("").toCharArray(names[i], 33);
+  }
   results = WiFi.scanNetworks(false, settings.apScanHidden); // lets scanNetworks return hidden APs. (async = false & show_hidden = true)
+  if(results > maxAPScanResults) results = maxAPScanResults;
 
-  for (int i = 0; i < results && i < maxAPScanResults; i++) {
+  if (debug) Serial.println("Scan results: "+(String)results);
+  
+  for (int i = 0; i < results; i++) {
     Mac _ap;
     _ap.set(WiFi.BSSID(i)[0], WiFi.BSSID(i)[1], WiFi.BSSID(i)[2], WiFi.BSSID(i)[3], WiFi.BSSID(i)[4], WiFi.BSSID(i)[5]);
     aps.add(_ap);
@@ -190,7 +197,7 @@ void APScan::sendResults() {
   if(settings.multiAPs) json += "1";
   else json += "0";
   json += "\"}";
-  
+
   sendToBuffer(json);
   sendBuffer();
 
@@ -227,7 +234,7 @@ void APScan::sort() {
   if (debug) Serial.println("sorting APs ");
 
   /* I know, it's bubble sort... but it works and that's the main thing! ;) (feel free to improve it tho) */
-  
+
   for (int i = 0; i < results - 1; i++) {
     Serial.println("--------------");
     for (int h = 0; h < results - i - 1; h++) {
@@ -261,7 +268,7 @@ void APScan::sort() {
         Mac tmpMac = aps._get(h);
         aps.set(h,aps._get(h+1));
         aps.set(h+1,tmpMac);
-        
+
       } else Serial.println((String)rssi[h] + " < " + (String)rssi[h + 1]);
     }
   }

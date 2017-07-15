@@ -111,7 +111,7 @@ void drawInterface() {
       if (i == 0) display.drawString(3, i * fontSize, " -->  WiFi " + wifiMode);
       else if (i == 1) display.drawString(3, i * fontSize, " -->  " + scanMode);
       else if (i == 2) display.drawString(3, i * fontSize, " -->  " + attackMode + " attack");
-      else if (i - 3 <= apScan.results) {
+      else if (i - 3 < apScan.results) {
         display.drawString(3, _lrow * fontSize, apScan.getAPName(i - 3));
         if (apScan.getAPSelected(i - 3)) {
           display.drawVerticalLine(1, _lrow * fontSize, fontSize);
@@ -438,6 +438,25 @@ void saveSettings() {
       settings.apChannel = server.arg("apChannel").toInt();
     }
   }
+  if (server.hasArg("macAp")) {
+    String macStr = server.arg("macAp");
+    macStr.replace(":","");
+    Mac tempMac;
+     if(macStr.length() == 12){
+       for(int i=0;i<6;i++){
+         const char* val = macStr.substring(i*2,i*2+2).c_str();
+         uint8_t valByte = strtoul(val, NULL, 16);
+         tempMac.setAt(valByte,i);
+       }
+       if(tempMac.valid()) settings.macAP.set(tempMac);
+     } else if(macStr.length() == 0){
+       settings.macAP.set(settings.defaultMacAP);
+     }
+  }
+  if (server.hasArg("randMacAp")) {
+    if (server.arg("randMacAp") == "false") settings.isMacAPRand = false;
+    else settings.isMacAPRand = true;
+  }
   if (server.hasArg("ssidEnc")) {
     if (server.arg("ssidEnc") == "false") settings.attackEncrypted = false;
     else settings.attackEncrypted = true;
@@ -472,7 +491,7 @@ void saveSettings() {
     else settings.multiAttacks = true;
   }
   
-  if (server.hasArg("ledPin")) settings.ledPin = server.arg("ledPin").toInt();
+  if (server.hasArg("ledPin")) settings.setLedPin(server.arg("ledPin").toInt());
   if(server.hasArg("macInterval")) settings.macInterval = server.arg("macInterval").toInt();
 
   if (server.hasArg("darkMode")) {
@@ -519,7 +538,9 @@ void resetSettings() {
 }
 
 void setup() {
-  
+
+  randomSeed(os_random());
+
 #ifdef USE_LED16
   pinMode(16, OUTPUT);
   digitalWrite(16, LOW);
@@ -534,8 +555,13 @@ void setup() {
   
   settings.load();
   if (debug) settings.info();
+  settings.syncMacInterface();
   nameList.load();
   ssidList.load();
+
+  attack.refreshLed();
+
+  delay(500); // Prevent bssid leak
 
   startWifi();
   attack.stopAll();
@@ -618,12 +644,12 @@ void setup() {
 
   display.clear();
   display.setFont(ArialMT_Plain_16);
-  display.drawString(0, 0, "ESP8266");
+  display.drawString(0, 0, "Wi-PWN");
   display.setFont(ArialMT_Plain_24);
   display.drawString(0, 16, "Deauther");
   display.setFont(ArialMT_Plain_10);
   display.drawString(0, 40, "Copyright (c) 2017");
-  display.drawString(0, 50, "Stefan Kremser");
+  display.drawString(0, 50, "Sam Denty");
   display.display();
 
   display.setFont(Roboto_Mono_8);
@@ -700,67 +726,68 @@ void loop() {
   #endif
     
   
-  #ifdef USE_DISPLAY
+#ifdef USE_DISPLAY
+
+  if (digitalRead(upBtn) == LOW || digitalRead(downBtn) == LOW || digitalRead(selectBtn) == LOW || digitalRead(displayBtn) == LOW){
+    if(canBtnPress){
+      if(digitalRead(upBtn) == LOW) buttonPressed = 0;
+      else if(digitalRead(downBtn) == LOW) buttonPressed = 1;
+      else if(digitalRead(selectBtn) == LOW) buttonPressed = 2;
+      else if(digitalRead(displayBtn) == LOW) buttonPressed = 3;
+      canBtnPress = false;
+    }
+  }else if(!canBtnPress){
+    canBtnPress = true;
+    
+    // ===== UP =====
+    if (buttonPressed == 0 && curRow > 0) {
+      curRow--;
+      if (lrow - 1 < 0) {
+        lrow = rowsPerSite - 1;
+        curSite--;
+      } else lrow--;
   
-    if (digitalRead(upBtn) == LOW || digitalRead(downBtn) == LOW || digitalRead(selectBtn) == LOW || digitalRead(displayBtn) == LOW){
-      if(canBtnPress){
-        if(digitalRead(upBtn) == LOW) buttonPressed = 0;
-        else if(digitalRead(downBtn) == LOW) buttonPressed = 1;
-        else if(digitalRead(selectBtn) == LOW) buttonPressed = 2;
-        else if(digitalRead(displayBtn) == LOW) buttonPressed = 3;
-        canBtnPress = false;
-      }
-    }else if(!canBtnPress){
-      canBtnPress = true;
+    // ===== DOWN ===== 
+    } else if (buttonPressed == 1 && curRow < rows - 1) {
+      curRow++;
+      if (lrow + 1 >= rowsPerSite) {
+        lrow = 0;
+        curSite++;
+      } else lrow++;
       
-      // ===== UP =====
-      if (buttonPressed == 0 && curRow > 0) {
-        curRow--;
-        if (lrow - 1 < 0) {
-          lrow = rowsPerSite - 1;
-          curSite--;
-        } else lrow--;
-    
-      // ===== DOWN ===== 
-      } else if (buttonPressed == 1 && curRow < rows - 1) {
-        curRow++;
-        if (lrow + 1 >= rowsPerSite) {
-          lrow = 0;
-          curSite++;
-        } else lrow++;
-        
-      // ===== SELECT ===== 
-      } else if (buttonPressed == 2) {
-        //WiFi on/off
-        if (curRow == 0) {
-          if (wifiMode == "ON") stopWifi();
-          else startWifi();
-        
-        // ===== scan for APs ===== 
-        } else if (curRow == 1) {
-          startAPScan();
-          drawInterface();
-    
-        // ===== start,stop attack ===== 
-        } else if (curRow == 2) {
-          if (attackMode == "START" && apScan.getFirstTarget() > -1) attack.start(0);
-          else if (attackMode == "STOP") attack.stop(0);
-        } 
-        
-        // ===== select APs ===== 
-        else if (curRow >= 3) {
-          attack.stop(0);
-          apScan.select(curRow - 3);
-        }
-      }
-      // ===== DISPLAY ===== 
-      else if (buttonPressed == 3) {
-        displayOn = !displayOn;
-        display.clear();
-        display.display();
+    // ===== SELECT ===== 
+    } else if (buttonPressed == 2) {
+      
+      // ===== WiFi on/off =====
+      if (curRow == 0) {
+        if (wifiMode == "ON") stopWifi();
+        else startWifi();
+      
+      // ===== scan for APs ===== 
+      } else if (curRow == 1) {
+        startAPScan();
+        drawInterface();
+  
+      // ===== start,stop attack ===== 
+      } else if (curRow == 2) {
+        if (attackMode == "START" && apScan.getFirstTarget() > -1) attack.start(0);
+        else if (attackMode == "STOP") attack.stop(0);
+      } 
+      
+      // ===== select APs ===== 
+      else if (curRow >= 3) {
+        attack.stop(0);
+        apScan.select(curRow - 3);
       }
     }
-    drawInterface();
-  #endif
+    // ===== DISPLAY ===== 
+    else if (buttonPressed == 3) {
+      displayOn = !displayOn;
+      display.clear();
+      display.display();
+    }
+  }
+  drawInterface();
+#endif
   }
 }

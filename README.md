@@ -1,7 +1,30 @@
-<p align="center"><img src="pictures/main-banner.png" height="140px"><br></p>
-
 <p align="center">
-<a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN"><img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg"></a>&nbsp;&nbsp;<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch">&nbsp;&nbsp;<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star">&nbsp;&nbsp;<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork"><hr></p>
+  <a href="https://Wi-PWN.github.io">
+    <img src="pictures/Wi-PWN.png" width="90">
+  </a>
+
+  <h3 align="center">Wi-PWN</h3>
+
+  <p align="center">
+    ESP8266 Deauther with a clean & minimalistic web interface 
+    <br>
+    <a href="https://github.com/samdenty99/Wi-PWN/wiki"><strong>-- Browse the docs --</strong></a>
+    <br>
+    <br>
+    <a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
+		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg">
+	</a>
+	<a href="https://github.com/samdenty99/Wi-PWN/subscription">
+    	<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch&style=flat">
+	</a>
+    <a href="https://github.com/samdenty99/Wi-PWN">
+		<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star&style=flat">
+	</a>
+	<a href="https://github.com/samdenty99/Wi-PWN/fork">
+		<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork&style=flat">
+	</a>
+</p>
+## Introduction
 
 ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](https://goo.gl/aegbCc)** &nbsp;
 
@@ -14,7 +37,7 @@ ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](h
 ![](pictures/secondary-banner.png)
 
 
-## Contents
+## Table of Contents
 - [Introduction](#introduction)
   - [What is Wi-PWN](#what-is-Wi-PWN)
   - [How it works](#how-it-works)

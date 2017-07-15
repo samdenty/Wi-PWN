@@ -8,6 +8,10 @@
 #include "MacList.h"
 #include "NameList.h"
 
+extern "C" {
+  #include "user_interface.h"
+}
+
 extern void sendBuffer();
 extern void sendToBuffer(String str);
 extern void sendHeader(int code, String type, size_t _size);
@@ -45,9 +49,11 @@ extern NameList nameList;
 #define alertPinAdr 1112
 #define invertAlertPinAdr 1113
 #define detectorScanTimeAdr 1114
+#define macAPAdr 1116
+#define isMacAPRandAdr 1122
 
 #define checkNumAdr 2001
-#define checkNum 15
+#define checkNum 16
 
 class Settings
 {
@@ -77,7 +83,7 @@ class Settings
     bool multiAttacks;
     int macInterval;
     bool beaconInterval;
-    int ledPin;
+    int ledPin = 0;
     bool darkMode;
     bool simplify;
     bool newUser;
@@ -86,6 +92,15 @@ class Settings
     int alertPin;
     bool invertAlertPin;
     int detectorScanTime;
+    int prevLedPin = 0;
+    Mac defaultMacAP;
+    Mac macAP;
+    bool isMacAPRand;
+    bool isSettingsLoaded = 0;
+    void syncMacInterface();
+    void setLedPin(int newLedPin);
+    bool pinStateOff = true;  // When attack is off, pin state is HIGH
+
   private:
     size_t getSize();
 };
