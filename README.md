@@ -8,31 +8,35 @@
   <p align="center">
     ESP8266 Deauther with a clean & minimalistic web interface 
     <br>
-    <a href="https://github.com/samdenty99/Wi-PWN/wiki"><strong>-- Browse the docs --</strong></a>
+    <b><a href="https://samdenty99.github.io/r?https://Wi-PWN.github.io">Online demo</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">Browse the docs</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">Upcoming features</a>
     <br>
     <br>
-    <a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
-		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg">
+    <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
+		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">
 	</a>
-	<a href="https://github.com/samdenty99/Wi-PWN/subscription">
+    <a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp">
+		<img src="https://img.shields.io/discord/335836376031428618.svg?colorB=0082ff&style=flat">
+	</a>
+    <a href="https://samdenty99.github.io/r?http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
+		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
+	</a>
+	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription">
     	<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch&style=flat">
 	</a>
-    <a href="https://github.com/samdenty99/Wi-PWN">
+    <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN">
 		<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star&style=flat">
 	</a>
-	<a href="https://github.com/samdenty99/Wi-PWN/fork">
+	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/fork">
 		<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork&style=flat">
 	</a>
 </p>
-## Introduction
-
-ESP8266 Deauther with a clean & minimalistic web interface — **[Online demo](https://goo.gl/aegbCc)** &nbsp;
+<h2></h2>
 
 - Fluent [Material Design](https://material.io/guidelines/) interface
 - Improved UX — with optional Dark Mode
 - Integrated [deauth detector](https://github.com/spacehuhn/deauth_detector)
 
-**List of [Upcoming features/Bug fixes](https://goo.gl/LQXQZw)**
+
 
 ![](pictures/secondary-banner.png)
 
@@ -151,8 +155,6 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 19. Upload! <kbd>CTRL-U</kbd>
 
 **Note:** If you use a 512kb version of the ESP8266, you need to comment out a part of the mac vendor list in `data.h`
-
-**Your ESP8266 Deauther is now ready!**
 
 ## How to use
 

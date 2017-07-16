@@ -72,7 +72,7 @@ extern "C" {
   IPAddress         apIP(192, 168, 4, 1);   // IP Address for Wi-PWN (Changing this will cause unwanted side effects - app malfunctioning)
   DNSServer         dnsServer;              // Create the DNS object
 #endif
-ESP8266WebServer server(80);              // HTTP server
+ESP8266WebServer server(80);                // HTTP server
 
 #include <EEPROM.h>
 #include "data.h"
