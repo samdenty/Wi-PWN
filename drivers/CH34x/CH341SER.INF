@@ -1,0 +1,213 @@
+; CH341SER.INF
+; Driver for CH341 (USB=>SERIAL chip) V3.4
+; WDM&VXD for Windows 98/Me/2000/XP/Server2003/Vista/64bit Vista/Server2008/Win7/64bit Win7
+; Copyright (C) W.ch 2001-2014
+;
+
+[Version]
+Signature = "$Chicago$"
+Class     = Ports
+ClassGuid = {4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider  = %WinChipHead%
+DriverVer = 08/08/2014, 3.4.2014.08
+CatalogFile = CH341SER.CAT
+
+[ControlFlags]
+ExcludeFromSelect = USB\VID_1A86&PID_7523
+ExcludeFromSelect = USB\VID_1A86&PID_5523
+ExcludeFromSelect = USB\VID_4348&PID_5523
+ExcludeFromSelect = USB\VID_4348&PID_5523&REV_0250
+ExcludeFromSelect = USBSERPORT\SER5523
+ExcludeFromSelect = CH341PORT\SER5523
+
+[Manufacturer]
+%WinChipHead% = WinChipHead,NT,NTamd64,NTia64
+
+[WinChipHead]
+%CH340SER.DeviceDesc% = CH341SER_Install, USB\VID_1A86&PID_7523
+%CH341ASER.DeviceDesc% = CH341SER_Install, USB\VID_1A86&PID_5523
+%CH341SER.DeviceDesc% = CH341SER_Install, USB\VID_4348&PID_5523
+%CH340SER.DeviceDesc% = CH341SER_Install, USB\VID_4348&PID_5523&REV_0250
+%CH341S98.DeviceDesc% = CH341S98_Install, USBSERPORT\SER5523
+%CH341S98.DeviceDesc% = CH341S98_Install, CH341PORT\SER5523
+
+[WinChipHead.NT]
+%CH340SER.DeviceDesc% = CH341SER_Install.NT, USB\VID_1A86&PID_7523
+%CH341ASER.DeviceDesc% = CH341SER_Install.NT, USB\VID_1A86&PID_5523
+%CH341SER.DeviceDesc% = CH341SER_Install.NT, USB\VID_4348&PID_5523
+%CH340SER.DeviceDesc% = CH341SER_Install.NT, USB\VID_4348&PID_5523&REV_0250
+
+[WinChipHead.NTamd64]
+%CH340SER.DeviceDesc% = CH341SER_Inst.NTamd64, USB\VID_1A86&PID_7523
+%CH341ASER.DeviceDesc% = CH341SER_Inst.NTamd64, USB\VID_1A86&PID_5523
+%CH341SER.DeviceDesc% = CH341SER_Inst.NTamd64, USB\VID_4348&PID_5523
+%CH340SER.DeviceDesc% = CH341SER_Inst.NTamd64, USB\VID_4348&PID_5523&REV_0250
+
+[WinChipHead.NTia64]
+%CH340SER.DeviceDesc% = CH341SER_Inst.NTia64, USB\VID_1A86&PID_7523
+%CH341ASER.DeviceDesc% = CH341SER_Inst.NTia64, USB\VID_1A86&PID_5523
+%CH341SER.DeviceDesc% = CH341SER_Inst.NTia64, USB\VID_4348&PID_5523
+%CH340SER.DeviceDesc% = CH341SER_Inst.NTia64, USB\VID_4348&PID_5523&REV_0250
+
+[CH341SER_Install]
+DelFiles  = CH341S98.DelFiles.SYS
+CopyFiles = CH341SER.CopyFiles.SYS, CH341SER.CopyFiles.DLL
+AddReg    = CH341SER.9X.AddReg, CH341SER.AddReg
+
+[CH341SER_Install.NT]
+CopyFiles = CH341SER.NT.CopyFiles.SYS, CH341SER.CopyFiles.DLL
+AddReg    = CH341SER.NT.AddReg, CH341SER.AddReg
+
+[CH341SER_Install.NT.HW]
+AddReg    = CH341SER.NT.HW.AddReg
+
+[CH341SER_Inst.NTamd64]
+CopyFiles = CH341SER.NT.CopyFiles.SYSA64
+AddReg    = CH341SER.NT.AddReg, CH341SER.AddReg
+
+[CH341SER_Inst.NTamd64.HW]
+AddReg    = CH341SER.NT.HW.AddReg
+
+[CH341SER_Inst.NTia64]
+CopyFiles = CH341SER.NT.CopyFiles.SYSI64
+AddReg    = CH341SER.NT.AddReg, CH341SER.AddReg
+
+[CH341SER_Inst.NTia64.HW]
+AddReg    = CH341SER.NT.HW.AddReg
+
+[CH341S98_Install]
+DelFiles  = CH341S98.DelFiles.SYS
+CopyFiles = CH341S98.CopyFiles.VXD, CH341SER.CopyFiles.SYS
+AddReg    = CH341S98.9X.AddReg, CH341S98.AddReg
+
+;[CH341S98_Install.NT]
+
+[CH341S98.DelFiles.SYS]
+CH341S98.SYS, , , 1
+
+[CH341SER.CopyFiles.SYS]
+CH341S98.SYS, , , 2
+
+[CH341SER.NT.CopyFiles.SYS]
+CH341SER.SYS, , , 2
+
+[CH341SER.NT.CopyFiles.SYSA64]
+CH341S64.SYS, , , 2
+
+[CH341SER.NT.CopyFiles.SYSI64]
+;CH341I64.SYS, , , 2
+
+[CH341S98.CopyFiles.VXD]
+CH341SER.VXD, , , 2
+
+[CH341SER.CopyFiles.DLL]
+CH341PT.DLL, , , 2
+;安装DLL是可选的,DLL可以用于识别CH341端口和监视CH341端口的插拔事件
+
+[CH341SER.9X.AddReg]
+HKR, , DevLoader, , *NTKERN
+HKR, , NTMPDriver, , CH341S98.SYS
+
+[CH341SER.NT.AddReg]
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[CH341SER.NT.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+;上面这行用于枚举接在串口的即插即用设备,启动时将产生DTR和RTS信号,如果需要枚举,请将上面这行的分号去掉
+
+[CH341S98.9X.AddReg]
+HKR, , DevLoader, , *vcomm
+HKR, , PortDriver, , CH341SER.VXD
+HKR, , Contention, , *vcd
+HKR, , ConfigDialog, , serialui.dll
+HKR, , DCB, 3, 1C,00,00,00, 80,25,00,00, 11,00,00,00, 00,00,0A,00, 0A,00,08,00, 00,11,13,00, 00,00,00,00
+HKR, , PortSubClass, 1, 01
+HKR, , EnumPropPages, , "serialui.dll,EnumPropPages"
+HKR, , Enumerator, , serenum.vxd
+;上面这行用于枚举接在串口的即插即用设备,启动时将产生DTR和RTS信号,如果需要枚举,请将上面这行的分号去掉
+
+[CH341SER.AddReg]
+HKLM, SOFTWARE\WinChipHead\IC\CH341SER, WDM, 0x00010001, 0x00000034
+HKLM, SOFTWARE\WinChipHead\IC\CH341PORT, DLL, 0x00010001, 0x00000010
+HKLM, SOFTWARE\WinChipHead\IC\CH341SER, Function, , "USB=>Serial"
+;HKLM, SYSTEM\CurrentControlSet\Services\CH341SER, UserRemoval, 0x00010001, 0x00000001
+;上面这行用于在系统托盘中显示“安全删除USB转SERIAL硬件设备”，便于用户手工删除硬件
+
+[CH341S98.AddReg]
+HKLM, SOFTWARE\WinChipHead\IC\CH341SER, VXD, 0x00010001, 0x00000023
+
+[CH341SER_Install.NT.Services]
+AddService = CH341SER, 2, CH341SER.Service
+AddService = Serenum, , Serenum_Service_Inst
+
+[CH341SER_Inst.NTamd64.Services]
+AddService = CH341SER_A64, 2, CH341SER.ServiceA64
+AddService = Serenum, , Serenum_Service_Inst
+
+[CH341SER_Inst.NTia64.Services]
+AddService = CH341SER_I64, 2, CH341SER.ServiceI64
+AddService = Serenum, , Serenum_Service_Inst
+
+[CH341SER.Service]
+DisplayName   = "CH341SER"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\CH341SER.SYS
+
+[CH341SER.ServiceA64]
+DisplayName   = "CH341SER_A64"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\CH341S64.SYS
+
+[CH341SER.ServiceI64]
+DisplayName   = "CH341SER_I64"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\CH341I64.SYS
+
+[Serenum_Service_Inst]
+DisplayName    = "SerEnum"
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\serenum.sys
+LoadOrderGroup = PNP Filter
+
+[DestinationDirs]
+DefaultDestDir      = 10, System32\Drivers
+CH341S98.DelFiles.SYS = 11
+CH341SER.CopyFiles.SYS = 10, System32\Drivers
+CH341SER.NT.CopyFiles.SYS = 10, System32\Drivers
+CH341S98.CopyFiles.VXD = 11
+CH341SER.CopyFiles.DLL = 11
+CH341SER.NT.CopyFiles.SYSA64 = 10, System32\Drivers
+;CH341SER.NT.CopyFiles.SYSI64 = 10, System32\Drivers
+
+[SourceDisksFiles]
+CH341SER.SYS  = 1
+CH341S98.SYS  = 1
+CH341SER.VXD  = 1
+CH341PT.DLL   = 1
+CH341S64.SYS  = 1
+;CH341I64.SYS  = 1
+
+[SourceDisksNames]
+1 = %DISK_NAME%, , ,
+
+[SourceDisksNames.amd64]
+1 = %DISK_NAME%, , ,
+
+[SourceDisksNames.ia64]
+1 = %DISK_NAME%, , ,
+
+[Strings]
+WinChipHead      = "wch.cn"
+CH341SER.DeviceDesc = "USB-SERIAL CH341"
+CH341S98.DeviceDesc = "USB-SERIAL CH341"
+CH340SER.DeviceDesc = "USB-SERIAL CH340"
+CH341ASER.DeviceDesc = "USB-SERIAL CH341A"
+DISK_NAME = "CH341 Serial Installation Disk"

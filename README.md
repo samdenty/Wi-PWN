@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://Wi-PWN.github.io">
+  <a href="https://samdenty99.github.io/r?https://Wi-PWN.github.io">
     <img src="pictures/Wi-PWN.png" width="90">
   </a>
 
@@ -8,7 +8,7 @@
   <p align="center">
     ESP8266 Deauther with a clean & minimalistic web interface 
     <br>
-    <b><a href="https://samdenty99.github.io/r?https://Wi-PWN.github.io">Online demo</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">Browse the docs</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">Upcoming features</a>
+    <b><a href="https://samdenty99.github.io/r?https://Wi-PWN.github.io">Online demo</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">Browse the docs</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">Upcoming features</a></b>
     <br>
     <br>
     <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
@@ -31,14 +31,7 @@
 	</a>
 </p>
 <h2></h2>
-
-- Fluent [Material Design](https://material.io/guidelines/) interface
-- Improved UX — with optional Dark Mode
-- Integrated [deauth detector](https://github.com/spacehuhn/deauth_detector)
-
-
-
-![](pictures/secondary-banner.png)
+<img src="pictures/secondary-banner.png">
 
 
 ## Table of Contents
