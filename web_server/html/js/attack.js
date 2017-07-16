@@ -2,7 +2,6 @@ var selectedAPs = getE("selectedAPs"),
     selectedClients = getE("selectedClients"),
     table = document.getElementsByTagName("table")[0],
     ssidList = document.getElementsByTagName("table")[3],
-    saved = getE("saved"),
     ssidCounter = getE("ssidCounter"),
     ssidContainer = getE("ssidContainer"),
     ssid = getE("ssid"),
@@ -103,14 +102,12 @@ function startStop(num) {
 function addSSID() {
     var isChecked = randSSID.checked;
     if (isChecked) {
-        saved.innerHTML = "";
         getResponse("randomSSID.json", getResults);
     } else {
         var _ssidName = ssid.value;
         if (_ssidName.length > 0) {
             if (data.length >= 64) notify("SSID list full (E16)", 2500);
             else {
-                saved.innerHTML = "";
                 getResponse("addSSID.json?ssid=" + _ssidName + "&num=" + num.value, getResults);
             }
         }
