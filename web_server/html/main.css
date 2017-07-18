@@ -25,6 +25,10 @@ body
 {
     overflow: hidden;
 }
+.oa
+{
+    overflow: auto;
+}
 nav.disabled a
 {
     color: rgba(255, 255, 255, .2) !important;
@@ -88,10 +92,17 @@ nav .main-header
 {
     fill: rgba(255, 255, 255, 0.8);
 }
-nav #links{
+nav #links
+{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
     width: calc(100% - 40px);
     height: 64px;
     padding: 0 20px;
+}
+nav #links::-webkit-scrollbar {
+    display: none;
 }
 nav #links a
 {
@@ -107,11 +118,16 @@ nav #links a
     text-transform: uppercase;
 
     color: rgba(255, 255, 255, .8);
+    position: relative;
 }
-nav #links a.active
-{
-    color: rgba(255, 255, 255, 1);
-    box-shadow: 0 -3px 0 #fff inset;
+nav #links a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #fff;
 }
 nav #links a:hover
 {
@@ -736,6 +752,12 @@ label.checkbox:active:before
     .main-wrap
     {
         top: 65px !important;
+        position: relative !important;
+        overflow: initial !important;
+    }
+    body
+    {
+        overflow-y: visible !important;
     }
 }
 @media (min-width:520px)
@@ -815,12 +837,6 @@ label.checkbox:active:before
     {
         display: none;
     }
-    nav a
-    {
-        font-size: 13px !important;
-
-        padding: 0 12px !important;
-    }
     nav .main-header
     {
         display: none;
@@ -843,6 +859,13 @@ label.checkbox:active:before
         overflow-y: hidden;
     }
 }
+@media (max-width: 600px) {
+    nav #links a {
+        padding: 0 13px;
+        font-size: 13px;
+        float: none !important;
+    }
+}
 @media (min-width:800px)
 {
     .card-basic #logo-img
@@ -852,13 +875,13 @@ label.checkbox:active:before
         margin-top: 35px;
         margin-right: 50px;
     }
-    .card-container-basic.settings
+    .card-container.settings
     {
         display: inline-block;
 
         width: calc(50% - 45px);
     }
-    .card-container-basic,
+    .card-container,
     .card-container
     {
         margin: 20px;
@@ -868,7 +891,7 @@ label.checkbox:active:before
         min-height: 330px;
     }
 }
-.card-container-basic
+.card-container
 {
     margin-top: 20px;
 
@@ -884,12 +907,6 @@ label.checkbox:active:before
 }
 @media (max-width:450px)
 {
-    nav a
-    {
-        font-size: 13px !important;
-
-        padding: 0 10px !important;
-    }
     .card-basic
     {
         padding: 25px 20px;
@@ -899,25 +916,18 @@ label.checkbox:active:before
     {
         display: none !important;
     }
-}
-@media (max-width:385px)
-{
-    nav a
-    {
-        font-size: 12px !important;
-
-        padding: 0 5px !important;
+    nav #links a {
+        padding: 0 9px;
+        font-size: 12px;
     }
 }
-@media (max-width:340px)
+@media (max-width:400px)
 {
-    nav a
-    {
-        font-size: 10px !important;
-
-        padding: 0 2px !important;
+    nav #links a {
+        padding: 0 6px;
+        font-size: 11px;
     }
-}
+} 
 @media (max-width:320px)
 {
     button.button-header-2
@@ -942,15 +952,6 @@ label.checkbox:active:before
         display: block !important;
 
         margin-bottom: 15px !important;
-    }
-}
-@media (max-width:260px)
-{
-    nav a
-    {
-        font-size: 7px !important;
-
-        padding: 0 1px !important;
     }
 }
 @media (min-width:45em)

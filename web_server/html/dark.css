@@ -182,9 +182,9 @@ a
     border-bottom: 2px solid #47474e !important;
 }
 
-nav #links a.active
+nav #links a.active::before
 {
-    box-shadow: 0 -3px 0 #dadada inset;
+    background: #dadada;
 }
 
 .green

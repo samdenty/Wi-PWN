@@ -1,5 +1,5 @@
 <head>
-    <title>404 - Wi-PWN</title>
+    <title>GPIO Control - Wi-PWN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="dark.css">
@@ -15,25 +15,27 @@
             <a href="/">Scan</a>
             <a href="users.html">Users</a>
             <a href="attack.html">Attack</a>
-            <a href="control.html">Control</a>
+            <a href="control.html" class="active">Control</a>
             <a href="settings.html">Settings</a>
             <a class="right" href="info.html">Info</a>
         </div>
     </nav>
     <div id="notification"></div>
-    <script>/(^|;)\s*minimal=/.test(document.cookie)&&(document.body.id="minimal")</script>
+    <script>
+    /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
+    </script>
     <div class="main-wrap">
         <div id="spinner-container"></div>
         <div class="container">
             <div class="card-container">
-                <div class="settingsHeader">Page not found</div>
-                <div class="card-basic">
-                    The page you were looking for cannot be found
-                    <div style="font-size: 7em;text-align: center">404</div>
-                </div>
+                <div class="settingsHeader">GPIO Control</div>
+                <table id="controlPins"></table>
+            </div>
+            <div class="card-container oa">
+                <button onclick="resetPins()" class="right">Reset entries</button>
             </div>
         </div>
         <footer></footer>
-    </div>
-    <script src="js/functions.js"></script>
+        <script src="js/functions.js"></script>
+        <script src="js/control.js"></script>
 </body>

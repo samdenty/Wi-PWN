@@ -1,0 +1,20 @@
+{
+   "control":[
+      [
+         "low",
+         "high",
+         "low",
+         "low",
+         "high",
+         "low"
+      ],
+      [
+         "Relay 1",
+         "Relay 2",
+         "Motor",
+         "Buzzer",
+         "Fan",
+         "Led"
+      ]
+   ]
+}

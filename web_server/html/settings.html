@@ -15,6 +15,7 @@
             <a href="/">Scan</a>
             <a href="users.html">Users</a>
             <a href="attack.html">Attack</a>
+            <a href="control.html">Control</a>
             <a href="settings.html" class="active">Settings</a>
             <a class="right" href="info.html">Info</a>
         </div>
@@ -26,7 +27,7 @@
     <div class="main-wrap">
         <div id="spinner-container"></div>
         <div class="container settings">
-            <div class="card-container-basic settings">
+            <div class="card-container settings">
                 <div class="settingsHeader">Wi-Fi configuration</div>
                 <div class="card">
                     <div class="row">
@@ -56,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-container-basic settings">
+            <div class="card-container settings">
                 <div class="settingsHeader">Scan &amp; Attack</div>
                 <div class="card">
                     <div class="row">
@@ -90,7 +91,7 @@
                     </div>
                 </div>
             </div>
-           <div class="card-container-basic settings">
+           <div class="card-container settings">
                 <div class="settingsHeader">Customization</div>
                 <div class="card">
                     <div class="row">
@@ -108,13 +109,13 @@
                         <div class="col-12">
                             <div class="input-container">
                                 <input placeholder=" " id="ledPin" type="number" required="" min="0" max="18">
-                                <label for="ledPin">LED Pin (restart required)</label>
+                                <label for="ledPin">LED Pin</label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-container-basic settings">
+            <div class="card-container settings">
                 <div class="settingsHeader">Advanced</div>
                 <div class="card">
                     <div class="row">
@@ -149,7 +150,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-container-basic">
+            <div class="card-container">
               <button onclick="resetSettings()">Reset</button>
               <button class="button-primary right" onclick="saveSettings()">save</button>
             </div>

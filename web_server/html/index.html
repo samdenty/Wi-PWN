@@ -15,6 +15,7 @@
             <a href="/" class="active">Scan</a>
             <a href="users.html">Users</a>
             <a href="attack.html">Attack</a>
+            <a href="control.html">Control</a>
             <a href="settings.html">Settings</a>
             <a class="right" href="info.html">Info</a>
         </div>
@@ -27,7 +28,7 @@
     <div class="main-wrap">
         <div id="spinner-container"></div>
         <div class="container">
-            <div class="card-container-basic">
+            <div class="card-container">
                 <div class="settingsHeader button-header" style="display:inline-block;margin-bottom: 30px">Scan for Wi-Fi networks
                     <div class="network-info">
                         <div id="networksFound"></div>
@@ -36,9 +37,9 @@
                 </div>
                 <button onclick="scan()" id="apScanStart" class="right button-primary button-header">Scan</button>
                 <table id="apscan"></table>
-                <div class="row">
-                        <button class="secondary" onclick="window.location = 'users.html'">Users</button>
-                        <button onclick="window.location = 'attack.html'" class="right">Attack</button>
+                <div class="card-container oa">
+                    <button class="secondary" onclick="window.location='users.html'">Users</button>
+                    <button onclick="window.location='attack.html'" class="right">Attack</button>
                 </div>
             </div>
         </div>

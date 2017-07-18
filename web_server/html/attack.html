@@ -15,6 +15,7 @@
             <a href="/">Scan</a>
             <a href="users.html">Users</a>
             <a href="attack.html" class="active">Attack</a>
+            <a href="control.html">Control</a>
             <a href="settings.html">Settings</a>
             <a class="right" href="info.html">Info</a>
         </div>
@@ -26,58 +27,56 @@
     <div class="main-wrap">
         <div id="spinner-container"></div>
         <div class="container">
-            <div class="card-container-basic">
+            <div class="card-container">
                 <div class="settingsHeader">Initiate Attack</div>
                 <table><tbody><tr><th>Attack</th><th>Status</th><th>Switch</th></tr><tr><td>Deauth</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(0)" disabled="">start</button></td></tr><tr><td>Beacon</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Random <span class='light'>5s</span></td><td></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Probe-Request</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(2)" disabled="">start</button></td></tr></tbody></table>
-                <hr>
             </div>
-            <div id="selectedNetworksDevices" class="card-container-basic dn">
+            <div id="selectedNetworksDevices" class="card-container dn">
                 <div class="settingsHeader">Selected networks &amp; users</div>
                 <table id="selectedAPs">
                 </table>
                 <table id="selectedClients" class="dn">
                 </table>
             </div>
-            <div class="card-container-basic" id="section2">
+            <div class="card-container" id="section2">
                 <div class="settingsHeader">Add SSID</div>
                 <div class="card-basic">
                     <div class="row inputCheckbox">
-                    <div class="col-6">
-                        <div class="input-container" id="ssidContainer">
-                            <input placeholder=" " id="ssid" required="" type="text" minlength="1" maxlength="32">
-                            <label for="ssid">SSID</label>
+                        <div class="col-6">
+                            <div class="input-container" id="ssidContainer">
+                                <input placeholder=" " id="ssid" required="" type="text" minlength="1" maxlength="32">
+                                <label for="ssid">SSID</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <input type="checkbox" name="randSSID" id="randSSID" value="false">
+                            <label class="checkbox" for="randSSID"></label>
+                            <label for="randSSID">Generate random</label>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <input type="checkbox" name="randSSID" id="randSSID" value="false">
-                        <label class="checkbox" for="randSSID"></label>
-                        <label for="randSSID">Generate random</label>
-                    </div>
-                    </div>
                     <div class="row">
-                    <div class="col-3">
-                        <div class="input-container">
-                            <input placeholder=" " type="number" required="" id="num" min="0" max="48" value="1">
-                            <label for="num">Number of clones</label>
+                        <div class="col-3">
+                            <div class="input-container">
+                                <input placeholder=" " type="number" required="" id="num" min="0" max="48" value="1">
+                                <label for="num">Number of clones</label>
+                            </div>
                         </div>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-12">
-                        <button class="button-primary right" onclick="addSSID()">Add</button>
-                    </div>
                     </div>
                 </div>
             </div>
-            <div class="card-container-basic">
+            <div class="card-container oa">
+                <button class="button-primary right" onclick="addSSID()">Add</button>
+            </div>
+            <div class="card-container">
                 <div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Saved SSIDs<span id="ssidCounter"> (0/48)</span></div>
                 <table>
                     <tr>
                         <th>&nbsp;</th>
                     </tr>
                 </table>
-                <br>
-                <button class="button-primary right" onclick="saveSSID()">save</button><br>
+            </div>
+            <div class="card-container oa">
+                <button class="button-primary right" onclick="saveSSID()">save</button>
             </div>
         </div>
         <footer></footer>

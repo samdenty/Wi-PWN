@@ -15,6 +15,7 @@
             <a href="/">Scan</a>
             <a href="users.html">Users</a>
             <a href="attack.html" class="active">Attack</a>
+            <a href="control.html">Control</a>
             <a href="settings.html">Settings</a>
             <a class="right" href="info.html">Info</a>
         </div>
@@ -26,7 +27,7 @@
     <div class="main-wrap">
         <div id="spinner-container"></div>
         <div class="container">
-            <div class="card-container-basic">
+            <div class="card-container">
                 <div class="settingsHeader">Deauth Detector</div>
                 <div class="card-basic">
                     <div class="row inputCheckbox">
@@ -125,21 +126,21 @@
                             if (responseText == "true") {
                                 showLoading("hide");
                             } else {
-                                notify("Failed to start detector! (E26)");
+                                notify("Failed to start detector! (E30)");
                             }
                         }, function() {
-                            notify("Failed to start detector! (E27)");
+                            notify("Failed to start detector! (E31)");
                         });
                     } else {
                         saveStatus.classList.add("success-save");
                     }
                 } else {
                     if (run == false) saveStatus.classList.add("failed-save");
-                    notify("Failed to save settings! (E18)");
+                    notify("Failed to save! (E32)");
                 }
             }, function() {
                 if (run == false) saveStatus.classList.add("failed-save");
-                notify("Failed to save settings! (E19)");
+                notify("Failed to save! (E33)");
             });
         }
         </script>

@@ -126,7 +126,7 @@ function scrollIt(element) {
 function vibrate() {
     navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
     if (navigator.vibrate) {
-        navigator.vibrate(50);
+        navigator.vibrate([40,60,70]);
     }
 }
 
