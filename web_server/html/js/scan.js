@@ -67,9 +67,9 @@ function getResults() {
             tr += '<td>' + res.aps[i].c + '</td>';
 
             if (res.aps[i].se) {
-                tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false" checked><label class="checkbox no-events" for="check' + res.aps[i].i + '"></label></td>';
+                tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false" checked><label class="checkbox" for="check' + res.aps[i].i + '"></label></td>';
                 apMAC.innerHTML = res.aps[i].m;
-            } else tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false"><label class="checkbox no-events" for="check' + res.aps[i].i + '"></label></td>';
+            } else tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false"><label class="checkbox" for="check' + res.aps[i].i + '"></label></td>';
             tr += '</tr>';
         }
         table.innerHTML = tr;

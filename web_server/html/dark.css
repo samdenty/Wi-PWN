@@ -11,7 +11,7 @@
 body
 {
     color: #fff;
-    background: #28282e;
+    background: #28282e !important;
 }
 
 nav .main-header
@@ -68,6 +68,7 @@ th,
 }
 
 .card,
+.card-small,
 .card-basic,
 table
 {

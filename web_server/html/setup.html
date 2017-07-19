@@ -12,67 +12,72 @@
         <div class="container">
             <div class="card-container">
                 <div class="settingsHeader" id="h">Terms and Conditions</div>
-                <div id="ss" class="card-basic">
+                <div id="ss" class="card horizontal">
                     <div id="card-wrapper">
                         <div id="c1">
-                            <div id="logo-img"></div>
-                            <h1>Welcome to Wi-PWN</h1>
-                            <hr class="small"><b>This software is meant for pentesting only!</b>
-                            <br>Wi-PWN can perform deauth attacks on unprotected networks, <i>similar to using a Wi-Fi Jammer.</i>
-                            <p>Only use this software on networks you are authorized to use it on.</p>
-                            <div class="row">
-                                <div class="col-12">
-                                    <button class="right" onclick="accept();">Accept</button>
+                            <div class="card-aside" id="logo-img">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <div class="card-title">
+                                        Welcome to Wi-PWN
+                                    </div>
+                                    <p>This software is meant for pentesting only!</p>
+                                    <p>Wi-PWN can perform deauth attacks on unprotected networks, <i>similar to using a Wi-Fi Jammer.</i></p>
+                                    <br>
+                                    <p>Only use this software on networks you are authorized to use it on.</p>
+                                </div>
+                                <div class="card-action" onclick="accept()">
+                                    <a class="right">Accept</a>
                                 </div>
                             </div>
-                        </div>
-                        <div id="c2">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="input-container">
-                                        <input placeholder=" " id="ssid" type="text" required="" minlength="1" maxlength="32" value="Wi-PWN">
-                                        <label for="ssid">SSID</label>
+                        </div><div id="c2">
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-container">
+                                            <input placeholder=" " id="ssid" type="text" required="" minlength="1" maxlength="32" value="Wi-PWN">
+                                            <label for="ssid">SSID</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-container">
+                                            <input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32" value="rootaccess">
+                                            <label for="ssid">Password</label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-12">
+                                        <label for="darkMode">Enable dark mode</label>
+                                        <input type="checkbox" name="darkMode" id="darkMode" value="false" onclick="toggleDarkmode();">
+                                        <label class="checkbox" for="darkMode"></label>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="simplify">Simplify interface</label>
+                                        <input type="checkbox" name="simplify" id="simplify" value="false">
+                                        <label class="checkbox" for="simplify"></label>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="input-container">
-                                        <input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32" value="rootaccess">
-                                        <label for="ssid">Password</label>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="col-12">
-                                    <label for="darkMode">Enable dark mode</label>
-                                    <input type="checkbox" name="darkMode" id="darkMode" value="false" onclick="toggleDarkmode();">
-                                    <label class="checkbox" for="darkMode"></label>
-                                </div>
-                                <div class="col-12">
-                                    <label for="simplify">Simplify interface</label>
-                                    <input type="checkbox" name="simplify" id="simplify" value="false">
-                                    <label class="checkbox" for="simplify"></label>
-                                </div>
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-12">
-                                    <button class="right" onclick="cont();">Continue</button>
-                                </div>
+                            <div class="card-action" onclick="cont()">
+                                <a class="right">Continue</a>
                             </div>
-                        </div>
-                        <div id="c3">
-                            <div class="row" style="text-align:center;padding-top:32px">
-                                <svg class=success-svg viewBox='0 0 1000 1000'>
-                                    <path d=M908.3,132.5L336.7,704.2l-245-245L10,540.8l326.7,326.7l81.7-81.7L990,214.2L908.3,132.5z />
-                                </svg>
-                                <br>
-                                <b style="font-size:18px">Setup complete!</b>
-                                <br><span style="font-weight: 300">Reconnect to the new network</span>
+                        </div><div id="c3">
+                            <div class="card-content">
+                                <div class="row" style="text-align:center;padding-top:32px">
+                                    <svg class=success-svg viewBox='0 0 1000 1000'>
+                                        <path d=M908.3,132.5L336.7,704.2l-245-245L10,540.8l326.7,326.7l81.7-81.7L990,214.2L908.3,132.5z />
+                                    </svg>
+                                    <br>
+                                    <b style="font-size:18px">Setup complete!</b>
+                                    <br><span style="font-weight: 300">Reconnect to the new network</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="center">
-                    <button class="secondary center" onclick="location.href='http://mirum.weebly.com/samuel-denty.html'">Designed by Sam Denty</a>
+                    <button class="secondary center" onclick="location.href='https://samdenty99.github.io/about'">Designed by Sam Denty</a>
                 </div>
             </div>
         </div>
@@ -92,7 +97,7 @@
             document.getElementById("h").innerHTML = "Setup Wi-PWN";
             document.title = "Setup Wi-PWN";
             document.cookie = "accept=true";
-            setTimeout(function(){document.getElementById("c3").className = "away"}, 500);
+            setTimeout(function() { document.getElementById("c3").className = "away" }, 500);
         }
         if (cookie.indexOf("accept=true") >= 0) {
             document.getElementById("c1").setAttribute("style", "transition: none;");
@@ -136,7 +141,7 @@
                     autoReload();
                     getResponse("restartESP.json?", function(responseText) {
                         if (responseText == "true") {
-                            document.getElementById("ss").className = "card-basic s-s";
+                            document.getElementById("ss").className = "card horizontal s-s";
                             document.getElementById("h").innerHTML = "Setup Complete";
                         } else {
                             notify("Failed to restart Wi-PWN! (E26)");
@@ -153,13 +158,16 @@
                 notify("Failed to save settings! (E29)");
             });
         }
+
         function toTop() {
-            try{window.scrollTo({
-                'behavior': 'smooth',
-                'left': 0,
-                'top': 10
-            });} catch(err) {
-                scroll(0,0)
+            try {
+                window.scrollTo({
+                    'behavior': 'smooth',
+                    'left': 0,
+                    'top': 10
+                });
+            } catch (err) {
+                scroll(0, 0)
             }
         }
         </script>
@@ -167,6 +175,11 @@
         body {
             transition: background-color 0.3s ease;
             padding-bottom: 15px;
+            overflow-y: initial;
+        }
+
+        .main-wrap {
+            overflow: initial;
         }
 
         footer,
@@ -174,7 +187,7 @@
             display: none;
         }
 
-        @media (min-width:520px) {
+        @media (min-width:850px) {
             .container {
                 position: fixed;
                 top: 50%;
@@ -191,6 +204,7 @@
             height: 90px;
             margin-bottom: 30px;
         }
+
         .container {
             min-height: initial;
         }
