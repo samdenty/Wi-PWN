@@ -5,8 +5,9 @@ var table = document.getElementsByTagName('table')[0],
     clientNames = getE('clientNames'),
     nameListTable = getE('nameList'),
     res = '', scanTime = '',
+    previousCall = new Date().getTime(),
     selectAllState = 'not-checked',
-    tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th style="padding-left: 40px"></th></tr>';
+    tableHeaderHTML = '<tr><th width="11%"></th><th>Name</th><th>Client info</th><th>Pkts</th></tr>';
 
 function compare(a, b) {
     if (a.p > b.p) return -1;
@@ -36,13 +37,15 @@ function getResults() {
         clientsFound.innerHTML = '(' + res.clients.length + ' found)';
 
         var tr = '';
-        if (res.clients.length > 1) tableHeaderHTML = '<tr><th>Name</th><th>Client info</th><th>Pkts</th><th><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th></tr>';
+        if (res.clients.length > 1) tableHeaderHTML = '<tr><th width="11%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th><th>Name</th><th>Client info</th><th>Pkts</th></tr>';
         tr += tableHeaderHTML;
 
         for (var i = 0; i < res.clients.length; i++) {
 
             if (res.clients[i].s == 1) tr += '<tr class="selected">';
             else tr += '<tr>';
+            if (res.clients[i].s == 1) tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false" checked><label class="checkbox" for="check' + res.clients[i].i + '"></label></td>';
+            else tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false"><label class="checkbox" for="check' + res.clients[i].i + '"></label></td>';
             if (res.clients[i].n) {
                 tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><b>' + res.clients[i].n + '</b></td>';
             } else {
@@ -50,8 +53,6 @@ function getResults() {
             }
             tr += '<td onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' + res.clients[i].a + '</td>';
             tr += '<td onclick="select(' + res.clients[i].i + ')">' + res.clients[i].p + '</td>';
-            if (res.clients[i].s == 1) tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false" checked><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
-            else tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false"><label class="checkbox no-events" for="check' + res.clients[i].i + '"></label></td>';
 
             tr += '</tr>';
         }
@@ -60,7 +61,7 @@ function getResults() {
             document.getElementById('saved-users').className = "";
         }
         clientNames.innerHTML = "(" + res.nameList.length + "/50)";
-        var tr = '<tr><th>Name</th><th>Action</th></tr>';
+        var tr = '<tr><th>Name</th><th><a onclick="clearNameList()" class="right" style="padding-right:10px">Reset</a></th></tr>';
         for (var i = 0; i < res.nameList.length; i++) {
 
             tr += '<tr>';
@@ -92,10 +93,14 @@ function scan() {
 }
 
 function select(num) {
-    getResponse("clientSelect.json?num=" + num, function(responseText) {
-        if (responseText == "true") getResults();
-        else notify("ERROR: Bad response 'clientSelect.json' (E8)");
-    });
+    var time = new Date().getTime();
+    if ((time - previousCall) >= 80) {
+        previousCall = time;
+        getResponse("clientSelect.json?num=" + num, function(responseText) {
+            if (responseText == "true") getResults();
+            else notify("ERROR: Bad response 'clientSelect.json' (E8)");
+        });
+    }
 }
 
 function selAll() {

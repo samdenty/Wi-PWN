@@ -21,62 +21,73 @@
         </div>
     </nav>
     <div id="notification"></div>
+    <div id="spinner-container"></div>
     <script>
     /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
     </script>
     <div class="main-wrap">
-        <div id="spinner-container"></div>
         <div class="container">
             <div class="card-container">
                 <div class="settingsHeader">Wi-PWN</div>
-                <div class="card-basic">
-                    This project is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/"><i title="CC BY-NC 4.0"> Creative Commons Attribution-NonCommercial 4.0 license.</i></a><br><br>
-                    <b>This software is intended for trained professionals!</b>
-                    <br>It can perform deauth attacks on unprotected <i>802.11</i> Wi-Fi networks, <i>which could be perceived as using an illegal 'Wi-Fi Jammer'.</i><hr>
-                    Wi-PWN is updated and maintained by:<br>
-                    <b style="font-size: 1.1em">
+                <div class="card">
+                    <div class="card-content">
+                        This project is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/"><i title="CC BY-NC 4.0"> Creative Commons Attribution-NonCommercial 4.0 license.</i></a>
+                        <br>
+                        <br>
+                        <b>This software is intended for trained professionals!</b>
+                        <br>It can perform deauth attacks on unprotected <i>802.11</i> Wi-Fi networks, <i>which could be perceived as using an illegal 'Wi-Fi Jammer'.</i>
+                        <hr> Wi-PWN is updated and maintained by:
+                        <br>
+                        <b style="font-size: 1.1em">
                     <a href="https://samdenty99.github.io/about" target="_blank">@samdenty99</a> (Sam Denty)</b>
-                    <br>
+                        <br>
+                    </div>
                 </div>
             </div>
             <div class="card-container">
                 <div class="settingsHeader">Contributors</div>
-                <div class="card-basic">
-                    <a href="https://github.com/spacehuhn/esp8266_deauther"><b>@spacehuhn</a> (Stefan Kremser)</b><br>
-                    <a href="https://github.com/N0vaPixel" target="_blank">@N0vaPixel</a> (Aur&eacute;lien Hernandez)
-                    <br>
-                    <a href="https://github.com/SaltyViper" target="_blank">@SaltyViper</a>
-                    <br>
-                    <a href="https://github.com/ericktedeschi" target="_blank">@ericktedeschi</a> (Erick Belluci Tedeschi)
-                    <br>
-                    <a href="https://github.com/tobozo" target="_blank">@tobozo</a>
-                    <br>
-                    <a href="https://github.com/andrbmgi" target="_blank">@andrbmgi</a>
-                    <br>
-                    <a href="https://github.com/SamuelKlit" target="_blank">@SamuelKlit</a> (Samuel KS)
-                    <br>
-                    <a href="https://github.com/schinfo" target="_blank">@schinfo</a> (Helmut)
-                    <br>
-                    <a href="https://github.com/ajnavarro" target="_blank">@ajnavarro</a> (Antonio Navarro Perez)
-                    <br><br><div class="divider"></div><br>
-                    For more information go to <a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">contributors page</a> on GitHub.
+                <div class="card">
+                    <div class="card-content">
+                        <a href="https://github.com/spacehuhn/esp8266_deauther"><b>@spacehuhn</a> (Stefan Kremser)</b>
+                        <br>
+                        <a href="https://github.com/N0vaPixel" target="_blank">@N0vaPixel</a> (Aur&eacute;lien Hernandez)
+                        <br>
+                        <a href="https://github.com/SaltyViper" target="_blank">@SaltyViper</a>
+                        <br>
+                        <a href="https://github.com/ericktedeschi" target="_blank">@ericktedeschi</a> (Erick Belluci Tedeschi)
+                        <br>
+                        <a href="https://github.com/tobozo" target="_blank">@tobozo</a>
+                        <br>
+                        <a href="https://github.com/andrbmgi" target="_blank">@andrbmgi</a>
+                        <br>
+                        <a href="https://github.com/SamuelKlit" target="_blank">@SamuelKlit</a> (Samuel KS)
+                        <br>
+                        <a href="https://github.com/schinfo" target="_blank">@schinfo</a> (Helmut)
+                        <br>
+                        <a href="https://github.com/ajnavarro" target="_blank">@ajnavarro</a> (Antonio Navarro Perez)
+                        <br>
+                        <br>
+                        <div class="divider"></div>
+                        <br> For more information go to <a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">contributors page</a> on GitHub.
+                    </div>
+                    </a>
                 </div>
-            </div>
-            <div class="card-container">
                 <hr>
                 <div class="settingsHeader">Included libraries</div>
-                <div class="card-basic oh">
-                    <div class="row">
-                        <div class="col-4">Wireshark manufacturer database</div>
-                        <div class="col-8"><a href="https://www.wireshark.org/tools/oui-lookup.html">https://www.wireshark.org/tools/oui-lookup</a></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">Waves.js</div>
-                        <div class="col-8"><a href="https://github.com/fians/Waves">https://github.com/fians/Waves</a></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">Material design icons</div>
-                        <div class="col-8"><a href="https://materialdesignicons.com">https://materialdesignicons.com</a></div>
+                <div class="card oh">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-4">Wireshark manufacturer database</div>
+                            <div class="col-8"><a href="https://www.wireshark.org/tools/oui-lookup.html">https://www.wireshark.org/tools/oui-lookup</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Waves.js</div>
+                            <div class="col-8"><a href="https://github.com/fians/Waves">https://github.com/fians/Waves</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Material design icons</div>
+                            <div class="col-8"><a href="https://materialdesignicons.com">https://materialdesignicons.com</a></div>
+                        </div>
                     </div>
                 </div>
             </div>

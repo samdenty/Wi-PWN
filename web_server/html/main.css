@@ -90,10 +90,9 @@ nav .main-header {
 }
 #logo-img {
     background: #379df3;
-    background: -moz-linear-gradient(-45deg, #40bdff 0%, #3e80e4 100%);
-    background: -webkit-linear-gradient(-45deg, #40bdff 0%, #3e80e4 100%);
-    background: linear-gradient(135deg, #40bdff 0%, #3e80e4 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#379df3', endColorstr='#3f86f1', GradientType=1);
+    background: -moz-linear-gradient(-45deg, #40bdff 0%, #1976d2 100%);
+    background: -webkit-linear-gradient(-45deg, #40bdff 0%, #1976d2 100%);
+    background: linear-gradient(135deg, #40bdff 0%, #1976d2 100%);
 }
 #logo-img svg {
     fill: rgba(255, 255, 255, 0.8);
@@ -114,7 +113,8 @@ nav .main-header {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
     border-radius: 3px;
     background: #fff;
-    margin: .5rem 0 1rem 0;
+    margin: .2rem 0 2.3rem 0;
+    width: 100%;
 }
 .card-container {
     margin-top: 20px;
@@ -134,7 +134,7 @@ nav .main-header {
 }
 .card-action {
     padding: 16px 24px;
-    border-top: 1px solid rgba(160, 160, 160, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.065);
     overflow: auto;
 }
 .card-action a {
@@ -142,6 +142,12 @@ nav .main-header {
     margin-right: 24px;
     transition: color .2s ease;
     text-transform: uppercase;
+}
+.card-action a.light {
+    color: #333447;
+}
+.card-action a.light:hover {
+    color: #000;
 }
 .horizontal {
     height: 350px;
@@ -172,8 +178,8 @@ nav .main-header {
 }
 @media (max-width:650px) {
     .horizontal {
-         height: auto;
-         display: table;
+        height: auto;
+        display: table;
     }
     .horizontal .card-stacked {
         width: 100%;
@@ -195,16 +201,12 @@ nav .main-header {
         height: 300px;
     }
 }
-.card-small, .card-basic, table {
+.card-small {
     margin-bottom: 40px;
     padding: 25px 40px;
     transition: background .3s ease;
     border-radius: 2px;
     background: #fff;
-}
-.card-basic {
-    overflow: hidden;
-    transition: background .3s ease;
 }
 .settingsHeader {
     font-size: 14px;
@@ -215,15 +217,6 @@ nav .main-header {
 .settingsHeader * {
     color: #616161;
 }
-.card-basic #logo-img {
-    left: 50%;
-    float: none;
-    width: 80px;
-    height: 80px;
-    margin: auto;
-    margin-bottom: 30px;
-    padding: 35px;
-}
 
 /*********************************** Tables ***********************************/
 table {
@@ -232,15 +225,17 @@ table {
     border-collapse: collapse;
     text-align: center;
     border: none;
+    table-layout: fixed;
 }
-table tr:nth-child(1) {
-    border-bottom: 1px solid rgba(0, 0, 0, .05);
+table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.065);
 }
 table tr:nth-child(1) th {
-    font-size: .9rem;
+    font-size: .87rem;
     font-weight: 500;
     padding: 15px;
-    color: #4a4a4a;
+    color: #888a8e;
+    font-family: 'Roboto Medium';
 }
 meter {
     width: 45px;
@@ -253,9 +248,6 @@ td {
 td, th {
     padding: 10px;
 }
-tr:nth-child(even) {
-    background: rgba(0, 0, 0, .02);
-}
 tr td, tr, .darken-on-hover {
     transition: box-shadow 1s ease, background .2s ease, color .2s ease;
 }
@@ -266,7 +258,7 @@ tr td, tr, .darken-on-hover {
     cursor: pointer;
 }
 .selected {
-    background: rgba(0, 0, 0, .1) !important;
+    background: rgba(0, 0, 0, 0.044) !important;
 }
 .selected td, .selected:hover td {
     background: none;
@@ -338,6 +330,10 @@ h1 {
 }
 .oa {
     overflow: auto;
+    padding: 2px 0 8px;
+}
+.ta-c {
+    text-align: center;
 }
 .no-events, nav.disabled a, .input-container label {
     pointer-events: none;
@@ -533,7 +529,7 @@ label {
     }
 }
 .input-container input:placeholder-shown:focus, .input-container input::-moz-placeholder:focus {
-    border-bottom: 2px solid #4285f4 !important;
+    border-bottom: 2px solid #2196F3 !important;
 }
 .input-container label {
     font-size: 14px;
@@ -567,13 +563,13 @@ label {
     border-bottom: 2px solid #f44336;
 }
 .input-container input:focus + label {
-    color: #4285f4 !important;
+    color: #2196F3 !important;
 }
 .input-container input:valid + label, .input-container input:invalid:not(:placeholder-shown) + label, .input-container input:focus + label {
     font-size: .8rem;
     top: -25px;
     pointer-events: none;
-    color: #4285f4;
+    color: #2196F3;
 }
 .input-container input:invalid:not(:placeholder-shown) + label {
     color: #f44336;
@@ -714,7 +710,7 @@ footer a {
     transition: box-shadow .3s ease, background .3s ease;
     border-radius: 1000px;
 }
-.shadow, .reboot-inner, #notification, .button, button, input[type='submit'], input[type='reset'], input[type='button'], .card-small, .card-basic, table {
+.shadow, .reboot-inner, #notification, .button, button, input[type='submit'], input[type='reset'], input[type='button'], .card-small {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
 }
 .reboot-container {
@@ -769,11 +765,14 @@ footer a {
     animation: rotator 1.4s linear infinite;
 }
 .show-loading {
-    margin-top: 15px !important;
+    margin-top: 155px !important;
     opacity: 1 !important;
 }
 .show-loading .spinner {
     display: block;
+}
+#minimal .show-loading {
+    margin-top: 15px !important;
 }
 @-webkit-keyframes rotator {
     0% {
@@ -925,11 +924,6 @@ footer a {
     }
 }
 @media (min-width:800px) {
-    .card-basic #logo-img {
-        float: left;
-        margin-top: 35px;
-        margin-right: 50px;
-    }
     .card-container.settings {
         display: inline-block;
         width: calc(50% - 45px);
@@ -976,6 +970,10 @@ footer a {
     .main-wrap {
         overflow-y: hidden;
     }
+    .show-loading {
+        margin-top: 80px !important;
+        opacity: 1 !important;
+    }
 }
 
 /***************************** Mobile only styles *****************************/
@@ -987,15 +985,12 @@ footer a {
     }
 }
 @media (max-width:539px) {
-    table#apscan td:nth-child(3), table#apscan th:nth-child(3) {
+    table#apscan td:nth-child(4), table#apscan th:nth-child(4) {
         display: none;
     }
 }
 @media (max-width:450px) {
-    .card-basic {
-        padding: 25px 20px;
-    }
-    table#users td:nth-child(3), table#users th:nth-child(3) {
+    table#users td:nth-child(4), table#users th:nth-child(4) {
         display: none !important;
     }
     nav #links a {
@@ -1070,12 +1065,16 @@ footer a {
     cursor: pointer;
     transition: background .5s ease;
     border-radius: 1000px;
+    color: #757575;
 }
 .edit:hover {
     background: rgba(0, 0, 0, .1);
 }
 .edit:active {
     background: rgba(0, 0, 0, .25);
+}
+.edit svg {
+    fill: #757575;
 }
 .background {
     position: absolute;
@@ -1091,30 +1090,28 @@ footer a {
     font-size: 29px;
     line-height: 26px;
 }
-.attack-del-all {
-    font-weight: normal;
-    margin-right: -5px;
-    background: rgba(0, 0, 0, .02);
-}
 
 /******************************** Waves library *******************************/
 .waves-effect {
     position: relative;
+    cursor: pointer;
     display: inline-block;
     overflow: hidden;
-    cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent
 }
 .waves-effect .waves-ripple {
     position: absolute;
+    border-radius: 50%;
     width: 100px;
     height: 100px;
     margin-top: -50px;
     margin-left: -50px;
+    opacity: 0;
+    background: rgba(0, 0, 0, .2);
     -webkit-transition: all .5s ease-out;
     -moz-transition: all .5s ease-out;
     -o-transition: all .5s ease-out;
@@ -1128,49 +1125,66 @@ footer a {
     -ms-transform: scale(0) translate(0, 0);
     -o-transform: scale(0) translate(0, 0);
     transform: scale(0) translate(0, 0);
-    pointer-events: none;
-    opacity: 0;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, .2);
-    background: -webkit-radial-gradient(rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: -o-radial-gradient(rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: -moz-radial-gradient(rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: radial-gradient(rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .5) 60%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none
+}
+#logo .waves-effect {
+    display: block !important;
 }
 .waves-effect.waves-light .waves-ripple {
-    background: rgba(255, 255, 255, .4);
-    background: -webkit-radial-gradient(rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: -o-radial-gradient(rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: -moz-radial-gradient(rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .5) 60%, rgba(255, 255, 255, 0) 70%);
-    background: radial-gradient(rgba(255, 255, 255, .2) 0, rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .5) 60%, rgba(255, 255, 255, 0) 70%);
+    background: rgba(255, 255, 255, .4)
+}
+.waves-effect.waves-dark .waves-ripple {
+    background: rgba(0, 0, 0, .2)
 }
 .waves-effect.waves-classic .waves-ripple {
-    background: rgba(0, 0, 0, .2);
+    background: rgba(0, 0, 0, .2)
 }
 .waves-effect.waves-classic.waves-light .waves-ripple {
-    background: rgba(255, 255, 255, .4);
+    background: rgba(255, 255, 255, .4)
+}
+.waves-notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important
 }
 .waves-button, .waves-circle {
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-mask-image: -webkit-radial-gradient(circle, #fff 100%, #000 100%);
+    transform: translateZ(0)
 }
 .waves-button, .waves-button:hover, .waves-button:visited, .waves-button-input {
-    font-size: 1em;
-    line-height: 1em;
-    z-index: 1;
-    cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
     white-space: nowrap;
-    text-decoration: none;
-    color: inherit;
-    border: none;
-    outline: 0;
-    background-color: transparent;
+    vertical-align: middle
+}
+.waves-button-input {
+    margin: 0;
+    padding: .85em 1.1em
+}
+.waves-input-wrapper {
+    border-radius: .2em;
+    vertical-align: bottom
+}
+.waves-input-wrapper.waves-button {
+    padding: 0
+}
+.waves-input-wrapper .waves-button-input {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1
+}
+.waves-circle {
+    text-align: center;
+    width: 2.5em;
+    height: 2.5em;
+    line-height: 2.5em;
+    border-radius: 50%
+}
+a.waves-effect .waves-ripple {
+    z-index: -1
 }
 
 /********************************* Setup cards ********************************/

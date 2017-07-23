@@ -5,8 +5,9 @@ var table = document.getElementsByTagName('table')[0],
     startStopScan = getE('startStopScan'),
     selectAll = getE('selectAll'),
     autoScan = false,
-    tableHeaderHTML = '<tr><th>Signal</th><th>SSID</th><th>Security</th><th>Ch.</th><th style="padding-left: 40px"></th></tr>',
+    tableHeaderHTML = '<tr><th width="8%"></th><th width="17%">Signal</th><th width="22%">SSID</th><th width="15%">Security</th><th width="8%">Ch.</th></tr>',
     selectAllState = 'not-checked',
+    previousCall = new Date().getTime(),
     url = window.location.href,
     wifiIndicator, securityState;
 
@@ -40,7 +41,7 @@ function getResults() {
         networkInfo.innerHTML = '(' + res.aps.length + ' found)';
         if (res.aps.length == 0) scan()
         apMAC.innerHTML = "";
-        if (res.multiAPs == 1) tableHeaderHTML = '<tr><th>Signal</th><th>SSID</th><th>Security</th><th>Ch.</th><th><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" ' + selectAllState + '><label class="checkbox" for="selectAll"></th></tr>';
+        if (res.multiAPs == 1) tableHeaderHTML = '<tr><th width="8%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" ' + selectAllState + '><label class="checkbox" for="selectAll"></th><th width="17%">Signal</th><th width="22%">SSID</th><th width="15%">Security</th><th width="8%">Ch.</th></tr>';
         var tr = '';
         if (res.aps.length > 0) tr += tableHeaderHTML;
 
@@ -48,6 +49,12 @@ function getResults() {
 
             if (res.aps[i].se == 1) tr += '<tr class="selected" onclick="select(' + res.aps[i].i + ')">';
             else tr += '<tr onclick="select(' + res.aps[i].i + ')">';
+
+            if (res.aps[i].se) {
+                tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false" checked><label class="checkbox" for="check' + res.aps[i].i + '"></label></td>';
+                apMAC.innerHTML = res.aps[i].m;
+            } else tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false"><label class="checkbox" for="check' + res.aps[i].i + '"></label></td>';
+
             if (getEncryption(res.aps[i].e) !== 'Open') {securityState = 'L'} else {securityState = ''}
             if (-89 > res.aps[i].r) {
                 wifiIndicator = 's0'+securityState
@@ -60,16 +67,12 @@ function getResults() {
             } else {
                 wifiIndicator = 's4'+securityState
             }
+
             var signalPercent = Math.round((1-((res.aps[i].r+30)/-70))*100);
             tr += '<td class="WiFi"><div>' + eval(wifiIndicator) + '</div><div><span style="background:linear-gradient(135deg, rgba(0,0,0,0.3) '+signalPercent+'%,rgba(0,0,0,0.07) '+signalPercent+'%)"></span><span>' + res.aps[i].r + '</span></div></td>';
             tr += '<td>' + res.aps[i].ss + '</td>';
             tr += '<td>' + getEncryption(res.aps[i].e) + '</td>';
             tr += '<td>' + res.aps[i].c + '</td>';
-
-            if (res.aps[i].se) {
-                tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false" checked><label class="checkbox" for="check' + res.aps[i].i + '"></label></td>';
-                apMAC.innerHTML = res.aps[i].m;
-            } else tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false"><label class="checkbox" for="check' + res.aps[i].i + '"></label></td>';
             tr += '</tr>';
         }
         table.innerHTML = tr;
@@ -86,12 +89,15 @@ function scan() {
 }
 
 function select(num) {
-    getResponse("APSelect.json?num=" + num, function(responseText) {
-        if (responseText == "true") getResults();
-        else notify("ERROR: Bad response 'APSelect.json' (E4)");
-    });
+    var time = new Date().getTime();
+    if ((time - previousCall) >= 80) {
+        previousCall = time;
+        getResponse("APSelect.json?num=" + num, function(responseText) {
+            if (responseText == "true") getResults();
+            else notify("ERROR: Bad response 'APSelect.json' (E4)");
+        });
+    }
 }
-
 function selAll() {
     if (selectAllState == 'not-checked') {
         select(-1);

@@ -1,219 +1,138 @@
-#logo-img
-{
+#logo-img {
     background: none;
 }
-
-#nav
-{
+#nav {
     background: #1b1b21;
 }
-
-body
-{
+body {
     color: #fff;
     background: #28282e !important;
 }
-
-nav .main-header
-{
+nav .main-header {
     background: #1b1b21 !important;
 }
-
-button,
-.reboot
-{
+button, .reboot {
     background: #61616f;
 }
-
-button:hover,
-.reboot:hover
-{
+button:hover, .reboot:hover {
     background: #6c6c79;
 }
-
-.secondary
-{
-    color: #bfbfbf;
+.secondary, .card-action a {
+    color: #bfbfbf !important;
 }
-
-.secondary:hover
-{
-    color: #e4e4e4;
+.secondary:hover, .card-action a:hover {
+    color: #e4e4e4 !important;
+}
+.secondary:hover {
     background: rgba(255, 255, 255, .1);
 }
-
-*,
-.input-container label
-{
+*, .input-container label {
     color: #dadada;
 }
-
-.settingsHeader,
-.settingsHeader *,
-.main-wrap,
-.WiFi span,
-td,
-th,
-.input-container input:valid + label,
-.input-container input:invalid:not(:placeholder-shown) + label,
-.input-container input:focus + label
-{
+.settingsHeader, .settingsHeader *, .main-wrap, .WiFi span, td, th, .input-container input:valid + label, .input-container input:invalid:not(:placeholder-shown) + label, .input-container input:focus + label {
     color: #dadada !important;
 }
-
-#networksFound,
-#apMAC
-{
+#networksFound, #apMAC {
     background: rgba(255, 255, 255, .1);
 }
-
-.card,
-.card-small,
-.card-basic,
-table
-{
+.card, .card-small {
     background: #37373d;
 }
-
-.WiFi svg
-{
+.WiFi svg {
     fill: #fff;
 }
-
-label.checkbox
-{
+label.checkbox {
     border-color: #e1e1e1;
 }
-
-input[type='checkbox']:checked + label
-{
+input[type='checkbox']:checked + label {
     border-color: #8b8b92;
     background: #8b8b92;
 }
-
-#spinner-container
-{
+#spinner-container {
     background: #3e3e3e;
 }
-
-.edit
-{
+.edit {
+    color: #dadada;
+}
+.edit svg {
     fill: #dadada;
 }
-
-.input-container input:placeholder-shown
-{
+.input-container input:placeholder-shown {
     border-color: #dadada;
 }
-
-.input-container input:focus
-{
+.input-container input:focus {
     border-color: #fff !important;
 }
-
-footer
-{
+footer {
     background: #2a2a31;
 }
-
-h1
-{
+h1 {
     color: rgba(255, 255, 255, .66);
 }
-
-a
-{
+a {
     color: #8aa0d4;
 }
-
-.card-basic #logo-img svg
-{
-    fill: #f9f9f9;
-}
-
-.card-basic #logo-img
-{
-    background: -webkit-linear-gradient(135deg, #41414a 0%, #2d2d31 100%);
-    background:         linear-gradient(135deg, #41414a 0%, #2d2d31 100%);
-}
-
-:root
-{
+:root {
     --theme-color: #1b1b21;
 }
-
-@media (min-width:520px)
-{
-    ::-webkit-scrollbar
-    {
+@media (min-width:520px) {
+    ::-webkit-scrollbar {
         width: 14px;
-
         background-color: #1d1d23;
     }
-    ::-webkit-scrollbar-thumb
-    {
+    ::-webkit-scrollbar-thumb {
         background-color: #4b4b54;
     }
-    ::-webkit-scrollbar-thumb:hover
-    {
+    ::-webkit-scrollbar-thumb:hover {
         background-color: #51515a;
     }
-    ::-webkit-scrollbar-thumb:active,
-    ::-webkit-scrollbar-thumb:disabled
-    {
+    ::-webkit-scrollbar-thumb:active, ::-webkit-scrollbar-thumb:disabled {
         background-color: #393942;
     }
-    ::-webkit-scrollbar-button
-    {
+    ::-webkit-scrollbar-button {
         display: none;
-
         width: 0;
         height: 0;
     }
-    ::-webkit-scrollbar-corner
-    {
+    ::-webkit-scrollbar-corner {
         background-color: transparent;
     }
 }
-
-.input-container input:valid,
-.input-container input:placeholder-shown,
-.input-container input:invalid:focus
-{
+.input-container input:valid, .input-container input:placeholder-shown, .input-container input:invalid:focus {
     border-bottom: 2px solid #47474e !important;
 }
-
-nav #links a.active::before
-{
+nav #links a.active::before {
     background: #dadada;
 }
-
-.green
-{
+.green {
     color: #4caf50 !important;
 }
-
-.red
-{
+.red {
     color: #f5716e !important;
 }
-
-.s-s
-{
+.s-s {
     background: #709bbd;
 }
-
-.s-s .row *
-{
+.s-s .row * {
     color: #d5edff;
 }
-
-hr
-{
+hr {
     border: 1px solid rgba(0, 0, 0, .1);
 }
-
-#notification
-{
+#notification {
     background: #61616f;
+}
+.glitch {
+    color: red !important;
+}
+.glitch:after {
+    color: red !important;
+    background: #37373D !important;
+    text-shadow: -4px 0 green !important;
+}
+
+.glitch:before {
+    color: red !important;
+    background: #37373D !important;
+    text-shadow: 4px 0 blue !important;
 }

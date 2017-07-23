@@ -21,35 +21,41 @@
         </div>
     </nav>
     <div id="notification"></div>
+    <div id="spinner-container"></div>
     <script>
     /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
     </script>
     <div class="main-wrap">
-        <div id="spinner-container"></div>
         <div class="container">
             <div class="card-container">
                 <div class="settingsHeader button-header-2" style="display:inline-block;margin-bottom: 30px">Scan for Wi-Fi users <span id="clientsFound"></span></div>
                 <button onclick="scan()" id="startScan" class="button-primary right button-header-2">Scan</button>
-                <table id="users"></table>
+                <div class="card">
+                    <table id="users"></table>
+                </div>
                 <hr>
                 <div id="saved-users" class="dn">
                     <div class="settingsHeader button-header" style="display:inline-block;margin-bottom: 30px">Saved users <span id="clientNames"></span></div>
-                    <button class="button-warn button-header right" onclick="clearNameList()">Reset</button>
-                    <table id="nameList"></table>
+                    <div class="card">
+                        <table id="nameList"></table>
+                    </div>
                 </div>
-                <div class="card-basic" style="padding:35px 40px">
-                    <div class="row">
-                        <div class="input-container col-5">
-                            <input placeholder=" " id="cMac" type="text" required="" min="17" max="17">
-                            <label for="cMac">MAC Address</label>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row ta-c">
+                            <div class="input-container col-6">
+                                <input placeholder=" " id="cMac" type="text" required="" min="17" max="17">
+                                <label for="cMac">MAC Address</label>
+                            </div>
+                            <div class="input-container col-1"></div>
+                            <div class="input-container col-5">
+                                <input placeholder=" " id="cName" type="text" required="">
+                                <label for="cName">Name</label>
+                            </div>
                         </div>
-                        <div class="input-container col-5">
-                            <input placeholder=" " id="cName" type="text" required="">
-                            <label for="cName">Name</label>
-                        </div>
-                        <div class="input-container col-3" style="text-align: right">
-                            <button class="button-primary" onclick="addClient()">add</button>
-                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a class="right" onclick="addClient()">add</a>
                     </div>
                 </div>
             </div>

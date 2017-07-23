@@ -51,6 +51,8 @@ extern NameList nameList;
 #define detectorScanTimeAdr 1114
 #define macAPAdr 1116
 #define isMacAPRandAdr 1122
+#define pinNamesLenAdr 1123
+#define pinNamesAdr 1124
 
 #define checkNumAdr 2001
 #define checkNum 16
@@ -92,6 +94,8 @@ class Settings
     int alertPin;
     bool invertAlertPin;
     int detectorScanTime;
+    int pinNamesLen;
+    String pinNames = "test";
     int prevLedPin = 0;
     Mac defaultMacAP;
     Mac macAP;

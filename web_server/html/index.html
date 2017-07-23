@@ -21,12 +21,12 @@
         </div>
     </nav>
     <div id="notification"></div>
+    <div id="spinner-container"></div>
     <script>
     var u = window.location.href; - 1 != u.indexOf("?minimal=true") && (document.body.id = "minimal", document.cookie = "minimal=true");
     /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal")
     </script>
     <div class="main-wrap">
-        <div id="spinner-container"></div>
         <div class="container">
             <div class="card-container">
                 <div class="settingsHeader button-header" style="display:inline-block;margin-bottom: 30px">Scan for Wi-Fi networks
@@ -36,10 +36,12 @@
                     </div>
                 </div>
                 <button onclick="scan()" id="apScanStart" class="right button-primary button-header">Scan</button>
-                <table id="apscan"></table>
-                <div class="card-container oa">
-                    <button class="secondary" onclick="window.location='users.html'">Users</button>
-                    <button onclick="window.location='attack.html'" class="right">Attack</button>
+                <div class="card">
+                    <table id="apscan"></table>
+                    <div class="card-action">
+                    <a onclick="window.location='users.html'" class="light">Users</a>
+                    <a onclick="window.location='attack.html'" class="right">Attack</a>
+                    </div>
                 </div>
             </div>
         </div>

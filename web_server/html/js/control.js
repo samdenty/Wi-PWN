@@ -1,11 +1,11 @@
 var tr,
     pin,
     high,
-    controlPins = getE('controlPins')
-res = "";
+    controlPins = getE('controlPins'),
+    res = "";
 
 function getData() {
-    getResponse("controlStatus.json", function(responseText) {
+    getResponse("settings.json", function(responseText) {
         try {
             res = JSON.parse(responseText);
         } catch (e) {

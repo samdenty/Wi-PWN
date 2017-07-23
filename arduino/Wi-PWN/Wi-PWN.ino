@@ -175,6 +175,9 @@ void loadAttackHTML() {
 void loadDetectorHTML() {
   sendFile(200, "text/html", data_detector_HTML, sizeof(data_detector_HTML));
 }
+void loadControlHTML() {
+  sendFile(200, "text/html", data_control_HTML, sizeof(data_control_HTML));
+}
 void loadSettingsHTML() {
   sendFile(200, "text/html", data_settings_HTML, sizeof(data_settings_HTML));
 }
@@ -197,6 +200,9 @@ void loadUsersJS() {
 void loadAttackJS() {
   attack.ssidChange = true;
   sendFile(200, "text/javascript", data_attack_JS, sizeof(data_attack_JS));
+}
+void loadControlJS() {
+  sendFile(200, "text/javascript", data_control_JS, sizeof(data_control_JS));
 }
 void loadSettingsJS() {
   sendFile(200, "text/javascript", data_settings_JS, sizeof(data_settings_JS));
@@ -579,6 +585,7 @@ void setup() {
     server.on("/ClientScanTime.json", sendClientScanTime);
     server.on("/settingsSave.json", saveSettings);
     server.on("/restartESP.json", restartESP);
+    server.on("/settingsReset.json", resetSettings);
   } else {
     /* HTML */
     server.onNotFound(load404);
@@ -588,6 +595,7 @@ void setup() {
     server.on("/users.html", loadUsersHTML);
     server.on("/attack.html", loadAttackHTML);
     server.on("/detector.html", loadDetectorHTML);
+    server.on("/control.html", loadControlHTML);
     server.on("/settings.html", loadSettingsHTML);
     server.on("/info.html", loadInfoHTML);
   
@@ -595,6 +603,7 @@ void setup() {
     server.on("/js/scan.js", loadScanJS);
     server.on("/js/users.js", loadUsersJS);
     server.on("/js/attack.js", loadAttackJS);
+    server.on("/js/control.js", loadControlJS);
     server.on("/js/settings.js", loadSettingsJS);
     server.on("/js/functions.js", loadFunctionsJS);
   

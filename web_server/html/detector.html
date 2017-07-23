@@ -21,53 +21,54 @@
         </div>
     </nav>
     <div id="notification"></div>
+    <div id="spinner-container"></div>
     <script>
     /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
     </script>
     <div class="main-wrap">
-        <div id="spinner-container"></div>
         <div class="container">
             <div class="card-container">
                 <div class="settingsHeader">Deauth Detector</div>
-                <div class="card-basic">
-                    <div class="row inputCheckbox">
-                        <div class="col-6">
-                            <div class="input-container disabled" id="channelContainer">
-                                <input placeholder=" " id="detectorChannel" required="" type="number" min="1" max="14">
-                                <label for="detectorChannel">Channel</label>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row inputCheckbox">
+                            <div class="col-6">
+                                <div class="input-container disabled" id="channelContainer">
+                                    <input placeholder=" " id="detectorChannel" required="" type="number" min="1" max="14">
+                                    <label for="detectorChannel">Channel</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <input type="checkbox" name="detectorAllChannels" id="detectorAllChannels" value="false" checked>
+                                <label class="checkbox" for="detectorAllChannels"></label>
+                                <label for="detectorAllChannels">All channels</label>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <input type="checkbox" name="detectorAllChannels" id="detectorAllChannels" value="false" checked>
-                            <label class="checkbox" for="detectorAllChannels"></label>
-                            <label for="detectorAllChannels">All channels</label>
+                        <div class="row inputCheckbox">
+                            <div class="col-6">
+                                <div class="input-container">
+                                    <input placeholder=" " id="alertPin" required="" type="number" min="0">
+                                    <label for="alertPin">Alert Pin</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <input type="checkbox" name="invertAlertPin" id="invertAlertPin" value="false">
+                                <label class="checkbox" for="invertAlertPin"></label>
+                                <label for="invertAlertPin">Invert HIGH/LOW</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-container">
+                                    <input placeholder=" " id="detectorScanTime" required="detectorScanTime" type="number" min="10">
+                                    <label for="detectorScanTime">Channel scan time</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row inputCheckbox">
-                        <div class="col-6">
-                            <div class="input-container">
-                                <input placeholder=" " id="alertPin" required="" type="number" min="0">
-                                <label for="alertPin">Alert Pin</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <input type="checkbox" name="invertAlertPin" id="invertAlertPin" value="false">
-                            <label class="checkbox" for="invertAlertPin"></label>
-                            <label for="invertAlertPin">Invert HIGH/LOW</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="input-container">
-                                <input placeholder=" " id="detectorScanTime" required="detectorScanTime" type="number" min="10">
-                                <label for="detectorScanTime">Channel scan time</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <br>
-                            <button class="secondary" onclick="saveSettings()">save</button>
-                            <button class="button-primary right" onclick="saveSettings(true)">Save &amp; Start</button>
-                        </div>
+                    <div class="card-action">
+                        <a class="light" onclick="saveSettings()">save</a>
+                        <a class="button-primary right" onclick="saveSettings(true)">Save &amp; Start</a>
                     </div>
                 </div>
             </div>
@@ -91,10 +92,12 @@
                 return;
             }
 
-            if (res.detectorAllChannels == 1) {allChannels.checked = true;switchChannel()} else {allChannels.checked = false;switchChannel()}
+            if (res.detectorAllChannels == 1) { allChannels.checked = true;
+                switchChannel() } else { allChannels.checked = false;
+                switchChannel() }
             channel.value = res.detectorChannel;
             alertPin.value = res.alertPin;
-            if (res.invertAlertPin == 1) {invert.checked = true} else {invert.checked = false}
+            if (res.invertAlertPin == 1) { invert.checked = true } else { invert.checked = false }
             scanTime.value = res.detectorScanTime;
         });
 
@@ -116,7 +119,8 @@
             url += "?detectorAllChannels=" + allChannels.checked;
             url += "&detectorChannel=" + channel.value;
             url += "&alertPin=" + alertPin.value;
-            url += "&invertAlertPin=" + invert.checked;invert.checked
+            url += "&invertAlertPin=" + invert.checked;
+            invert.checked
             url += "&detectorScanTime=" + scanTime.value;
 
             getResponse(url, function(responseText) {

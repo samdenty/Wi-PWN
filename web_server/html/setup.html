@@ -7,9 +7,9 @@
 
 <body>
     <div id="notification"></div>
-    <div class="main-wrap" style="top:0 !important">
+    <div class="main-wrap">
         <div id="spinner-container"></div>
-        <div class="container">
+        <div class="container setup">
             <div class="card-container">
                 <div class="settingsHeader" id="h">Terms and Conditions</div>
                 <div id="ss" class="card horizontal">
@@ -128,6 +128,7 @@
         }
 
         function cont() {
+            showLoading();
             toTop()
             var url = "settingsSave.json";
             url += "?ssid=" + ssid.value;
@@ -143,6 +144,7 @@
                         if (responseText == "true") {
                             document.getElementById("ss").className = "card horizontal s-s";
                             document.getElementById("h").innerHTML = "Setup Complete";
+                            showLoading("hide");
                         } else {
                             notify("Failed to restart Wi-PWN! (E26)");
                             showLoading("hide");
@@ -153,9 +155,11 @@
                     });
                 } else {
                     notify("Failed to save settings! (E28)");
+                    showLoading("hide");
                 }
             }, function() {
                 notify("Failed to save settings! (E29)");
+                showLoading("hide");
             });
         }
 
@@ -180,6 +184,7 @@
 
         .main-wrap {
             overflow: initial;
+            top: 0 !important;
         }
 
         footer,
@@ -203,6 +208,12 @@
             opacity: 1;
             height: 90px;
             margin-bottom: 30px;
+        }
+        .show-loading {
+            margin-top: 15px !important;
+        }
+        #spinner-container .success-svg {
+            display: none;
         }
 
         .container {

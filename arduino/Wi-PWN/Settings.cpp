@@ -97,6 +97,9 @@ void Settings::load() {
   alertPin = (int)EEPROM.read(alertPinAdr);
   invertAlertPin = (bool)EEPROM.read(invertAlertPinAdr);
   detectorScanTime = (int)EEPROM.read(detectorScanTimeAdr);
+  pinNamesLen = EEPROM.read(pinNamesAdr);
+  pinNames = "";
+  for (int i = 0; i < pinNamesLen; i++) pinNames += (char)EEPROM.read(pinNamesAdr + i);
 }
 
 void Settings::reset() {
@@ -107,8 +110,6 @@ void Settings::reset() {
   ssidHidden = false;
   apChannel = 1;
 
-  ssidLen = ssid.length();
-  passwordLen = password.length();
   macAP = defaultMacAP;
   isMacAPRand = 0;
 
@@ -134,7 +135,7 @@ void Settings::reset() {
   alertPin = 2;
   invertAlertPin = true;
   detectorScanTime = 200;
-
+  pinNames = "test;test34"; 
   if (debug) Serial.println("done");
 
   save();
@@ -183,6 +184,9 @@ void Settings::save() {
   EEPROM.write(alertPinAdr, alertPin);
   EEPROM.write(invertAlertPinAdr, invertAlertPin);
   EEPROM.write(detectorScanTimeAdr, detectorScanTime);
+  pinNamesLen = pinNames.length();
+  EEPROM.write(pinNamesLenAdr, pinNamesLen);
+  for (int i = 0; i < pinNamesLen; i++) EEPROM.write(pinNamesAdr + i, pinNames[i]);
   EEPROM.commit();
 
   if (debug) {
@@ -218,6 +222,7 @@ void Settings::info() {
   Serial.println("dark mode: " + (String)darkMode);
   Serial.println("simplify: " + (String)simplify);
   Serial.println("new user: " + (String)newUser);
+  Serial.println("pin names"+(String)pinNamesLen+": " + (String)pinNames);
   Serial.println("detector- channel: " + (String)detectorChannel);
   Serial.println("detector- all channels: " + (String)detectorAllChannels);
   Serial.println("detector- alert pin: " + (String)alertPin);
@@ -255,7 +260,8 @@ size_t Settings::getSize() {
   json += "\"detectorAllChannels\":" + (String)detectorAllChannels + ",";
   json += "\"alertPin\":" + (String)alertPin + ",";
   json += "\"invertAlertPin\":" + (String)invertAlertPin + ",";
-  json += "\"detectorScanTime\":" + (String)detectorScanTime + "}";
+  json += "\"detectorScanTime\":" + (String)detectorScanTime + ",";
+  json += "\"pinNames\":\"" + (String)pinNames + "\"}";
   jsonSize += json.length();
 
   return jsonSize;
@@ -292,7 +298,8 @@ void Settings::send() {
   json += "\"detectorAllChannels\":" + (String)detectorAllChannels + ",";
   json += "\"alertPin\":" + (String)alertPin + ",";
   json += "\"invertAlertPin\":" + (String)invertAlertPin + ",";
-  json += "\"detectorScanTime\":" + (String)detectorScanTime + "}";
+  json += "\"detectorScanTime\":" + (String)detectorScanTime + ",";
+  json += "\"pinNames\":\"" + (String)pinNames + "\"}";
   sendToBuffer(json);
   sendBuffer();
 
