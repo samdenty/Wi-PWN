@@ -12,7 +12,7 @@
     <br>
     <br>
     <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
-		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">d
+		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">
 	</a>
     <a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp">
 		<img src="https://img.shields.io/discord/335836376031428618.svg?colorB=0082ff&style=flat">
