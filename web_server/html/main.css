@@ -263,14 +263,14 @@ tr td, tr, .darken-on-hover {
 .selected td, .selected:hover td {
     background: none;
 }
-#networksFound, #apMAC {
+#apMAC {
     font-family: Consolas, Courier New, monospace, sans-serif;
     display: inline-block;
     margin-top: 8px;
     padding: 6px;
     background: rgba(0, 0, 0, .05);
 }
-#networksFound:empty, #apMAC:empty {
+#apMAC:empty {
     display: none;
 }
 

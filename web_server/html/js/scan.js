@@ -38,7 +38,7 @@ function getResults() {
     getResponse("APScanResults.json", function(responseText) {
         var res = JSON.parse(responseText);
         res.aps = res.aps.sort(compare);
-        networkInfo.innerHTML = '(' + res.aps.length + ' found)';
+        networkInfo.innerHTML = '(' + res.aps.length + ')';
         if (res.aps.length == 0) scan()
         apMAC.innerHTML = "";
         if (res.multiAPs == 1) tableHeaderHTML = '<tr><th width="8%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" ' + selectAllState + '><label class="checkbox" for="selectAll"></th><th width="17%">Signal</th><th width="22%">SSID</th><th width="15%">Security</th><th width="8%">Ch.</th></tr>';

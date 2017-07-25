@@ -12,12 +12,12 @@
     <br>
     <br>
     <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
-		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">
+		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">d
 	</a>
     <a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp">
 		<img src="https://img.shields.io/discord/335836376031428618.svg?colorB=0082ff&style=flat">
 	</a>
-    <a href="https://samdenty99.github.io/r?http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
+    <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki/Installation">
 		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
 	</a>
 	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription">
@@ -86,7 +86,8 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 
 ### <a name="nodemcu"></a>Method 1: Flashing with NodeMCU-Flasher  
 
-1. [Download](https://github.com/samdenty99/Wi-PWN/releases/latest)   the current release of Wi-PWN
+1. [
+2. oad](https://github.com/samdenty99/Wi-PWN/releases/latest)   the current release of Wi-PWN
 
 2. Upload the `.bin` file using the [nodemcu-flasher](https://github.com/nodemcu/nodemcu-flasher/raw/master/Win64/Release/ESP8266Flasher.exe). Alternatively you can use the official [esptool](https://github.com/espressif/esptool) from espressif.
 
