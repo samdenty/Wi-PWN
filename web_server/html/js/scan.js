@@ -69,14 +69,27 @@ function getResults() {
             }
 
             var signalPercent = Math.round((1-((res.aps[i].r+30)/-70))*100);
-            tr += '<td class="WiFi"><div>' + eval(wifiIndicator) + '</div><div><span style="background:linear-gradient(135deg, rgba(0,0,0,0.3) '+signalPercent+'%,rgba(0,0,0,0.07) '+signalPercent+'%)"></span><span>' + res.aps[i].r + '</span></div></td>';
+            if (i == 0) {var tdID = ' id="resizeEventTD"'} else {var tdID = ''}
+            tr += '<td class="WiFi"'+tdID+'><div>' + eval(wifiIndicator) + '</div><div><span style="background:linear-gradient(135deg, '+getColor(signalPercent)+' '+signalPercent+'%,rgba(0,0,0,0.15) '+signalPercent+'%)"></span><span style="color:'+getColor(signalPercent, true)+'">' + res.aps[i].r + '</span></div></td>';
             tr += '<td>' + res.aps[i].ss + '</td>';
             tr += '<td>' + getEncryption(res.aps[i].e) + '</td>';
             tr += '<td>' + res.aps[i].c + '</td>';
             tr += '</tr>';
         }
         table.innerHTML = tr;
+        checkSize()
     });
+}
+
+function getColor(value, lighten){
+    var lightness = 50;
+    var saturation = 75;
+    if (lighten == true) lightness = 90
+    if (value > 120) value = 100
+    if (value > 90) saturation = 60;
+    value = 100 - value;
+    var hue=((1-(value/87))*100).toString(10);
+    return ["hsl(",hue,","+saturation+"%,"+lightness+"%)"].join("");
 }
 
 function scan() {
@@ -108,5 +121,15 @@ function selAll() {
     }
 }
 
+window.onresize = function(event){checkSize()}
+
+function checkSize() {
+    var w = document.getElementById('resizeEventTD').clientWidth;
+    if (w <= 99) {
+        document.getElementById('apscan').className = 'pointUp'
+    } else {
+        document.getElementById('apscan').className = ''
+    }
+}
 
 getResults();

@@ -338,6 +338,22 @@ h1 {
 .no-events, nav.disabled a, .input-container label {
     pointer-events: none;
 }
+.samddAttrib span {
+    color: #ff5409 !important;
+}
+.samddAttrib p {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-left:12px;
+    margin-top:5px !important;
+    margin-left: 5px !important;
+    border-left: 3px solid #ff4f00;
+    color: #ff7233 !important;
+}
+.samddAttrib p button {
+    background: #ff4f00 !important;
+    margin-right: 10px
+}
 img, nav, td {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1047,13 +1063,24 @@ footer a {
     border-radius: 1000px;
 }
 .WiFi span:nth-child(1) {
-    position: absolute;
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
     border-top-left-radius: 0;
     background: rgba(0, 0, 0, .1);
     box-shadow: inset 0 0 15px rgba(0, 0, 0, .15);
+}
+.pointUp span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.WiFi span:nth-child(2) {
+    position: absolute;
+    -webkit-filter: invert(100%) grayscale(1);
+    filter: invert(100%);
+    opacity: 0.5;
+    font-weight: 300;
 }
 .edit {
     display: inline-block;

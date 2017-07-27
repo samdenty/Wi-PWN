@@ -7,6 +7,8 @@ var table = document.getElementsByTagName('table')[0],
     res = '', scanTime = '',
     previousCall = new Date().getTime(),
     selectAllState = 'not-checked',
+    countdownRemaining = 0,
+    startCountdown,
     tableHeaderHTML = '<tr><th width="11%"></th><th>Name</th><th>Client info</th><th>Pkts</th></tr>';
 
 function compare(a, b) {
@@ -81,14 +83,16 @@ function getResults() {
 }
 
 function scan() {
+    countdownRemaining = scanTime;
+    startCountdown = setInterval(function(){countdown()}, 1000);
     getResponse("ClientScan.json?time=" + scanTime, function(responseText) {
         if (responseText == "true") {
             toggleBtn(true);
-            checkConnection();
+            
         } else {
             notify("INFO: No Wi-Fi network(s) selected! (E7)'");
+            countdown(true);
         }
-
     });
 }
 
@@ -136,7 +140,6 @@ function addClient() {
 
 function setName(id) {
     var newName = prompt("Name for " + res.clients[id].m);
-
     if (newName != null) {
         getResponse("setName.json?id=" + id + "&name=" + newName, function(responseText) {
             if (responseText == "true") getResults();
@@ -168,6 +171,19 @@ function add(id) {
         if (responseText == "true") getResults();
         else notify("ERROR: Bad response 'addClientFromList.json' (E14)");
     });
+}
+function countdown(stop) {
+    if (stop == true) {
+        clearInterval(startCountdown)
+    } else if (countdownRemaining == 0) {
+        notify("Scan complete! Reconnect and reload the page");
+        indicate(true);
+        clearInterval(startCountdown)
+    } else {
+        if (countdownRemaining == '') countdownRemaining = scanTime;
+        notify("Scanning for users ~ "+countdownRemaining+"s remaining");
+        countdownRemaining--;
+    }
 }
 
 getResponse("ClientScanTime.json", function(responseText) {

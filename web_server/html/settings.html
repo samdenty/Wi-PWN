@@ -26,7 +26,7 @@
     /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
     </script>
     <div class="main-wrap">
-        <div class="container settings">
+        <form id="settings" class="container settings">
             <div class="card-container settings">
                 <div class="settingsHeader">Wi-Fi configuration</div>
                 <div class="card-small">
@@ -154,7 +154,7 @@
               <button onclick="resetSettings()">Reset</button>
               <button class="button-primary right" onclick="saveSettings()">save</button>
             </div>
-        </div>
+        </form>
         <footer></footer>
         <script src="js/functions.js"></script>
         <script src="js/settings.js"></script>
