@@ -503,10 +503,10 @@ button:disabled, button:disabled:hover {
     padding: 0;
 }
 .selectedBtn {
-    background: #ec407a;
+    background: #f44336;
 }
 .selectedBtn:hover {
-    background: #e91e63;
+    background: #ef5350;
 }
 .clone svg {
     display: inline-block;
