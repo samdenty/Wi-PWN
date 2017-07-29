@@ -30,7 +30,7 @@ button:hover, .reboot:hover {
     color: #dadada
 }
 .settingsHeader, .settingsHeader *, .main-wrap, .WiFi span, td, th, .input-container input:valid + label, .input-container input:invalid:not(:placeholder-shown) + label, .input-container input:focus + label {
-    color: #dadada
+    color: #dadada !important
 }
 #apMAC {
     background: rgba(255, 255, 255, .1)
