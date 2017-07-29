@@ -89,8 +89,8 @@ In order to upload the Wi-PWN firmware, you can use one of two methods. The firs
 There are two variants of UART converters that ESP8266 boards use:
 
 |CP210x|CH34x|
-|---|---|
-| [Drivers](https://github.com/samdenty99/Wi-PWN/tree/master/drivers/CP210x | [Drivers](https://github.com/samdenty99/Wi-PWN/tree/master/drivers/CH34x) |
+|:---:|:---:|
+| [Drivers](https://github.com/samdenty99/Wi-PWN/tree/master/drivers/CP210x) | [Drivers](https://github.com/samdenty99/Wi-PWN/tree/master/drivers/CH34x) |
 |<img src="drivers/CP210x-board.png" height="200px">|<img src="drivers/CH34x-board.png" height="200px">|
 
 
