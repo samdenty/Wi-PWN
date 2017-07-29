@@ -84,17 +84,15 @@ I would recommend getting a USB breakout/developer board, mainly due to the 4Mb 
 In order to upload the Wi-PWN firmware, you can use one of two methods. The first method is easier overall but using Arduino is better for debugging.
 **YOU ONLY NEED TO DO ONE OF THE INSTALLATION METHODS!**
 
-### Check which serial controler u have
+### Install the necessary drivers
 
-There are two variants of the NodeMCU boards:
+There are two variants of UART converters that ESP8266 boards use:
 
-1. The NodeMCU with a CP210x controller supports native drivers in Windows 10. Or you can find the drivers [here](https://github.com/samdenty99/Wi-PWN/tree/master/drivers/CP210x).
+|CP210x|CH34x|
+|---|---|
+| [Drivers](https://github.com/samdenty99/Wi-PWN/tree/master/drivers/CP210x | [Drivers](https://github.com/samdenty99/Wi-PWN/tree/master/drivers/CH34x) |
+|<img src="drivers/CP210x-board.png" height="200px">|<img src="drivers/CH34x-board.png" height="200px">|
 
-<img src="drivers/CP210x Board.png">
-
-2. The NodeMCU with a CH340x controller need additional drivers. You can find them [here](https://github.com/samdenty99/Wi-PWN/tree/master/drivers/CH34x).
-
-<img src="drivers/CH34x Board">
 
 ### <a name="nodemcu"></a>Method 1: Flashing with NodeMCU-Flasher  
 
