@@ -163,7 +163,7 @@ There are two variants of UART converters that ESP8266 boards use:
 
 1. Connect your ESP8266 to a USB power source (you can power it with your phone using an OTG cable)
 
-2. Scan for Wi-Fi networks on your device and connect to `Wi-PWN` (no password by default).  
+2. Scan for Wi-Fi networks on your device and connect to `Wi-PWN` (Password = 'rootaccess').  
 
 3. Once connected, open up your browser and go to `http://192.168.4.1`  
 
