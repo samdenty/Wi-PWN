@@ -52,21 +52,33 @@ function autoReload() {
 }
 
 function restart(noIndication) {
-    vibrate();
-    if (noIndication != true){
-        sL.className = "";
-        showLoading();
-        autoReload();
-    }
-    getResponse("restartESP.json?", function(responseText) {
-        if (responseText !== "true") {
-            notify("Failed to restart Wi-PWN! (E23)");
+    if (noIndication == true) {
+        getResponse("restartESP.json?", function(responseText) {
+            if (responseText !== "true") {
+                notify("Failed to restart Wi-PWN! (E23)");
+                showLoading("hide");
+            }
+        }, function() {
+            notify("Failed to restart Wi-PWN! (E24)");
             showLoading("hide");
+        });
+    } else {
+        if (confirm("Are you sure you want to reboot Wi-PWN?") == true) {
+            vibrate();
+            sL.className = "";
+            showLoading();
+            autoReload();
+            getResponse("restartESP.json?", function(responseText) {
+                if (responseText !== "true") {
+                    notify("Failed to restart Wi-PWN! (E23)");
+                    showLoading("hide");
+                }
+            }, function() {
+                notify("Failed to restart Wi-PWN! (E24)");
+                showLoading("hide");
+            });
         }
-    }, function() {
-        notify("Failed to restart Wi-PWN! (E24)");
-        showLoading("hide");
-    });
+    }
 }
 
 function getE(name) {

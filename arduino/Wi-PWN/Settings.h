@@ -95,7 +95,8 @@ class Settings
     bool invertAlertPin;
     int detectorScanTime;
     int pinNamesLen;
-    String pinNames = "test";
+    String pins = "000000";
+    String pinNames = "Pin 3;Pin 4;Pin 5;Pin 6;Pin 7;Pin 8"; 
     int prevLedPin = 0;
     Mac defaultMacAP;
     Mac macAP;

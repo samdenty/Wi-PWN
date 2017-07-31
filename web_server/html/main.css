@@ -249,7 +249,7 @@ td, th {
     padding: 10px;
 }
 tr td, tr, .darken-on-hover {
-    transition: box-shadow 1s ease, background .2s ease, color .2s ease;
+    transition: background .03s ease, color .2s ease;
 }
 .darken-on-hover:hover {
     background: rgba(0, 0, 0, .1);
@@ -502,10 +502,10 @@ button:disabled, button:disabled:hover {
     width: 110px;
     padding: 0;
 }
-.selectedBtn {
+.redBtn {
     background: #f44336;
 }
-.selectedBtn:hover {
+.redBtn:hover {
     background: #ef5350;
 }
 .clone svg {

@@ -51,7 +51,7 @@ function getResults() {
                 tr += "<td class='red' id='status" + i + "'>" + res.attacks[i].status + "</td>";
             }
             if (res.attacks[i].running) {
-                tr += "<td><button class='attackBtn selectedBtn' onclick='startStop(" + i + ")'>stop</button></td>";
+                tr += "<td><button class='attackBtn redBtn' onclick='startStop(" + i + ")'>stop</button></td>";
             } else {
                 if(res.attacks[i].status == "No network(s)") {
                     tr += "<td><button class='attackBtn' disabled=''>start</button></td>";

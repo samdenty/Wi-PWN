@@ -97,7 +97,7 @@ void Settings::load() {
   alertPin = (int)EEPROM.read(alertPinAdr);
   invertAlertPin = (bool)EEPROM.read(invertAlertPinAdr);
   detectorScanTime = (int)EEPROM.read(detectorScanTimeAdr);
-  pinNamesLen = EEPROM.read(pinNamesAdr);
+  pinNamesLen = EEPROM.read(pinNamesLenAdr);
   pinNames = "";
   for (int i = 0; i < pinNamesLen; i++) pinNames += (char)EEPROM.read(pinNamesAdr + i);
 }
@@ -135,7 +135,8 @@ void Settings::reset() {
   alertPin = 2;
   invertAlertPin = true;
   detectorScanTime = 200;
-  pinNames = "test;test34"; 
+  pins = "000000";
+  pinNames = "Pin 3;Pin 4;Pin 5;Pin 6;Pin 7;Pin 8"; 
   if (debug) Serial.println("done");
 
   save();
@@ -189,6 +190,14 @@ void Settings::save() {
   for (int i = 0; i < pinNamesLen; i++) EEPROM.write(pinNamesAdr + i, pinNames[i]);
   EEPROM.commit();
 
+  Serial.println("Running!!!!!!!!");
+  int i=0;
+  while (i < 6)
+  {  
+     char state = pins[i++];
+     Serial.println(state);
+  }
+
   if (debug) {
     info();
     Serial.println("settings saved!");
@@ -197,37 +206,34 @@ void Settings::save() {
 
 void Settings::info() {
   Serial.println("Settings:");
-  Serial.println("SSID: " + ssid);
-  Serial.println("SSID length: " + (String)ssidLen);
-  Serial.println("SSID hidden: " + (String)ssidHidden);
-  Serial.println("password: " + password);
-  Serial.println("password length: " + (String)passwordLen);
-  Serial.println("channel: " + (String)apChannel);
+  Serial.println("SSID: '" + ssid + "' (characters=" + (String)ssidLen + ") (hidden="+(String)ssidHidden+") (channel="+(String)apChannel+")");
+  Serial.println("Password: '" + password + "' (" + (String)passwordLen + " characters)");
   Serial.println("Default MAC AP: " + defaultMacAP.toString());
   Serial.println("Saved MAC AP: " + macAP.toString());
   Serial.println("MAC AP random: " + (String)isMacAPRand);
   Serial.println("Scan hidden APs: " + (String)apScanHidden);
-  Serial.println("deauth reason: " + (String)(int)deauthReason);
-  Serial.println("attack timeout: " + (String)attackTimeout);
-  Serial.println("attack packet rate: " + (String)attackPacketRate);
-  Serial.println("client scan time: " + (String)clientScanTime);
-  Serial.println("attack SSID encrypted: " + (String)attackEncrypted);
-  Serial.println("use built-in LED: " + (String)useLed);
-  Serial.println("channel hopping: " + (String)channelHop);
-  Serial.println("multiple APs: " + (String)multiAPs);
-  Serial.println("multiple Attacks: " + (String)multiAttacks);
-  Serial.println("mac change interval: " + (String)macInterval);
+  Serial.println("Deauth reason: " + (String)(int)deauthReason);
+  Serial.println("Attack timeout: " + (String)attackTimeout);
+  Serial.println("Attack packet rate: " + (String)attackPacketRate);
+  Serial.println("Client scan time: " + (String)clientScanTime);
+  Serial.println("Attack SSID encrypted: " + (String)attackEncrypted);
+  Serial.println("Use built-in LED: " + (String)useLed);
+  Serial.println("Channel hopping: " + (String)channelHop);
+  Serial.println("Multiple APs: " + (String)multiAPs);
+  Serial.println("Multiple Attacks: " + (String)multiAttacks);
+  Serial.println("Mac change interval: " + (String)macInterval);
   Serial.println("1s beacon interval: " + (String)beaconInterval);
   Serial.println("LED Pin: " + (String)ledPin);
-  Serial.println("dark mode: " + (String)darkMode);
+  Serial.println("Dark mode: " + (String)darkMode);
   Serial.println("simplify: " + (String)simplify);
   Serial.println("new user: " + (String)newUser);
-  Serial.println("pin names"+(String)pinNamesLen+": " + (String)pinNames);
-  Serial.println("detector- channel: " + (String)detectorChannel);
-  Serial.println("detector- all channels: " + (String)detectorAllChannels);
-  Serial.println("detector- alert pin: " + (String)alertPin);
-  Serial.println("detector- invert alert pin: " + (String)invertAlertPin);
-  Serial.println("detector- scan time: " + (String)detectorScanTime);
+  Serial.println("Pin state: " + (String)pins);
+  Serial.println("Pin names: " + (String)pinNames);
+  Serial.println("Detector- channel: " + (String)detectorChannel);
+  Serial.println("Detector- all channels: " + (String)detectorAllChannels);
+  Serial.println("Detector- alert pin: " + (String)alertPin);
+  Serial.println("Detector- invert alert pin: " + (String)invertAlertPin);
+  Serial.println("Detector- scan time: " + (String)detectorScanTime);
 }
 
 size_t Settings::getSize() {
@@ -261,6 +267,7 @@ size_t Settings::getSize() {
   json += "\"alertPin\":" + (String)alertPin + ",";
   json += "\"invertAlertPin\":" + (String)invertAlertPin + ",";
   json += "\"detectorScanTime\":" + (String)detectorScanTime + ",";
+  json += "\"pins\":\"" + (String)pins + "\",";
   json += "\"pinNames\":\"" + (String)pinNames + "\"}";
   jsonSize += json.length();
 
@@ -299,6 +306,7 @@ void Settings::send() {
   json += "\"alertPin\":" + (String)alertPin + ",";
   json += "\"invertAlertPin\":" + (String)invertAlertPin + ",";
   json += "\"detectorScanTime\":" + (String)detectorScanTime + ",";
+  json += "\"pins\":\"" + (String)pins + "\",";
   json += "\"pinNames\":\"" + (String)pinNames + "\"}";
   sendToBuffer(json);
   sendBuffer();

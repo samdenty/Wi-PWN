@@ -55,7 +55,7 @@ function getResults() {
                 apMAC.innerHTML = res.aps[i].m;
             } else tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false"><label class="checkbox" for="check' + res.aps[i].i + '"></label></td>';
 
-            if (getEncryption(res.aps[i].e) !== 'Open') {securityState = 'L'} else {securityState = ''}
+            if (getEncryption(res.aps[i].e) != 'Open') {securityState = 'L'} else {securityState = ''}
             if (-89 > res.aps[i].r) {
                 wifiIndicator = 's0'+securityState
             } else if (-88 > res.aps[i].r) {

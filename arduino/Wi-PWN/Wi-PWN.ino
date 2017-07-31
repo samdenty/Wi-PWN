@@ -534,6 +534,10 @@ void saveSettings() {
 
   if (server.hasArg("detectorScanTime")) settings.detectorScanTime = server.arg("detectorScanTime").toInt();
   
+  if (server.hasArg("pinNames")) settings.pinNames = server.arg("pinNames");
+
+  if (server.hasArg("pins")) settings.pins = server.arg("pins");
+  
   settings.save();
   server.send( 200, "text/json", "true" );
 }

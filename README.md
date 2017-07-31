@@ -206,39 +206,4 @@ If it can send packets but your target doesn't loose its connection, then the Wi
 
 #### If you have other questions or problems with the ESP8266 you can also check out the official [community forum](http://www.esp8266.com/).
 
-## License
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc/4.0/)
-
-This project is licensed under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). See the license file for details.
-
-**If you want to use the Wi-PWN source code for a commercial project, you can contact me and ask for permission.**
-
-Twitter: [twitter.com/sdenty_](http://twitter.com/sdenty_)<br>
-Email  : [WiPWN.official@gmail.com](mailto:WiPWN.official@gmail.com)
-
-## Sources and additional links
-
-**Original project - [https://github.com/spacehuhn/esp8266_deauther](https://github.com/spacehuhn/esp8266_deauther)**
-
-Deauth attack: [https://en.wikipedia.org/wiki/Wi-Fi-deauthentication-attack](https://en.wikipedia.org/wiki/Wi-Fi_deauthentication_attack)
-
-Deauth frame: [https://mrncciew.com/2014/10/11/802-11-mgmt-deauth-disassociation-frames/](https://mrncciew.com/2014/10/11/802-11-mgmt-deauth-disassociation-frames/)
-
-ESP8266:
-
-- [https://wikipedia.org/wiki/ESP8266](https://wikipedia.org/wiki/ESP8266)
-- [https://espressif.com/en/products/hardware/esp8266ex/overview](https://espressif.com/en/products/hardware/esp8266ex/overview)
-
-Packet Injection with ESP8266:
-
-- [http://hackaday.com/2016/01/14/inject-packets-with-an-esp8266/](http://hackaday.com/2016/01/14/inject-packets-with-an-esp8266/)
-- [http://bbs.espressif.com/viewtopic.php?f=7&t=1357&p=10205&hilit=Wi-Fi_pkt_freedom#p10205](http://bbs.espressif.com/viewtopic.php?f=7&t=1357&p=10205&hilit=Wi-Fi_pkt_freedom#p10205)
-- [https://github.com/pulkin/esp8266-injection-example](https://github.com/pulkin/esp8266-injection-example)
-
-802.11w-2009: [https://en.wikipedia.org/wiki/IEEE_802.11w-2009](https://en.wikipedia.org/wiki/IEEE_802.11w-2009)
-
-`Wi-Fi_send_pkt_freedom` function limitations: [http://esp32.com/viewtopic.php?f=13&t=586&p=2648&hilit=Wi-Fi_send_pkt_freedom#p2648](http://esp32.com/viewtopic.php?f=13&t=586&p=2648&hilit=Wi-Fi_send_pkt_freedom#p2648)
-
-WiPWN, WiPwner, Wi PWN, PWN Wi, Wi PAWN
-
-![](https://c.statcounter.com/11368832/0/a7433704/0/)
+[![Analytics](https://ga-beacon.appspot.com/UA-85426772-5/Wi-PWN/?flat)](https://github.com/igrigorik/ga-beacon)

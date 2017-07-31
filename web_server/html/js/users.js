@@ -36,7 +36,7 @@ function getResults() {
 
         res.clients = res.clients.sort(compare);
 
-        clientsFound.innerHTML = '(' + res.clients.length + ' found)';
+        clientsFound.innerHTML = '(' + res.clients.length + ')';
 
         var tr = '';
         if (res.clients.length > 1) tableHeaderHTML = '<tr><th width="11%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th><th>Name</th><th>Client info</th><th>Pkts</th></tr>';
@@ -90,7 +90,7 @@ function scan() {
             toggleBtn(true);
             
         } else {
-            notify("INFO: No Wi-Fi network(s) selected! (E7)'");
+            notify("INFO: No Wi-Fi network(s) selected! (E7)");
             countdown(true);
         }
     });
