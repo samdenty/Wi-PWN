@@ -181,17 +181,14 @@
             padding-bottom: 15px;
             overflow-y: initial;
         }
-
         .main-wrap {
             overflow: initial;
             top: 0 !important;
         }
-
         footer,
         .reboot-container {
             display: none;
         }
-
         @media (min-width:850px) {
             .container {
                 position: fixed;
@@ -203,7 +200,6 @@
                 transform: -ms-translate(-50%, -50%)
             }
         }
-
         .success-svg {
             opacity: 1;
             height: 90px;
@@ -215,9 +211,19 @@
         #spinner-container .success-svg {
             display: none;
         }
-
         .container {
             min-height: initial;
+        }
+        html {
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF0000;
         }
         </style>
     </div>
