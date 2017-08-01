@@ -1,35 +1,13 @@
-<p align="center">
-  <a href="https://samdenty99.github.io/r?https://Wi-PWN.github.io">
-    <img src="pictures/Wi-PWN.png" width="90">
-  </a>
+<img src="https://github.com/samdenty99/Wi-PWN/blob/master/pictures/Wi-PWN.png?raw=true" align="left" width="192px" height="192px"/>
+<img align="left" width="0" height="192px" hspace="10"/>
 
-  <h3 align="center">Wi-PWN</h3>
+# Wi-PWN
+ESP8266 Deauther with a clean & minimalistic web interface
 
-  <p align="center">
-    ESP8266 Deauther with a clean & minimalistic web interface 
-    <br>
-    <b><a href="https://samdenty99.github.io/r?https://Wi-PWN.github.io">Online demo</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">Browse the docs</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">Upcoming features</a></b>
-    <br>
-    <br>
-    <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
-		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">
-	</a>
-    <a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp">
-		<img src="https://img.shields.io/discord/335836376031428618.svg?colorB=0082ff&style=flat">
-	</a>
-    <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki/Installation">
-		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
-	</a>
-	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription">
-    	<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch&style=flat">
-	</a>
-    <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN">
-		<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star&style=flat">
-	</a>
-	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/fork">
-		<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork&style=flat">
-	</a>
-</p>
+<a href="https://samdenty99.github.io/r?https://Wi-PWN.github.io"><img src="https://img.shields.io/badge/Online-Demo-Green.svg?colorA=29B6F6&colorB=4FC3F7&style=flat-square"></a> &nbsp; <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki"><img src="https://img.shields.io/badge/Browse-Documentation-Green.svg?colorA=29B6F6&colorB=4FC3F7&style=flat-square"></a> &nbsp; <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true"><img src="https://img.shields.io/badge/Upcoming-Features-Green.svg?colorA=29B6F6&colorB=4FC3F7&style=flat-square"></a>
+
+<a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN"><img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorA=455A64&colorB=1185F6&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp"><img src="https://img.shields.io/discord/335836376031428618.svg?colorA=455A64&colorB=1185F6&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki/Installation"><img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorA=455A64&colorB=4183C4&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription"><img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?colorA=455A64&label=Watch&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN"><img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?colorA=455A64&label=Star&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/fork"><img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?colorA=455A64&label=Fork&style=flat-square"></a>
+
 <h2></h2>
 <img src="pictures/secondary-banner.png">
 
