@@ -81,6 +81,7 @@ function saveSettings() {
             indicate(true);
             var uniqueKey = new Date();
             document.getElementById('darkStyle').setAttribute('href', 'dark.css?' + uniqueKey.getTime());
+            defaultMetaColor();
             inputChanges = false;
             checkboxChanges = false;
         } else {
