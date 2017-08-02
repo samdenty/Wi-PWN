@@ -1,7 +1,8 @@
 var sL = getE('spinner-container'),
     notification = document.getElementById("notification"),
     themeColor = getComputedStyle(document.body),
-    saveStatus = getE('spinner-container');
+    saveStatus = getE('spinner-container'),
+    mainWrap = document.getElementsByClassName("main-wrap")[0];
 
 function notify(msg, closeAfter) {
     if (msg) {
@@ -215,5 +216,23 @@ function vibrate() {
                     els[i].className = 'main-wrap fadeIn';
                 }
             }, 40) // Increase delay to prevent animation from stuttering
+        }
+    }
+
+/* Add scroll event listeners */
+    window.onscroll = function() {
+        var nav = document.getElementById('nav');
+        if (window.pageYOffset > 3 ) {
+            nav.classList.add("n-shadow");
+        } else {
+            nav.classList.remove("n-shadow");
+        }
+    }
+    mainWrap.onscroll = function() {
+        var nav = document.getElementById('nav');
+        if ( mainWrap.scrollTop > 3 ) {
+            nav.classList.add("n-shadow");
+        } else {
+            nav.classList.remove("n-shadow");
         }
     }

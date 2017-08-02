@@ -121,15 +121,15 @@ function selAll() {
     }
 }
 
-window.onresize = function(event){checkSize()}
-
-function checkSize() {
-    var w = document.getElementById('resizeEventTD').clientWidth;
-    if (w <= 99) {
-        document.getElementById('apscan').className = 'pointUp'
-    } else {
-        document.getElementById('apscan').className = ''
+/* Add event listener for WiFi signal icons */
+    window.onresize = function(event){checkSize()}
+    function checkSize() {
+        var w = document.getElementById('resizeEventTD').clientWidth;
+        if (w <= 99) {
+            document.getElementById('apscan').className = 'pointUp'
+        } else {
+            document.getElementById('apscan').className = ''
+        }
     }
-}
 
 getResults();

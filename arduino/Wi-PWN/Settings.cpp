@@ -206,15 +206,15 @@ void Settings::save() {
 void Settings::info() {
   Serial.println("");
   Serial.println("Settings:");
-  Serial.println("  SSID            : '" + ssid + "'\t\t\t|  characters='" + (String)ssidLen + "'\t\t|  hidden='"+(String)ssidHidden+"'\t|  channel='"+(String)apChannel+"'\t|");
+  Serial.println("  SSID            : '" + ssid + "'\t\t\t|  characters='" + (String)ssidLen + "'\t\t|  hidden='"+(String)ssidHidden+"'\t\t|  channel='"+(String)apChannel+"'\t\t|");
   Serial.println("  Password        : '" + password + "'\t\t|  characters='" + (String)passwordLen + "'\t\t|");
   Serial.println("  Scan            : hidden-networks='" + (String)apScanHidden + "'\t\t|  client-scan-time='" + (String)clientScanTime + "'\t|");
-  Serial.println("  Attack          : timeout='" + (String)attackTimeout + "'\t\t|  packet_rate='" + (String)attackPacketRate + "'\t\t|  deauth_reason='" + (String)(int)deauthReason + "'");
-  Serial.println("  Interface       : dark-mode='" + (String)darkMode + "'\t\t|  new-user='" + (String)newUser + "'\t\t|  simplify='" + (String)simplify + "'");
-  Serial.println("  LED Indicator   : enable='" + (String)useLed + "'\t\t\t|  pin='" + (String)ledPin + "'\t\t|");
+  Serial.println("  Attack          : timeout='" + (String)attackTimeout + "'\t\t\t|  packet_rate='" + (String)attackPacketRate + "'\t\t|  deauth_reason='" + (String)(int)deauthReason + "'");
+  Serial.println("  Interface       : dark-mode='" + (String)darkMode + "'\t\t|  new-user='" + (String)newUser + "'\t\t\t|  simplify='" + (String)simplify + "'");
+  Serial.println("  LED Indicator   : enable='" + (String)useLed + "'\t\t\t|  pin='" + (String)ledPin + "'\t\t\t|");
   Serial.println("  MAC AP          : default='" + defaultMacAP.toString()+"'\t|  saved='" + macAP.toString()+"'\t|  random='" + (String)isMacAPRand + "'");
-  Serial.println("  Beacons         : mac-change-interval='" + (String)multiAttacks + "'\t|  " + "WPA2='" + (String)attackEncrypted + "'\t\t|  1s-interval='" + (String)beaconInterval + "");
-  Serial.println("  Deauth Detector : all-channels='" + (String)detectorAllChannels + "'\t\t|  channel='" + (String)detectorChannel + "'\t\t|  alert-pin='" + (String)alertPin + "'\t|  invert-pin='" + (String)invertAlertPin + "'\t|  scan-time='" + (String)detectorScanTime + "'");
+  Serial.println("  Beacons         : mac-change-interval='" + (String)multiAttacks + "'\t|  " + "WPA2='" + (String)attackEncrypted + "'\t\t\t|  1s-interval='" + (String)beaconInterval + "");
+  Serial.println("  Deauth Detector : all-channels='" + (String)detectorAllChannels + "'\t\t|  channel='" + (String)detectorChannel + "'\t\t\t|  alert-pin='" + (String)alertPin + "'\t|  invert-pin='" + (String)invertAlertPin + "'\t|  scan-time='" + (String)detectorScanTime + "'");
   Serial.println("  Other           : channel-hopping='" + (String)channelHop + "'\t\t|  multiple-aps='" + (String)multiAPs + "'\t\t|  multiple-attacks='" + (String)multiAttacks + "'");
   Serial.println("  PIN Control     : state='" + (String)pins + "'\t\t|  names='" + (String)pinNames + "'");
   Serial.println("");

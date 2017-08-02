@@ -42,7 +42,21 @@ nav {
     top: 0;
     width: 100%;
     background: #1976d2;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, .20);
+}
+nav::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 110%;
+  margin-left: -5%;
+  height: 100%;
+  opacity: 0;
+  box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.4);
+  transition: opacity 500ms;
+  top: 0;
+}
+nav.n-shadow::after {
+  opacity: 1;
 }
 nav #links {
     overflow-x: scroll;
@@ -976,15 +990,13 @@ footer a {
     .main-wrap {
         position: relative !important;
         top: 65px !important;
+        overflow-y: hidden;
     }
     .row.inputCheckbox .col-6:nth-child(2) {
         margin-bottom: 20px;
     }
     .container {
         min-height: calc(100% - 235px);
-    }
-    .main-wrap {
-        overflow-y: hidden;
     }
     .show-loading {
         margin-top: 80px !important;
@@ -1078,7 +1090,7 @@ footer a {
 .WiFi span:nth-child(2) {
     position: absolute;
     -webkit-filter: invert(100%) grayscale(1);
-    filter: invert(100%);
+    filter: invert(100%) grayscale(1);
     opacity: 0.5;
     font-weight: 300;
 }
