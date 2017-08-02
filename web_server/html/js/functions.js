@@ -1,4 +1,5 @@
-var sL = getE('spinner-container'),
+var version = "6.1",
+    sL = getE('spinner-container'),
     notification = document.getElementById("notification"),
     themeColor = getComputedStyle(document.body),
     saveStatus = getE('spinner-container'),
@@ -220,8 +221,8 @@ function vibrate() {
     }
 
 /* Add scroll event listeners */
+    var nav = document.getElementById('nav');
     window.onscroll = function() {
-        var nav = document.getElementById('nav');
         if (window.pageYOffset > 3 ) {
             nav.classList.add("n-shadow");
         } else {
@@ -229,7 +230,6 @@ function vibrate() {
         }
     }
     mainWrap.onscroll = function() {
-        var nav = document.getElementById('nav');
         if ( mainWrap.scrollTop > 3 ) {
             nav.classList.add("n-shadow");
         } else {

@@ -20,7 +20,8 @@ var ssid = getE('ssid'),
     ledPin = getE('ledPin'),
     darkMode = getE('darkMode'),
     res = '',
-    changes;
+    checkboxChanges,
+    inputChanges;
 
 function getData() {
     getResponse("settings.json", function(responseText) {
@@ -80,6 +81,8 @@ function saveSettings() {
             indicate(true);
             var uniqueKey = new Date();
             document.getElementById('darkStyle').setAttribute('href', 'dark.css?' + uniqueKey.getTime());
+            inputChanges = false;
+            checkboxChanges = false;
         } else {
             indicate(false);
             notify("Failed to save settings! (E18)");
@@ -108,22 +111,24 @@ function resetSettings() {
             indicate(false);
         });
     }
+    inputChanges = false;
+    checkboxChanges = false;
 }
 
 getData();
-var form = document.getElementById("settings");
-var checkbox = document.querySelector("input[type=checkbox]");
-form.addEventListener("input", function() {
-    changes = true;
-});
-checkbox.onchange = function() {
-    changes = true;
-}
-window.addEventListener("beforeunload", function(e) {
-    if (changes) {
-        var confirmationMessage = 'You have not saved the settings' +
-            'All changes will be lost!';
-        (e || window.event).returnValue = confirmationMessage;
-        return confirmationMessage;
-    }
-});
+/* Detect form changes and display popup if not saved */
+    var form = document.getElementById("settings");
+    form.addEventListener("input", function() {
+        inputChanges = true;
+    });
+    form.addEventListener("change", function() {
+        checkboxChanges = true;
+    }, false);
+
+    window.addEventListener("beforeunload", function(e) {
+        if (inputChanges || checkboxChanges) {
+            var confirmationMessage = 'All changes will be lost!';
+            (e || window.event).returnValue = confirmationMessage;
+            return confirmationMessage;
+        }
+    });

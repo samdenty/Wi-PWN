@@ -1,7 +1,7 @@
 {  
    "ssid":"Wi-PWN",
    "ssidHidden":0,
-   "password":"",
+   "password":"rootaccess",
    "apChannel":1,
    "apScanHidden":1,
    "deauthReason":1,
