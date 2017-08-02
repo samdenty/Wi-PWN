@@ -28,7 +28,7 @@ html, body {
     top: 0 !important;
     padding-bottom: 20px;
 }
-#minimal #links, #minimal .main-header, #minimal footer, #minimal .background {
+#minimal #links, #minimal .main-header, #minimal footer {
     display: none;
 }
 .fadeIn {
@@ -958,9 +958,6 @@ footer a {
     .network-info {
         display: none;
     }
-    .background {
-        display: none !important;
-    }
     nav .main-header {
         display: none;
     }
@@ -1091,17 +1088,6 @@ footer a {
 }
 .edit svg {
     fill: #757575;
-}
-.background {
-    position: absolute;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-}
-.background svg {
-    width: 100%;
-    height: 100%;
 }
 .edit.add, .edit.delete {
     font-size: 29px;
