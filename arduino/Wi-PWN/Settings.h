@@ -42,7 +42,7 @@ extern NameList nameList;
 #define beaconIntervalAdr 1105
 #define ledPinAdr 1106
 #define darkModeAdr 1107
-#define simplifyAdr 1108
+#define cacheAdr 1108
 #define newUserAdr 1109
 #define detectorChannelAdr 1110
 #define detectorAllChannelsAdr 1111
@@ -87,7 +87,7 @@ class Settings
     bool beaconInterval;
     int ledPin = 0;
     bool darkMode;
-    bool simplify;
+    bool cache;
     bool newUser;
     int detectorChannel;
     bool detectorAllChannels;

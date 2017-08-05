@@ -1,7 +1,7 @@
 :root {
     --theme-color: #1976d2;
 }
-html, body {
+body {
     font-size: 100%;
     margin: 0;
     -webkit-user-select: none !important;

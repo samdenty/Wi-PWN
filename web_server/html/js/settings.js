@@ -19,6 +19,7 @@ var ssid = getE('ssid'),
     beaconInterval = getE('beaconInterval'),
     ledPin = getE('ledPin'),
     darkMode = getE('darkMode'),
+    cache = getE('cache'),
     res = '',
     checkboxChanges,
     inputChanges;
@@ -49,6 +50,7 @@ function getData() {
         beaconInterval.checked = res.beaconInterval;
         ledPin.value = res.ledPin;
         darkMode.checked = res.darkMode;
+        cache.checked = res.cache;
     });
 }
 
@@ -74,6 +76,7 @@ function saveSettings() {
     url += "&beaconInterval=" + beaconInterval.checked;
     url += "&ledPin=" + ledPin.value;
     url += "&darkMode=" + darkMode.checked;
+    url += "&cache=" + cache.checked;
 
     getResponse(url, function(responseText) {
         if (responseText == "true") {

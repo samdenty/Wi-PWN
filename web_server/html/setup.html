@@ -52,11 +52,6 @@
                                         <input type="checkbox" name="darkMode" id="darkMode" value="false" onclick="toggleDarkmode();">
                                         <label class="checkbox" for="darkMode"></label>
                                     </div>
-                                    <div class="col-12">
-                                        <label for="simplify">Simplify interface</label>
-                                        <input type="checkbox" name="simplify" id="simplify" value="false">
-                                        <label class="checkbox" for="simplify"></label>
-                                    </div>
                                 </div>
                             </div>
                             <div class="card-action" onclick="cont()">
@@ -87,7 +82,6 @@
         var ssid = getE('ssid');
         var password = getE('password');
         var darkMode = document.getElementById('darkMode');
-        var simplify = document.getElementById('simplify');
         var link = document.createElement("link");
         var cookie = document.cookie;
 
@@ -134,7 +128,6 @@
             url += "?ssid=" + ssid.value;
             url += "&password=" + password.value;
             url += "&darkMode=" + darkMode.checked;
-            url += "&simplify=" + simplify.checked;
             url += "&newUser=false";
             getResponse(url, function(responseText) {
                 if (responseText == "true") {

@@ -61,8 +61,6 @@ String wifiMode = "";
 String attackMode = "";
 String scanMode = "SCAN";
 
-bool warning = true;
-
 extern "C" {
   #include "user_interface.h"
 }
@@ -156,59 +154,132 @@ void stopWifi() {
 }
 
 void loadSetupHTML() {
-  if(warning){
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    server.sendHeader("Pragma", "no-cache");
+    server.sendHeader("Expires", "0");
     sendFile(200, "text/html", data_setup_HTML, sizeof(data_setup_HTML));
-  }else{
-    sendFile(200, "text/html", data_index_HTML, sizeof(data_index_HTML));
-  }
 }
 void loadIndexHTML() {
-  warning = false;
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=200");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/html", data_index_HTML, sizeof(data_index_HTML));
 }
 void loadUsersHTML() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=200");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/html", data_users_HTML, sizeof(data_users_HTML));
 }
 void loadAttackHTML() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=200");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/html", data_attack_HTML, sizeof(data_attack_HTML));
 }
 void loadDetectorHTML() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=200");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/html", data_detector_HTML, sizeof(data_detector_HTML));
 }
 void loadControlHTML() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=200");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/html", data_control_HTML, sizeof(data_control_HTML));
 }
 void loadSettingsHTML() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=200");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/html", data_settings_HTML, sizeof(data_settings_HTML));
 }
 void load404() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=200");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(404, "text/html", data_error_HTML, sizeof(data_error_HTML));
 }
 void loadInfoHTML(){
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=200");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/html", data_info_HTML, sizeof(data_info_HTML));
 }
 
 void loadFunctionsJS() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=300");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/javascript", data_functions_JS, sizeof(data_functions_JS));
 }
 void loadScanJS() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=300");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/javascript", data_scan_JS, sizeof(data_scan_JS));
 }
 void loadUsersJS() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=300");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/javascript", data_users_JS, sizeof(data_users_JS));
 }
 void loadAttackJS() {
   attack.ssidChange = true;
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=300");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/javascript", data_attack_JS, sizeof(data_attack_JS));
 }
 void loadControlJS() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=300");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/javascript", data_control_JS, sizeof(data_control_JS));
 }
 void loadSettingsJS() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=300");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/javascript", data_settings_JS, sizeof(data_settings_JS));
 }
 
 void loadStyle() {
+  if (settings.cache) {
+    server.sendHeader("Cache-Control", "max-age=300");
+  } else {
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
   sendFile(200, "text/css;charset=UTF-8", data_main_CSS, sizeof(data_main_CSS));
 }
 
@@ -508,9 +579,9 @@ void saveSettings() {
     }
   }
 
-  if (server.hasArg("simplify")) {
-    if (server.arg("simplify") == "false") settings.simplify = false;
-    else settings.simplify = true;
+  if (server.hasArg("cache")) {
+    if (server.arg("cache") == "false") settings.cache = false;
+    else settings.cache = true;
   }
 
   if (server.hasArg("newUser")) {
