@@ -353,19 +353,14 @@ h1 {
 .no-events, nav.disabled a, .input-container label {
     pointer-events: none;
 }
-.samddAttrib span {
-    color: #ff5409 !important;
-}
-.samddAttrib p {
+.samddAttrib {
     font-size: 1.2em;
     font-weight: bold;
-    padding-left:12px;
+    padding-left:5px;
     margin-top:5px !important;
-    margin-left: 5px !important;
-    border-left: 3px solid #ff4f00;
     color: #ff7233 !important;
 }
-.samddAttrib p button {
+.samddAttrib button {
     background: #ff4f00 !important;
     margin-right: 10px
 }

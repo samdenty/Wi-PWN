@@ -144,6 +144,10 @@ function vibrate() {
     }
 }
 
+function checkUpdate() {
+    window.open("https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/update?installed="+version,'_blank');
+}
+
 /* Set meta color */
     defaultMetaColor();
 

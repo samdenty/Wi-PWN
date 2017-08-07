@@ -69,8 +69,9 @@ function getResults() {
             }
 
             var signalPercent = Math.round((1-((res.aps[i].r+30)/-70))*100);
+            if (signalPercent > 100) signalPercent = 100;
             if (i == 0) {var tdID = ' id="resizeEventTD"'} else {var tdID = ''}
-            tr += '<td class="WiFi"'+tdID+'><div>' + eval(wifiIndicator) + '</div><div><span style="background:linear-gradient(135deg, '+getColor(signalPercent)+' '+signalPercent+'%,rgba(0,0,0,0.15) '+signalPercent+'%)"></span><span style="color:'+getColor(signalPercent, true)+'">' + res.aps[i].r + '</span></div></td>';
+            tr += '<td class="WiFi"'+tdID+'><div>' + eval(wifiIndicator) + '</div><div><span style="background:linear-gradient(135deg, '+getColor(signalPercent)+' '+signalPercent+'%,rgba(0,0,0,0.15) '+signalPercent+'%)"></span><span style="color:'+getColor(signalPercent, true)+'">' + signalPercent + '</span></div></td>';
             tr += '<td>' + res.aps[i].ss + '</td>';
             tr += '<td>' + getEncryption(res.aps[i].e) + '</td>';
             tr += '<td>' + res.aps[i].c + '</td>';
