@@ -99,12 +99,12 @@ There are two variants of UART converters that ESP8266 boards use:
 6. Type in `esp8266`
 
 7. Select version `2.0.0` and click on `Install` (**must be version 2.0.0!**)<br><br>
-![screenshot of arduino, selecting the right version](pictures/arduino_screenshot_1.JPG)
+![Screenshot of Arduino, selecting the right version](pictures/arduino_screenshot_1.JPG)
 
 8. Go to `File` > `Preferences`
 
 9. Open the folder path under `More preferences can be edited directly in the file`<br><br>
-![screenshot of arduino, opening folder path](pictures/arduino_screenshot_2.JPG)
+![Screenshot of Arduino, opening folder path](pictures/arduino_screenshot_2.JPG)
 
 10. Go to `packages` > `esp8266` > `hardware` > `esp8266` > `2.0.0` > `tools` > `sdk` > `include`
 
@@ -166,21 +166,21 @@ There are two variants of UART converters that ESP8266 boards use:
 
 #### Only able to connect to Wi-Fi network on some devices
 
-This happens due to a channel conflict. Simply navigate to `192.168.4.1/settings.html` on a device that is able to connect to the Wi-Fi network and **change the Channel number** from `1` to any number upto 14
+This happens due to a channel conflict. Simply navigate to `192.168.4.1/settings.html` on a device that is able to connect to the Wi-Fi network and **change the Channel number** from `1` to any number up to `14`.
 
 #### `espcomm_sync failed` / `espcomm_open` when uploading
 
-The ESP upload tool can't communicate with the chip
+The ESP upload tool can't communicate with the chip.
 
 - Reconnect the chip using a different USB port and cable.
-- Install the USB drivers (cp2102 or ch340)
+- Install the USB drivers (cp2102 or ch340).
 - Make sure the right COM port is selected.
 
 
 #### Deauth attack won't work
 
-If you see 0 pkts/s on the website then you've made a mistake. Check that you have followed the the installation steps correctly and that the right SDK installed, it must be version 2.0.0!
-If it can send packets but your target doesn't loose its connection, then the Wi-Fi router either uses [802.11w](#how-to-protect-against-it) and it's protected against such attacks, or it communicates on the 5GHz band, which the ESP8266 doesn't support because of its 2.4GHz antenna.
+If you see 0 pkts/s on the website, then you've made a mistake. Check that you have followed the installation steps correctly and that the right SDK installed, it must be version 2.0.0!
+If it can send packets but your target doesn't lose its connection, then the Wi-Fi router either uses [802.11w](#how-to-protect-against-it) and it's protected against such attacks, or it communicates on the 5GHz band, which the ESP8266 doesn't support because of its 2.4GHz antenna.
 
 #### If you have other questions or problems with the ESP8266 you can also check out the official [community forum](http://www.esp8266.com/).
 
