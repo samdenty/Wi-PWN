@@ -4,7 +4,7 @@
  *     https://github.com/samdenty99/Wi-PWN     *
  *            (c) 2017 Samuel Denty             *
  *----------------------------------------------*
- *  Wi-PWN based on spacehuhn/esp8266_deauther  *
+ *  Wi-PWN based on spacehuhn/esp8266_dseauther *
  *              (c) Stefan Kremser              *
  ************************************************
 */
@@ -531,6 +531,7 @@ void getSettings() {
 }
 
 void saveSettings() {
+  server.send( 200, "text/json", "true" );
   if (server.hasArg("ssid")) settings.ssid = server.arg("ssid");
   if (server.hasArg("ssidHidden")) {
     if (server.arg("ssidHidden") == "false") settings.ssidHidden = false;
@@ -652,7 +653,6 @@ void saveSettings() {
   if (server.hasArg("pins")) settings.pins = server.arg("pins");
   
   settings.save();
-  server.send( 200, "text/json", "true" );
 }
 
 void resetSettings() {

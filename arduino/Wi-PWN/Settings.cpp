@@ -118,7 +118,6 @@ void Settings::reset() {
   attackTimeout = 0;
   attackPacketRate = 10;
   clientScanTime = 15;
-  attackEncrypted = true;
   useLed = true;
   channelHop = false;
   multiAPs = true;
@@ -136,7 +135,7 @@ void Settings::reset() {
   detectorScanTime = 200;
   pins = "000000";
   pinNames = "Pin 3;Pin 4;Pin 5;Pin 6;Pin 7;Pin 8"; 
-  if (debug) Serial.println("done");
+  if (debug) Serial.println("Reset complete!");
 
   save();
 }
@@ -188,7 +187,7 @@ void Settings::save() {
   for (int i = 0; i < pinNamesLen; i++) EEPROM.write(pinNamesAdr + i, pinNames[i]);
   EEPROM.commit();
 
-  int i=0;
+  /*int i=0;
   int pinNumber = 3;
   Serial.println("START");
   while (i < 6)
@@ -200,7 +199,7 @@ void Settings::save() {
      Serial.println((String)pinNumber + (String)": " + pinState);
      pinNumber++;
   }
-  Serial.println("END");
+  Serial.println("END");*/
 
   if (debug) {
     info();
@@ -218,7 +217,7 @@ void Settings::info() {
   Serial.println("  Interface       : dark-mode='" + (String)darkMode + "'\t\t|  new-user='" + (String)newUser + "'\t\t\t|  cache='" + (String)cache + "'");
   Serial.println("  LED Indicator   : enable='" + (String)useLed + "'\t\t\t|  pin='" + (String)ledPin + "'\t\t\t|");
   Serial.println("  MAC AP          : default='" + defaultMacAP.toString()+"'\t|  saved='" + macAP.toString()+"'\t|  random='" + (String)isMacAPRand + "'");
-  Serial.println("  Beacons         : mac-change-interval='" + (String)multiAttacks + "'\t|  " + "WPA2='" + (String)attackEncrypted + "'\t\t\t|  1s-interval='" + (String)beaconInterval + "");
+  Serial.println("  Beacons         : mac-change-interval='" + (String)multiAttacks + "'\t|  " + "1s-interval='" + (String)beaconInterval + "");
   Serial.println("  Deauth Detector : all-channels='" + (String)detectorAllChannels + "'\t\t|  channel='" + (String)detectorChannel + "'\t\t\t|  alert-pin='" + (String)alertPin + "'\t|  invert-pin='" + (String)invertAlertPin + "'\t|  scan-time='" + (String)detectorScanTime + "'");
   Serial.println("  Other           : channel-hopping='" + (String)channelHop + "'\t\t|  multiple-aps='" + (String)multiAPs + "'\t\t|  multiple-attacks='" + (String)multiAttacks + "'");
   Serial.println("  PIN Control     : state='" + (String)pins + "'\t\t|  names='" + (String)pinNames + "'");

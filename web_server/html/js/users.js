@@ -51,7 +51,7 @@ function getResults() {
             if (res.clients[i].l >= 0) {
                 tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><span class="a b">' + escapeHTML(res.clients[i].n) + '</span><br>' +  escapeHTML(res.clients[i].v)  +'</td>';
             } else {
-                tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><span class="a light-6">set name</span><br>' + escapeHTML(res.clients[i].v) + '</td>';
+                tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><span class="a light-6">save</span><br>' + escapeHTML(res.clients[i].v) + '</td>';
             }
             tr += '<td onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' +  escapeHTML(res.clients[i].a) + '</td>';
             tr += '<td onclick="select(' + res.clients[i].i + ')">' + res.clients[i].p + '</td>';
