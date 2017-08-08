@@ -396,7 +396,11 @@ img, nav, td {
 .light {
     opacity: .4;
 }
-a {
+.light-6 {
+    opacity: .6;
+}
+a,
+.a {
     cursor: pointer;
     text-decoration: none;
     color: #2196f3;
@@ -406,6 +410,9 @@ a:focus {
 }
 b {
     color: inherit;
+}
+.b {
+    font-weight: bold;
 }
 hr {
     border: 1px solid rgba(0, 0, 0, .03);
@@ -934,7 +941,10 @@ footer a {
         margin: 20px;
     }
     .card-small {
-        min-height: 330px;
+        min-height: 380px;
+    }
+    .card-small.smaller {
+        min-height: 300px;
     }
 }
 

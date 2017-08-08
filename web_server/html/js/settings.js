@@ -2,13 +2,14 @@ var ssid = getE('ssid'),
     ssidHidden = getE('ssidHidden'),
     password = getE('password'),
     apChannel = getE('apChannel'),
+    macAp = getE('macAp'),
+    randMacAp = getE('randMacAp'),
     apScanHidden = getE('apScanHidden'),
     scanTime = getE('scanTime'),
     timeout = getE('timeout'),
     deauthReason = getE('deauthReason'),
     packetRate = getE('packetRate'),
     clientNames = getE('clientNames'),
-    ssidEnc = getE('ssidEnc'),
     useLed = getE('useLed'),
     channelHop = getE('channelHop'),
     multiAPs = getE('multiAPs'),
@@ -19,10 +20,16 @@ var ssid = getE('ssid'),
     beaconInterval = getE('beaconInterval'),
     ledPin = getE('ledPin'),
     darkMode = getE('darkMode'),
+    ledContainer = getE('ledContainer'),
+    macContainer = getE('macContainer'),
     cache = getE('cache'),
     res = '',
     checkboxChanges,
     inputChanges;
+
+/* Add listeners to checkboxes */
+useLed.addEventListener("change", switchLED, false);
+randMacAp.addEventListener("change", switchMAC, false);
 
 function getData() {
     getResponse("settings.json", function(responseText) {
@@ -36,12 +43,13 @@ function getData() {
         ssidHidden.checked = res.ssidHidden;
         password.value = res.password;
         apChannel.value = res.apChannel;
+        macAp.value = res.macAp;
+        randMacAp.checked = res.randMacAp;
         apScanHidden.checked = res.apScanHidden;
         scanTime.value = res.clientScanTime;
         timeout.value = res.attackTimeout;
         deauthReason.value = res.deauthReason;
         packetRate.value = res.attackPacketRate;
-        ssidEnc.checked = res.attackEncrypted;
         useLed.checked = res.useLed;
         /*channelHop.checked = res.channelHop;*/
         multiAPs.checked = res.multiAPs;
@@ -51,6 +59,8 @@ function getData() {
         ledPin.value = res.ledPin;
         darkMode.checked = res.darkMode;
         cache.checked = res.cache;
+        switchLED();
+        switchMAC();
     });
 }
 
@@ -62,12 +72,13 @@ function saveSettings() {
     url += "&ssidHidden=" + ssidHidden.checked;
     url += "&password=" + password.value;
     url += "&apChannel=" + apChannel.value;
+    url += "&macAp=" + macAp.value;
+    url += "&randMacAp=" + randMacAp.checked;
     url += "&apScanHidden=" + apScanHidden.checked;
     url += "&scanTime=" + scanTime.value;
     url += "&timeout=" + timeout.value;
     url += "&deauthReason=" + deauthReason.value;
     url += "&packetRate=" + packetRate.value;
-    url += "&ssidEnc=" + ssidEnc.checked;
     url += "&useLed=" + useLed.checked;
     /*url += "&channelHop=" + channelHop.checked;*/
     url += "&multiAPs=" + multiAPs.checked;
@@ -119,7 +130,26 @@ function resetSettings() {
     checkboxChanges = false;
 }
 
+function switchLED() {
+    var isChecked = useLed.checked;
+    if (isChecked) {
+        ledContainer.classList.remove("disabled");
+    } else {
+        ledContainer.classList.add("disabled");
+    }
+}
+
+function switchMAC() {
+    var isChecked = randMacAp.checked;
+    if (isChecked) {
+        macContainer.classList.add("disabled");
+    } else {
+        macContainer.classList.remove("disabled");
+    }
+}
+
 getData();
+
 /* Detect form changes and display popup if not saved */
     var form = document.getElementById("settings");
     form.addEventListener("input", function() {

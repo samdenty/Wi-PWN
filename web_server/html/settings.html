@@ -74,6 +74,17 @@
                             </div>
                         </div>
                         <div class="col-12">
+                            <div class="input-container" id="macContainer">
+                                <input placeholder=" " id="macAp" type="text" required="" minLength="1" maxLength="14">
+                                <label for="macAp">MAC address</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="randMacAp">Random MAC address</label>
+                            <input type="checkbox" name="randMacAp" id="randMacAp" value="false">
+                            <label class="checkbox" for="randMacAp"></label>
+                        </div>
+                        <div class="col-12">
                             <label for="apScanHidden">Scan for hidden networks</label>
                             <input type="checkbox" name="apScanHidden" id="apScanHidden" value="false">
                             <label class="checkbox" for="apScanHidden"></label>
@@ -93,7 +104,7 @@
             </div>
            <div class="card-container settings">
                 <div class="settingsHeader">Customization</div>
-                <div class="card-small">
+                <div class="card-small smaller">
                     <div class="row">
                         <div class="col-12">
                             <label for="darkMode">Enable dark mode</label>
@@ -112,7 +123,7 @@
                             <label class="checkbox" for="useLed"></label>
                         </div>
                         <div class="col-12">
-                            <div class="input-container">
+                            <div class="input-container" id="ledContainer">
                                 <input placeholder=" " id="ledPin" type="number" required="" min="0" max="18">
                                 <label for="ledPin">LED Pin</label>
                             </div>
@@ -122,7 +133,7 @@
             </div>
             <div class="card-container settings">
                 <div class="settingsHeader">Advanced</div>
-                <div class="card-small">
+                <div class="card-small smaller">
                     <div class="row">
                         <div class="col-12">
                             <div class="input-container">
@@ -141,11 +152,6 @@
                                 <input placeholder=" " id="macInterval" type="number" required="" min="0" max="65000">
                                 <label for="packetRate">MAC Change Interval</label>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <label for="ssidEnc">WPA2 Beacons</label>
-                            <input type="checkbox" name="ssidEnc" id="ssidEnc" value="false">
-                            <label class="checkbox" for="ssidEnc"></label>
                         </div>
                         <div class="col-12">
                             <label for="beaconInterval">1s Beacon interval</label>

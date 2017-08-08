@@ -79,8 +79,12 @@ footer {
 h1 {
     color: rgba(255, 255, 255, .66)
 }
-a {
+a,
+.a {
     color: #8aa0d4
+}
+.light-6 {
+    opacity: .4;
 }
 :root {
     --theme-color: #1b1b21

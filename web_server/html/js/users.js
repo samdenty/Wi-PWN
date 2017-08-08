@@ -48,12 +48,12 @@ function getResults() {
             else tr += '<tr>';
             if (res.clients[i].s == 1) tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false" checked><label class="checkbox" for="check' + res.clients[i].i + '"></label></td>';
             else tr += '<td onclick="select(' + res.clients[i].i + ')"><input type="checkbox" name="check' + res.clients[i].i + '" id="check' + res.clients[i].i + '" value="false"><label class="checkbox" for="check' + res.clients[i].i + '"></label></td>';
-            if (res.clients[i].n) {
-                tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><b>' + res.clients[i].n + '</b></td>';
+            if (res.clients[i].l >= 0) {
+                tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><span class="a b">' + escapeHTML(res.clients[i].n) + '</span><br>' +  escapeHTML(res.clients[i].v)  +'</td>';
             } else {
-                tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')">' + res.clients[i].v + '</td>';
+                tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><span class="a light-6">set name</span><br>' + escapeHTML(res.clients[i].v) + '</td>';
             }
-            tr += '<td onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' + res.clients[i].a + '</td>';
+            tr += '<td onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' +  escapeHTML(res.clients[i].a) + '</td>';
             tr += '<td onclick="select(' + res.clients[i].i + ')">' + res.clients[i].p + '</td>';
 
             tr += '</tr>';
@@ -67,7 +67,7 @@ function getResults() {
         for (var i = 0; i < res.nameList.length; i++) {
 
             tr += '<tr>';
-            tr += '<td><b>' + res.nameList[i].n + '</b><br>' + res.nameList[i].m + '</td>';
+            tr += '<td><b>' + escapeHTML(res.nameList[i].n) + '</b><br>' + res.nameList[i].m + '</td>';
             tr += '<td><div class="edit delete" onclick="deleteName(' + i + ')">&times;</div><div class="clearfix"></div><div class="edit add" onclick="add(' + i + ')">+</div><div class="clearfix"></div><div class="edit" onclick="editNameList(' + i + ')"><svg style=width:22px;height:24px viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"></path></svg></div></td>';
             tr += '</tr>';
         }

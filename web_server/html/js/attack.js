@@ -9,9 +9,9 @@ var selectedAPs = getE("selectedAPs"),
     randomBtn = getE("randomBtn"),
     resultInterval = '',
     randomIntrvl = 5,
-    data = {};
+    data = {},
+    randSSID = document.getElementById('randSSID');
 
-var randSSID = document.getElementById('randSSID');
 randSSID.addEventListener("change", switchRandom, false);
 
 function getResults() {
@@ -21,9 +21,7 @@ function getResults() {
         var clients = "<tr><th>MAC Address</th><th>Vendor</th></tr>";
         var tr = "<tr><th>Attack</th><th>Status</th><th>Switch</th></tr>";
         for (var i = 0; i < res.aps.length; i++) {
-            var resApsI = res.aps[i].replace("'", "\\'"); // Escape single quotes from network name
-            resApsI = resApsI.replace("\"", "&quot;"); // Escape double quotes from network name
-            aps += "<tr><td>" + res.aps[i] + "</td><td><button class='clone' onclick=\"cloneSSID('" + resApsI + "')\"><svg viewBox='0 0 1000 1000'xmlns=http://www.w3.org/2000/svg><path d='M700.5,10H165.9c-49.2,0-89.1,39.9-89.1,89.1v623.6h89.1V99.1h534.5V10L700.5,10z M834.1,188.2h-490c-49.2,0-89.1,39.9-89.1,89.1v623.6c0,49.2,39.9,89.1,89.1,89.1h490c49.2,0,89.1-39.9,89.1-89.1V277.3C923.2,228.1,883.3,188.2,834.1,188.2z M834.1,900.9h-490V277.3h490V900.9z'/></svg>clone</button></td></tr>";
+            aps += "<tr><td>" + res.aps[i] + "</td><td><button class='clone' onclick=\"cloneSSID('" + escapeHTML(res.aps[i]) + "')\"><svg viewBox='0 0 1000 1000'xmlns=http://www.w3.org/2000/svg><path d='M700.5,10H165.9c-49.2,0-89.1,39.9-89.1,89.1v623.6h89.1V99.1h534.5V10L700.5,10z M834.1,188.2h-490c-49.2,0-89.1,39.9-89.1,89.1v623.6c0,49.2,39.9,89.1,89.1,89.1h490c49.2,0,89.1-39.9,89.1-89.1V277.3C923.2,228.1,883.3,188.2,834.1,188.2z M834.1,900.9h-490V277.3h490V900.9z'/></svg>clone</button></td></tr>";
         }
         for (var i = 0; i < res.clients.length; i++) {
             clients += "<tr><td>" + res.clients[i].substr(0,res.clients[i].indexOf(' ')) + "</td><td>" + res.clients[i].substr(res.clients[i].indexOf(' ')+1).split("-", 1) + "</td></tr>";

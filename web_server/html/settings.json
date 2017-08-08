@@ -23,6 +23,8 @@
    "detectorAllChannels":1,
    "alertPin":2,
    "invertAlertPin":1,
+   "macAp": "7D:8F:7B:81:24:23",
+   "randMacAp": "1",
    "detectorScanTime":200,
    "darkMode":1,
    "cache":1,
