@@ -78,3 +78,5 @@ void Mac::randomize() {
   getRandomVendorMac(randomMac);
   this->set(randomMac);
 }
+
+

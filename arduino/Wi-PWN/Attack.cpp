@@ -211,11 +211,7 @@ void Attack::run() {
     prevTime[1] = millis();
 
     for (int a = 0; a < ssidList.len; a++) {
-      String _ssid = ssidList.get(a);
-      int _ch = channels[a];
-
-      buildBeacon(beaconAdrs._get(a), _ssid, _ch, settings.attackEncrypted);
-
+      buildBeacon(beaconAdrs._get(a), ssidList.get(a), channels[a], ssidList.isEncrypted(a));
       if (send()) packetsCounter[1]++;
     }
 
@@ -285,7 +281,8 @@ void Attack::start(int num) {
     attackTimeoutCounter[num] = 0;
     refreshLed();
     if (debug) Serial.println("starting " + (String)attackNames[num] + " attack...");
-    if (num == 0) attackMode = "STOP";
+    if (num == 0) attackMode_deauth = "STOP";
+    else if(num == 1) attackMode_beacon = "STOP";
     if(!settings.multiAttacks){
       for (int i = 0; i < attacksNum; i++){
         if(i != num) stop(i);
@@ -297,7 +294,8 @@ void Attack::start(int num) {
 void Attack::stop(int num) {
   if(isRunning[num]) {
     if (debug) Serial.println("stopping " + (String)attackNames[num] + " attack...");
-    if (num == 0) attackMode = "START";
+    if (num == 0) attackMode_deauth = "START";
+    else if(num == 1) attackMode_beacon = "START";
     isRunning[num] = false;
     prevTime[num] = millis();
     refreshLed();
@@ -376,7 +374,11 @@ size_t Attack::getSize(){
     json = "\"ssid\":[";
     jsonSize += json.length();
     for (int i = 0; i < ssidList.len; i++) {
-      json = "\"" + ssidList.get(i) + "\"";
+      json = "[";
+      json += "\"" + ssidList.get(i) + "\",";
+      json += String( ssidList.isEncrypted(i) ) + "";
+      Serial.print(ssidList.isEncrypted(i));
+      json += "]";
       if (i != ssidList.len - 1) json += ",";
       jsonSize += json.length();
     }
@@ -437,7 +439,10 @@ void Attack::sendResults(){
     json = "\"ssid\":[";
     sendToBuffer(json);
     for (int i = 0; i < ssidList.len; i++) {
-      json = "\"" + ssidList.get(i) + "\"";
+      json = "[";
+      json += "\"" + ssidList.get(i) + "\",";
+      json += (String)ssidList.isEncrypted(i) + "";
+      json += "]";
       if (i != ssidList.len - 1) json += ",";
       sendToBuffer(json);
     }

@@ -119,9 +119,6 @@ String APScan::getAPEncryption(int num) {
 String APScan::getAPMac(int num) {
   return aps._get(num).toString();
 }
-bool APScan::getAPSelected(int num) {
-  return selected[num];
-}
 bool APScan::isHidden(int num) {
   return hidden[num];
 }
