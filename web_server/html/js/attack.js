@@ -9,6 +9,7 @@ var selectedAPs = getE("selectedAPs"),
     randomBtn = getE("randomBtn"),
     resultInterval = '',
     randomIntrvl = 5,
+    enc = getE("enc"),
     data = {},
     randSSID = document.getElementById('randSSID');
 
@@ -74,10 +75,14 @@ function getResults() {
             ssidCounter.innerHTML = " ("+ data.length + "/48)";
 
             var tr = "<tr><th>SSID</th><th><a onclick='clearSSID()' class='right' style='padding-right:10px'>Clear</a></th></tr>";
-            for (var i = 0; i < res.ssid.length; i++) {
+            for (var i = 0; i < data.length; i++) {
                 tr += "<tr>";
-                tr += "<td>" + res.ssid[i] + "</td>";
-                tr += '<td><div class="edit delete" onclick="deleteSSID(' + i + ')">&times;</div></td>';
+                tr += "<td>" + escapeHTML(data[i][0]) + "</td>";
+                if((data[i][1] == 1)) 
+                    var lockIcon = '<div class="edit enc"><svg viewBox="0 0 24 24"><path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/></svg></div>'
+                else
+                    var lockIcon = ''
+                tr += '<td><div class="edit delete" onclick="deleteSSID(' + i + ')">&times;</div>' + lockIcon + '</td>';
                 tr += "</tr>";
             }
             ssidList.innerHTML = tr;
@@ -106,7 +111,7 @@ function addSSID() {
         if (_ssidName.length > 0) {
             if (data.length >= 64) notify("SSID list full (E16)", 2500);
             else {
-                getResponse("addSSID.json?ssid=" + _ssidName + "&num=" + num.value, getResults);
+                getResponse("addSSID.json?ssid=" + _ssidName + "&num=" + num.value + "&enc=" + enc.checked, getResults);
             }
         }
     }

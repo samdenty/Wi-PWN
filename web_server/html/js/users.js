@@ -178,7 +178,8 @@ function countdown(stop) {
     } else if (countdownRemaining == 0) {
         notify("Scan complete! Reconnect and reload the page");
         indicate(true);
-        clearInterval(startCountdown)
+        clearInterval(startCountdown);
+        autoReload();
     } else {
         if (countdownRemaining == '') countdownRemaining = scanTime;
         notify("Scanning for users ~ "+countdownRemaining+"s remaining");

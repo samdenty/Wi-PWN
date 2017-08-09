@@ -45,19 +45,19 @@ nav {
     background: #1976d2;
 }
 nav::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  width: 110%;
-  margin-left: -5%;
-  height: 100%;
-  opacity: 0;
-  box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.4);
-  transition: opacity 500ms;
-  top: 0;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 110%;
+    margin-left: -5%;
+    height: 100%;
+    opacity: 0;
+    box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.4);
+    transition: opacity 500ms;
+    top: 0;
 }
 nav.n-shadow::after {
-  opacity: 1;
+    opacity: 1;
 }
 nav #links {
     overflow-x: scroll;
@@ -356,9 +356,9 @@ h1 {
 .samddAttrib {
     font-size: 1.2em;
     font-weight: bold;
-    padding-left:5px;
-    margin-top:5px !important;
+    margin-top: 12px !important;
     color: #ff7233 !important;
+    display: block;
 }
 .samddAttrib button {
     background: #ff4f00 !important;
@@ -398,9 +398,10 @@ img, nav, td {
 }
 .light-6 {
     opacity: .6;
+    font-size: 11px;
+    text-transform: uppercase;
 }
-a,
-.a {
+a, .a {
     cursor: pointer;
     text-decoration: none;
     color: #2196f3;
@@ -946,6 +947,11 @@ footer a {
     .card-small.smaller {
         min-height: 300px;
     }
+    .samddAttrib {
+        padding-left: 5px;
+        display: inline-block;
+        margin-top: 5px !important;
+    }
 }
 
 /************************ Tablet & mobile only styles *************************/
@@ -989,6 +995,9 @@ footer a {
         padding: 0 13px;
         font-size: 13px;
         float: none !important;
+    }
+    .samddAttrib {
+        font-size: 1em
     }
 }
 @media (max-width:539px) {
@@ -1097,6 +1106,10 @@ footer a {
 .edit.add, .edit.delete {
     font-size: 29px;
     line-height: 26px;
+}
+.edit.enc {
+    background: none !important;
+    pointer-events: none;
 }
 
 /******************************** Waves library *******************************/

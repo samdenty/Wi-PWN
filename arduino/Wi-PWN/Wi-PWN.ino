@@ -170,142 +170,67 @@ void loadSetupHTML() {
     server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     server.sendHeader("Pragma", "no-cache");
     server.sendHeader("Expires", "0");
-    sendFile(200, "text/html", data_setup_HTML, sizeof(data_setup_HTML));
+    sendFile(200, "text/html", data_setup_HTML, sizeof(data_setup_HTML), true);
 }
 void loadIndexHTML() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=200");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/html", data_index_HTML, sizeof(data_index_HTML));
+  sendFile(200, "text/html", data_index_HTML, sizeof(data_index_HTML), false);
 }
 void loadUsersHTML() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=200");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/html", data_users_HTML, sizeof(data_users_HTML));
+  sendFile(200, "text/html", data_users_HTML, sizeof(data_users_HTML), false);
 }
 void loadAttackHTML() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=200");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/html", data_attack_HTML, sizeof(data_attack_HTML));
+  sendFile(200, "text/html", data_attack_HTML, sizeof(data_attack_HTML), false);
 }
 void loadDetectorHTML() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=200");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/html", data_detector_HTML, sizeof(data_detector_HTML));
+  sendFile(200, "text/html", data_detector_HTML, sizeof(data_detector_HTML), false);
 }
 void loadControlHTML() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=200");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/html", data_control_HTML, sizeof(data_control_HTML));
+  sendFile(200, "text/html", data_control_HTML, sizeof(data_control_HTML), false);
 }
 void loadSettingsHTML() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=200");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/html", data_settings_HTML, sizeof(data_settings_HTML));
+  sendFile(200, "text/html", data_settings_HTML, sizeof(data_settings_HTML), false);
 }
 void load404() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=200");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(404, "text/html", data_error_HTML, sizeof(data_error_HTML));
+  sendFile(404, "text/html", data_error_HTML, sizeof(data_error_HTML), false);
 }
 void loadInfoHTML(){
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=200");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/html", data_info_HTML, sizeof(data_info_HTML));
+  sendFile(200, "text/html", data_info_HTML, sizeof(data_info_HTML), false);
 }
 
 void loadFunctionsJS() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=300");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/javascript", data_functions_JS, sizeof(data_functions_JS));
+  sendFile(200, "text/javascript", data_functions_JS, sizeof(data_functions_JS), false);
 }
 void loadScanJS() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=300");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/javascript", data_scan_JS, sizeof(data_scan_JS));
+  sendFile(200, "text/javascript", data_scan_JS, sizeof(data_scan_JS), false);
 }
 void loadUsersJS() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=300");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/javascript", data_users_JS, sizeof(data_users_JS));
+  sendFile(200, "text/javascript", data_users_JS, sizeof(data_users_JS), false);
 }
 void loadAttackJS() {
   attack.ssidChange = true;
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=300");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/javascript", data_attack_JS, sizeof(data_attack_JS));
+  sendFile(200, "text/javascript", data_attack_JS, sizeof(data_attack_JS), false);
 }
 void loadControlJS() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=300");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/javascript", data_control_JS, sizeof(data_control_JS));
+  sendFile(200, "text/javascript", data_control_JS, sizeof(data_control_JS), false);
 }
 void loadSettingsJS() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=300");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/javascript", data_settings_JS, sizeof(data_settings_JS));
+  sendFile(200, "text/javascript", data_settings_JS, sizeof(data_settings_JS), false);
 }
 
 void loadStyle() {
-  if (settings.cache) {
-    server.sendHeader("Cache-Control", "max-age=300");
-  } else {
-    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  }
-  sendFile(200, "text/css;charset=UTF-8", data_main_CSS, sizeof(data_main_CSS));
+  sendFile(200, "text/css;charset=UTF-8", data_main_CSS, sizeof(data_main_CSS), false);
 }
 
 void loadDarkMode() {
   if (settings.darkMode) {
-    sendFile(200, "text/css;charset=UTF-8", data_dark_CSS, sizeof(data_dark_CSS));
+    sendFile(200, "text/css;charset=UTF-8", data_dark_CSS, sizeof(data_dark_CSS), true);
   } else {
     server.send(200, "text/html", "/* Dark mode disabled */");
   }
 }
 
 void loadDarkModeForce() {
-   sendFile(200, "text/css;charset=UTF-8", data_dark_CSS, sizeof(data_dark_CSS));
+   sendFile(200, "text/css;charset=UTF-8", data_dark_CSS, sizeof(data_dark_CSS), true);
 }
 
 void loadRedirectHTML() {
@@ -463,7 +388,7 @@ void addSSID() {
     }
     attack.ssidChange = true;
     server.send( 200, "text/json", "true");
-  }else server.send( 200, "text/json", "false");
+  } else server.send( 200, "text/json", "false");
 }
 
 void cloneSelected(){

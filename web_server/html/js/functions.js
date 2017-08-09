@@ -1,4 +1,4 @@
-var version = "6.2",
+var version = "7.0",
     sL = getE('spinner-container'),
     notification = document.getElementById("notification"),
     themeColor = getComputedStyle(document.body),
