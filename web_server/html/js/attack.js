@@ -164,4 +164,5 @@ function switchRandom() {
 }
 
 getResults();
+fadeIn();
 resultInterval = setInterval(getResults, 2000);

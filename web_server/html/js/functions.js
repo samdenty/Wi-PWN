@@ -154,6 +154,11 @@ function vibrate() {
     }
 }
 
+function fadeIn() {
+    setTimeout(function(){document.getElementsByClassName('main-wrap')[0].classList.add('fadeIn')}, 100)
+    setTimeout(function(){document.getElementsByClassName('main-wrap')[0].classList.add('animation')}, 1000)
+}
+
 function checkUpdate() {
     window.open("https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/update?installed="+version,'_blank');
 }
@@ -215,21 +220,6 @@ function checkUpdate() {
     Waves.attach('#apscan tr', ['waves-light']);
     Waves.attach('.reboot-inner', ['waves-light']);
     Waves.init();
-
-/* Fade in body once loaded */
-    var stateCheck = setInterval(fadeIn, 100);
-    function fadeIn() {
-        if (document.readyState === 'complete') {
-            setTimeout(function() {
-                clearInterval(stateCheck);
-                var els = document.getElementsByClassName('main-wrap'),
-                    i = els.length;
-                while (i--) {
-                    els[i].className = 'main-wrap fadeIn';
-                }
-            }, 40) // Increase delay to prevent animation from stuttering
-        }
-    }
 
 /* Add scroll event listeners */
     var nav = document.getElementById('nav');

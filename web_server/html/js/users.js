@@ -193,3 +193,4 @@ getResponse("ClientScanTime.json", function(responseText) {
 
 getResults();
 toggleBtn(false);
+fadeIn();

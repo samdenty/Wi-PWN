@@ -102,6 +102,56 @@ nav .main-header {
     padding: 20px 87px;
     color: #fff;
     background: #2196f3;
+    -webkit-animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s;
+    -ms-animation: fadein 0.5s;
+    -o-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translate(-20px)
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translate(-20px)
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translate(-20px)
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-ms-keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translate(-20px)
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-o-keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translate(-20px)
+    }
+    to {
+        opacity: 1;
+    }
 }
 #logo-img {
     background: #379df3;
@@ -296,10 +346,10 @@ tr td, tr, .darken-on-hover {
     color: #333447;
 }
 :focus {
-    outline:none;
+    outline: none;
 }
 ::-moz-focus-inner {
-    border:0;
+    border: 0;
 }
 .container {
     width: 96%;
@@ -541,6 +591,8 @@ label {
 }
 .input-container {
     position: relative;
+}
+.animation .input-container {
     transition: opacity .5s ease;
 }
 .input-container.disabled {
@@ -572,9 +624,11 @@ label {
     display: flex;
     box-sizing: border-box;
     cursor: text;
-    transition: .2s ease-in-out;
     color: #757575;
     align-items: center;
+}
+.animation .input-container label {
+    transition: .2s ease-in-out;
 }
 .input-container input, .input-container label {
     font-size: 14px;
@@ -593,19 +647,19 @@ label {
 }
 .input-container input:valid + label {
     font-size: .8rem;
-    top: -25px;
+    transform: translate(0,-25px);
     pointer-events: none;
     color: #969696 !important;
 }
 .input-container input:focus + label {
     font-size: .8rem;
-    top: -25px;
+    transform: translate(0,-25px);
     pointer-events: none;
     color: #2196F3 !important;
 }
 .input-container input:invalid:not(:placeholder-shown) + label {
     font-size: .8rem;
-    top: -25px;
+    transform: translate(0,-25px);
     pointer-events: none;
     color: #f44336;
 }
@@ -916,9 +970,7 @@ footer a {
 .failed-save .failed-svg, .success-save .success-svg {
     opacity: 1;
 }
-.failed-save .success-svg,
-.failed-save .spinner,
-.success-save .spinner {
+.failed-save .success-svg, .failed-save .spinner, .success-save .spinner {
     display: none;
 }
 

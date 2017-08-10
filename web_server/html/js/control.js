@@ -130,3 +130,4 @@ function resetPins() {
 }
 
 getData();
+fadeIn();

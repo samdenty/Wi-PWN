@@ -134,3 +134,4 @@ function selAll() {
     }
 
 getResults();
+fadeIn();

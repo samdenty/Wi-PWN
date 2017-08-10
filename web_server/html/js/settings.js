@@ -36,6 +36,7 @@ function getData() {
         try {
             res = JSON.parse(responseText);
         } catch (e) {
+            fadeIn();
             notify("ERROR: Reset the settings.  (E17)");
             return;
         }
@@ -61,6 +62,10 @@ function getData() {
         cache.checked = res.cache;
         switchLED();
         switchMAC();
+        fadeIn();
+    }, function () {
+        notify("ERROR: Failed to load settings.json  (E40)");
+        fadeIn();
     });
 }
 
