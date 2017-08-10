@@ -295,6 +295,12 @@ tr td, tr, .darken-on-hover {
     line-height: 1.5;
     color: #333447;
 }
+:focus {
+    outline:none;
+}
+::-moz-focus-inner {
+    border:0;
+}
 .container {
     width: 96%;
     min-height: calc(100% - 170px);
@@ -554,11 +560,6 @@ label {
 .input-container input:placeholder-shown {
     border-bottom: 2px solid #e0e0e0 !important;
 }
-@-moz-document url-prefix() {
-    .input-container input:invalid {
-        border-bottom: 2px solid #e1e1e1 !important;
-    }
-}
 .input-container input:placeholder-shown:focus, .input-container input::-moz-placeholder:focus {
     border-bottom: 2px solid #2196F3 !important;
 }
@@ -584,25 +585,28 @@ label {
 .input-container input:valid {
     border-bottom: 2px solid #e0e0e0;
 }
-.input-container input:valid + label {
-    color: #969696 !important;
-}
 .input-container input:focus {
     border-bottom: 2px solid #2196f3 !important;
 }
 .input-container input:invalid {
     border-bottom: 2px solid #f44336;
 }
-.input-container input:focus + label {
-    color: #2196F3 !important;
-}
-.input-container input:valid + label, .input-container input:invalid:not(:placeholder-shown) + label, .input-container input:focus + label {
+.input-container input:valid + label {
     font-size: .8rem;
     top: -25px;
     pointer-events: none;
-    color: #2196F3;
+    color: #969696 !important;
+}
+.input-container input:focus + label {
+    font-size: .8rem;
+    top: -25px;
+    pointer-events: none;
+    color: #2196F3 !important;
 }
 .input-container input:invalid:not(:placeholder-shown) + label {
+    font-size: .8rem;
+    top: -25px;
+    pointer-events: none;
     color: #f44336;
 }
 .settings .checkbox, #card-wrapper .checkbox {
@@ -786,9 +790,6 @@ footer a {
     background: #fff;
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .19), 0 6px 13px 0 rgba(0, 0, 0, .24);
 }
-#spinner-container svg {
-    position: absolute;
-}
 .spinner {
     display: none;
     transition: ease .3s opacity;
@@ -915,6 +916,11 @@ footer a {
 .failed-save .failed-svg, .success-save .success-svg {
     opacity: 1;
 }
+.failed-save .success-svg,
+.failed-save .spinner,
+.success-save .spinner {
+    display: none;
+}
 
 /***************************** Desktop only styles ****************************/
 @media (min-width:520px) {
@@ -931,6 +937,9 @@ footer a {
     }
     .row.inputCheckbox .col-6:nth-child(2) {
         margin-top: 26px;
+    }
+    nav #links {
+        overflow-x: initial;
     }
 }
 @media (min-width:800px) {

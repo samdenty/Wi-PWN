@@ -112,8 +112,17 @@ a,
         background-color: transparent
     }
 }
-.input-container input:valid, .input-container input:placeholder-shown, .input-container input:invalid:focus {
-    border-bottom: 2px solid #47474e !important
+.input-container input:placeholder-shown {
+    border-bottom: 2px solid #47474e !important;
+}
+.input-container input:valid {
+    border-bottom: 2px solid #47474e !important;
+}
+.input-container input:invalid {
+    border-bottom: 2px solid #47474e !important;
+}
+.input-container input:focus {
+    border-bottom: 2px solid #606065 !important;
 }
 nav #links a.active::before {
     background: #dadada
