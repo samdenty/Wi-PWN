@@ -3,8 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    useLibrary "org.apache.http.legacy"
     defaultConfig {
-        applicationId "mirumcode.wi_pwn"
+        applicationId "samdd.wipwn"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -27,6 +28,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:percent:25.3.1'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }

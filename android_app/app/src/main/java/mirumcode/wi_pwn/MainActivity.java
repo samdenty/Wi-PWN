@@ -2,6 +2,7 @@ package mirumcode.wi_pwn;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,15 +19,31 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+
+
+import okhttp3.HttpUrl;
+import okhttp3.Request;
 
 import static android.R.attr.description;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private boolean isConnected = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +60,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        new Thread(new Runnable(){
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -65,12 +82,16 @@ public class MainActivity extends AppCompatActivity
 
         WebView view = (WebView) this.findViewById(R.id.WebView);
         view.setWebChromeClient(new WebChromeClient());
-        if(isConnected = true) {view.loadUrl("http://192.168.4.1/?minimal=true");} else {view.loadUrl("file:///android_asset/404.html");}
+        if (isConnected = true) {
+            view.loadUrl("http://192.168.4.1/?minimal=true");
+        } else {
+            view.loadUrl("file:///android_asset/404.html");
+        }
         view.getSettings().setJavaScriptEnabled(true);
         view.getSettings().setLoadWithOverviewMode(true);
         view.getSettings().setUseWideViewPort(true);
         navigationView.getMenu().getItem(0).setChecked(true);
-        view.setWebViewClient(new WebViewClient(){
+        view.setWebViewClient(new WebViewClient() {
 
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
@@ -105,7 +126,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.4.1/?minimal=true")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.4.1/")));
         }
 
         return super.onOptionsItemSelected(item);
@@ -117,18 +138,22 @@ public class MainActivity extends AppCompatActivity
         WebView view = (WebView) this.findViewById(R.id.WebView);
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-            view.loadUrl("http://192.168.4.1/?minimal=true");
+        view.loadUrl("http://192.168.4.1/?minimal=true");
         if (id == R.id.nav_scan) {
         } else if (id == R.id.nav_users) {
             view.loadUrl("http://192.168.4.1/users.html");
         } else if (id == R.id.nav_attack) {
             view.loadUrl("http://192.168.4.1/attack.html");
+        } else if (id == R.id.nav_detector) {
+            view.loadUrl("http://192.168.4.1/detector.html");
         } else if (id == R.id.nav_settings) {
             view.loadUrl("http://192.168.4.1/settings.html");
-        } else if (id == R.id.nav_github) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.github.com/Wi-PWN/Wi-PWN")));
         } else if (id == R.id.nav_info) {
-
+            view.loadUrl("http://192.168.4.1/info.html");
+        } else if (id == R.id.nav_github) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.github.com/samdenty99/Wi-PWN")));
+        } else if (id == R.id.nav_discord) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://wi-pwn.samdd.me/discord?ref=app")));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
