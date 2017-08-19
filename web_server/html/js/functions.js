@@ -1,4 +1,4 @@
-var version = "7.1",
+var version = "8.0",
     sL = getE('spinner-container'),
     notification = document.getElementById("notification"),
     themeColor = getComputedStyle(document.body),
@@ -157,10 +157,6 @@ function vibrate() {
 function fadeIn() {
     setTimeout(function(){document.getElementsByClassName('main-wrap')[0].classList.add('fadeIn')}, 100)
     setTimeout(function(){document.getElementsByClassName('main-wrap')[0].classList.add('animation')}, 1000)
-}
-
-function checkUpdate() {
-    window.open("https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/update?installed="+version,'_blank');
 }
 
 /* Set meta color */

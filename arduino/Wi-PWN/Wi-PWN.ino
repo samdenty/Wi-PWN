@@ -9,7 +9,7 @@
  ************************************************
 */
 
-// Including some libraries we need //se
+// Including some libraries we need //
 #include <Arduino.h>
 
 #include <ESP8266WiFi.h>
@@ -22,10 +22,11 @@
 
 // Settings //
 
-//#define USE_DISPLAY        /* <-- uncomment that if you want to use the display */
-#define resetPin 4           /* <-- comment out or change if you need GPIO 4 for other purposes */
-//#define USE_LED16          /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
-//#define USE_CAPTIVE_PORTAL /* <-- enable captive portal (redirects all pages to 192.168.4.1) - most devices flood the ESP8266 with requests */
+//#define USE_DISPLAY         /* <-- uncomment that if you want to use the display */
+//#define GPIO0_DEAUTH_BUTTON /* <-- Enable using GPIO0 (Flash button on NodeMCUs) as a deauth attack toggle (CAN LEAD TO BLINKING OF LED ON STARTUP!)*/
+#define resetPin 4            /* <-- comment out or change if you need GPIO 4 for other purposes */
+//#define USE_LED16           /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
+//#define USE_CAPTIVE_PORTAL  /* <-- enable captive portal (redirects all pages to 192.168.4.1) - most devices flood the ESP8266 with requests */
 
 
 // Including everything for the OLED //
@@ -781,11 +782,13 @@ void loop() {
     }
   
   #ifndef USE_DISPLAY
+    #ifdef GPIO0_DEAUTH_BUTTON
       if(digitalRead(0) == LOW) {
-        Serial.println("FLASH button (GPIO0) pressed, executing action...");
+        Serial.println("FLASH button (GPIO0) pressed, toggling deauth attack...");
         attack.start(0);
         delay(400);
       }
+    #endif
   #endif
     
   

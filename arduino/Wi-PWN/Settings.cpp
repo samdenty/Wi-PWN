@@ -304,9 +304,8 @@ void Settings::send() {
 size_t Settings::getSysInfoSize() {
   String json = "{";
   size_t jsonSize = 0;
-  uint32_t free = system_get_free_heap_size();
 
-  json += "\"availableram\":\"" + (String)free + "\",";
+  json += "\"freememory\":\"" + (String)ESP.getFreeHeap() + "\",";
   json += "\"bootmode\":\"" + (String)ESP.getBootMode() + "\",";
   json += "\"bootversion\":\"" + (String)ESP.getBootVersion() + "\",";
   json += "\"sdkversion\":\"" + (String)ESP.getSdkVersion() + "\",";
@@ -322,10 +321,9 @@ size_t Settings::getSysInfoSize() {
 void Settings::sendSysInfo() {
   if (debug) Serial.println("getting sysinfo json");
   sendHeader(200, "text/json", getSysInfoSize());
-  uint32_t free = system_get_free_heap_size();
   
   String json = "{";
-  json += "\"availableram\":\"" + (String)free + "\",";
+  json += "\"freememory\":\"" + (String)ESP.getFreeHeap() + "\",";
   json += "\"bootmode\":\"" + (String)ESP.getBootMode() + "\",";
   json += "\"bootversion\":\"" + (String)ESP.getBootVersion() + "\",";
   json += "\"sdkversion\":\"" + (String)ESP.getSdkVersion() + "\",";

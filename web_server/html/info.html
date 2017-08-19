@@ -28,20 +28,46 @@
     <div class="main-wrap">
         <div class="container">
             <div class="card-container">
-                <div class="settingsHeader">Wi-PWN</div>
+                <div class="settingsHeader">Wi-PWN creator</div>
                 <div class="card">
                     <div class="card-content">
-
+                        <p>
+                            Wi-PWN was designed by <a href="https://samdenty99.github.io/about"><b>Sam Denty</b></a>, from the original project by spacehuhn. Wi-PWN is released under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license.
+                        </p>
+                        <a href="https://samdenty99.github.io">
+                            <h2 class="center a light-text">
+                                https://samdd.me
+                            </h2>
+                        </a>
                     </div>
+                    <div class="card-action">
+                        <a href="https://samdenty99.github.io/r?github" target="blank_">Github</a><a href="https://samdenty99.github.io/projects" class="right" target="blank_">Other projects</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="settingsHeader">Wi-PWN</div>
+                <div class="card">
                     <table>
                         <tr>
-                            <td>Installed version</td>
+                            <td>Wi-PWN version</td>
                             <td id="version"></td>
-                            <td><button onclick="checkUpdate()">Check for updates</button></td>
+                            <td><button onclick="checkUpdate()" class="onlgr">Check for updates</button><button onclick="checkUpdate()" class="onsmr">Update</button></td>
                         </tr>
                         <tr>
-                            <td>Available RAM</td>
-                            <td id="availableram"></td>
+                            <td>Free memory</td>
+                            <td id="freememory"></td>
+                            <td id="flashsize"></td>
+                        </tr>
+                        <tr>
+                            <td>Versions</td>
+                            <td>Boot <b>v.<span id="bootversion"></span></b>_m.<span id="bootmode"></span></td>
+                            <td>SDK <b id="sdk"></b></td>
+                        </tr>
+                        <tr>
+                            <td>Flash &amp; Chip ID</td>
+                            <td><span id="flashid"></span></td>
+                            <td><span id="chipid"></span></td>
                         </tr>
                     </table>
                     <div class="card-action">

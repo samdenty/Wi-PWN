@@ -42,7 +42,9 @@ button:hover, .reboot:hover {
     fill: #fff
 }
 .WiFi span:nth-child(1) {
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, .15), 0 0 4px rgba(0,0,0,.15)
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, .15), 0 0 4px rgba(0,0,0,.15);
+    -webkit-filter: initial;
+    filter: initial;
 }
 .WiFi span:nth-child(2) {
     -webkit-filter: none;
