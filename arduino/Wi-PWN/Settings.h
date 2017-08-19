@@ -65,6 +65,7 @@ class Settings
     void reset();
     void save();
     void send();
+    void sendSysInfo();
     void info();
 
     int ssidLen;
@@ -107,6 +108,7 @@ class Settings
 
   private:
     size_t getSize();
+    size_t getSysInfoSize();
 };
 
 #endif

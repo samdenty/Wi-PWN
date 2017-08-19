@@ -300,3 +300,42 @@ void Settings::send() {
   if (debug) Serial.println("\ndone");
 
 }
+
+size_t Settings::getSysInfoSize() {
+  String json = "{";
+  size_t jsonSize = 0;
+  uint32_t free = system_get_free_heap_size();
+
+  json += "\"availableram\":\"" + (String)free + "\",";
+  json += "\"bootmode\":\"" + (String)ESP.getBootMode() + "\",";
+  json += "\"bootversion\":\"" + (String)ESP.getBootVersion() + "\",";
+  json += "\"sdkversion\":\"" + (String)ESP.getSdkVersion() + "\",";
+  json += "\"chipid\":\"" + (String)ESP.getChipId() + "\",";
+  json += "\"flashchipid\":\"" + (String)ESP.getFlashChipId() + "\",";
+  json += "\"flashchipsize\":\"" + (String)ESP.getFlashChipSize() + "\",";
+  json += "\"flashchiprealsize\":\"" + (String)ESP.getFlashChipRealSize() + "\"}";
+  jsonSize += json.length();
+
+  return jsonSize;
+}
+
+void Settings::sendSysInfo() {
+  if (debug) Serial.println("getting sysinfo json");
+  sendHeader(200, "text/json", getSysInfoSize());
+  uint32_t free = system_get_free_heap_size();
+  
+  String json = "{";
+  json += "\"availableram\":\"" + (String)free + "\",";
+  json += "\"bootmode\":\"" + (String)ESP.getBootMode() + "\",";
+  json += "\"bootversion\":\"" + (String)ESP.getBootVersion() + "\",";
+  json += "\"sdkversion\":\"" + (String)ESP.getSdkVersion() + "\",";
+  json += "\"chipid\":\"" + (String)ESP.getChipId() + "\",";
+  json += "\"flashchipid\":\"" + (String)ESP.getFlashChipId() + "\",";
+  json += "\"flashchipsize\":\"" + (String)ESP.getFlashChipSize() + "\",";
+  json += "\"flashchiprealsize\":\"" + (String)ESP.getFlashChipRealSize() + "\"}";
+  sendToBuffer(json);
+  sendBuffer();
+
+  if (debug) Serial.println("\ndone");
+
+}

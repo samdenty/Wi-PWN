@@ -1,8 +1,8 @@
 <head>
     <title>Info - Wi-PWN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="dark.css">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/dark.css">
     <meta name="theme-color" content="#1976d2">
 </head>
 
@@ -13,11 +13,11 @@
         </div>
         <div id="links">
             <a href="./">Scan</a>
-            <a href="users.html">Users</a>
-            <a href="attack.html">Attack</a>
-            <a href="control.html">Control</a>
-            <a href="settings.html">Settings</a>
-            <a class="right active" href="info.html">Info</a>
+            <a href="/users.html">Users</a>
+            <a href="/attack.html">Attack</a>
+            <a href="/control.html">Control</a>
+            <a href="/settings.html">Settings</a>
+            <a class="right active" href="/info.html">Info</a>
         </div>
     </nav>
     <div id="notification"></div>
@@ -31,13 +31,19 @@
                 <div class="settingsHeader">Wi-PWN</div>
                 <div class="card">
                     <div class="card-content">
-                        This project is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/"><i title="CC BY-NC 4.0">Creative Commons Attribution-NonCommercial 4.0 license.</i></a>
-                        <br>It can perform deauth attacks on unprotected <i>802.11</i> Wi-Fi networks, <i>not to be confused with as a 'Wi-Fi Jammer'.</i> This software is based upon the work of Stefan Kremser (Spacehuhn)<br><br>
-                        <button onclick="checkUpdate()">Check for updates</button>
-                        <a class="samddAttrib" href="https://samdenty99.github.io/about" target="_blank">
-                            <button>@samdenty99</button> (Sam Denty)
-                        </a>
+
                     </div>
+                    <table>
+                        <tr>
+                            <td>Installed version</td>
+                            <td id="version"></td>
+                            <td><button onclick="checkUpdate()">Check for updates</button></td>
+                        </tr>
+                        <tr>
+                            <td>Available RAM</td>
+                            <td id="availableram"></td>
+                        </tr>
+                    </table>
                     <div class="card-action">
                         <a href="https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/discord" target="blank_">Report bug</a><a href="https://samdenty99.github.io/projects" class="right" target="blank_">Other projects</a>
                     </div>
@@ -69,7 +75,7 @@
                         <br>
                         <br>
                         <div class="divider"></div>
-                        <br>For more information go to <a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">contributors page</a> on GitHub.
+                        <br>This software is based upon the work of Stefan Kremser (Spacehuhn)<br>For more information go to <a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">contributors page</a> on GitHub.
                     </div>
                 </div>
                 <hr>
@@ -94,5 +100,5 @@
         </div>
         <footer></footer>
         <script src="js/functions.js"></script>
-        <script>document.getElementsByClassName('main-wrap')[0].className = 'main-wrap fadeIn'</script>
+        <script src="js/info.js"></script>
 </body>

@@ -92,7 +92,7 @@ a,
 @media (min-width:520px) {
     ::-webkit-scrollbar {
         width: 14px;
-        background-color: #1d1d23
+        background-color: #28282E
     }
     ::-webkit-scrollbar-thumb {
         background-color: #4b4b54

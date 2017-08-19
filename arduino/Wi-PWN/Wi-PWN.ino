@@ -9,7 +9,7 @@
  ************************************************
 */
 
-// Including some libraries we need //
+// Including some libraries we need //se
 #include <Arduino.h>
 
 #include <ESP8266WiFi.h>
@@ -197,9 +197,6 @@ void loadInfoHTML(){
   sendFile(200, "text/html", data_info_HTML, sizeof(data_info_HTML), false);
 }
 
-void loadFunctionsJS() {
-  sendFile(200, "text/javascript", data_functions_JS, sizeof(data_functions_JS), false);
-}
 void loadScanJS() {
   sendFile(200, "text/javascript", data_scan_JS, sizeof(data_scan_JS), false);
 }
@@ -215,6 +212,12 @@ void loadControlJS() {
 }
 void loadSettingsJS() {
   sendFile(200, "text/javascript", data_settings_JS, sizeof(data_settings_JS), false);
+}
+void loadInfoJS() {
+  sendFile(200, "text/javascript", data_info_JS, sizeof(data_info_JS), false);
+}
+void loadFunctionsJS() {
+  sendFile(200, "text/javascript", data_functions_JS, sizeof(data_functions_JS), false);
 }
 
 void loadStyle() {
@@ -455,6 +458,10 @@ void getSettings() {
   settings.send();
 }
 
+void getSysInfo() {
+  settings.sendSysInfo();
+}
+
 void saveSettings() {
   server.send( 200, "text/json", "true" );
   if (server.hasArg("ssid")) settings.ssid = server.arg("ssid");
@@ -648,6 +655,7 @@ void setup() {
     server.on("/js/attack.js", loadAttackJS);
     server.on("/js/control.js", loadControlJS);
     server.on("/js/settings.js", loadSettingsJS);
+    server.on("/js/info.js", loadInfoJS);
     server.on("/js/functions.js", loadFunctionsJS);
   
     /* CSS */
@@ -667,6 +675,7 @@ void setup() {
     server.on("/attackInfo.json", sendAttackInfo);
     server.on("/attackStart.json", startAttack);
     server.on("/settings.json", getSettings);
+    server.on("/sysinfo.json", getSysInfo);
     server.on("/settingsSave.json", saveSettings);
     server.on("/settingsReset.json", resetSettings);
     server.on("/deleteName.json", deleteName);
