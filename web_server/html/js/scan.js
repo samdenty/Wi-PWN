@@ -37,6 +37,7 @@ function getResults() {
     toggleScan(true);
     getResponse("APScanResults.json", function(responseText) {
         var res = JSON.parse(responseText);
+        notify();
         res.aps = res.aps.sort(compare);
         networkInfo.innerHTML = '(' + res.aps.length + ')';
         if (res.aps.length == 0) scan()
@@ -79,6 +80,11 @@ function getResults() {
         }
         table.innerHTML = tr;
         checkSize()
+        fadeIn();
+    }, function() {
+        toggleScan(true);
+        fadeIn();
+        notify("Failed to scan for networks E0")
     });
 }
 
@@ -134,4 +140,3 @@ function selAll() {
     }
 
 getResults();
-fadeIn();

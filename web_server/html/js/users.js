@@ -74,8 +74,10 @@ function getResults() {
 
         nameListTable.innerHTML = tr;
         Waves.attach('.edit');
+        fadeIn();
 
     }, function() {
+        fadeIn();
         notify("Reconnect to Wi-Fi network (E6)");
         checkConnection();
     }, 3000);
@@ -193,4 +195,3 @@ getResponse("ClientScanTime.json", function(responseText) {
 
 getResults();
 toggleBtn(false);
-fadeIn();

@@ -25,6 +25,10 @@ function getData() {
             pin += 1;
         }
         controlPins.innerHTML = tr;
+        fadeIn();
+    }, function() {
+        fadeIn();
+        notify('Failed to load control.json E0')
     });
 }
 
@@ -130,4 +134,3 @@ function resetPins() {
 }
 
 getData();
-fadeIn();

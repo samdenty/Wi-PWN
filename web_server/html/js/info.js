@@ -26,6 +26,11 @@ function getData() {
     	flashid.innerHTML = fi;
     	chipid.innerHTML = ci;
     	sdk.innerHTML = "v." + sk;
+        versionCell.innerHTML = version;
+        fadeIn();
+    }, function() {
+        notify('Failed to load sysinfo.json E0');
+        fadeIn();
     });
 }
 
@@ -41,7 +46,4 @@ function checkUpdate() {
 }
 
 getData();
-versionCell.innerHTML = version;
-document.getElementsByClassName('main-wrap')[0].className = 'main-wrap fadeIn'
-
 infoInterval = setInterval(getData, 1200);

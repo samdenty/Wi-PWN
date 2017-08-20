@@ -155,8 +155,10 @@ function vibrate() {
 }
 
 function fadeIn() {
-    setTimeout(function(){document.getElementsByClassName('main-wrap')[0].classList.add('fadeIn')}, 100)
-    setTimeout(function(){document.getElementsByClassName('main-wrap')[0].classList.add('animation')}, 1000)
+    if (!mainWrap.className.match('fadeIn')) {
+        setTimeout(function(){document.getElementsByClassName('main-wrap')[0].classList.add('fadeIn')}, 10)
+        setTimeout(function(){document.getElementsByClassName('main-wrap')[0].classList.add('animation')}, 1000)
+    }
 }
 
 /* Set meta color */

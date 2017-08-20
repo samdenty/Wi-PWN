@@ -87,8 +87,11 @@ function getResults() {
             }
             ssidList.innerHTML = tr;
         }
+        fadeIn();
+
 
     }, function() {
+        fadeIn();
         clearInterval(resultInterval);
         checkConnection();
     }, 3000);
@@ -164,5 +167,4 @@ function switchRandom() {
 }
 
 getResults();
-fadeIn();
 resultInterval = setInterval(getResults, 2000);
