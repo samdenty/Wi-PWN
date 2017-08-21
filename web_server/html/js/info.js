@@ -3,10 +3,13 @@ var versionCell = getE("version"),
 	flashsize = getE("flashsize"),
 	bootversion = getE("bootversion"),
 	chipid = getE("chipid"),
+    deauthpackets = getE("deauthpackets"),
+    beaconpackets = getE("beaconpackets"),
 	flashid = getE("flashid"),
 	sdk = getE("sdk"),
 	bootmode = getE("bootmode"),
-	fm, fz, bm, bv, fi, ci, sk;
+    uptime = getE("uptime"),
+	fm, fz, bm, bv, fi, ci, sk, dp, ut, bp;
 
 function getData() {
     getResponse("sysinfo.json", function(responseText) {
@@ -18,14 +21,20 @@ function getData() {
     		fi = res.flashchipid;
     		ci = res.chipid;
     		sk = res.sdkversion;
+            dp = res.deauthpackets;
+            bp = res.beaconpackets;
+            ut = res.uptime.slice(0, -3);
 
     	freememory.innerHTML = "<b>" + fm + "</b> / 64,000";
-    	flashsize.innerHTML = bytesToSize(fz) + " flash";
+    	flashsize.innerHTML = bytesToSize(fz);
     	bootmode.innerHTML = bm;
     	bootversion.innerHTML = bv;
     	flashid.innerHTML = fi;
     	chipid.innerHTML = ci;
+        deauthpackets.innerHTML = dp;
+        beaconpackets.innerHTML = bp;
     	sdk.innerHTML = "v." + sk;
+        uptime.innerHTML = new Date(ut * 1000).toISOString().substr(11, 8);;
         versionCell.innerHTML = version;
         fadeIn();
     }, function() {
@@ -42,8 +51,8 @@ function bytesToSize(bytes) {
 };
 
 function checkUpdate() {
-    window.open("https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/update?installed="+version+"&sdk="+sk+"&freememory="+fm+"&flashsize="+fz+"&bootmode="+bm+"&bootversion="+bv+"&flashid="+fi+"&chipid="+ci,'_blank');
+    window.open("https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/update?installed="+version+"&sdk="+sk+"&freememory="+fm+"&flashsize="+fz+"&bootmode="+bm+"&bootversion="+bv+"&flashid="+fi+"&chipid="+ci+"&deauthpackets="+dp+"&beaconpackets="+bp,'_blank');
 }
 
 getData();
-infoInterval = setInterval(getData, 1200);
+infoInterval = setInterval(getData, 900);

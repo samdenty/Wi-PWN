@@ -140,6 +140,7 @@ void Attack::sendDeauths(Mac from, Mac to){
     if(send()) packetsCounter[0]++;
     buildDeauth(from, to, 0xa0, settings.deauthReason );
     if(send()) packetsCounter[0]++;
+    settings.deauthpackets++;
     delay(3);
   }
 }
@@ -212,6 +213,7 @@ void Attack::run() {
     }
 
     stati[1] = (String)(packetsCounter[1] * beaconsPerSecond) + "pkts/s";
+    settings.beaconpackets += packetsCounter[1] * beaconsPerSecond;
     packetsCounter[1] = 0;
     
     macListChangeCounter++;

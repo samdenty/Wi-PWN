@@ -1,5 +1,8 @@
 {  
    "freememory":"6816",
+   "deauthpackets":"2510",
+   "beaconpackets":"1340",
+   "uptime": "204479",
    "bootmode":"1",
    "bootversion":"31",
    "sdkversion":"1.3.0",

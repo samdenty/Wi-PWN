@@ -306,6 +306,9 @@ size_t Settings::getSysInfoSize() {
   size_t jsonSize = 0;
 
   json += "\"freememory\":\"" + (String)ESP.getFreeHeap() + "\",";
+  json += "\"deauthpackets\":\"" + (String)deauthpackets + "\",";
+  json += "\"beaconpackets\":\"" + (String)beaconpackets + "\",";
+  json += "\"uptime\":\"" + (String)millis() + "\",";
   json += "\"bootmode\":\"" + (String)ESP.getBootMode() + "\",";
   json += "\"bootversion\":\"" + (String)ESP.getBootVersion() + "\",";
   json += "\"sdkversion\":\"" + (String)ESP.getSdkVersion() + "\",";
@@ -324,6 +327,9 @@ void Settings::sendSysInfo() {
   
   String json = "{";
   json += "\"freememory\":\"" + (String)ESP.getFreeHeap() + "\",";
+  json += "\"deauthpackets\":\"" + (String)deauthpackets + "\",";
+  json += "\"beaconpackets\":\"" + (String)beaconpackets + "\",";
+  json += "\"uptime\":\"" + (String)millis() + "\",";
   json += "\"bootmode\":\"" + (String)ESP.getBootMode() + "\",";
   json += "\"bootversion\":\"" + (String)ESP.getBootVersion() + "\",";
   json += "\"sdkversion\":\"" + (String)ESP.getSdkVersion() + "\",";

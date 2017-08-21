@@ -105,6 +105,8 @@ class Settings
     void syncMacInterface();
     void setLedPin(int newLedPin);
     bool pinStateOff = true;  // When attack is off, pin state is HIGH
+    unsigned long deauthpackets = 0;
+    unsigned long beaconpackets = 0;
 
   private:
     size_t getSize();

@@ -51,13 +51,18 @@
                     <table>
                         <tr>
                             <td>Wi-PWN version</td>
-                            <td id="version"></td>
+                            <td><b id="version"></b></td>
                             <td><button onclick="checkUpdate()" class="onlgr">Check for updates</button><button onclick="checkUpdate()" class="onsmr">Update</button></td>
                         </tr>
                         <tr>
-                            <td>Free memory</td>
+                            <td>Uptime / memory</td>
+                            <td><b id="uptime"></b></td>
                             <td id="freememory"></td>
-                            <td id="flashsize"></td>
+                        </tr>
+                        <tr>
+                            <td>Sent packets</td>
+                            <td><b id="deauthpackets"></b> <i>(deauth)</i></td>
+                            <td><b id="beaconpackets"></b> <i>(beacon)</i></td>
                         </tr>
                         <tr>
                             <td>Versions</td>
@@ -66,7 +71,7 @@
                         </tr>
                         <tr>
                             <td>Flash &amp; Chip ID</td>
-                            <td><span id="flashid"></span></td>
+                            <td><span id="flashid"></span> <i id="flashsize"></i></td>
                             <td><span id="chipid"></span></td>
                         </tr>
                     </table>
