@@ -61,7 +61,7 @@ function getResults() {
             tr += "</tr>";
             if (~res.attacks[i].name.indexOf('Beacon')) {
                 if (res.randomMode == 1) {
-                    tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>running</td><td><button class='attackBtn selectedBtn' id='randomBtn' onclick='random()'>stop</button></td></tr>"
+                    tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>running</td><td><button class='attackBtn redBtn' id='randomBtn' onclick='random()'>stop</button></td></tr>"
                 } else {
                     tr += "<tr><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='green'>ready</td><td><button class='attackBtn' id='randomBtn' onclick='random()'>start</button></td></tr>"
                 }
