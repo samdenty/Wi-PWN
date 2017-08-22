@@ -53,6 +53,7 @@ extern NameList nameList;
 #define isMacAPRandAdr 1122
 #define pinNamesLenAdr 1123
 #define pinNamesAdr 1124
+#define serverCacheAdr 1189
 
 #define checkNumAdr 2001
 #define checkNum 16
@@ -88,6 +89,7 @@ class Settings
     int ledPin = 0;
     bool darkMode;
     bool cache;
+    int serverCache;
     bool newUser;
     int detectorChannel;
     bool detectorAllChannels;

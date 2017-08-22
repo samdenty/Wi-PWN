@@ -90,6 +90,7 @@ void Settings::load() {
   isSettingsLoaded = 1;
   darkMode = (bool)EEPROM.read(darkModeAdr);
   cache = (bool)EEPROM.read(cacheAdr);
+  serverCache = (bool)EEPROM.read(serverCacheAdr);
   newUser = (bool)EEPROM.read(newUserAdr);
   detectorChannel = (int)EEPROM.read(detectorChannelAdr);
   detectorAllChannels = (bool)EEPROM.read(detectorAllChannelsAdr);
@@ -127,6 +128,7 @@ void Settings::reset() {
   ledPin = 2;
   darkMode = false;
   cache = true;
+  serverCache = 450;
   newUser = true;
   detectorChannel = 1;
   detectorAllChannels = true;
@@ -176,6 +178,7 @@ void Settings::save() {
   EEPROM.write(ledPinAdr, ledPin);
   EEPROM.write(darkModeAdr, darkMode);
   EEPROM.write(cacheAdr, cache);
+  EEPROM.write(serverCacheAdr, serverCache);
   EEPROM.write(newUserAdr, newUser);
   EEPROM.write(detectorChannelAdr, detectorChannel);
   EEPROM.write(detectorAllChannelsAdr, detectorAllChannels);
@@ -214,7 +217,7 @@ void Settings::info() {
   Serial.println("  Password        : '" + password + "'\t\t|  characters='" + (String)passwordLen + "'\t\t|");
   Serial.println("  Scan            : hidden-networks='" + (String)apScanHidden + "'\t\t|  client-scan-time='" + (String)clientScanTime + "'\t|");
   Serial.println("  Attack          : timeout='" + (String)attackTimeout + "'\t\t\t|  packet_rate='" + (String)attackPacketRate + "'\t\t|  deauth_reason='" + (String)(int)deauthReason + "'");
-  Serial.println("  Interface       : dark-mode='" + (String)darkMode + "'\t\t|  new-user='" + (String)newUser + "'\t\t\t|  cache='" + (String)cache + "'");
+  Serial.println("  Interface       : dark-mode='" + (String)darkMode + "'\t\t|  new-user='" + (String)newUser + "'\t\t\t|  cache='" + (String)cache + " ("+(String)serverCache+"s)'");
   Serial.println("  LED Indicator   : enable='" + (String)useLed + "'\t\t\t|  pin='" + (String)ledPin + "'\t\t\t|");
   Serial.println("  MAC AP          : default='" + defaultMacAP.toString()+"'\t|  saved='" + macAP.toString()+"'\t|  random='" + (String)isMacAPRand + "'");
   Serial.println("  Beacons         : mac-change-interval='" + (String)multiAttacks + "'\t|  " + "1s-interval='" + (String)beaconInterval + "");
@@ -248,6 +251,7 @@ size_t Settings::getSize() {
   json += "\"ledPin\":" + (String)ledPin + ",";
   json += "\"darkMode\":" + (String)darkMode + ",";
   json += "\"cache\":" + (String)cache + ",";
+  json += "\"serverCache\":" + (String)serverCache + ",";
   json += "\"newUser\":" + (String)newUser + ",";
   json += "\"detectorChannel\":" + (String)detectorChannel + ",";
   json += "\"detectorAllChannels\":" + (String)detectorAllChannels + ",";
@@ -286,6 +290,7 @@ void Settings::send() {
   json += "\"ledPin\":" + (String)ledPin + ",";
   json += "\"darkMode\":" + (String)darkMode + ",";
   json += "\"cache\":" + (String)cache + ",";
+  json += "\"serverCache\":" + (String)serverCache + ",";
   json += "\"newUser\":" + (String)newUser + ",";
   json += "\"detectorChannel\":" + (String)detectorChannel + ",";
   json += "\"detectorAllChannels\":" + (String)detectorAllChannels + ",";

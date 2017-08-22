@@ -28,6 +28,7 @@
    "detectorScanTime":200,
    "darkMode":1,
    "cache":1,
+   "serverCache":"1000",
    "pins":"101101",
    "pinNames":"Pin 3;Pin 4;Pin 5;Pin 6;Pin 7;Pin 8"
 }

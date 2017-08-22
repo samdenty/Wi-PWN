@@ -22,6 +22,8 @@ var ssid = getE('ssid'),
     darkMode = getE('darkMode'),
     ledContainer = getE('ledContainer'),
     macContainer = getE('macContainer'),
+    cacheContainer = getE('cacheContainer'),
+    serverCache = getE('serverCache'),
     cache = getE('cache'),
     res = '',
     checkboxChanges,
@@ -29,6 +31,7 @@ var ssid = getE('ssid'),
 
 /* Add listeners to checkboxes */
 useLed.addEventListener("change", switchLED, false);
+cache.addEventListener("change", switchCache, false);
 randMacAp.addEventListener("change", switchMAC, false);
 
 function getData() {
@@ -60,8 +63,10 @@ function getData() {
         ledPin.value = res.ledPin;
         darkMode.checked = res.darkMode;
         cache.checked = res.cache;
+        serverCache.value = res.serverCache;
         switchLED();
         switchMAC();
+        switchCache();
         fadeIn();
     }, function () {
         notify("ERROR: Failed to load settings.json  (E40)");
@@ -93,6 +98,7 @@ function saveSettings() {
     url += "&ledPin=" + ledPin.value;
     url += "&darkMode=" + darkMode.checked;
     url += "&cache=" + cache.checked;
+    url += "&serverCache=" + serverCache.value;
 
     getResponse(url, function(responseText) {
         if (responseText == "true") {
@@ -141,6 +147,15 @@ function switchLED() {
         ledContainer.classList.remove("disabled");
     } else {
         ledContainer.classList.add("disabled");
+    }
+}
+
+function switchCache() {
+    var isChecked = cache.checked;
+    if (isChecked) {
+        cacheContainer.classList.remove("disabled");
+    } else {
+        cacheContainer.classList.add("disabled");
     }
 }
 

@@ -560,6 +560,8 @@ void saveSettings() {
     else settings.cache = true;
   }
 
+  if (server.hasArg("serverCache")) settings.serverCache = server.arg("serverCache").toInt();
+
   if (server.hasArg("newUser")) {
     if (server.arg("newUser") == "false") settings.newUser = false;
     else settings.newUser = true;

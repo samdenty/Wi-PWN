@@ -13,6 +13,7 @@ var versionCell = getE("version"),
 
 function getData() {
     getResponse("sysinfo.json", function(responseText) {
+        notify();
     	var res = JSON.parse(responseText);
     		fm = res.freememory.replace(/(.)(?=(\d{3})+$)/g,'$1,');
     		fz = res.flashchipsize;
@@ -38,7 +39,7 @@ function getData() {
         versionCell.innerHTML = version;
         fadeIn();
     }, function() {
-        notify('Failed to load sysinfo.json E0');
+        notify('Failed to load sysinfo.json');
         fadeIn();
     });
 }
