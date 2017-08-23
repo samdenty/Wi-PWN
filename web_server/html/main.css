@@ -397,7 +397,8 @@ h1 {
     text-align: right;
 }
 .no-caps {
-    text-transform: initial !important
+    text-transform: initial !important;
+    white-space: nowrap;
 }
 .oh {
     overflow: hidden;
@@ -579,6 +580,11 @@ input[type='file'] {
     position: absolute;
     z-index: -1;
 }
+.checkboxContainer {
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
+}
 .secondary {
     color: #2196f3;
     background: none;
@@ -710,13 +716,14 @@ label.checkbox {
 label.checkbox:before {
     position: absolute;
     z-index: 0;
-    top: -100%;
-    left: -100%;
+    top: 0;
+    left: 0;
+    transform: translate(-27%, -27%);
     display: block;
-    width: 300%;
-    height: 300%;
+    width: 200%;
+    height: 200%;
     content: '';
-    transition: .3s;
+    transition: .2s ease;
     border-radius: 50%;
 }
 label.checkbox:after {
@@ -724,13 +731,18 @@ label.checkbox:after {
     width: 100%;
     height: 100%;
     content: '';
-    transition: .2s;
+    transition: .1s ease;
     transform: scale(0);
     background: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik05IDE2LjE3TDQuODMgMTJsLTEuNDIgMS40MUw5IDE5IDIxIDdsLTEuNDEtMS40MXoiLz4KPC9zdmc+) center center no-repeat;
     background-size: contain;
 }
-label.checkbox:active:before {
+label.checkbox:active:before,
+.checkboxContainer:active label.checkbox:before {
     background: rgba(0, 0, 0, 0.15);
+    transform: translate(-34%, -34%);
+    width: 300%;
+    height: 300%;
+   
 }
 .row.inputCheckbox .checkbox {
     float: left;
