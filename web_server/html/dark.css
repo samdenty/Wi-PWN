@@ -11,10 +11,10 @@ body {
 nav .main-header {
     background: #1b1b21 !important
 }
-button, .reboot {
+.button, button, input[type='submit'], .reboot {
     background: #61616f
 }
-button:hover, .reboot:hover {
+.button:hover, button:hover, input[type='submit']:hover, .reboot:hover {
     background: #6c6c79
 }
 .secondary, .card-action a {

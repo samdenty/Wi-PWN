@@ -396,6 +396,9 @@ h1 {
     float: right !important;
     text-align: right;
 }
+.no-caps {
+    text-transform: initial !important
+}
 .oh {
     overflow: hidden;
 }
@@ -540,7 +543,7 @@ hr.small {
 }
 
 /**************************** Buttons & checkboxes ****************************/
-.button, button, input[type='submit'], input[type='reset'], input[type='button'] {
+.button, button, input[type='submit'] {
     font-size: 1rem;
     line-height: 36px;
     height: 36px;
@@ -557,14 +560,24 @@ hr.small {
     border-radius: 2px;
     outline: 0;
     background: #2196f3;
+    display: inline-block;
+    overflow: hidden;
 }
-.button:hover, button:hover, input[type='submit']:hover, input[type='reset']:hover, input[type='button']:hover, .reboot:hover {
+.button:hover, button:hover, input[type='submit']:hover, .reboot:hover {
     background: #1e88e5;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .24), 0 1px 7px 0 rgba(0, 0, 0, .12), 0 3px 1px -1px rgba(0, 0, 0, .2);
 }
 button:disabled, button:disabled:hover {
     background: rgba(0, 0, 0, .1);
     box-shadow: none;
+}
+input[type='file'] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 .secondary {
     color: #2196f3;
@@ -957,6 +970,22 @@ footer a {
         stroke-dashoffset: 187;
     }
 }
+.button i {
+    font-size: 1.3rem;
+    height: 100%;
+    line-height: inherit;
+    margin-right: 25px;
+    float: left;
+    position:relative;
+}
+.button svg {
+    fill: #fff;
+    height: 1.3rem;
+    position:absolute;
+    top:50%;
+    bottom:50%;
+    transform:translate(-50%, -50%);
+}
 .failed-save {
     background: #e53935 !important;
 }
@@ -1077,6 +1106,9 @@ footer a {
     }
     .samddAttrib {
         font-size: 1em
+    }
+    .onlgr2 {
+        display: none !important;
     }
 }
 @media (max-width:539px) {

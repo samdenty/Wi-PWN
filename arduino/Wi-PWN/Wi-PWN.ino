@@ -18,6 +18,7 @@
 #endif
 #include <ESP8266WebServer.h>
 #include <FS.h>
+#include <ESP8266HTTPUpdateServer.h>
 
 
 // Settings //
@@ -75,6 +76,7 @@ extern "C" {
   DNSServer         dnsServer;              // Create the DNS object
 #endif
 ESP8266WebServer server(80);                // HTTP server
+ESP8266HTTPUpdateServer httpUpdater;        // OTA Update server
 
 #include <EEPROM.h>
 #include "data.h"
@@ -596,7 +598,6 @@ void resetSettings() {
 }
 
 void setup() {
-
   randomSeed(os_random());
 
 #ifdef USE_LED16
@@ -696,6 +697,10 @@ void setup() {
     server.on("/enableRandom.json", enableRandom);
     server.on("/detectorStart.json", startDetector);
   }
+  
+  
+  httpUpdater.setup(&server);
+  
   server.begin();
 
 #ifdef USE_DISPLAY
