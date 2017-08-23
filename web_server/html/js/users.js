@@ -63,7 +63,7 @@ function getResults() {
             document.getElementById('saved-users').className = "";
         }
         clientNames.innerHTML = "(" + res.nameList.length + "/50)";
-        var tr = '<tr><th>Name</th><th><a onclick="clearNameList()" class="right" style="padding-right:10px">Reset</a></th></tr>';
+        var tr = '<tr><th>Name</th><th><a onclick="clearNameList()" class="button secondary right">Reset</a></th></tr>';
         for (var i = 0; i < res.nameList.length; i++) {
 
             tr += '<tr>';

@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./dark.css">
-    <meta name="theme-color" content="#1976d2">
+    <meta name="theme-color" content="#106CC8">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                         </a>
                     </div>
                     <table>
-                        <form method="POST" action="/update" enctype="multipart/form-data">
+                        <form method="POST" action="/update" enctype="multipart/form-data" id="ota">
                             <tr>
                                 <td class="onlgr2">OTA update</td>
                                 <td>
@@ -49,14 +49,14 @@
                                     <label for="update" class="button no-caps" tabindex="0"></label>
                                 </td>
                                 <td>
-                                    <input type="submit" value="Upload">
+                                    <button onclick="document.getElementById('ota').submit()">upload</button>
                                 </td>
                             </tr>
                         </form>
                         <br>
                     </table>
                     <div class="card-action">
-                        <a href="https://samdenty99.github.io/r?github" target="blank_">Github</a><a href="https://samdenty99.github.io/projects" class="right" target="blank_">Other projects</a>
+                        <a href="https://samdenty99.github.io/r?github" target="blank_" class="button">Github</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">Other projects</a>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                         <tr>
                             <td>Wi-PWN version</td>
                             <td><b id="version"></b></td>
-                            <td><button onclick="checkUpdate()" class="onlgr">Check for updates</button><button onclick="checkUpdate()" class="onsmr">Update</button></td>
+                            <td><button onclick="checkUpdate()" class="secondary onlgr">Check for updates</button><button onclick="checkUpdate()" class="onsmr">Update</button></td>
                         </tr>
                         <tr>
                             <td>Uptime / memory</td>
@@ -91,7 +91,7 @@
                         </tr>
                     </table>
                     <div class="card-action">
-                        <a href="https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/discord" target="blank_">Report bug</a><a href="https://samdenty99.github.io/projects" class="right" target="blank_">Other projects</a>
+                        <a href="https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/discord" target="blank_" class="button">Report bug</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">Other projects</a>
                     </div>
                 </div>
             </div>

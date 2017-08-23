@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./dark.css" id="darkStyle">
-    <meta name="theme-color" content="#1976d2">
+    <meta name="theme-color" content="#106CC8">
 </head>
 
 <body>
@@ -26,8 +26,8 @@
     /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
     </script>
     <div class="main-wrap">
-        <form id="settings" class="container settings">
-            <div class="card-container settings">
+        <form id="settings" class="container">
+            <div class="card-container">
                 <div class="settingsHeader">Wi-Fi configuration</div>
                 <div class="card-small">
                     <div class="row">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-container settings">
+            <div class="card-container">
                 <div class="settingsHeader">Scan &amp; Attack</div>
                 <div class="card-small">
                     <div class="row">
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-           <div class="card-container settings">
+           <div class="card-container">
                 <div class="settingsHeader">Customization</div>
                 <div class="card-small smaller">
                     <div class="row">
@@ -152,7 +152,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-container settings">
+            <div class="card-container">
                 <div class="settingsHeader">Advanced</div>
                 <div class="card-small smaller">
                     <div class="row">
@@ -184,9 +184,9 @@
                     </div>
                 </div>
             </div>
-            <div class="card-container">
-              <button onclick="resetSettings()" class="redBtn" type="button">Reset</button>
-              <button class="button-primary right" onclick="saveSettings()" type="button">save</button>
+            <div class="card-container dual">
+                <button onclick="resetSettings()" class="redBtn">reset</button>
+                <button class="button-primary right" onclick="saveSettings()">save</button>
             </div>
         </form>
         <footer></footer>

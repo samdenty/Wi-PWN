@@ -1,4 +1,4 @@
-#logo-img {
+/*#logo-img {
     background: none
 }
 #nav {
@@ -18,13 +18,12 @@ nav .main-header {
     background: #6c6c79
 }
 .secondary, .card-action a {
-    color: #bfbfbf !important
+    color: #8aa0d4 !important;
+    background: transparent;
 }
-.secondary:hover, .card-action a:hover {
-    color: #e4e4e4 !important
-}
+.card-action a:hover,
 .secondary:hover {
-    background: rgba(255, 255, 255, .1)
+    background: rgba(255,255,255, .03);
 }
 *, .input-container label {
     color: #dadada
@@ -166,4 +165,8 @@ hr {
 .samddAttrib span a {
     font-weight: bold;
     color: #ffbea1 !important
+}
+.waves-effect.waves-light-blue .waves-ripple,
+.waves-effect.waves-blue .waves-ripple {
+    background: rgba(255,255,255, 0.15)
 }

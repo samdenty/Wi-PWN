@@ -50,31 +50,31 @@ function getResults() {
                 tr += "<td class='red' id='status" + i + "'>" + res.attacks[i].status + "</td>";
             }
             if (res.attacks[i].running) {
-                tr += "<td><button class='attackBtn redBtn' onclick='startStop(" + i + ")'>stop</button></td>";
+                tr += "<td><button class='redBtn' onclick='startStop(" + i + ")'>stop</button></td>";
             } else {
                 if(res.attacks[i].status == "No network(s)") {
-                    tr += "<td><button class='attackBtn' disabled=''>start</button></td>";
+                    tr += "<td><button disabled=''>start</button></td>";
                 } else {
-                    tr += "<td><button class='attackBtn' onclick='startStop(" + i + ")'>start</button></td>";
+                    tr += "<td><button class='secondary' onclick='startStop(" + i + ")'>start</button></td>";
                 }
             }
             tr += "</tr>";
             if (~res.attacks[i].name.indexOf('Beacon')) {
                 if (res.randomMode == 1) {
-                    tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>running</td><td><button class='attackBtn redBtn' id='randomBtn' onclick='random()'>stop</button></td></tr>"
+                    tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>running</td><td><button class='redBtn' id='randomBtn' onclick='random()'>stop</button></td></tr>"
                 } else {
-                    tr += "<tr><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='green'>ready</td><td><button class='attackBtn' id='randomBtn' onclick='random()'>start</button></td></tr>"
+                    tr += "<tr><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='green'>ready</td><td><button id='randomBtn' class='secondary' onclick='random()'>start</button></td></tr>"
                 }
             }
         }
         table.innerHTML = tr;
-        Waves.attach('button',['waves-light']);
+        Waves.attach('button',['waves-blue']);
 
         if (typeof res.ssid != 'undefined') {
             data = res.ssid;
             ssidCounter.innerHTML = " ("+ data.length + "/48)";
 
-            var tr = "<tr><th>SSID</th><th><a onclick='clearSSID()' class='right' style='padding-right:10px'>Clear</a></th></tr>";
+            var tr = "<tr><th>SSID</th><th><a onclick='clearSSID()' class='button secondary right'>clear</a></th></tr>";
             for (var i = 0; i < data.length; i++) {
                 tr += "<tr>";
                 tr += "<td>" + escapeHTML(data[i][0]) + "</td>";
