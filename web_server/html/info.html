@@ -1,150 +1,150 @@
 <head>
-    <title>Info - Wi-PWN</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <link rel="stylesheet" href="./main.css">
-    <link rel="stylesheet" href="./dark.css">
-    <meta name="theme-color" content="#106CC8">
+	<title>Info - Wi-PWN</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<link rel="stylesheet" href="./main.css">
+	<link rel="stylesheet" href="./dark.css">
+	<meta name="theme-color" content="#106CC8">
 </head>
 
 <body>
-    <nav id="nav">
-        <div class="main-header">
-            <div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
-        </div>
-        <div id="links">
-            <a href="./">Scan</a>
-            <a href="./users.html">Users</a>
-            <a href="./attack.html">Attack</a>
-            <a href="./control.html">Control</a>
-            <a href="./settings.html">Settings</a>
-            <a class="right active" href="./info.html">Info</a>
-        </div>
-    </nav>
-    <div id="notification"></div>
-    <div id="spinner-container"></div>
-    <script>
-    /(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
-    </script>
-    <div class="main-wrap">
-        <div class="container">
-            <div class="card-container">
-                <div class="settingsHeader">Wi-PWN creator</div>
-                <div class="card">
-                    <div class="card-content">
-                        <p>
-                            Wi-PWN was designed by <a href="https://samdenty99.github.io/about" tabindex="-1"><b>Sam Denty</b></a>, from the original project by spacehuhn. Wi-PWN is released under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license.
-                        </p>
-                        <a href="https://samdenty99.github.io">
-                            <h2 class="center a light-text">
-                                https://samdd.me
-                            </h2>
-                        </a>
-                    </div>
-                    <table>
-                        <form method="POST" action="/update" enctype="multipart/form-data" id="ota">
-                            <tr>
-                                <td class="onlgr2">OTA update</td>
-                                <td>
-                                    <input type="file" name="update" id="update" accept=".bin">
-                                    <label for="update" class="button no-caps" tabindex="0"></label>
-                                </td>
-                                <td>
-                                    <button onclick="document.getElementById('ota').submit()">upload</button>
-                                </td>
-                            </tr>
-                        </form>
-                        <br>
-                    </table>
-                    <div class="card-action">
-                        <a href="https://samdenty99.github.io/r?github" target="blank_" class="button">Github</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">Other projects</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="settingsHeader">Wi-PWN</div>
-                <div class="card">
-                    <table>
-                        <tr>
-                            <td>Wi-PWN version</td>
-                            <td><b id="version"></b></td>
-                            <td><button onclick="checkUpdate()" class="secondary onlgr">Check for updates</button><button onclick="checkUpdate()" class="onsmr">Update</button></td>
-                        </tr>
-                        <tr>
-                            <td>Uptime / memory</td>
-                            <td><b id="uptime"></b></td>
-                            <td id="freememory"></td>
-                        </tr>
-                        <tr>
-                            <td>Sent packets</td>
-                            <td><b id="deauthpackets"></b> <i>(deauth)</i></td>
-                            <td><b id="beaconpackets"></b> <i>(beacon)</i></td>
-                        </tr>
-                        <tr>
-                            <td>Versions</td>
-                            <td>Boot <b>v.<span id="bootversion"></span></b>_m.<span id="bootmode"></span></td>
-                            <td>SDK <b id="sdk"></b></td>
-                        </tr>
-                        <tr>
-                            <td>Flash &amp; Chip ID</td>
-                            <td><span id="flashid"></span> <i id="flashsize"></i></td>
-                            <td><span id="chipid"></span></td>
-                        </tr>
-                    </table>
-                    <div class="card-action">
-                        <a href="https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/discord" target="blank_" class="button">Report bug</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">Other projects</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="settingsHeader">Contributors</div>
-                <div class="card">
-                    <div class="card-content">
-                        <a href="https://github.com/spacehuhn/esp8266_deauther"><b>@spacehuhn</b></a> (Stefan Kremser) 
-                        <br>
-                        <a href="https://github.com/N0vaPixel" target="_blank">@N0vaPixel</a> (Aur&eacute;lien Hernandez)
-                        <br>
-                        <a href="https://github.com/SaltyViper" target="_blank">@SaltyViper</a>
-                        <br>
-                        <a href="https://github.com/tobozo" target="_blank">@tobozo</a>
-                        <br>
-                        <a href="https://github.com/LarzJ" target="_blank">@LarzJ</a> (Larz Jacobs)
-                        <br>
-                        <a href="https://github.com/ericktedeschi" target="_blank">@ericktedeschi</a> (Erick Belluci Tedeschi)
-                        <br>
-                        <a href="https://github.com/andrbmgi" target="_blank">@andrbmgi</a>
-                        <br>
-                        <a href="https://github.com/SamuelKlit" target="_blank">@SamuelKlit</a> (Samuel KS)
-                        <br>
-                        <a href="https://github.com/schinfo" target="_blank">@schinfo</a> (Helmut)
-                        <br>
-                        <a href="https://github.com/ajnavarro" target="_blank">@ajnavarro</a> (Antonio Navarro Perez)
-                        <br>
-                        <br>
-                        <div class="divider"></div>
-                        <br>This software is based upon the work of Stefan Kremser (Spacehuhn)<br>For more information go to <a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">contributors page</a> on GitHub.
-                    </div>
-                </div>
-                <hr>
-                <div class="settingsHeader">Included libraries</div>
-                <div class="card oh">
-                    <div class="card-content">
-                        <div class="row">
-                            <div class="col-4">Wireshark manufacturer database</div>
-                            <div class="col-8"><a href="https://www.wireshark.org/tools/oui-lookup.html">https://www.wireshark.org/tools/oui-lookup</a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">Waves.js</div>
-                            <div class="col-8"><a href="https://github.com/fians/Waves">https://github.com/fians/Waves</a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">Material design icons</div>
-                            <div class="col-8"><a href="https://materialdesignicons.com">https://materialdesignicons.com</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer></footer>
-        <script src="./js/functions.js"></script>
-        <script src="./js/info.js"></script>
+	<nav id="nav">
+		<div class="main-header">
+			<div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
+		</div>
+		<div id="links">
+			<a href="./">Scan</a>
+			<a href="./users.html">Users</a>
+			<a href="./attack.html">Attack</a>
+			<a href="./control.html">Control</a>
+			<a href="./settings.html">Settings</a>
+			<a class="right active" href="./info.html">Info</a>
+		</div>
+	</nav>
+	<div id="notification"></div>
+	<div id="spinner-container"></div>
+	<script>
+	/(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
+	</script>
+	<div class="main-wrap">
+		<div class="container">
+			<div class="card-container">
+				<div class="settingsHeader">Wi-PWN creator</div>
+				<div class="card">
+					<div class="card-content">
+						<p>
+							Wi-PWN was designed by <a href="https://samdenty99.github.io/about" tabindex="-1"><b>Sam Denty</b></a>, from the original project by spacehuhn. Wi-PWN is released under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license.
+						</p>
+						<a href="https://samdenty99.github.io">
+							<h2 class="center a light-text">
+								https://samdd.me
+							</h2>
+						</a>
+					</div>
+					<table>
+						<form method="POST" action="/update" enctype="multipart/form-data" id="ota">
+							<tr>
+								<td class="onlgr2">OTA update</td>
+								<td>
+									<input type="file" name="update" id="update" accept=".bin">
+									<label for="update" class="button no-caps" tabindex="0"></label>
+								</td>
+								<td>
+									<button onclick="document.getElementById('ota').submit()">upload</button>
+								</td>
+							</tr>
+						</form>
+						<br>
+					</table>
+					<div class="card-action">
+						<a href="https://samdenty99.github.io/r?github" target="blank_" class="button">Github</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">Other projects</a>
+					</div>
+				</div>
+			</div>
+			<div class="card-container">
+				<div class="settingsHeader">Wi-PWN</div>
+				<div class="card">
+					<table>
+						<tr>
+							<td>Wi-PWN version</td>
+							<td><b id="version"></b></td>
+							<td><button onclick="checkUpdate()" class="secondary onlgr">Check for updates</button><button onclick="checkUpdate()" class="onsmr">Update</button></td>
+						</tr>
+						<tr>
+							<td>Uptime / memory</td>
+							<td><b id="uptime"></b></td>
+							<td id="freememory"></td>
+						</tr>
+						<tr>
+							<td>Sent packets</td>
+							<td><b id="deauthpackets"></b> <i>(deauth)</i></td>
+							<td><b id="beaconpackets"></b> <i>(beacon)</i></td>
+						</tr>
+						<tr>
+							<td>Versions</td>
+							<td>Boot <b>v.<span id="bootversion"></span></b>_m.<span id="bootmode"></span></td>
+							<td>SDK <b id="sdk"></b></td>
+						</tr>
+						<tr>
+							<td>Flash &amp; Chip ID</td>
+							<td><span id="flashid"></span> <i id="flashsize"></i></td>
+							<td><span id="chipid"></span></td>
+						</tr>
+					</table>
+					<div class="card-action">
+						<a href="https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/discord" target="blank_" class="button">Report bug</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">Other projects</a>
+					</div>
+				</div>
+			</div>
+			<div class="card-container">
+				<div class="settingsHeader">Contributors</div>
+				<div class="card">
+					<div class="card-content">
+						<a href="https://github.com/spacehuhn/esp8266_deauther"><b>@spacehuhn</b></a> (Stefan Kremser) 
+						<br>
+						<a href="https://github.com/N0vaPixel" target="_blank">@N0vaPixel</a> (Aur&eacute;lien Hernandez)
+						<br>
+						<a href="https://github.com/SaltyViper" target="_blank">@SaltyViper</a>
+						<br>
+						<a href="https://github.com/tobozo" target="_blank">@tobozo</a>
+						<br>
+						<a href="https://github.com/LarzJ" target="_blank">@LarzJ</a> (Larz Jacobs)
+						<br>
+						<a href="https://github.com/ericktedeschi" target="_blank">@ericktedeschi</a> (Erick Belluci Tedeschi)
+						<br>
+						<a href="https://github.com/andrbmgi" target="_blank">@andrbmgi</a>
+						<br>
+						<a href="https://github.com/SamuelKlit" target="_blank">@SamuelKlit</a> (Samuel KS)
+						<br>
+						<a href="https://github.com/schinfo" target="_blank">@schinfo</a> (Helmut)
+						<br>
+						<a href="https://github.com/ajnavarro" target="_blank">@ajnavarro</a> (Antonio Navarro Perez)
+						<br>
+						<br>
+						<div class="divider"></div>
+						<br>This software is based upon the work of Stefan Kremser (Spacehuhn)<br>For more information go to <a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">contributors page</a> on GitHub.
+					</div>
+				</div>
+				<hr>
+				<div class="settingsHeader">Included libraries</div>
+				<div class="card oh">
+					<div class="card-content">
+						<div class="row">
+							<div class="col-4">Wireshark manufacturer database</div>
+							<div class="col-8"><a href="https://www.wireshark.org/tools/oui-lookup.html">https://www.wireshark.org/tools/oui-lookup</a></div>
+						</div>
+						<div class="row">
+							<div class="col-4">Waves.js</div>
+							<div class="col-8"><a href="https://github.com/fians/Waves">https://github.com/fians/Waves</a></div>
+						</div>
+						<div class="row">
+							<div class="col-4">Material design icons</div>
+							<div class="col-8"><a href="https://materialdesignicons.com">https://materialdesignicons.com</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer></footer>
+		<script src="./js/functions.js"></script>
+		<script src="./js/info.js"></script>
 </body>

@@ -7,7 +7,6 @@ extern "C" {
 }
 
 extern Settings settings;
-extern const bool debug;
 
 class Detector {
   public:
