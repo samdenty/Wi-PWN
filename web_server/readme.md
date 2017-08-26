@@ -7,7 +7,7 @@ NOTE: You can just directly open the HTML files, but the pages won't load proper
 **NOTE:** The included `.json` file are there to simulate example output from the ESP8266 module. Do not include them in the final binary! 
 
 
-##How to update web-server files
+## How to update web-server files
 
 ### Auto Mode (Windows / Mac / Linux)
 
@@ -24,7 +24,7 @@ NOTE: You can just directly open the HTML files, but the pages won't load proper
 
 ~~1. Open a terminal window at the `webserver` directory and execute `./convert_all.sh`
 2. Open the generated file "data_h_temp" and copy the content (CTRL+C)
-3. Go to [arduino/Wi-PWN/data.h](http://github.com/Wi-PWN/Wi-PWN/arduino/Wi-PWN/data.h) and replace the content between the comments like below:
+3. Go to [arduino/Wi-PWN/data.h](http://github.com/Wi-PWN/Wi-PWN/arduino/Wi-PWN/data.h) and replace the content between the comments like below:~~
 
 <b></b>
 
@@ -33,10 +33,9 @@ NOTE: You can just directly open the HTML files, but the pages won't load proper
     ...
     /*end_auto_generator*/
 
+~~### Manual Mode~~
 
-### Manual Mode
-
-1. Open `minifier.html` and paste the HTML source in input field  
+~~1. Open `minifier.html` and paste the HTML source in input field  
 2. Click on <kbd>minifiy + byte-ify</kbd>  
 3. Copy the results  
 4. Go to [arduino/Wi-PWN/data.h](http://github.com/Wi-PWN/Wi-PWN/arduino/Wi-PWN/data.h) and replace the array (of the changed html file) with the copied bytes~~
