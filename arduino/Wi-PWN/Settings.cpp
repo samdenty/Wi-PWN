@@ -118,7 +118,7 @@ void Settings::reset() {
   ssidHidden = false;
   apChannel = 1;
 
-  wifiClient = 0;
+  wifiClient = false;
   ssidClient = "";
   passwordClient = "";
   hostname = "Wi-PWN";
