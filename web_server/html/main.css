@@ -537,6 +537,15 @@ hr.small {
     .hidden-sm {
         display: block;
     }
+    .invert {
+        padding-top: 20px;
+    }
+    .invert .checkbox {
+        float: left !important;
+        margin-right: 10px;
+        margin-left: 5px;
+    }
+
 }
 @media (min-width:60em) {
     .container {

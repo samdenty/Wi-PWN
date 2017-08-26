@@ -30,7 +30,7 @@ extern NameList nameList;
 #define attackTimeoutAdr 1091
 #define attackPacketRateAdr 1093
 #define clientScanTimeAdr 1094
-//#define attackEncryptedAdr 1095 <-- address is now free for another setting
+#define wifiClientAdr 1095
 #define ssidHiddenAdr 1096
 #define apScanHiddenAdr 1097
 #define apChannelAdr 1098
@@ -54,8 +54,14 @@ extern NameList nameList;
 #define pinNamesLenAdr 1123
 #define pinNamesAdr 1124
 #define serverCacheAdr 1189
+#define ssidClientLenAdr 1193
+#define ssidClientAdr 1194
+#define passwordClientLenAdr 1226
+#define passwordClientAdr 1227
+#define hostnameLenAdr 1259
+#define hostnameAdr 1260
 
-#define checkNumAdr 2001
+#define checkNumAdr 3000
 #define checkNum 16
 
 class Settings
@@ -75,6 +81,15 @@ class Settings
     int passwordLen;
     String password = "";
     int apChannel;
+    
+    bool wifiClient;
+    int ssidClientLen;
+    String ssidClient = "";
+    int passwordClientLen;
+    String passwordClient = "";
+    int hostnameLen;
+    String hostname = "";
+    
     bool apScanHidden;
     uint8_t deauthReason;
     unsigned int attackTimeout;

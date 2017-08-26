@@ -28,8 +28,8 @@
     <div class="main-wrap">
         <form id="settings" class="container">
             <div class="card-container">
-                <div class="settingsHeader">Wi-Fi configuration</div>
-                <div class="card-small">
+                <div class="settingsHeader">Wi-Fi server</div>
+                <div class="card-small smaller">
                     <div class="row">
                         <div class="col-12">
                             <div class="input-container">
@@ -40,26 +40,126 @@
                         <div class="col-12">
                             <div class="input-container">
                                 <input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32">
-                                <label for="ssid">Password</label>
+                                <label for="password">Password</label>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="input-container">
                                 <input placeholder=" " id="apChannel" type="number" required="" min="1" max="14">
                                 <label for="apChannel">Channel</label>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <label for="ssidHidden" class="checkboxContainer">
-                                Hide SSID
+                        <div class="col-6">
+                            <label for="ssidHidden" class="checkboxContainer invert">
                                 <input type="checkbox" name="ssidHidden" id="ssidHidden" value="false">
                                 <label class="checkbox" for="ssidHidden"></label>
+                                Hide SSID
                             </label>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-container">
+            </div><div class="card-container">
+                <div class="settingsHeader">Wi-Fi client</div>
+                <div class="card-small smaller">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="wifiClient" class="checkboxContainer">
+                                Enable WiFi client
+                                <input type="checkbox" name="wifiClient" id="wifiClient" value="false">
+                                <label class="checkbox" for="wifiClient"></label>
+                            </label>
+                        </div>
+                        <div id="clientContainer" class="input-container">
+                            <div class="col-12">
+                                <br>
+                                <div class="input-container">
+                                    <input placeholder=" " id="ssidClient" type="text" required="" minlength="1" maxlength="32">
+                                    <label for="ssidClient">Network SSID</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-container">
+                                    <input placeholder=" " id="passwordClient" type="text" required="" minlength="8" maxlength="32">
+                                    <label for="passwordClient">Network password</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-container">
+                                    <input placeholder=" " id="hostname" type="text" required="" minlength="1" maxlength="12">
+                                    <label for="hostname">ESP hostname</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="card-container">
+                <div class="settingsHeader">Customization</div>
+                <div class="card-small smaller">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="darkMode" class="checkboxContainer">
+                                Enable dark mode
+                                <input type="checkbox" name="darkMode" id="darkMode" value="false">
+                                <label class="checkbox" for="darkMode">
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <label for="cache" class="checkboxContainer">
+                                Enable server caching
+                                <input type="checkbox" name="cache" id="cache" value="false">
+                                <label class="checkbox" for="cache">
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-container" id="cacheContainer">
+                                <input placeholder=" " id="serverCache" type="number" required="" min="0" max="9999">
+                                <label for="serverCache">Cache expiration time</label>
+                            </div>
+                        </div>
+                        <br><br><hr>
+                        <div class="col-12">
+                            <label for="useLed" class="checkboxContainer">
+                                Enable LED indicator
+                                <input type="checkbox" name="useLed" id="useLed" value="false">
+                                <label class="checkbox" for="useLed">
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-container" id="ledContainer">
+                                <input placeholder=" " id="ledPin" type="number" required="" min="0" max="18">
+                                <label for="ledPin">LED Pin</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="card-container">
+                <div class="settingsHeader">UI tweaks</div>
+                <div class="card-small smaller">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="cache" class="checkboxContainer">
+                                Simplify interface
+                                <input type="checkbox" name="cache" id="cache" value="false">
+                                <label class="checkbox" for="cache">
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <label for="darkMode" class="checkboxContainer">
+                                Smaller table rows
+                                <input type="checkbox" name="darkMode" id="darkMode" value="false">
+                                <label class="checkbox" for="darkMode">
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <label for="cache" class="checkboxContainer">
+                                Show reboot button
+                                <input type="checkbox" name="cache" id="cache" value="false">
+                                <label class="checkbox" for="cache">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="card-container">
                 <div class="settingsHeader">Scan &amp; Attack</div>
                 <div class="card-small">
                     <div class="row">
@@ -110,51 +210,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-           <div class="card-container">
-                <div class="settingsHeader">Customization</div>
-                <div class="card-small smaller">
-                    <div class="row">
-                        <div class="col-12">
-                            <label for="darkMode" class="checkboxContainer">
-                                Enable dark mode
-                                <input type="checkbox" name="darkMode" id="darkMode" value="false">
-                                <label class="checkbox" for="darkMode">
-                            </label>
-                        </div>
-                        <div class="col-12">
-                            <label for="cache" class="checkboxContainer">
-                                Enable server caching
-                                <input type="checkbox" name="cache" id="cache" value="false">
-                                <label class="checkbox" for="cache">
-                            </label>
-                        </div>
-                        <div class="col-12">
-                            <div class="input-container" id="cacheContainer">
-                                <input placeholder=" " id="serverCache" type="number" required="" min="0" max="9999">
-                                <label for="serverCache">Cache expiration time</label>
-                            </div>
-                        </div>
-                        <br><br><hr>
-                        <div class="col-12">
-                            <label for="useLed" class="checkboxContainer">
-                                Enable LED indicator
-                                <input type="checkbox" name="useLed" id="useLed" value="false">
-                                <label class="checkbox" for="useLed">
-                            </label>
-                        </div>
-                        <div class="col-12">
-                            <div class="input-container" id="ledContainer">
-                                <input placeholder=" " id="ledPin" type="number" required="" min="0" max="18">
-                                <label for="ledPin">LED Pin</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
+            </div><div class="card-container">
                 <div class="settingsHeader">Advanced</div>
-                <div class="card-small smaller">
+                <div class="card-small">
                     <div class="row">
                         <div class="col-12">
                             <div class="input-container">
@@ -185,8 +243,9 @@
                 </div>
             </div>
             <div class="card-container dual">
-                <button onclick="resetSettings()" class="redBtn">reset</button>
-                <button class="button-primary right" onclick="saveSettings()">save</button>
+                <!-- Leave type="button", it prevents the form defaulting to submit buttons -->
+                <button onclick="resetSettings()" class="redBtn" type="button">reset</button>
+                <button class="button-primary right" onclick="saveSettings()" type="button">save</button>
             </div>
         </form>
         <footer></footer>

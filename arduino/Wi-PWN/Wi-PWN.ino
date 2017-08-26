@@ -1,12 +1,22 @@
 /*
- ************************************************
- *         Wi-PWN firmware for ESP8266          *
- *     https://github.com/samdenty99/Wi-PWN     *
- *            (c) 2017 Samuel Denty             *
- *----------------------------------------------*
- *  Wi-PWN based on spacehuhn/esp8266_dseauther *
- *              (c) Stefan Kremser              *
- ************************************************
+ (*********************************************************************
+ *    ____      ____  _        _______  ____      ____  ____  _____    *
+ *   |_  _|    |_  _|(_)      |_   __ \|_  _|    |_  _||_   \|_   _|   *
+ *     \ \  /\  / /  __  ______ | |__) | \ \  /\  / /    |   \ | |     *
+ *      \ \/  \/ /  [  ||______||  ___/   \ \/  \/ /     | |\ \| |     *
+ *       \  /\  /    | |       _| |_       \  /\  /     _| |_\   |_    *
+ *        \/  \/    [___]     |_____|       \/  \/     |_____|\____|   *
+ *                                                                     *
+ ***********************************************************************
+ *                 https://github.com/samdenty99/Wi-PWN                *
+ *                                                                     *
+ *                         (c) 2017 Sam Denty                          *
+ *                         https://samdd.me/projects                   *
+ *                                                                     *
+ *---------------------------------------------------------------------*
+ *            Wi-PWN is based on spacehuhn/esp8266_deauther            *
+ *                          (c) Stefan Kremser                         *
+ **********************************************************************
 */
 
 // Including some libraries we need //
@@ -19,6 +29,7 @@
 #include <ESP8266WebServer.h>
 #include <FS.h>
 #include <ESP8266HTTPUpdateServer.h>
+#include <WiFiClient.h>
 
 
 // Settings //
@@ -143,12 +154,38 @@ void drawInterface() {
 
 void startWifi() {
   Serial.println("\nStarting WiFi AP:");
-  WiFi.mode(WIFI_STA);
+  WiFi.mode(WIFI_AP_STA);
   wifi_set_promiscuous_rx_cb(sniffer);
   #ifdef USE_CAPTIVE_PORTAL
     WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
   #endif
   WiFi.softAP((const char*)settings.ssid.c_str(), (const char*)settings.password.c_str(), settings.apChannel, settings.ssidHidden); //for an open network without a password change to:  WiFi.softAP(ssid);
+  if (settings.wifiClient && settings.ssidClient) {
+    Serial.print("Connecting to WiFi network '"+settings.ssidClient+"' using the password '"+settings.passwordClient+"' ");
+    if (settings.hostname) WiFi.hostname(settings.hostname);
+    WiFi.begin((const char*)settings.ssidClient.c_str(), (const char*)settings.passwordClient.c_str());
+    int conAtt = 0;
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+      conAtt++;
+      if (conAtt > 20) {
+        Serial.println("");
+        Serial.println("Failed to connect to '"+settings.ssidClient+"', skipping connection\n");
+        goto startWifi;
+      }
+    }
+    
+    Serial.println(" connected!");
+    Serial.print("IP address: ");
+    Serial.println(WiFi.localIP());
+    Serial.print("Netmask: ");
+    Serial.println(WiFi.subnetMask());
+    Serial.print("Gateway: ");
+    Serial.println(WiFi.gatewayIP());
+    Serial.println("");
+  }
+  startWifi:
   Serial.println("SSID          : '" + settings.ssid+"'");
   Serial.println("Password      : '" + settings.password+"'");
   #ifdef USE_CAPTIVE_PORTAL
@@ -478,6 +515,15 @@ void saveSettings() {
       settings.apChannel = server.arg("apChannel").toInt();
     }
   }
+  
+  if (server.hasArg("wifiClient")) {
+    if (server.arg("wifiClient") == "false") settings.wifiClient = false;
+    else settings.wifiClient = true;
+  }
+  if (server.hasArg("ssidClient")) settings.ssidClient = server.arg("ssidClient");
+  if (server.hasArg("passwordClient")) settings.passwordClient = server.arg("passwordClient");
+  if (server.hasArg("hostname")) settings.hostname = server.arg("hostname");
+  
   if (server.hasArg("macAp")) {
     String macStr = server.arg("macAp");
     macStr.replace(":","");

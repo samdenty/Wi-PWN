@@ -24,6 +24,11 @@ var ssid = getE('ssid'),
     macContainer = getE('macContainer'),
     cacheContainer = getE('cacheContainer'),
     serverCache = getE('serverCache'),
+    wifiClient = getE('wifiClient'),
+    ssidClient = getE('ssidClient'),
+    passwordClient = getE('passwordClient'),
+    hostname = getE('hostname'),
+    clientContainer = getE('clientContainer'),
     cache = getE('cache'),
     res = '',
     checkboxChanges,
@@ -33,6 +38,7 @@ var ssid = getE('ssid'),
 useLed.addEventListener("change", switchLED, false);
 cache.addEventListener("change", switchCache, false);
 randMacAp.addEventListener("change", switchMAC, false);
+wifiClient.addEventListener("change", switchClient, false);
 
 function getData() {
     getResponse("settings.json", function(responseText) {
@@ -64,9 +70,14 @@ function getData() {
         darkMode.checked = res.darkMode;
         cache.checked = res.cache;
         serverCache.value = res.serverCache;
+        wifiClient.checked = res.wifiClient;
+        ssidClient.value = res.ssidClient;
+        passwordClient.value = res.passwordClient;
+        hostname.value = res.hostname;
         switchLED();
         switchMAC();
         switchCache();
+        switchClient();
         fadeIn();
     }, function () {
         notify("ERROR: Failed to load settings.json  (E40)");
@@ -99,6 +110,10 @@ function saveSettings() {
     url += "&darkMode=" + darkMode.checked;
     url += "&cache=" + cache.checked;
     url += "&serverCache=" + serverCache.value;
+    url += "&wifiClient=" + wifiClient.checked;
+    url += "&ssidClient=" + ssidClient.value;
+    url += "&passwordClient=" + passwordClient.value;
+    url += "&hostname=" + hostname.value;
 
     getResponse(url, function(responseText) {
         if (responseText == "true") {
@@ -114,8 +129,18 @@ function saveSettings() {
             notify("Failed to save settings! (E18)");
         }
     }, function() {
-        indicate(false);
-        notify("Failed to save settings! (E19)");
+        getResponse("settings.json", function(responseText) {
+            getData();
+            indicate(true);
+            var uniqueKey = new Date();
+            document.getElementById('darkStyle').setAttribute('href', 'dark.css?' + uniqueKey.getTime());
+            defaultMetaColor();
+            inputChanges = false;
+            checkboxChanges = false;
+        }, function () {
+            indicate(false);
+            notify("Failed to save settings! (E19)");
+        });
     });
 }
 
@@ -142,30 +167,31 @@ function resetSettings() {
 }
 
 function switchLED() {
-    var isChecked = useLed.checked;
-    if (isChecked) {
+    if (useLed.checked)
         ledContainer.classList.remove("disabled");
-    } else {
+    else
         ledContainer.classList.add("disabled");
-    }
 }
 
 function switchCache() {
-    var isChecked = cache.checked;
-    if (isChecked) {
+    if (cache.checked)
         cacheContainer.classList.remove("disabled");
-    } else {
+    else
         cacheContainer.classList.add("disabled");
-    }
 }
 
 function switchMAC() {
-    var isChecked = randMacAp.checked;
-    if (isChecked) {
+    if (randMacAp.checked)
         macContainer.classList.add("disabled");
-    } else {
+    else
         macContainer.classList.remove("disabled");
-    }
+}
+
+function switchClient() {
+    if (wifiClient.checked)
+        clientContainer.classList.remove("disabled");
+    else
+        clientContainer.classList.add("disabled");
 }
 
 getData();

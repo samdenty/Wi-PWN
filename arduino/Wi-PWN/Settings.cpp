@@ -62,7 +62,15 @@ void Settings::load() {
   for (int i = 0; i < passwordLen; i++) password += (char)EEPROM.read(passwordAdr + i);
 
   ssidHidden = (bool)EEPROM.read(ssidHiddenAdr);
-
+  
+  wifiClient = (bool)EEPROM.read(wifiClientAdr);
+  ssidClientLen = EEPROM.read(ssidClientLenAdr);
+  for (int i = 0; i < ssidClientLen; i++) ssidClient += (char)EEPROM.read(ssidClientAdr + i);
+  passwordClientLen = EEPROM.read(passwordClientLenAdr);
+  for (int i = 0; i < passwordClientLen; i++) passwordClient += (char)EEPROM.read(passwordClientAdr + i);
+  hostnameLen = EEPROM.read(hostnameLenAdr);
+  for (int i = 0; i < hostnameLen; i++) hostname += (char)EEPROM.read(hostnameAdr + i);
+  
   if ((int)EEPROM.read(apChannelAdr) >= 1 && (int)EEPROM.read(apChannelAdr) <= 14) {
     apChannel = (int)EEPROM.read(apChannelAdr);
   } else {
@@ -109,6 +117,11 @@ void Settings::reset() {
   password = "";
   ssidHidden = false;
   apChannel = 1;
+
+  wifiClient = 0;
+  ssidClient = "";
+  passwordClient = "";
+  hostname = "Wi-PWN";
 
   macAP = defaultMacAP;
   isMacAPRand = 0;
@@ -159,6 +172,17 @@ void Settings::save() {
   for(int i=0; i<6; i++){
     EEPROM.write(macAPAdr+i, macAP._get(i));
   }
+
+  EEPROM.write(wifiClientAdr, wifiClient);
+  ssidClientLen = ssidClient.length();
+  EEPROM.write(ssidClientLenAdr, ssidClientLen);
+  for (int i = 0; i < ssidClientLen; i++) EEPROM.write(ssidClientAdr + i, ssidClient[i]);
+  passwordClientLen = passwordClient.length();
+  EEPROM.write(passwordClientLenAdr, passwordClientLen);
+  for (int i = 0; i < passwordClientLen; i++) EEPROM.write(passwordClientAdr + i, passwordClient[i]);
+  hostnameLen = hostname.length();
+  EEPROM.write(hostnameLenAdr, hostnameLen);
+  for (int i = 0; i < hostnameLen; i++) EEPROM.write(hostnameAdr + i, hostname[i]);
 
   EEPROM.write(apScanHiddenAdr, apScanHidden);
 
@@ -235,6 +259,10 @@ size_t Settings::getSize() {
   json += "\"ssidHidden\":" + (String)ssidHidden + ",";
   json += "\"password\":\"" + password + "\",";
   json += "\"apChannel\":" + (String)apChannel + ",";
+  json += "\"wifiClient\":" + (String)wifiClient + ",";
+  json += "\"ssidClient\":\"" + (String)ssidClient + "\",";
+  json += "\"passwordClient\":\"" + (String)passwordClient + "\",";
+  json += "\"hostname\":\"" + (String)hostname + "\",";
   json += "\"macAp\":\"" + macAP.toString() + "\",";
   json += "\"randMacAp\":" + (String)isMacAPRand + ",";
   json += "\"apScanHidden\":" + (String)apScanHidden + ",";
@@ -274,6 +302,10 @@ void Settings::send() {
   json += "\"ssidHidden\":" + (String)ssidHidden + ",";
   json += "\"password\":\"" + password + "\",";
   json += "\"apChannel\":" + (String)apChannel + ",";
+  json += "\"wifiClient\":" + (String)wifiClient + ",";
+  json += "\"ssidClient\":\"" + (String)ssidClient + "\",";
+  json += "\"passwordClient\":\"" + (String)passwordClient + "\",";
+  json += "\"hostname\":\"" + (String)hostname + "\",";
   json += "\"macAp\":\"" + macAP.toString() + "\",";
   json += "\"randMacAp\":" + (String)isMacAPRand + ",";
   json += "\"apScanHidden\":" + (String)apScanHidden + ",";
