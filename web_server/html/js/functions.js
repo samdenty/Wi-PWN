@@ -21,7 +21,8 @@ function notify(msg, closeAfter) {
 
 function indicate(indState) {
   if (indState == null) {
-	saveStatus.className = "";
+	saveStatus.classList.remove("show-loading");
+	setTimeout(function() {saveStatus.className = ""}, 500)
   } else if (indState == true) {
 	saveStatus.classList.add("show-loading");
 	saveStatus.classList.add("success-save");
@@ -99,7 +100,7 @@ function escapeHTML(str) {
 
 function showLoading(state) {
 	if(state == "hide") {
-		sL.classList.remove("show-loading");
+		sL.className="";
 	} else {
 		sL.classList.add("show-loading");
 	}

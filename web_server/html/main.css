@@ -892,6 +892,7 @@ footer a {
 	border-radius: 100vw;
 	background: #fff;
 	box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .19), 0 6px 13px 0 rgba(0, 0, 0, .24);
+	overflow: hidden;
 }
 .spinner {
 	display: none;

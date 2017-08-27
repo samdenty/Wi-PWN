@@ -42,8 +42,10 @@ void Settings::setLedPin(int newLedPin){
 }
 
 void Settings::load() {
-
   if (EEPROM.read(checkNumAdr) != checkNum) {
+    Serial.println("");
+    Serial.println("Resetting settings, checknum=" + (String)checkNum + " but it should equal" + (String)EEPROM.read(checkNumAdr));
+    Serial.println("");
     reset();
     return;
   }
@@ -111,6 +113,7 @@ void Settings::load() {
 }
 
 void Settings::reset() {
+  Serial.println("Resetting settings! checknum=" + (String)checkNum + ", EEPROM=" + (String)EEPROM.read(checkNumAdr));
   if (debug) Serial.print("reset settings...");
 
   ssid = "Wi-PWN";
@@ -346,6 +349,8 @@ size_t Settings::getSysInfoSize() {
   json += "\"deauthpackets\":\"" + (String)deauthpackets + "\",";
   json += "\"beaconpackets\":\"" + (String)beaconpackets + "\",";
   json += "\"uptime\":\"" + (String)millis() + "\",";
+  json += "\"ipaddress\":\"" + (String)WiFi.localIP().toString() + "\",";
+  json += "\"gateway\":\"" + (String)WiFi.gatewayIP().toString() + "\",";
   json += "\"bootmode\":\"" + (String)ESP.getBootMode() + "\",";
   json += "\"bootversion\":\"" + (String)ESP.getBootVersion() + "\",";
   json += "\"sdkversion\":\"" + (String)ESP.getSdkVersion() + "\",";
@@ -367,6 +372,8 @@ void Settings::sendSysInfo() {
   json += "\"deauthpackets\":\"" + (String)deauthpackets + "\",";
   json += "\"beaconpackets\":\"" + (String)beaconpackets + "\",";
   json += "\"uptime\":\"" + (String)millis() + "\",";
+  json += "\"ipaddress\":\"" + (String)WiFi.localIP().toString() + "\",";
+  json += "\"gateway\":\"" + (String)WiFi.gatewayIP().toString() + "\",";
   json += "\"bootmode\":\"" + (String)ESP.getBootMode() + "\",";
   json += "\"bootversion\":\"" + (String)ESP.getBootVersion() + "\",";
   json += "\"sdkversion\":\"" + (String)ESP.getSdkVersion() + "\",";
