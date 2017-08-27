@@ -9,6 +9,15 @@ ESP8266 Deauther with a clean & minimalistic web interface
 <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN"><img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorA=455A64&colorB=1185F6&style=flat-square"></a> &nbsp;<a href="https://wi-pwn.samdd.me/discord"><img src="https://img.shields.io/discord/335836376031428618.svg?colorA=455A64&colorB=1185F6&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki/Installation"><img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorA=455A64&colorB=4183C4&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription"><img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?colorA=455A64&label=Watch&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN"><img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?colorA=455A64&label=Star&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/fork"><img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?colorA=455A64&label=Fork&style=flat-square"></a>
 
 <h2></h2>
+
+## Wi-PWN vs ESP8266_Deauther
+
+- Responsive Material Design UI, with optional dark mode
+- Integrated Deauth Detector (with full PIN customization)
+- Connect Wi-PWN onto an external WiFi network
+- Info page with total packets sent, uptime, memory usage, check for updates...
+
+
 <img src="pictures/secondary-banner.png">
 
 
