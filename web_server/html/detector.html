@@ -15,7 +15,6 @@
 			<a href="./">Scan</a>
 			<a href="./users.html">Users</a>
 			<a href="./attack.html">Attack</a>
-			<a href="./control.html">Control</a>
 			<a href="./detector.html" class="active">Detector</a>
 			<a href="./settings.html">Settings</a>
 			<a class="right" href="./info.html">Info</a>
@@ -36,7 +35,7 @@
 							<div class="col-6">
 								<div class="input-container disabled" id="channelContainer">
 									<input placeholder=" " id="detectorChannel" required="" type="number" min="1" max="14">
-									<label for="detectorChannel">Channel</label>
+									<label for="detectorChannel">Detector channel</label>
 								</div>
 							</div>
 							<div class="col-6">
@@ -51,7 +50,7 @@
 							<div class="col-6">
 								<div class="input-container">
 									<input placeholder=" " id="alertPin" required="" type="number" min="0">
-									<label for="alertPin">Alert Pin</label>
+									<label for="alertPin">GPIO Alert Pin</label>
 								</div>
 							</div>
 							<div class="col-6">
@@ -66,7 +65,7 @@
 							<div class="col-6">
 								<div class="input-container">
 									<input placeholder=" " id="detectorScanTime" required="detectorScanTime" type="number" min="10">
-									<label for="detectorScanTime">Channel scan time</label>
+									<label for="detectorScanTime">Channel scan time (ms)</label>
 								</div>
 							</div>
 						</div>
@@ -134,11 +133,17 @@
 						getResponse("detectorStart.json", function(responseText) {
 							if (responseText == "true") {
 								showLoading("hide");
+								indicate(true)
+								notify("Detector running! Restart device to return to normal");
+								var card = document.getElementsByClassName("card-content")[0];
+								card.className = "card-content disabled"
 							} else {
 								notify("Failed to start detector! (E30)");
+								indicate()
 							}
 						}, function() {
 							notify("Failed to start detector! (E31)");
+							indicate()
 						});
 					} else {
 						saveStatus.classList.add("success-save");
@@ -146,10 +151,12 @@
 				} else {
 					if (run == false) saveStatus.classList.add("failed-save");
 					notify("Failed to save! (E32)");
+					indicate()
 				}
 			}, function() {
 				if (run == false) saveStatus.classList.add("failed-save");
 				notify("Failed to save! (E33)");
+				indicate()
 			});
 		}
 		fadeIn();

@@ -97,7 +97,6 @@ ESP8266HTTPUpdateServer httpUpdater;        // OTA Update server
 #include "Attack.h"
 #include "Settings.h"
 #include "SSIDList.h"
-#include "Detector.h"
 
 /* ========== DEBUG ========== */
 const bool debug = true;
@@ -109,7 +108,12 @@ String attackMode_deauth = "";
 String attackMode_beacon = "";
 String scanMode = "SCAN";
 
-bool warning = true;
+// Deauth detector
+bool detecting = false;
+unsigned long dC = 0;
+unsigned long prevTime = 0;
+unsigned long curTime = 0;
+int curChannel = settings.detectorChannel;
 
 NameList nameList;
 
@@ -118,7 +122,6 @@ ClientScan clientScan;
 Attack attack;
 Settings settings;
 SSIDList ssidList;
-Detector detector;
 
 void sniffer(uint8_t *buf, uint16_t len) {
   clientScan.packetSniffer(buf, len);
@@ -169,7 +172,7 @@ void startWifi() {
       delay(500);
       Serial.print(".");
       conAtt++;
-      if (conAtt > 20) {
+      if (conAtt > 30) {
         Serial.println("");
         Serial.println("Failed to connect to '"+settings.ssidClient+"', skipping connection\n");
         goto startWifi;
@@ -490,7 +493,22 @@ void enableRandom() {
 void startDetector() {
   Serial.println("Starting Deauth Detector...");
   server.send( 200, "text/json", "true");
-  detector.start();
+
+  wifi_set_opmode(STATION_MODE);
+  wifi_promiscuous_enable(0);
+  WiFi.disconnect();
+  wifi_set_promiscuous_rx_cb(dSniffer);
+  wifi_set_channel(curChannel);
+  wifi_promiscuous_enable(1);
+
+  pinMode(settings.alertPin, OUTPUT);
+  detecting = true;
+}
+
+void dSniffer(uint8_t *buf, uint16_t len) {
+    if(buf[12] == 0xA0 || buf[12] == 0xC0){
+      dC++;
+    }
 }
 
 //==========Settings==========
@@ -793,13 +811,13 @@ void setup() {
 }
 
 void loop() {
-  if (detector.detecting) {
-    detector.curTime = millis();
-    if(detector.curTime - detector.prevTime >= settings.detectorScanTime){
-      detector.prevTime = detector.curTime;
-      Serial.println((String)detector.c+" - channel "+(String)detector.curChannel);
+  if (detecting) {
+    curTime = millis();
+    if(curTime - prevTime >= settings.detectorScanTime){
+      prevTime = curTime;
+      Serial.println((String)dC+" - channel "+(String)curChannel);
       
-      if(detector.c >= 2){
+      if(dC >= 2){
         if(settings.invertAlertPin) digitalWrite(settings.alertPin, LOW);
         else digitalWrite(settings.alertPin, HIGH);
       }else{
@@ -807,11 +825,11 @@ void loop() {
         else digitalWrite(settings.alertPin, LOW);
       }
       
-      detector.c = 0;
+      dC = 0;
       if(settings.detectorAllChannels){
-        detector.curChannel++;
-        if(detector.curChannel > 14) detector.curChannel = 1;
-        wifi_set_channel(detector.curChannel);
+        curChannel++;
+        if(curChannel > 14) curChannel = 1;
+        wifi_set_channel(curChannel);
       }
     }
   } else if (settings.newUser == 1) {

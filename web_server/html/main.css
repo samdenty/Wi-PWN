@@ -187,6 +187,7 @@ nav .main-header {
 }
 .card-content {
 	padding: 24px;
+	transition: opacity 0.6s ease;
 }
 .card-content p {
 	margin: 0;
@@ -632,7 +633,8 @@ label {
 .animation .input-container {
 	transition: opacity .5s ease;
 }
-.input-container.disabled {
+.input-container.disabled,
+.card-content.disabled {
 	pointer-events: none;
 	opacity: .3;
 }
