@@ -35,7 +35,7 @@
 // Settings //
 
 //#define USE_DISPLAY         /* <-- uncomment that if you want to use the display */
-//#define GPIO0_DEAUTH_BUTTON /* <-- Enable using GPIO0 (Flash button on NodeMCUs) as a deauth attack toggle (CAN LEAD TO BLINKING OF LED ON STARTUP!)*/
+#define GPIO0_DEAUTH_BUTTON   /* <-- Enable using GPIO0 (Flash button on NodeMCUs) as a deauth attack toggle (CAN LEAD TO LED BLINKING BUG!)*/
 #define resetPin 4            /* <-- comment out or change if you need GPIO 4 for other purposes */
 //#define USE_LED16           /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
 //#define USE_CAPTIVE_PORTAL  /* <-- enable captive portal (redirects all pages to 192.168.4.1) - most devices flood the ESP8266 with requests */
@@ -320,6 +320,7 @@ void selectAP() {
   if (server.hasArg("num")) {
     apScan.select(server.arg("num").toInt());
     server.send( 200, "text/json", "true");
+    // Remove below in a future update
     attack.stopAll();
   }
 }
@@ -854,11 +855,59 @@ void loop() {
   
   #ifndef USE_DISPLAY
     #ifdef GPIO0_DEAUTH_BUTTON
-      if(digitalRead(0) == LOW) {
-        Serial.println("FLASH button (GPIO0) pressed, toggling deauth attack...");
-        attack.start(0);
+      // Long-press  = triple LED blink + deauth all
+      // Short-press = LED blink + toggle deauth attack on networks selected
+      //               If no networks are selected, then deauth all
+      // Make sure the device has been powered on for at least 10 seconds (prevents bootloop issue)
+      if(digitalRead(0) == LOW && millis() > 10000) {
+        Serial.println("FLASH button (GPIO0) pressed!");
+        if(apScan.selectedSum == 0) {
+          Serial.println("No networks selected... selecting & deauthing all networks");
+          digitalWrite(settings.ledPin, !settings.pinStateOff);
+          delay(50);
+          digitalWrite(settings.ledPin, settings.pinStateOff);
+          apScan.start();
+          apScan.select(-1);
+          attack.start(0);
+        } else {
+          int button_delay = 0;
+          while (digitalRead(0) == LOW && millis() > 4000){
+           button_delay++;
+           delay(100);
+           if(button_delay == 10){
+              Serial.println("Button held down... selecting & deauthing all networks");
+              digitalWrite(settings.ledPin, settings.pinStateOff);
+              delay(50);
+              digitalWrite(settings.ledPin, !settings.pinStateOff);
+              delay(100);
+              digitalWrite(settings.ledPin, settings.pinStateOff);
+              delay(100);
+              digitalWrite(settings.ledPin, !settings.pinStateOff);
+              delay(100);
+              digitalWrite(settings.ledPin, settings.pinStateOff);
+              delay(100);
+              digitalWrite(settings.ledPin, !settings.pinStateOff);
+              delay(100);
+              digitalWrite(settings.ledPin, settings.pinStateOff);
+              apScan.start();
+              apScan.select(-1);
+              attack.start(0);
+              break;
+           }
+          }
+          if(button_delay < 10) {
+            digitalWrite(settings.ledPin, !settings.pinStateOff);
+            delay(50);
+            digitalWrite(settings.ledPin, settings.pinStateOff);
+            Serial.println("Button quickly pressed... toggling deauth attack");
+            attack.start(0);
+          }
+        }
         delay(400);
       }
+
+
+
     #endif
   #endif
     
