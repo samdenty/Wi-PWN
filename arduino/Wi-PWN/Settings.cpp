@@ -100,7 +100,7 @@ void Settings::load() {
   isSettingsLoaded = 1;
   darkMode = (bool)EEPROM.read(darkModeAdr);
   cache = (bool)EEPROM.read(cacheAdr);
-  serverCache = (bool)EEPROM.read(serverCacheAdr);
+  serverCache = (int)EEPROM.read(serverCacheAdr);
   newUser = (bool)EEPROM.read(newUserAdr);
   detectorChannel = (int)EEPROM.read(detectorChannelAdr);
   detectorAllChannels = (bool)EEPROM.read(detectorAllChannelsAdr);
