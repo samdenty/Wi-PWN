@@ -22,7 +22,7 @@ function getResults() {
 		}
 		catch(err) {
 		    notify('Failed to parse saved SSIDs, clearing...')
-		    clearSSID()
+		    resetSSID(true)
 		}
 		if (res.aps.length == 0) {document.getElementById("selectedNetworksDevices").className = "dn";var aps = ""} else {document.getElementById("selectedNetworksDevices").className = "card-container";var aps = "<tr><th>SSID</th><th></th></tr>"}
 		var clients = "<tr><th>MAC Address</th><th>Vendor</th></tr>";
@@ -148,7 +148,12 @@ function saveSSID() {
 	getResponse("saveSSID.json", getResults);
 }
 
-function resetSSID() {
+function resetSSID(skipPrompt) {
+	if(skipPrompt) {
+		indicate(true);
+		getResponse("resetSSID.json", getResults);
+		return;
+	}
 	if(confirm("Are you sure you want to permanently remove all saved SSIDs?") == true) {
 		indicate(true);
 		getResponse("resetSSID.json", getResults);
