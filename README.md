@@ -185,6 +185,10 @@ The ESP upload tool can't communicate with the chip.
 - Install the USB drivers (cp2102 or ch340).
 - Make sure the right COM port is selected.
 
+#### SSID's wont load? (No clear button)
+
+Try resetting the SSID list by visiting `192.168.4.1/clearSSID.json` while connected to your ESP.
+If this doesnt solve your problem, ask for help in the [official discord](https://discord.gg/yN2x7sp).
 
 #### Deauth attack won't work
 
