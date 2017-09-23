@@ -17,7 +17,13 @@ randSSID.addEventListener("change", switchRandom, false);
 
 function getResults() {
 	getResponse("attackInfo.json", function(responseText) {
-		var res = JSON.parse(responseText);
+		try {
+		    var res = JSON.parse(responseText);
+		}
+		catch(err) {
+		    notify('Failed to parse saved SSIDs, clearing...')
+		    clearSSID()
+		}
 		if (res.aps.length == 0) {document.getElementById("selectedNetworksDevices").className = "dn";var aps = ""} else {document.getElementById("selectedNetworksDevices").className = "card-container";var aps = "<tr><th>SSID</th><th></th></tr>"}
 		var clients = "<tr><th>MAC Address</th><th>Vendor</th></tr>";
 		var tr = "<tr><th>Attack</th><th>Status</th><th>Switch</th></tr>";
@@ -134,6 +140,7 @@ function deleteSSID(num) {
 
 function clearSSID() {
 	getResponse("clearSSID.json", getResults);
+	notify()
 }
 
 function saveSSID() {

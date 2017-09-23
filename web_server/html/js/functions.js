@@ -14,7 +14,7 @@ function notify(msg, closeAfter) {
 	}
 	if (closeAfter !== undefined) {
 		setTimeout(function() {
-			notification.className = "";
+			document.body.classList.remove("show")
 		}, closeAfter);
 	}
 }

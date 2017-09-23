@@ -93,9 +93,6 @@ nav #links a.active::before {
 nav #links::-webkit-scrollbar {
 	display: none;
 }
-nav.disabled a {
-	color: rgba(255, 255, 255, .2) !important;
-}
 nav .main-header {
 	font-size: 20px;
 	height: 30px;
@@ -304,9 +301,6 @@ table tr:nth-child(1) th {
 	padding: 15px;
 	color: #888a8e;
 	font-family: 'Roboto Medium';
-}
-meter {
-	width: 45px;
 }
 td {
 	font-size: .85em;
@@ -740,6 +734,7 @@ label.checkbox:before {
 	content: '';
 	transition: .3s ease;
 	border-radius: 50%;
+	pointer-events: none;
 }
 label.checkbox:after {
 	display: block;
