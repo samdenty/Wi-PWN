@@ -10,6 +10,7 @@ void ClientScan::clearList() {
 }
 
 void ClientScan::start(int _time) {
+  digitalWrite(settings.ledPin, !settings.pinStateOff);
   Serial.println();
   Serial.println("starting client scan");
 
@@ -76,6 +77,7 @@ bool ClientScan::stop() {
         Serial.println();
       }
     }
+    digitalWrite(settings.ledPin, settings.pinStateOff);
     return true;
   }
   return false;
