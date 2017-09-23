@@ -149,8 +149,10 @@ function saveSSID() {
 }
 
 function resetSSID() {
-	indicate(true);
-	getResponse("resetSSID.json", getResults);
+	if(confirm("Are you sure you want to permanently remove all saved SSIDs?") == true) {
+		indicate(true);
+		getResponse("resetSSID.json", getResults);
+	}
 }
 
 function random() {

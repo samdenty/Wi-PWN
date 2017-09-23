@@ -109,8 +109,12 @@ function showLoading(state) {
 function getResponse(adr, callback, timeoutCallback, timeout, method) {
 	if (timeoutCallback == null) {
 		timeoutCallback = function() {
-			notify("Reconnect and reload this page (E25)");
-			autoReload();
+			getResponse("ClientScanTime.json", function() {
+				notify("Didn't receive a response! (E25)");
+			}, function() {
+				notify("Reconnect and reload this page (E25)");
+				autoReload();
+			})
 		};
 	}
 	if (timeout == null) timeout = 8000;

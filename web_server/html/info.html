@@ -101,6 +101,36 @@
 				</div>
 			</div>
 			<div class="card-container">
+				<div class="settingsHeader">Advanced options</div>
+				<div class="card oh">
+					<table>
+						<tr>
+							<td>restartESP.json</td>
+							<td onclick="getResponse('restartESP.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+						</tr>
+						<tr>
+							<td>resetSSID.json</td>
+							<td onclick="getResponse('resetSSID.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+						</tr>
+						<tr>
+							<td>clearSSID.json</td>
+							<td onclick="getResponse('clearSSID.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+						</tr>
+						<tr>
+							<td>saveSSID.json</td>
+							<td onclick="getResponse('saveSSID.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+						</tr>
+						<tr>
+							<td>clearNameList.json</td>
+							<td onclick="getResponse('clearNameList.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+						</tr>
+						<tr>
+							<td>settingsReset.json</td>
+							<td onclick="getResponse('settingsReset.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+						</tr>
+					</table>
+				</div>
+				<hr>
 				<div class="settingsHeader">Contributors</div>
 				<div class="card">
 					<div class="card-content">
@@ -114,13 +144,15 @@
 						<br>
 						<a href="https://github.com/LarzJ" target="_blank">@LarzJ</a> (Larz Jacobs)
 						<br>
-						<a href="https://github.com/ericktedeschi" target="_blank">@ericktedeschi</a> (Erick Belluci Tedeschi)
+						<a href="https://github.com/StijnSimons" target="_blank">@StijnSimons</a> (Stimons)
 						<br>
 						<a href="https://github.com/andrbmgi" target="_blank">@andrbmgi</a>
 						<br>
 						<a href="https://github.com/SamuelKlit" target="_blank">@SamuelKlit</a> (Samuel KS)
 						<br>
 						<a href="https://github.com/schinfo" target="_blank">@schinfo</a> (Helmut)
+						<br>
+						<a href="https://github.com/ericktedeschi" target="_blank">@ericktedeschi</a> (Erick Belluci Tedeschi)
 						<br>
 						<a href="https://github.com/ajnavarro" target="_blank">@ajnavarro</a> (Antonio Navarro Perez)
 						<br>
@@ -129,7 +161,6 @@
 						<br>This software is based upon the work of Stefan Kremser (Spacehuhn)<br>For more information go to <a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">contributors page</a> on GitHub.
 					</div>
 				</div>
-				<hr>
 				<div class="settingsHeader">Included libraries</div>
 				<div class="card oh">
 					<div class="card-content">
