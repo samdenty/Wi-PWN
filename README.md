@@ -1,20 +1,42 @@
-<img src="https://github.com/samdenty99/Wi-PWN/blob/master/pictures/Wi-PWN.png?raw=true" align="left" width="192px" height="192px"/>
-<img align="left" width="0" height="192px" hspace="10"/>
+<p align="center">
+  <a href="https://wi-pwn.samdd.me/?ref=logo">
+    <img src="https://github.com/samdenty99/Wi-PWN/raw/master/pictures/Wi-PWN.png" width="100">
+  </a>
 
-# Wi-PWN
-ESP8266 Deauther with a clean & minimalistic web interface
+  <h3 align="center">Wi-PWN</h3>
 
-<a href="https://samdenty99.github.io/r?https://Wi-PWN.github.io"><img src="https://img.shields.io/badge/Online-Demo-Green.svg?colorA=29B6F6&colorB=4FC3F7&style=flat-square"></a> &nbsp; <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki"><img src="https://img.shields.io/badge/Browse-Documentation-Green.svg?colorA=29B6F6&colorB=4FC3F7&style=flat-square"></a> &nbsp; <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true"><img src="https://img.shields.io/badge/Upcoming-Features-Green.svg?colorA=29B6F6&colorB=4FC3F7&style=flat-square"></a>
-
-<a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN"><img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorA=455A64&colorB=1185F6&style=flat-square"></a> &nbsp;<a href="https://wi-pwn.samdd.me/discord"><img src="https://img.shields.io/discord/335836376031428618.svg?colorA=455A64&colorB=1185F6&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki/Installation"><img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorA=455A64&colorB=4183C4&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription"><img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?colorA=455A64&label=Watch&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN"><img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?colorA=455A64&label=Star&style=flat-square"></a> &nbsp;<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/fork"><img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?colorA=455A64&label=Fork&style=flat-square"></a>
-
+  <p align="center">
+    ESP8266 Deauther with a clean & minimalistic web interface 
+    <br>
+    <b><a href="https://wi-pwn.samdd.me/?ref=online-demo">Online demo</a> | <a href="https://discord.gg/yN2x7sp">Discord</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">Browse the docs</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">Upcoming features</a></b>
+    <br>
+    <br>
+    <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
+		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">
+	</a>
+    <a href="https://wi-pwn.samdd.me/discord/?ref=chat">
+		<img src="https://img.shields.io/discord/335836376031428618.svg?colorB=0082ff&style=flat">
+	</a>
+    <a href="https://samdenty99.github.io/r?http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
+		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
+	</a>
+	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription">
+    	<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch&style=flat">
+	</a>
+    <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN">
+		<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star&style=flat">
+	</a>
+	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/fork">
+		<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork&style=flat">
+	</a>
+</p>
 <h2></h2>
 
-## Wi-PWN vs ESP8266_Deauther
+## Advantages
 
-- Responsive Material Design UI, with optional dark mode
-- Integrated Deauth Detector (with full PIN customization)
-- Connect Wi-PWN onto an external WiFi network
+- Fast & responsive Material Design UI, with optional dark mode
+- Integrated [Deauth Detector](https://github.com/spacehuhn/DeauthDetector) (with full customization)
+- WiFi client mode - Access Wi-PWN on a WiFi network
 - Info page with total packets sent, uptime, memory usage, check for updates...
 
 
