@@ -157,7 +157,7 @@ There are two variants of UART converters that ESP8266 boards use:
 14. Copy `ESP8266Wi-Fi.cpp` and `ESP8266Wi-Fi.h` to
     `C:\Users\%username%\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.0.0\libraries\ESP8266WiFi\src`
 
-16. Open `arduino/Wi-PWN/esp8266_deauther.ino` in Arduino
+16. Open `arduino/Wi-PWN/Wi-PWN.ino` in Arduino
 
 17. Select your ESP8266 board at `Tools` > `Board` and the right port at `Tools` > `Port`  
 **If no port shows up you need to reinstall the drivers**, search online for chip part number + 'driver Windows'
