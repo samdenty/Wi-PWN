@@ -32,6 +32,8 @@
 </p>
 <h2></h2>
 
+**[Wi-PWN on the Google Play store](https://play.google.com/store/apps/details?id=samdd.wipwn)**
+
 ## Advantages
 
 - Fast & responsive Material Design UI, with optional dark mode
