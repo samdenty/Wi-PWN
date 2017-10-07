@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="mirumcode.wi_pwn">
+    package="samdd.wi_pwn">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application

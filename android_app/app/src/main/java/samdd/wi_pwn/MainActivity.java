@@ -1,4 +1,4 @@
-package mirumcode.wi_pwn;
+package samdd.wi_pwn;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -35,6 +35,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 
+import mirumcode.wi_pwn.R;
 import okhttp3.HttpUrl;
 import okhttp3.Request;
 
