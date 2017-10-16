@@ -1,4 +1,4 @@
-package mirumcode.wi_pwn;
+package samdd.wipwn;
 
 import org.junit.Test;
 

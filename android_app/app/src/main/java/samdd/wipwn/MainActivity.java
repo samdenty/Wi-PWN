@@ -1,4 +1,4 @@
-package samdd.wi_pwn;
+package samdd.wipwn;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +18,8 @@ import android.webkit.WebViewClient;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import samdd.wi_pwn.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

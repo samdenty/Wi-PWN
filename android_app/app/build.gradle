@@ -5,11 +5,11 @@ android {
     buildToolsVersion "25.0.2"
     useLibrary "org.apache.http.legacy"
     defaultConfig {
-        applicationId "samdd.wi_pwn"
+        applicationId "samdd.wipwn"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 9
-        versionName "9.0"
+        versionCode 10
+        versionName "10"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

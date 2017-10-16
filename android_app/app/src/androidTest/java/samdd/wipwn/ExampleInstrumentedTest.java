@@ -1,4 +1,4 @@
-package mirumcode.wi_pwn;
+package samdd.wipwn;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("mirumcode.wi_pwn", appContext.getPackageName());
+        assertEquals("samdd.wipwn", appContext.getPackageName());
     }
 }
