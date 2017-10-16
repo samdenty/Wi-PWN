@@ -4,5 +4,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Open web interface</string>
+    <string name="action_openbrowser">Open web interface</string>
+    <string name="action_serveraddress">Change server IP</string>
 </resources>

@@ -18,7 +18,6 @@ import android.webkit.WebViewClient;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import samdd.wipwn.R;
 
 public class MainActivity extends AppCompatActivity
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity
     //Real device url = http://192.168.4.1
     //Demo url =  wi-pwn.samdd.me
     private static String siteUrl = "http://192.168.4.1";
-    //private static String siteUrl = "http://wi-pwn.samdd.me";
+    //private static String siteUrl = "https://wi-pwn.samdd.me";
     private boolean isConnected = true;
 
 
@@ -112,7 +111,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_openbrowser) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(siteUrl+"/")));
+        }
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_serveraddress) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(siteUrl+"/")));
         }
 
