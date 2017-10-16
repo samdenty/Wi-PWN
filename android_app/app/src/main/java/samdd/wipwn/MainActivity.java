@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import samdd.wi_pwn.R;
+import samdd.wipwn.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     //Real device url = http://192.168.4.1
     //Demo url =  wi-pwn.samdd.me
     private static String siteUrl = "http://192.168.4.1";
+    //private static String siteUrl = "http://wi-pwn.samdd.me";
     private boolean isConnected = true;
 
 

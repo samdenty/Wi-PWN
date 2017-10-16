@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="samdd.wi_pwn">
+    package="samdd.wipwn">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
