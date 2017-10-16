@@ -6,7 +6,7 @@ android {
     useLibrary "org.apache.http.legacy"
     defaultConfig {
         applicationId "samdd.wipwn"
-        minSdkVersion 19
+        minSdkVersion 14
         targetSdkVersion 25
         versionCode 10
         versionName "10"
