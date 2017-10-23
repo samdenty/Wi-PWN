@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +18,8 @@ import android.view.MenuItem;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import org.sufficientlysecure.donations.DonationsFragment;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -141,6 +147,8 @@ public class MainActivity extends AppCompatActivity
             view.loadUrl(siteUrl+"/settings.html");
         } else if (id == R.id.nav_info) {
             view.loadUrl(siteUrl+"/info.html");
+        }  else if (id == R.id.nav_donate) {
+            startActivity(new Intent(MainActivity.this, DonationsActivity.class));
         } else if (id == R.id.nav_github) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.github.com/samdenty99/Wi-PWN")));
         } else if (id == R.id.nav_discord) {

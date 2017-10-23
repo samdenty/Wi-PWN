@@ -5,39 +5,43 @@
         <item
             android:id="@+id/nav_scan"
             android:icon="@drawable/ic_menu_scan"
-            android:title="Scan" />
+            android:title="@string/navigation_drawer_scan" />
         <item
             android:id="@+id/nav_users"
             android:icon="@drawable/ic_menu_users"
-            android:title="Users" />
+            android:title="@string/navigation_drawer_users" />
         <item
             android:id="@+id/nav_attack"
             android:icon="@drawable/ic_menu_attack"
-            android:title="Attack" />
+            android:title="@string/navigation_drawer_attack" />
         <item
             android:id="@+id/nav_detector"
             android:icon="@drawable/ic_menu_detector"
-            android:title="Detector" />
+            android:title="@string/navigation_drawer_detector" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_settings"
-            android:title="Settings" />
+            android:title="@string/navigation_drawer_settings" />
         <item
             android:id="@+id/nav_info"
             android:icon="@drawable/ic_menu_info"
-            android:title="Info" />
+            android:title="@string/navigation_drawer_info" />
     </group>
 
-    <item android:title="Online">
+    <item android:title="@string/navigation_drawer_group">
         <menu>
+            <item
+                android:id="@+id/nav_donate"
+                android:icon="@drawable/ic_menu_github"
+                android:title="@string/navigation_drawer_donate" />
             <item
                 android:id="@+id/nav_github"
                 android:icon="@drawable/ic_menu_github"
-                android:title="Github" />
+                android:title="@string/navigation_drawer_github" />
             <item
                 android:id="@+id/nav_discord"
                 android:icon="@drawable/ic_menu_discord"
-                android:title="Discord server" />
+                android:title="@string/navigation_drawer_discord" />
         </menu>
     </item>
 
