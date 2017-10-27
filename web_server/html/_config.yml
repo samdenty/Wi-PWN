@@ -1,0 +1,17 @@
+# Exclude some folders & files
+exclude: ["_*", "package.json", "node_modules", "Gemfile*", "*.json"]
+
+destination: ../output/html
+
+# Gem plugin(s)
+plugins: [jekyll-tidy]
+
+# Compress outputted sass
+sass:
+    style: compressed
+
+# Set port
+port: 1337
+
+# Enable access from local network ~ not just localhost
+host: 0.0.0.0

@@ -1,0 +1,74 @@
+<head>
+	<title>Lockdown Mode</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<link rel="stylesheet" href="./main.css">
+	<meta name="theme-color" content="#E57373">
+</head>
+
+<body>
+	<div class="main-wrap fadeIn" style="top:0 !important">
+		<div class="container">
+			<div class="card-container">
+				<div class="settingsHeader">Lockdown Mode</div>
+				<div class="card">
+					<div class="card-content">
+						<div id="c3">
+							<svg viewBox="0 0 24 24">
+								<path d="M12,0A12,12 0 0,1 24,12A12,12 0 0,1 12,24A12,12 0 0,1 0,12A12,12 0 0,1 12,0M12,2A10,10 0 0,0 2,12C2,14.4 2.85,16.6 4.26,18.33L18.33,4.26C16.6,2.85 14.4,2 12,2M12,22A10,10 0 0,0 22,12C22,9.6 21.15,7.4 19.74,5.67L5.67,19.74C7.4,21.15 9.6,22 12,22Z" />
+							</svg>
+							<br>
+							<b style="font-size:18px">Wi-PWN disabled!</b>
+							<br><b style="font-weight: 300">Go away script kiddie!</b>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<style>
+		body {
+			padding-bottom: 15px;
+			background: #e57373;
+			overflow: hidden;
+		}
+
+		#c3 {
+			display: block !important;
+			opacity: 1 !important;
+			width: 100%;
+			text-align: center;
+			color: #d56868;
+			fill: #d56868;
+		}
+
+		@media (min-width:520px) {
+			.container {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				transform: -webkit-translate(-50%, -50%);
+				transform: -moz-translate(-50%, -50%);
+				transform: -ms-translate(-50%, -50%)
+			}
+		}
+
+		svg {
+			opacity: 1;
+			height: 100px;
+			margin-bottom: 30px;
+		}
+
+		.container {
+			min-height: initial;
+		}
+
+		.card {
+			background: #ffcdd2;
+		}
+
+		.settingsHeader {
+			color: #f6c4c4
+		}
+		</style>
+	</div>
+</body>

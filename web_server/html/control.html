@@ -1,43 +1,14 @@
-<head>
-	<title>GPIO Control - Wi-PWN</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-	<link rel="stylesheet" href="./main.css">
-	<link rel="stylesheet" href="./dark.css">
-	<meta name="theme-color" content="#106CC8">
-</head>
-
-<body>
-	<nav id="nav">
-		<div class="main-header">
-			<div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
+---
+title: GPIO Control
+js: control
+layout: page
+---
+<div class="card-container">
+	<div class="settingsHeader">GPIO Control</div>
+	<div class="card">
+		<table id="controlPins"></table>
+		<div class="card-action">
+			<a onclick="resetPins()" class="button right">Reset entries</a>
 		</div>
-		<div id="links">
-			<a href="./">Scan</a>
-			<a href="./users.html">Users</a>
-			<a href="./attack.html">Attack</a>
-			<a href="./detector.html" class="active">Detector</a>
-			<a href="./settings.html">Settings</a>
-			<a class="right" href="./info.html">Info</a>
-		</div>
-	</nav>
-	<div id="notification"></div>
-	<div id="spinner-container"></div>
-	<script>
-	/(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal");
-	</script>
-	<div class="main-wrap">
-		<div class="container">
-			<div class="card-container">
-				<div class="settingsHeader">GPIO Control</div>
-				<div class="card">
-					<table id="controlPins"></table>
-					<div class="card-action">
-						<a onclick="resetPins()" class="button right">Reset entries</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<footer></footer>
-		<script src="./js/functions.js"></script>
-		<script src="./js/control.js"></script>
-</body>
+	</div>
+</div>

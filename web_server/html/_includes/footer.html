@@ -1,0 +1,5 @@
+<footer></footer>
+
+<script src="./js/functions.js"></script>
+{% if page.js %}<script src="./js/{{page.js}}.js"></script>{% endif %}
+{% if page.after-js %}<script>{{ page.after-js }}</script>{% endif %}

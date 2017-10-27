@@ -1,6 +1,19 @@
+## What is [Jekyll](https://jekyllrb.com/)?
+
+Jekyll is a pre-compiler for static content generation, it's basically makes everything easier to maintain - but the outputted HTML is the same.
+
+In order to do any development (or even run the webserver) you need to do the following:
+
+- Install [Ruby, Gem package manager & Jekyll](https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) (see [here for Linux](http://michaelchelen.net/81fa/install-jekyll-2-ubuntu-14-04/))
+- Run `gem install` in the `/web_server/html` folder
+
+## How to run a local server of Wi-PWN
+- Make sure you have Jekyll & Gems installed (see above)
+- Run `jekyll serve` in the `/web_server/html` folder
+
 ## How to initiate a local demo of Wi-PWN
-1. Open `localhost_server.bat` which will start a server accessible on your PC.
-2. Your default browser will open up and display the Wi-PWN local demo.
+- Open `localhost_server.bat` which will start a server accessible on your PC.
+- Your default browser will open up and display the Wi-PWN local demo.
 
 NOTE: You can just directly open the HTML files, but the pages won't load properly as you need a server to allow requests to be made.
 
@@ -11,9 +24,10 @@ NOTE: You can just directly open the HTML files, but the pages won't load proper
 
 ### Auto Mode (Windows / Mac / Linux)
 
-1. Launch `auto_generate.exe`
-2. Wait for it to finish
-3. That's it **¯\_(ツ)_/¯**
+- Make sure you have Jekyll & Gems installed (see above)
+- Launch `auto_generate.exe`
+- Wait for it to finish
+- That's it **¯\_(ツ)_/¯**
 
 ![](http://imgur.com/i9t0yr6.png)
 

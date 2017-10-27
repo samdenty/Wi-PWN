@@ -1,0 +1,19 @@
+<head>
+	<title>{{page.title}} - Wi-PWN</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<link rel="stylesheet" href="./main.css">
+	<link rel="stylesheet" href="./dark.css">
+	<meta name="theme-color" content="#106CC8">
+</head>
+
+<body>
+	{% include nav.html %}
+	<div class="main-wrap">
+		{% if page.no-container == null %}<div class="container">{% endif %}
+			{{ content }}
+		{% if page.no-container == null %}</div>{% endif %}
+		{% include footer.html %}
+	</div>
+</body>
+
+</html>

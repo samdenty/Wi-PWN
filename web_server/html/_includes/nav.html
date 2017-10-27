@@ -1,0 +1,21 @@
+<nav id="nav">
+	<div class="main-header">
+		<div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
+	</div>
+
+	<div id="links">
+		<a href="./"{% if page.url == "/" %} class="active"{% endif %}>Scan</a>
+		<a href="./users.html"{% if page.url == "/users.html" %} class="active"{% endif %}>Users</a>
+		<a href="./attack.html"{% if page.url == "/attack.html" %} class="active"{% endif %}>Attack</a>
+		<a href="./detector.html"{% if page.url == "/detector.html" %} class="active"{% endif %}>Detector</a>
+		<a href="./settings.html"{% if page.url == "/settings.html" %} class="active"{% endif %}>Settings</a>
+		<a class="right" href="/info.html"{% if page.url == "/info.html" %} class="active"{% endif %}>Info</a>
+	</div>
+</nav>
+
+<div id="notification"></div>
+<div id="spinner-container"></div>
+
+<script>
+{% include inline.js %}
+</script>

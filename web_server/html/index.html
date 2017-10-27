@@ -1,51 +1,22 @@
-<head>
-	<title>Scan - Wi-PWN</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-	<link rel="stylesheet" href="./main.css">
-	<link rel="stylesheet" href="./dark.css">
-	<meta name="theme-color" content="#106CC8">
-</head>
-
-<body>
-	<nav id="nav">
-		<div class="main-header">
-			<div id="logo-img"></div><b style="color:#fff">Wi-</b>PWN
-		</div>
-		<div id="links">
-			<a href="./" class="active">Scan</a>
-			<a href="./users.html">Users</a>
-			<a href="./attack.html">Attack</a>
-			<a href="./detector.html">Detector</a>
-			<a href="./settings.html">Settings</a>
-			<a class="right" href="./info.html">Info</a>
-		</div>
-	</nav>
-	<div id="notification"></div>
-	<div id="spinner-container"></div>
-	<script>
-	var u = window.location.href; - 1 != u.indexOf("?minimal=true") && (document.body.id = "minimal", document.cookie = "minimal=true");
-	/(^|;)\s*minimal=/.test(document.cookie) && (document.body.id = "minimal")
-	</script>
-	<div class="main-wrap">
-		<div class="container">
-			<div class="card-container">
-				<div class="settingsHeader button-header" style="display:inline-block;margin-bottom: 30px">Scan for networks&nbsp;<span id="networksFound"></span>
-				</div>
-				<button onclick="scan()" id="apScanStart" class="right button-primary button-header">Scan</button>
-				<div class="card">
-					<table id="apscan"></table>
-					<div class="card-action">
-						<a onclick="window.location='./users.html'" class="button light">Users</a>
-						<a onclick="window.location='./attack.html'" class="button right">Attack</a>
-					</div>
-				</div>
-				<div class="network-info">
-					<div id="apMAC"></div>
-				</div>
-			</div>
-		</div>
-		<footer></footer>
+---
+title: Scan
+inline-js:
+  var u = window.location.href; - 1 != u.indexOf("?minimal=true") && (document.body.id = "minimal", document.cookie = "minimal=true");
+js: scan
+layout: page
+---
+<div class="card-container">
+	<div class="settingsHeader button-header" style="display:inline-block;margin-bottom: 30px">Scan for networks&nbsp;<span id="networksFound"></span>
 	</div>
-	<script src="./js/functions.js"></script>
-	<script src="./js/scan.js"></script>
-</body>
+	<button onclick="scan()" id="apScanStart" class="right button-primary button-header">Scan</button>
+	<div class="card">
+		<table id="apscan"></table>
+		<div class="card-action">
+			<a onclick="window.location='./users.html'" class="button light">Users</a>
+			<a onclick="window.location='./attack.html'" class="button right">Attack</a>
+		</div>
+	</div>
+	<div class="network-info">
+		<div id="apMAC"></div>
+	</div>
+</div>
