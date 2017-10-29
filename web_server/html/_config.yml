@@ -1,5 +1,5 @@
 # Exclude some folders & files
-exclude: ["_*", "package.json", "node_modules", "Gemfile*", "*.json"]
+exclude: ["_*", "package.json", "node_modules", "Gemfile*"]
 
 destination: ../output/html
 

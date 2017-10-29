@@ -11,7 +11,7 @@
  *                 https://github.com/samdenty99/Wi-PWN                *
  *                                                                     *
  *                         (c) 2017 Sam Denty                          *
- *                         https://samdd.me/projects                   *
+ *                      https://samdd.me/projects                      *
  *                                                                     *
  *---------------------------------------------------------------------*
  *            Wi-PWN is based on spacehuhn/esp8266_deauther            *
@@ -249,6 +249,9 @@ void loadUsersJS() {
 void loadAttackJS() {
   attack.ssidChange = true;
   sendFile(200, "text/javascript", data_attack_JS, sizeof(data_attack_JS), false);
+}
+void loadDetectorJS() {
+  sendFile(200, "text/javascript", data_detector_JS, sizeof(data_detector_JS), false);
 }
 void loadControlJS() {
   sendFile(200, "text/javascript", data_control_JS, sizeof(data_control_JS), false);
@@ -722,6 +725,7 @@ void setup() {
     server.on("/js/scan.js", loadScanJS);
     server.on("/js/users.js", loadUsersJS);
     server.on("/js/attack.js", loadAttackJS);
+    server.on("/detector.html", loadDetectorJS);
     server.on("/js/control.js", loadControlJS);
     server.on("/js/settings.js", loadSettingsJS);
     server.on("/js/info.js", loadInfoJS);

@@ -29,8 +29,11 @@ function getResults() {
 	getResponse("ClientScanResults.json", function(responseText) {
 		try {
 			res = JSON.parse(responseText);
+			notify()
 		} catch (e) {
-			notify("ERROR: Clear the client list. (E5)");
+			notify("Clearing the client list... (E5)");
+			clearNameList(true);
+			getResults();
 			return;
 		}
 
@@ -119,8 +122,8 @@ function selAll() {
 	}
 }
 
-function clearNameList() {
-	if (confirm("Remove all saved users?") == true) {
+function clearNameList(bypass) {
+	if (bypass || confirm("Remove all saved users?") == true) {
 		getResponse("clearNameList.json", function(responseText) {
 			if (responseText == "true") getResults();
 			else notify("ERROR: Bad response 'clearNameList.json' (E9)");
@@ -136,7 +139,7 @@ function addClient() {
 			var nameReset = document.getElementById('cName');
 			macReset.value = '';
 			nameReset.value = '';
-		} else notify("ERROR: Bad response 'addClient.json' (E10)");
+		} else notify("Invalid MAC address (E10)");
 	});
 }
 

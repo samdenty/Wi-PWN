@@ -9,7 +9,7 @@
 		<a href="./attack.html"{% if page.url == "/attack.html" %} class="active"{% endif %}>Attack</a>
 		<a href="./detector.html"{% if page.url == "/detector.html" %} class="active"{% endif %}>Detector</a>
 		<a href="./settings.html"{% if page.url == "/settings.html" %} class="active"{% endif %}>Settings</a>
-		<a class="right" href="/info.html"{% if page.url == "/info.html" %} class="active"{% endif %}>Info</a>
+		<a class="right{% if page.url == "/info.html" %} active{% endif %}" href="/info.html">Info</a>
 	</div>
 </nav>
 
