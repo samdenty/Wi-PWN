@@ -31,9 +31,11 @@ function getResults() {
 			res = JSON.parse(responseText);
 			notify()
 		} catch (e) {
-			notify("Clearing the client list... (E5)");
-			clearNameList(true);
-			getResults();
+			if (confirm("Saved client list is corrupt, reset it?") == true) {
+				notify("Clearing the client list...");
+				clearNameList(true);
+				getResults();
+			}
 			return;
 		}
 

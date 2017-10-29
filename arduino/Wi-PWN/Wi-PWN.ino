@@ -725,7 +725,7 @@ void setup() {
     server.on("/js/scan.js", loadScanJS);
     server.on("/js/users.js", loadUsersJS);
     server.on("/js/attack.js", loadAttackJS);
-    server.on("/detector.html", loadDetectorJS);
+    server.on("/detector.js", loadDetectorJS);
     server.on("/js/control.js", loadControlJS);
     server.on("/js/settings.js", loadSettingsJS);
     server.on("/js/info.js", loadInfoJS);
