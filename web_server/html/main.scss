@@ -1,7 +1,40 @@
 ---
 ---
-:root {
-	--theme-color: #106CC8;
+
+// CSS Variables with fallback for older browsers
+	$colors: (
+		// Body background-color
+		background: rgb(241, 241, 241),
+		// Button, navigation & theme-color colors
+		primary: rgb(16, 108, 200),
+		// Semi-transparent version of the theme-color
+		primary-light: rgba(25, 118, 210, .2)
+	);
+
+	:root {
+		--theme-color: #{map-get($colors, primary)};
+		@each $name, $color in $colors {
+			--#{$name}: #{$color};
+		}
+	}
+
+	$props: (
+		background: $colors,
+		color: $colors,
+		border-color: $colors
+	);
+
+	@mixin v($prop, $var) {
+		$map: map-get($props, $prop);
+		$var-fall: map-get($map, $var);
+		$var-output: var(--#{$var});
+		#{$prop}: $var-fall;
+		#{$prop}: $var-output;
+	}
+////////////////////////////////////////////////
+
+* {
+	-webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -11,9 +44,8 @@ body {
 	-moz-user-select: none !important;
 	-ms-user-select: none !important;
 	user-select: none !important;
-	background: #f1f1f1;
+	@include v(background, background);
 	-webkit-touch-callout: none !important;
-	-webkit-tap-highlight-color: transparent;
 }
 
 .main-wrap {
@@ -52,7 +84,7 @@ nav {
 	z-index: 100;
 	top: 0;
 	width: 100%;
-	background: #106cc8;
+	@include v(background, primary);
 
 	&:after {
 		position: absolute;
@@ -225,6 +257,24 @@ nav {
 	vertical-align: top;
 }
 
+.card-header {
+	height: 50px;
+	padding: 0 5px;
+
+	svg {
+		height: calc(100% - 24px);
+		margin: 6px;
+		padding: 6px;
+		border-radius: 100%;
+		cursor: pointer;
+		transition: background 0.3s ease;
+		fill: rgba(0, 0, 0, 0.6);
+		&:hover {
+			background: rgba(0, 0, 0, 0.05);
+		}
+	}
+}
+
 .card-content {
 	padding: 24px;
 	transition: opacity .6s ease;
@@ -250,12 +300,12 @@ nav {
 }
 
 .card-action a, .secondary {
-	color: #106cc8;
+	@include v(color, primary);
 	background: none;
 	box-shadow: none !important;
 
 	&:hover {
-		background: rgba(25, 118, 210, .2);
+		@include v(background, primary-light);
 	}
 
 }
@@ -279,6 +329,10 @@ nav {
 
 	.card-content {
 		height: calc(100% - 106px);
+	}
+
+	.card-header + .card-content {
+		height: calc(100% - 156px);
 	}
 
 	.card-aside {
@@ -578,7 +632,7 @@ img, nav, td {
 a, .a {
 	cursor: pointer;
 	text-decoration: none;
-	color: #106cc8;
+	@include v(color, primary);
 }
 
 a:focus {
@@ -708,11 +762,11 @@ hr.small {
 	border: none;
 	border-radius: 2px;
 	outline: 0;
-	background: rgb(16, 108, 200);
+	@include v(background, primary);
 }
 
 .button:hover, button:hover, input[type='submit']:hover, .reboot:hover {
-	background: rgb(1, 89, 162);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26), inset 0 0 0 99999px rgba(0, 0, 0, 0.11);
 }
 
 .button:active, button:active, input[type='submit']:active, .reboot:active {
@@ -740,13 +794,13 @@ input[type='file'] {
 }
 
 .secondary {
-	color: #106cc8;
+	@include v(color, primary);
 	background: none;
 	box-shadow: none !important;
 }
 
 .secondary:hover {
-	background: rgba(25, 118, 210, .2);
+	@include v(background, primary-light);
 }
 
 .redBtn {
@@ -867,8 +921,8 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox']:checked + label {
-	border-color: #106cc8;
-	background: #106cc8;
+	@include v(border-color, primary);
+	@include v(background, primary);
 }
 
 input[type='checkbox']:checked + label:after {
@@ -1009,9 +1063,9 @@ footer a {
 	height: 40px;
 	padding: 10px;
 	cursor: pointer;
-	transition: background .3s ease;
+	transition: box-shadow .3s ease;
 	pointer-events: initial;
-	background: rgb(16, 108, 200);
+	@include v(background, primary);
 	fill: rgba(255, 255, 255, .9);
 }
 
@@ -1541,7 +1595,6 @@ footer a {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	-webkit-tap-highlight-color: transparent;
 }
 
 .waves-effect .waves-ripple {

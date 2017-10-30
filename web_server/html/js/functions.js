@@ -225,19 +225,39 @@ function fadeIn() {
 	Waves.attach('.reboot-inner');
 	Waves.init();
 
+/* Push page function */
+	function push(_p) {
+		// If the page is different
+		if (window.location.search != "?" + _p) {
+			var _params = "";
+			if (_p) var _params = "?" + _p;
+			// Remove params from URL and add new ones
+			var newurl = window.location.href.split("?")[0] + _params;
+			if (history.pushState) {
+				// Go to new URL without reloading
+				window.history.pushState({ path: newurl }, null, newurl);
+			} else {
+				// Browser doesn't support pushState
+				window.location = newurl;
+			}
+		}
+	};
+
 /* Add scroll event listeners */
 	var nav = document.getElementById('nav');
-	window.onscroll = function() {
-		if (window.pageYOffset > 3 ) {
-			nav.classList.add("n-shadow");
-		} else {
-			nav.classList.remove("n-shadow");
+	if (nav) {
+		window.onscroll = function() {
+			if (window.pageYOffset > 3 ) {
+				nav.classList.add("n-shadow");
+			} else {
+				nav.classList.remove("n-shadow");
+			}
 		}
-	}
-	mainWrap.onscroll = function() {
-		if ( mainWrap.scrollTop > 3 ) {
-			nav.classList.add("n-shadow");
-		} else {
-			nav.classList.remove("n-shadow");
+		mainWrap.onscroll = function() {
+			if ( mainWrap.scrollTop > 3 ) {
+				nav.classList.add("n-shadow");
+			} else {
+				nav.classList.remove("n-shadow");
+			}
 		}
 	}
