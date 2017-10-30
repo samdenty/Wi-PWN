@@ -17,12 +17,13 @@ randSSID.addEventListener("change", switchRandom, false);
 
 function getResults() {
 	getResponse("attackInfo.json", function(responseText) {
+		console.log(responseText)
 		try {
 		    var res = JSON.parse(responseText);
-		}
-		catch(err) {
+		} catch(err) {
+			console.error(err)
 		    notify('Failed to parse saved SSIDs, clearing...')
-		    resetSSID(true)
+		    //clearSSID(true)
 		}
 		if (res.aps.length == 0) {document.getElementById("selectedNetworksDevices").className = "dn";var aps = ""} else {document.getElementById("selectedNetworksDevices").className = "card-container";var aps = "<tr><th>SSID</th><th></th></tr>"}
 		var clients = "<tr><th>MAC Address</th><th>Vendor</th></tr>";
@@ -80,7 +81,7 @@ function getResults() {
 			data = res.ssid;
 			ssidCounter.innerHTML = " ("+ data.length + "/48)";
 
-			var tr = "<tr><th>SSID</th><th><a onclick='clearSSID()' class='button secondary right'>clear</a></th></tr>";
+			var tr = "<tr><th>SSID</th><th><a class='button' onclick='resetSSID()'>discard changes</a></th></tr>";
 			for (var i = 0; i < data.length; i++) {
 				tr += "<tr>";
 				tr += "<td>" + escapeHTML(data[i][0]) + "</td>";
@@ -138,9 +139,12 @@ function deleteSSID(num) {
 	getResponse("deleteSSID.json?num=" + num, getResults);
 }
 
-function clearSSID() {
-	getResponse("clearSSID.json", getResults);
-	notify()
+function clearSSID(skipPrompt) {
+	if(skipPrompt || confirm("Are you sure you want to remove all saved SSIDs?") == true) {
+		indicate(true);
+		getResponse("clearSSID.json", getResults);
+		notify()
+	}
 }
 
 function saveSSID() {
@@ -148,16 +152,8 @@ function saveSSID() {
 	getResponse("saveSSID.json", getResults);
 }
 
-function resetSSID(skipPrompt) {
-	if(skipPrompt) {
-		indicate(true);
-		getResponse("resetSSID.json", getResults);
-		return;
-	}
-	if(confirm("Are you sure you want to permanently remove all saved SSIDs?") == true) {
-		indicate(true);
-		getResponse("resetSSID.json", getResults);
-	}
+function resetSSID() {
+	getResponse("resetSSID.json", getResults);
 }
 
 function random() {

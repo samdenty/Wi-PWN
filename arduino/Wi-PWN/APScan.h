@@ -38,6 +38,7 @@ class APScan {
 
     int getFirstTarget();
     bool isSelected(int num);
+    String sanitizeJson(String input);
 
     int results = 0;
     int selectedSum;

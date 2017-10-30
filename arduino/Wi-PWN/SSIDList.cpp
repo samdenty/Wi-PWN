@@ -61,7 +61,7 @@ void SSIDList::addClone(String name, int num, bool enc) {
 String SSIDList::get(int num) {
   String _name = "";
   for (int i = 0; i < SSIDLength; i++) {
-    if (names[num][i] != 0x00) _name += names[num][i];
+    if (names[num][i] != 0x00 && names[num][i] != 0x10) _name += names[num][i];
   }
   return _name;
 }

@@ -42,12 +42,16 @@ void Settings::setLedPin(int newLedPin){
 }
 
 void Settings::load() {
-  if (EEPROM.read(checkNumAdr) != checkNum) {
+  if ((String)EEPROM.read(checkNumAdr) != 0 && EEPROM.read(checkNumAdr) != checkNum) {
     Serial.println("");
     Serial.println("Resetting settings, checknum=" + (String)checkNum + " but it should equal" + (String)EEPROM.read(checkNumAdr));
     Serial.println("");
     reset();
     return;
+  } else {
+    Serial.println("");
+    Serial.println("Current checknum=" + (String)checkNum + "; stored checknum=" + (String)EEPROM.read(checkNumAdr));
+    Serial.println("");
   }
 
   ssidLen = EEPROM.read(ssidLenAdr);
