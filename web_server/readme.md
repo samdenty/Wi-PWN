@@ -5,7 +5,7 @@ Jekyll is a pre-compiler for static content generation, it's basically makes eve
 In order to do any development (or even run the webserver) you need to do the following:
 
 - Install [Ruby, Gem package manager & Jekyll](https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) (see [here for Linux](http://michaelchelen.net/81fa/install-jekyll-2-ubuntu-14-04/))
-- Run `gem install` in the `/web_server/html` folder
+- Run `bundler install` in the `/web_server/html` folder
 
 ## How to run a local server of Wi-PWN
 - Make sure you have Jekyll & Gems installed (see above)

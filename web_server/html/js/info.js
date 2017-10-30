@@ -1,3 +1,5 @@
+---
+---
 var versionCell = getE("version"),
 	freememory = getE("freememory"),
 	flashsize = getE("flashsize"),
@@ -60,6 +62,7 @@ function bytesToSize(bytes) {
 function checkUpdate() {
 	window.open("https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/update?installed="+version+"&sdk="+sk+"&freememory="+fm+"&flashsize="+fz+"&bootmode="+bm+"&bootversion="+bv+"&flashid="+fi+"&chipid="+ci+"&deauthpackets="+dp+"&beaconpackets="+bp+"&ipaddress="+ip+"&gateway="+gw,'_blank');
 }
+{% comment %}
 var input = document.getElementById("update"),
 	label    = input.nextElementSibling,
 	uploadSvg = '<i><svg viewBox="0 0 24 24"><path d="M21,19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19C20.11,3 21,3.9 21,5V19M13,18V9.5L16.5,13L17.92,11.58L12,5.66L6.08,11.58L7.5,13L11,9.5V18H13Z"/></svg></i>';
@@ -74,6 +77,7 @@ input.addEventListener('change', function(e) {
 	else
 		label.innerHTML = labelVal;
 });
+{%endcomment%}
 
 getData();
 infoInterval = setInterval(getData, 900);
