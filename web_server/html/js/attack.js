@@ -81,7 +81,7 @@ function getResults() {
 			data = res.ssid;
 			ssidCounter.innerHTML = " ("+ data.length + "/48)";
 
-			var tr = "<tr><th>SSID</th><th><a class='button' onclick='resetSSID()'>discard changes</a></th></tr>";
+			var tr = "<tr><th>SSID</th><th><a class='button secondary right' onclick='resetSSID()'>discard changes</a></th></tr>";
 			for (var i = 0; i < data.length; i++) {
 				tr += "<tr>";
 				tr += "<td>" + escapeHTML(data[i][0]) + "</td>";
@@ -139,12 +139,10 @@ function deleteSSID(num) {
 	getResponse("deleteSSID.json?num=" + num, getResults);
 }
 
-function clearSSID(skipPrompt) {
-	if(skipPrompt || confirm("Are you sure you want to remove all saved SSIDs?") == true) {
-		indicate(true);
-		getResponse("clearSSID.json", getResults);
-		notify()
-	}
+function clearSSID() {
+	indicate(true);
+	getResponse("clearSSID.json", getResults);
+	notify("Cleared, don't forget to click save!", 4000)
 }
 
 function saveSSID() {

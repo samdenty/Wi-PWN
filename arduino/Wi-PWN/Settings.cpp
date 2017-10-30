@@ -42,9 +42,9 @@ void Settings::setLedPin(int newLedPin){
 }
 
 void Settings::load() {
-  if ((String)EEPROM.read(checkNumAdr) != 0 && EEPROM.read(checkNumAdr) != checkNum) {
+  if (EEPROM.read(checkNumAdr) != 0 && EEPROM.read(checkNumAdr) != checkNum) {
     Serial.println("");
-    Serial.println("Resetting settings, checknum=" + (String)checkNum + " but it should equal" + (String)EEPROM.read(checkNumAdr));
+    Serial.println("ERROR: Checknum mismatch! Current checknum=" + (String)checkNum + "; stored checknum=" + (String)EEPROM.read(checkNumAdr));
     Serial.println("");
     reset();
     return;
@@ -117,7 +117,7 @@ void Settings::load() {
 }
 
 void Settings::reset() {
-  Serial.println("Resetting settings! checknum=" + (String)checkNum + ", EEPROM=" + (String)EEPROM.read(checkNumAdr));
+  Serial.println("reset() checknum=" + (String)checkNum + ", EEPROM=" + (String)EEPROM.read(checkNumAdr));
   if (debug) Serial.print("reset settings...");
 
   ssid = "Wi-PWN";

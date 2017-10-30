@@ -222,6 +222,7 @@ void loadUsersHTML() {
   sendFile(200, "text/html", data_users_HTML, sizeof(data_users_HTML), false);
 }
 void loadAttackHTML() {
+  attack.ssidChange = true;
   sendFile(200, "text/html", data_attack_HTML, sizeof(data_attack_HTML), false);
 }
 void loadDetectorHTML() {
@@ -247,7 +248,6 @@ void loadUsersJS() {
   sendFile(200, "text/javascript", data_users_JS, sizeof(data_users_JS), false);
 }
 void loadAttackJS() {
-  attack.ssidChange = true;
   sendFile(200, "text/javascript", data_attack_JS, sizeof(data_attack_JS), false);
 }
 void loadDetectorJS() {
