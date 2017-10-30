@@ -24,12 +24,12 @@
 		border-color: $colors
 	);
 
-	@mixin v($prop, $var) {
+	@mixin v($prop, $var, $important:"") {
 		$map: map-get($props, $prop);
 		$var-fall: map-get($map, $var);
 		$var-output: var(--#{$var});
-		#{$prop}: $var-fall;
-		#{$prop}: $var-output;
+		#{$prop}: $var-fall unquote($important);
+		#{$prop}: $var-output unquote($important);
 	}
 ////////////////////////////////////////////////
 
@@ -852,7 +852,7 @@ label {
 }
 
 .input-container input:placeholder-shown:focus, .input-container input::-moz-placeholder:focus {
-	border-bottom: 2px solid #2196f3 !important;
+	@include v(border-color, primary, !important);
 }
 
 .input-container label {
@@ -884,7 +884,7 @@ label {
 }
 
 .input-container input:focus {
-	border-bottom: 2px solid #2196f3 !important;
+	@include v(border-color, primary, !important);
 }
 
 .input-container input:invalid {
@@ -902,7 +902,7 @@ label {
 	font-size: .8rem;
 	transform: translate(0, -25px);
 	pointer-events: none;
-	color: #2196f3 !important;
+	@include v(color, primary, !important);
 }
 
 .input-container input:invalid:not(:placeholder-shown) + label {
@@ -1521,7 +1521,7 @@ footer a {
 	width: 25px;
 	height: 25px;
 	margin-top: 5px;
-	color: #1e67a0;
+	@include v(color, primary);
 	border-radius: 1000px;
 }
 
@@ -1634,11 +1634,11 @@ footer a {
 	background: rgba(0, 0, 0, .2);
 }
 
-.waves-effect.waves-blue .waves-ripple {
-	background: rgba(16, 108, 200, .3);
+.waves-effect.waves-color .waves-ripple {
+	@include v(background, primary-light);
 }
 
-.waves-effect.waves-light-blue .waves-ripple {
+.waves-effect.waves-light-color .waves-ripple {
 	background: rgba(198, 227, 255, .3);
 }
 
