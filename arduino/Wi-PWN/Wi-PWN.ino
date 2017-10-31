@@ -248,6 +248,7 @@ void loadUsersJS() {
   sendFile(200, "text/javascript", data_users_JS, sizeof(data_users_JS), false);
 }
 void loadAttackJS() {
+  attack.ssidChange = true;
   sendFile(200, "text/javascript", data_attack_JS, sizeof(data_attack_JS), false);
 }
 void loadDetectorJS() {
@@ -274,7 +275,7 @@ void loadDarkMode() {
   if (settings.darkMode) {
     sendFile(200, "text/css;charset=UTF-8", data_dark_CSS, sizeof(data_dark_CSS), true);
   } else {
-    server.send(200, "text/html", "/* Dark mode disabled */");
+    server.send(200, "text/css", "/* Dark mode disabled */");
   }
 }
 
@@ -475,6 +476,11 @@ void clearSSID() {
 
 void resetSSID() {
   ssidList.load();
+  attack.ssidChange = true;
+  server.send( 200, "text/json", "true");
+}
+
+void reloadSSID() {
   attack.ssidChange = true;
   server.send( 200, "text/json", "true");
 }
@@ -700,26 +706,33 @@ void setup() {
     /* Load certain files (only if newUser) */
     server.onNotFound(loadRedirectHTML);
     server.on("/js/functions.js", loadFunctionsJS);
-    server.on ("/main.css", loadStyle);
-    server.on ("/", loadSetupHTML);
-    server.on ("/index.html", loadSetupHTML);
-    server.on ("/dark.css", loadDarkModeForce);
+    server.on("/main.css", loadStyle);
+    server.on("/", loadSetupHTML);
+    server.on("/index.html", loadSetupHTML);
+    server.on("/dark.css", loadDarkModeForce);
     server.on("/ClientScanTime.json", sendClientScanTime);
     server.on("/settingsSave.json", saveSettings);
     server.on("/restartESP.json", restartESP);
     server.on("/settingsReset.json", resetSettings);
   } else {
+    /* Redirects */
+    server.on("/index.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./\"http-equiv=refresh>");});
+    server.on("/users.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./users\"http-equiv=refresh>");});
+    server.on("/attack.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./attack\"http-equiv=refresh>");});
+    server.on("/detector.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./detector\"http-equiv=refresh>");});
+    server.on("/control.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./control\"http-equiv=refresh>");});
+    server.on("/settings.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./settings\"http-equiv=refresh>");});
+    server.on("/info.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./info\"http-equiv=refresh>");});
+
     /* HTML */
     server.onNotFound(load404);
-  
     server.on("/", loadIndexHTML);
-    server.on("/index.html", loadIndexHTML);
-    server.on("/users.html", loadUsersHTML);
-    server.on("/attack.html", loadAttackHTML);
-    server.on("/detector.html", loadDetectorHTML);
-    server.on("/control.html", loadControlHTML);
-    server.on("/settings.html", loadSettingsHTML);
-    server.on("/info.html", loadInfoHTML);
+    server.on("/users", loadUsersHTML);
+    server.on("/attack", loadAttackHTML);
+    server.on("/detector", loadDetectorHTML);
+    server.on("/control", loadControlHTML);
+    server.on("/settings", loadSettingsHTML);
+    server.on("/info", loadInfoHTML);
   
     /* JS */
     server.on("/js/scan.js", loadScanJS);
@@ -760,6 +773,7 @@ void setup() {
     server.on("/randomSSID.json", randomSSID);
     server.on("/clearSSID.json", clearSSID);
     server.on("/resetSSID.json", resetSSID);
+    server.on("/reloadSSID.json", reloadSSID);
     server.on("/saveSSID.json", saveSSID);
     server.on("/restartESP.json", restartESP);
     server.on("/addClient.json", addClient);

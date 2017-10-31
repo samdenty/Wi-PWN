@@ -5,11 +5,11 @@
 
 	<div id="links">
 		<a href="./"{% if page.url == "/" %} class="active"{% endif %}>Scan</a>
-		<a href="./users.html"{% if page.url == "/users.html" %} class="active"{% endif %}>Users</a>
-		<a href="./attack.html"{% if page.url == "/attack.html" %} class="active"{% endif %}>Attack</a>
-		<a href="./detector.html"{% if page.url == "/detector.html" %} class="active"{% endif %}>Detector</a>
-		<a href="./settings.html"{% if page.url == "/settings.html" %} class="active"{% endif %}>Settings</a>
-		<a class="right{% if page.url == "/info.html" %} active{% endif %}" href="/info.html">Info</a>
+		<a href="./users"{% if page.url == "/users.html" %} class="active"{% endif %}>Users</a>
+		<a href="./attack"{% if page.url == "/attack.html" %} class="active"{% endif %}>Attack</a>
+		<a href="./detector"{% if page.url == "/detector.html" %} class="active"{% endif %}>Detector</a>
+		<a href="./settings"{% if page.url == "/settings.html" %} class="active"{% endif %}>Settings</a>
+		<a href="/info" class="right{% if page.url == "/info.html" %} active{% endif %}">Info</a>
 	</div>
 </nav>
 

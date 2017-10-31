@@ -10,10 +10,13 @@ var tr,
 function getData() {
 	getResponse("settings.json", function(responseText) {
 		try {
-			res = JSON.parse(responseText);
-		} catch (e) {
+			var res = JSON.parse(responseText);
+			log("RESPONSE  ~ ", res,  true)
+		} catch(err) {
+			log("INVALID   ~ ", responseText, false)
+			console.error(err)
 			notify("ERROR: Reset the settings (E36)");
-			return;
+			return
 		}
 		tr = "<tr><th>Name</th><th>PIN</th><th>HIGH</th></tr>";
 		pin = 3;

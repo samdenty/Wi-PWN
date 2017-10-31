@@ -8,12 +8,14 @@ var res;
 
 getResponse("settings.json", function(responseText) {
 	try {
-		res = JSON.parse(responseText);
-	} catch (e) {
+		var res = JSON.parse(responseText);
+		log("RESPONSE  ~ ", res,  true)
+	} catch(err) {
+		log("INVALID   ~ ", responseText, false)
+		console.error(err)
 		notify("ERROR: Reset the settings.  (E25)");
-		return;
+		return
 	}
-
 	if (res.detectorAllChannels == 1) { allChannels.checked = true;
 		switchChannel() } else { allChannels.checked = false;
 		switchChannel() }

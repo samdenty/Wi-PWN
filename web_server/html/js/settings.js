@@ -49,6 +49,16 @@ function getData() {
 			notify("ERROR: Reset the settings.  (E17)");
 			return;
 		}
+		try {
+			res = JSON.parse(responseText);
+			log("RESPONSE  ~ ", res,  true)
+		} catch(err) {
+			log("INVALID   ~ ", responseText, false)
+			console.error(err)
+			fadeIn();
+			notify("ERROR: Reset the settings.  (E17)");
+			return
+		}
 		ssid.value = res.ssid;
 		ssidHidden.checked = res.ssidHidden;
 		password.value = res.password;

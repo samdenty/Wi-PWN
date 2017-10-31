@@ -5,6 +5,8 @@ var version = "9.0",
 	saveStatus = getE('spinner-container'),
 	mainWrap = document.getElementsByClassName("main-wrap")[0];
 
+console.log('%c _ _ _ _     _____ _ _ _ _____ \n| | | |_|___|  _  | | | |   | |\n| | | | |___|   __| | | | | | |\n|_____|_|   |__|  |_____|_|___|\n%c                   Version %c' + version + '\n\n%cSource code available at\n%cwww.github.com/samdenty99/Wi-PWN', 'color:#369BF2', 'color:#ff6c00', 'color:#ce5a2c', 'color:#359c64', 'color:#2dc572')
+
 function notify(msg, closeAfter) {
 	if (msg) {
 		notification.innerHTML = msg;
@@ -43,6 +45,24 @@ function defaultMetaColor() {
 	}
 	var mC = document.querySelector("meta[name=theme-color]");
 	mC.setAttribute("content", themeColor);
+}
+
+function log(one, two, three) {
+	var color = "#369BF2", success
+	if (typeof three !== 'undefined')
+		success = three
+	else
+		success = two
+	if (success != "default" && typeof success !== 'undefined') {
+		if (success == true)
+			color = "#3ec563"
+		else
+			color = "#de363c"
+	}
+	if (typeof three !== 'undefined')
+		console.log('%c[wi-pwn.samdd.me] %c' + one, 'color:' + color, 'color:#777', two)
+	else
+		console.log('%c[wi-pwn.samdd.me] ', 'color:' + color, one)
 }
 
 
@@ -107,6 +127,7 @@ function showLoading(state) {
 }
 
 function getResponse(adr, callback, timeoutCallback, timeout, method) {
+	log('FETCH     ~ ', adr, "default")
 	if (timeoutCallback == null) {
 		timeoutCallback = function() {
 			getResponse("ClientScanTime.json", function() {
@@ -123,7 +144,7 @@ function getResponse(adr, callback, timeoutCallback, timeout, method) {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4) {
 			if (xmlhttp.status == 200) {
-				callback(xmlhttp.responseText);
+				if(typeof callback !== 'undefined') callback(xmlhttp.responseText);
 			} else timeoutCallback();
 		}
 	};

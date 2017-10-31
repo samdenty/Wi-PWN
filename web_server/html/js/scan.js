@@ -39,8 +39,16 @@ function getStatus(enc, hid) {
 function getResults() {
 	toggleScan(true);
 	getResponse("APScanResults.json", function(responseText) {
-		var res = JSON.parse(responseText);
-		notify();
+		try {
+			var res = JSON.parse(responseText);
+			log("RESPONSE  ~ ", res,  true)
+			notify()
+		} catch(err) {
+			log("INVALID   ~ ", responseText, false)
+			console.error(err)
+			notify('Failed to parse scan results!');
+			return
+		}
 		res.aps = res.aps.sort(compare);
 		networkInfo.innerHTML = '(' + res.aps.length + ')';
 		if (res.aps.length == 0) scan()

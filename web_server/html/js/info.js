@@ -18,7 +18,14 @@ var versionCell = getE("version"),
 function getData() {
 	getResponse("sysinfo.json", function(responseText) {
 		notify();
-		var res = JSON.parse(responseText);
+		try {
+			var res = JSON.parse(responseText);
+			log("RESPONSE  ~ ", res,  true)
+		} catch(err) {
+			log("INVALID   ~ ", responseText, false)
+			console.error(err)
+			return
+		}
 			fm = res.freememory.replace(/(.)(?=(\d{3})+$)/g,'$1,');
 			fz = res.flashchipsize;
 			bm = res.bootmode;

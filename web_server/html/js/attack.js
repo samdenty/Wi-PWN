@@ -17,13 +17,15 @@ randSSID.addEventListener("change", switchRandom, false);
 
 function getResults() {
 	getResponse("attackInfo.json", function(responseText) {
-		console.log(responseText)
 		try {
-		    var res = JSON.parse(responseText);
+			var res = JSON.parse(responseText);
+			log("RESPONSE  ~ ", res,  true)
 		} catch(err) {
+			log("INVALID   ~ ", responseText, false)
 			console.error(err)
-		    notify('Failed to parse saved SSIDs, clearing...')
-		    //clearSSID(true)
+			notify('Failed to parse saved SSIDs, clearing...')
+			clearSSID()
+			return
 		}
 		if (res.aps.length == 0) {document.getElementById("selectedNetworksDevices").className = "dn";var aps = ""} else {document.getElementById("selectedNetworksDevices").className = "card-container";var aps = "<tr><th>SSID</th><th></th></tr>"}
 		var clients = "<tr><th>MAC Address</th><th>Vendor</th></tr>";
@@ -75,7 +77,7 @@ function getResults() {
 			}
 		}
 		table.innerHTML = tr;
-		Waves.attach('button',['waves-blue']);
+		Waves.attach('button',['waves-color']);
 
 		if (typeof res.ssid != 'undefined') {
 			data = res.ssid;
@@ -174,5 +176,6 @@ function switchRandom() {
 	}
 }
 
+getResponse("reloadSSID.json");
 getResults();
 resultInterval = setInterval(getResults, 2000);

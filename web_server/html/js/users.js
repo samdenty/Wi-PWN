@@ -28,15 +28,18 @@ function toggleBtn(onoff) {
 function getResults() {
 	getResponse("ClientScanResults.json", function(responseText) {
 		try {
-			res = JSON.parse(responseText);
+			var res = JSON.parse(responseText);
+			log("RESPONSE  ~ ", res,  true)
 			notify()
-		} catch (e) {
+		} catch(err) {
+			log("INVALID   ~ ", responseText, false)
+			console.error(err)
 			if (confirm("Saved client list is corrupt, reset it?") == true) {
 				notify("Clearing the client list...");
 				clearNameList(true);
 				getResults();
 			}
-			return;
+			return
 		}
 
 		res.clients = res.clients.sort(compare);
