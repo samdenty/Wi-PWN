@@ -11,14 +11,14 @@ layout: page
 				<div class="col-6">
 					<div class="input-container disabled" id="channelContainer">
 						<input placeholder=" " id="detectorChannel" required="" type="number" min="1" max="14">
-						<label for="detectorChannel">Detector channel</label>
+						<label for="detectorChannel">{% t detector.card-1.field-1 %}</label>
 					</div>
 				</div>
 				<div class="col-6">
 					<label for="detectorAllChannels" class="checkboxContainer">
-						<input type="checkbox" name="detectorAllChannels" id="detectorAllChannels" value="false" checked>
+						<input type="checkbox" name="detectorAllChannels" id="detectorAllChannels" value="false">
 						<label class="checkbox" for="detectorAllChannels"></label>
-						All channels
+						{% t detector.card-1.toggle-1 %}
 					</label>
 				</div>
 			</div>
@@ -26,14 +26,14 @@ layout: page
 				<div class="col-6">
 					<div class="input-container">
 						<input placeholder=" " id="alertPin" required="" type="number" min="0">
-						<label for="alertPin">GPIO Alert Pin</label>
+						<label for="alertPin">{% t detector.card-1.field-2 %}</label>
 					</div>
 				</div>
 				<div class="col-6">
 					<label for="invertAlertPin" class="checkboxContainer">
 						<input type="checkbox" name="invertAlertPin" id="invertAlertPin" value="false">
 						<label class="checkbox" for="invertAlertPin"></label>
-						Invert HIGH/LOW
+						{% t detector.card-1.toggle-2 %}
 					</label>
 				</div>
 			</div>
@@ -41,14 +41,14 @@ layout: page
 				<div class="col-6">
 					<div class="input-container">
 						<input placeholder=" " id="detectorScanTime" required="detectorScanTime" type="number" min="10">
-						<label for="detectorScanTime">Channel scan time (ms)</label>
+						<label for="detectorScanTime">{% t detector.card-1.field-3 %}</label>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="card-action">
-			<a class="button light" onclick="saveSettings()">save</a>
-			<a class="button right" onclick="saveSettings(true)">save &amp; start</a>
+			<a class="button light" onclick="saveSettings()">{% t global.save %}</a>
+			<a class="button right" onclick="saveSettings(true)">{% t detector.card-1.button-1 %}</a>
 		</div>
 	</div>
 </div>

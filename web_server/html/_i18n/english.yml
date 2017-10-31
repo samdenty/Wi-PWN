@@ -6,6 +6,9 @@ nav:
     control: "Control"
     settings: "Settings"
 
+global:
+    save: "Save"
+
 setup:
     page-1:
         header: "Terms and Conditions"
@@ -82,10 +85,18 @@ detector:
     title: "Deauth detector"
     card-1:
         header: "Deauth Detector"
+        field-1: "Detector channel"
+        toggle-1: "All channels"
+        field-2: "GPIO Alert Pin"
+        toggle-2: "Invert HIGH/LOW"
+        field-3: "Channel scan time (ms)"
+        button-1: "Save &amp; start"
 
 control:
     title: "GPIO Control"
-    page-header: 
+    card-1:
+        header: "GPIO Control"
+        button-1: "Reset entries"
 
 settings:
     title: "Settings"
