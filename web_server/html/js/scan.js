@@ -25,12 +25,15 @@ function compare(a, b) {
 	return 0;
 }
 
-function getEncryption(num) {
-	if (num == 8) return "WPA*";
-	else if (num == 4) return "WPA2";
-	else if (num == 2) return "WPA";
-	else if (num == 7) return "Open";
-	else if (num == 5) return "WEP";
+function getStatus(enc, hid) {
+	var buff = "";
+		  if (enc == 8) buff = "WPA* &nbsp;&#128274;";
+	else  if (enc == 4) buff = "WPA2 &nbsp;&#128274;";
+	else  if (enc == 2) buff = "WPA";
+	else  if (enc == 7) buff = "Open";
+	else  if (enc == 5) buff = "WEP";
+		  if (hid == 1) buff += "&#128123;";
+	return buff
 }
 
 function getResults() {
@@ -56,7 +59,7 @@ function getResults() {
 				apMAC.innerHTML = res.aps[i].m;
 			} else tr += '<td><input type="checkbox" name="check' + res.aps[i].i + '" id="check' + res.aps[i].i + '" value="false"><label class="checkbox" for="check' + res.aps[i].i + '"></label></td>';
 
-			if (getEncryption(res.aps[i].e) != 'Open') {securityState = 'L'} else {securityState = ''}
+			if (getStatus(res.aps[i].e) != 'Open') {securityState = 'L'} else {securityState = ''}
 			if (-89 > res.aps[i].r) {
 				wifiIndicator = 's0'+securityState
 			} else if (-88 > res.aps[i].r) {
@@ -74,7 +77,7 @@ function getResults() {
 			if (i == 0) {var tdID = ' id="resizeEventTD"'} else {var tdID = ''}
 			tr += '<td class="WiFi"'+tdID+'><div>' + eval(wifiIndicator) + '</div><div><span style="background:linear-gradient(135deg, '+getColor(signalPercent)+' '+signalPercent+'%,rgba(0,0,0,0.15) '+signalPercent+'%)"></span><span style="color:'+getColor(signalPercent, true)+'">' + signalPercent + '</span></div></td>';
 			tr += '<td>' + escapeHTML(res.aps[i].ss) + '</td>';
-			tr += '<td>' + getEncryption(res.aps[i].e) + '</td>';
+			tr += '<td>' + getStatus(res.aps[i].e, res.aps[i].h) + '</td>';
 			tr += '<td>' + res.aps[i].c + '</td>';
 			tr += '</tr>';
 		}

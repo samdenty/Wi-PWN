@@ -7,6 +7,7 @@
          "ss":"Example network 1",
          "r":-90,
          "e":4,
+         "h":0,
          "se":1
       },
       {
@@ -16,6 +17,7 @@
          "ss":"Example network 2",
          "r":-70,
          "e":4,
+         "h":1,
          "se":1
       },
       {
@@ -25,6 +27,7 @@
          "ss":"Example network 3",
          "r":-5,
          "e":7,
+         "h":0,
          "se":0
       }
    ]
