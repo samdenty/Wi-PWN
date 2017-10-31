@@ -716,13 +716,13 @@ void setup() {
     server.on("/settingsReset.json", resetSettings);
   } else {
     /* Redirects */
-    server.on("/index.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./\"http-equiv=refresh>");});
-    server.on("/users.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./users\"http-equiv=refresh>");});
-    server.on("/attack.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./attack\"http-equiv=refresh>");});
-    server.on("/detector.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./detector\"http-equiv=refresh>");});
-    server.on("/control.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./control\"http-equiv=refresh>");});
-    server.on("/settings.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./settings\"http-equiv=refresh>");});
-    server.on("/info.html", [](){server.send(301, "text/html", "<meta content=\"0;url=./info\"http-equiv=refresh>");});
+    server.on("/index.html", loadIndexHTML);
+    server.on("/users.html", loadUsersHTML);
+    server.on("/attack.html", loadAttackHTML);
+    server.on("/detector.html", loadDetectorHTML);
+    server.on("/control.html", loadControlHTML);
+    server.on("/settings.html", loadSettingsHTML);
+    server.on("/info.html", loadInfoHTML);
 
     /* HTML */
     server.onNotFound(load404);
