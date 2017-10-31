@@ -28,7 +28,7 @@ function toggleBtn(onoff) {
 function getResults() {
 	getResponse("ClientScanResults.json", function(responseText) {
 		try {
-			var res = JSON.parse(responseText);
+			res = JSON.parse(responseText);
 			log("RESPONSE  ~ ", res,  true)
 			notify()
 		} catch(err) {

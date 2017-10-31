@@ -8,7 +8,7 @@ var res;
 
 getResponse("settings.json", function(responseText) {
 	try {
-		var res = JSON.parse(responseText);
+		res = JSON.parse(responseText);
 		log("RESPONSE  ~ ", res,  true)
 	} catch(err) {
 		log("INVALID   ~ ", responseText, false)

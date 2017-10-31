@@ -142,14 +142,14 @@ function selAll() {
 /* Add event listener for WiFi signal icons */
 	window.onresize = function(event){checkSize()}
 	function checkSize() {
-		var w = document.getElementById('resizeEventTD');
-		if (typeof w !== 'undefined') {
+		try() {
+			var w = document.getElementById('resizeEventTD');
 			if (w.clientWidth <= 99) {
 				document.getElementById('apscan').className = 'pointUp'
 			} else {
 				document.getElementById('apscan').className = ''
 			}
-		}
+		} catch(e) {}
 	}
 
 getResults();
