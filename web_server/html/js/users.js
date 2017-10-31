@@ -149,7 +149,7 @@ function addClient() {
 }
 
 function setName(id) {
-	var newName = prompt("Name for " + res.clients[id].m);
+	var newName = prompt("Name for " + res.clients[id].m, res.clients[id].n);
 	if (newName != null) {
 		getResponse("setName.json?id=" + id + "&name=" + newName, function(responseText) {
 			if (responseText == "true") getResults();

@@ -1,3 +1,5 @@
+---
+---
 <head>
 	<title>Wi-PWN</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
@@ -11,7 +13,7 @@
 		<div id="spinner-container"></div>
 		<div class="container setup">
 			<div class="card-container">
-				<div class="settingsHeader" id="h">Terms and Conditions</div>
+				<div class="settingsHeader" id="h">{% t setup.page-1.header %}</div>
 				<div id="ss" class="card horizontal">
 					<div id="card-wrapper">
 						<div id="c1">
@@ -20,15 +22,15 @@
 							<div class="card-stacked">
 								<div class="card-content">
 									<div class="card-title">
-										Welcome to Wi-PWN
+										{% t setup.page-1.card.title %}
 									</div>
-									<p>This software is meant for pentesting only!</p>
-									<p>Wi-PWN can perform deauth attacks on unprotected networks, <i>similar to using a Wi-Fi Jammer.</i></p>
+									<p>{% t setup.page-1.card.paragraph-1 %}</p>
+									<p>{% t setup.page-1.card.paragraph-2 %}</p>
 									<br>
-									<p>Only use this software on networks you are authorized to use it on.</p>
+									<p>{% t setup.page-1.card.paragraph-3 %}</p>
 								</div>
 								<div class="card-action" onclick="accept()">
-									<a class="button right">Accept</a>
+									<a class="button right">{% t setup.page-1.card.button %}</a>
 								</div>
 							</div>
 						</div><div id="c2">
@@ -42,19 +44,19 @@
 									<div class="col-6">
 										<div class="input-container">
 											<input placeholder=" " id="ssid" type="text" required="" minlength="1" maxlength="32" value="Wi-PWN">
-											<label for="ssid">SSID</label>
+											<label for="ssid">{% t setup.page-2.card.field-1 %}</label>
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-container">
 											<input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32" value="rootaccess">
-											<label for="ssid">Password</label>
+											<label for="ssid">{% t setup.page-2.card.field-2 %}</label>
 										</div>
 									</div>
 									<br>
 									<div class="col-12">
 										<label for="darkMode" class="checkboxContainer">
-											Enable dark mode
+											{% t setup.page-2.card.toggle-1 %}
 											<input type="checkbox" name="darkMode" id="darkMode" value="false" onclick="toggleDarkmode();">
 											<label class="checkbox" for="darkMode"></label>
 										</label>
@@ -62,7 +64,7 @@
 								</div>
 							</div>
 							<div class="card-action" onclick="cont()">
-								<a class="button right">Continue</a>
+								<a class="button right">{% t setup.page-2.card.field-2 %}</a>
 							</div>
 						</div><div id="c3">
 							<div class="card-content">
@@ -71,15 +73,15 @@
 										<path d=M908.3,132.5L336.7,704.2l-245-245L10,540.8l326.7,326.7l81.7-81.7L990,214.2L908.3,132.5z />
 									</svg>
 									<br>
-									<b style="font-size:18px">Setup complete!</b>
-									<br><span style="font-weight: 300">Reconnect to the new network</span>
+									<b style="font-size:18px">{% t setup.page-3.message-1 %}</b>
+									<br><span style="font-weight: 300">{% t setup.page-3.message-2 %}</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="center">
-					<button class="secondary center" onclick="location.href='https://samdenty99.github.io/about'">Designed by Sam Denty</a>
+					<button class="secondary center" onclick="location.href='https://samdenty99.github.io/about'">{% t setup.attribution %}</a>
 				</div>
 			</div>
 		</div>
@@ -94,8 +96,8 @@
 		function accept() {
 			toTop()
 			document.getElementById("card-wrapper").className = "accept";
-			document.getElementById("h").innerHTML = "Setup Wi-PWN";
-			document.title = "Setup Wi-PWN";
+			document.getElementById("h").innerHTML = "{% t setup.page-2.header %}";
+			document.title = "{% t setup.page-2.header %}";
 			push("configure")
 			setTimeout(function() { document.getElementById("c3").className = "away" }, 500);
 		}
@@ -147,22 +149,22 @@
 					getResponse("restartESP.json?", function(responseText) {
 						if (responseText == "true") {
 							document.getElementById("ss").className = "card horizontal s-s";
-							document.getElementById("h").innerHTML = "Setup Complete";
+							document.getElementById("h").innerHTML = "{% t setup.page-3.header %}";
 							showLoading("hide");
 						} else {
-							notify("Failed to restart Wi-PWN! (E26)");
+							notify("{% t errors.E26 %} (E26)");
 							showLoading("hide");
 						}
 					}, function() {
-						notify("Failed to restart Wi-PWN! (E27)");
+						notify("{% t errors.E27 %} (E27)");
 						showLoading("hide");
 					});
 				} else {
-					notify("Failed to save settings! (E28)");
+					notify("{% t errors.E28 %} (E28)");
 					showLoading("hide");
 				}
 			}, function() {
-				notify("Failed to save settings! (E29)");
+				notify("{% t errors.E29 %} (E29)");
 				showLoading("hide");
 			});
 		}
@@ -178,8 +180,8 @@
 				scroll(0, 0)
 			}
 		}
-		// Windows URL listener (Eg. History back + forward keys)
 
+		// Window URL listener (Eg. History back + forward keys)
 		var currentPage = window.location.href;
 
 		// listen for changes

@@ -1,0 +1,106 @@
+nav:
+    scan: "Scan"
+    users: "Users"
+    attack: "Attack"
+    detector: "Detector"
+    control: "Control"
+    settings: "Settings"
+
+setup:
+    page-1:
+        header: "Terms and Conditions"
+        card:
+            title: "Welcome to Wi-PWN"
+            paragraph-1: "This software is meant for pentesting only!"
+            paragraph-2: "Wi-PWN can perform deauth attacks on unprotected networks, <i>similar to using a Wi-Fi Jammer.</i>"
+            paragraph-3: "Only use this software on networks you are authorized to use it on."
+            button: "Accept"
+
+    page-2:
+        header: "Setup Wi-PWN"
+        card:
+            field-1: "SSID"
+            field-2: "Password"
+            toggle-1: "Enable dark mode"
+            button: "Continue"
+
+    page-3:
+        header: "Setup Complete"
+        message-1: "Setup complete!"
+        message-2: "Reconnect to the new network"
+
+    attribution: "Designed by Sam Denty"
+
+scan:
+    title: "Scan"
+    card-1:
+        header: "Scan for networks"
+
+users:
+    title: "Users"
+    card-1:
+        header: "Scan for Wi-Fi users"
+    card-2:
+        header: "Saved users"
+    card-3:
+        field-1: "MAC Address"
+        field-2: "Name"
+        button-1: "Add"
+
+attack:
+    title: "Attack"
+    card-1:
+        header: "Initiate Attack"
+        table:
+            attack: "Attack"
+            status: "Status"
+            switch: "Switch"
+        attacks:
+            deauth: "Deauth"
+            beacon: "Beacon"
+            random: "Random"
+            probe: "Probe-Request"
+            start: "Start"
+            stop: "Stop"
+    card-2:
+        header: "Selected networks &amp; users"
+    card-3:
+        header:
+    card-4:
+        header: "Add SSID"
+        field-1: "SSID"
+        toggle-1: "Generate random"
+        field-2: "Number of clones"
+        toggle-2: "Encrypted"
+        button: "Add"
+    card-5:
+        header: "Saved SSIDs"
+        button-1: "Clear"
+        button-2: "Save"
+
+detector:
+    title: "Deauth detector"
+    card-1:
+        header: "Deauth Detector"
+
+control:
+    title: "GPIO Control"
+    page-header: 
+
+settings:
+    title: "Settings"
+    page-header: 
+
+info:
+    title: "Info"
+    page-header: 
+
+error:
+    title: "404"
+    page-header: "Page not found"
+
+errors:
+    E26: "Failed to restart Wi-PWN!"
+    E27: "Failed to restart Wi-PWN!"
+    E28: "Failed to save settings!"
+    E29: "Failed to save settings!"

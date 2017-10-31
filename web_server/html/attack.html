@@ -1,17 +1,17 @@
 ---
-title: Attack
+title: attack.title
 js: attack
 layout: page
 ---
 <div class="card-container">
-	<div class="settingsHeader">Initiate Attack</div>
+	<div class="settingsHeader">{% t attack.card-1.header %}</div>
 	<div class="card">
-		<table><tbody><tr><th>Attack</th><th>Status</th><th>Switch</th></tr><tr><td>Deauth</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(0)" disabled="">start</button></td></tr><tr><td>Beacon</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Random <span class='light'>5s</span></td><td></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">start</button></td></tr><tr><td>Probe-Request</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(2)" disabled="">start</button></td></tr></tbody></table>
+		<table><tbody><tr><th>{% t attack.card-1.table.attack %}</th><th>{% t attack.card-1.table.status %}</th><th>{% t attack.card-1.table.switch %}</th></tr><tr><td>{% t attack.card-1.attacks.deauth %}</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(0)" disabled="">{% t attack.card-1.attacks.start %}</button></td></tr><tr><td>{% t attack.card-1.attacks.beacon %}</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">{% t attack.card-1.attacks.start %}</button></td></tr><tr><td>{% t attack.card-1.attacks.random %} <span class='light'>5s</span></td><td></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">{% t attack.card-1.attacks.start %}</button></td></tr><tr><td>{% t attack.card-1.attacks.probe %}</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(2)" disabled="">{% t attack.card-1.attacks.start %}</button></td></tr></tbody></table>
 	</div>
 	<hr>
 </div>
 <div id="selectedNetworksDevices" class="card-container dn">
-	<div class="settingsHeader">Selected networks &amp; users</div>
+	<div class="settingsHeader">{% t attack.card-2.header %}</div>
 	<div class="card">
 		<table id="selectedAPs"></table>
 	</div>
@@ -20,21 +20,21 @@ layout: page
 	</div>
 </div>
 <div class="card-container" id="section2">
-	<div class="settingsHeader">Add SSID</div>
+	<div class="settingsHeader">{% t attack.card-4.header %}</div>
 	<div class="card">
 		<div class="card-content">
 			<div class="row inputCheckbox">
 				<div class="col-6">
 					<div class="input-container" id="ssidContainer">
 						<input placeholder=" " id="ssid" required="" type="text" minlength="1" maxlength="32">
-						<label for="ssid">SSID</label>
+						<label for="ssid">{% t attack.card-4.field-1 %}</label>
 					</div>
 				</div>
 				<div class="col-6">
 					<label for="randSSID" class="checkboxContainer">
 						<input type="checkbox" name="randSSID" id="randSSID" value="false">
 						<label class="checkbox" for="randSSID"></label>
-						Generate random
+						{% t attack.card-4.toggle-1 %}
 					</label>
 				</div>
 			</div>
@@ -42,25 +42,25 @@ layout: page
 				<div class="col-6">
 					<div class="input-container">
 						<input placeholder=" " type="number" required="" id="num" min="0" max="48" value="48">
-						<label for="num">Number of clones</label>
+						<label for="num">{% t attack.card-4.field-2 %}</label>
 					</div>
 				</div>
 				<div class="col-6">
 					<label for="enc" class="checkboxContainer">
 						<input type="checkbox" name="enc" id="enc" value="false">
 						<label class="checkbox" for="enc"></label>
-						Encrypted
+						{% t attack.card-4.toggle-2 %}
 					</label>
 				</div>
 			</div>
 		</div>
 		<div class="card-action">
-			<a class="button right" onclick="addSSID()">Add</a>
+			<a class="button right" onclick="addSSID()">{% t attack.card-4.button %}</a>
 		</div>
 	</div>
 </div>
 <div class="card-container">
-	<div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">Saved SSIDs<span id="ssidCounter"> (0/48)</span></div>
+	<div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">{% t attack.card-5.header %}<span id="ssidCounter"> (0/48)</span></div>
 	<div class="card">
 		<table>
 			<tr>
@@ -68,8 +68,8 @@ layout: page
 			</tr>
 		</table>
 		<div class="card-action">
-			<a class="button" onclick="clearSSID()">clear</a>
-			<a class="button right" onclick="saveSSID()">save</a>
+			<a class="button" onclick="clearSSID()">{% t attack.card-5.button-1 %}</a>
+			<a class="button right" onclick="saveSSID()">{% t attack.card-5.button-2 %}</a>
 		</div>
 	</div>
 </div>
