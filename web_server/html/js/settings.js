@@ -96,7 +96,6 @@ function getData() {
 }
 
 function saveSettings() {
-	indicate();
 	showLoading();
 	var url = "settingsSave.json";
 	url += "?ssid=" + ssid.value;

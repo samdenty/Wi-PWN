@@ -159,7 +159,7 @@ function setName(id) {
 }
 
 function editNameList(id) {
-	var newName = prompt("Name for " + res.nameList[id].m);
+	var newName = prompt("Name for " + res.nameList[id].m, res.nameList[id].n);
 
 	if (newName != null) {
 		getResponse("editNameList.json?id=" + id + "&name=" + newName, function(responseText) {

@@ -9,7 +9,7 @@ var table = document.getElementsByTagName('table')[0],
 	selectAllState = 'not-checked',
 	previousCall = new Date().getTime(),
 	url = window.location.href,
-	wifiIndicator, securityState;
+	wifiIndicator, securityState, res;
 
 function toggleScan(onoff) {
 	if (onoff && !autoScan) {
@@ -40,7 +40,7 @@ function getResults() {
 	toggleScan(true);
 	getResponse("APScanResults.json", function(responseText) {
 		try {
-			var res = JSON.parse(responseText);
+			res = JSON.parse(responseText);
 			log("RESPONSE  ~ ", res,  true)
 			notify()
 		} catch(err) {
@@ -142,7 +142,7 @@ function selAll() {
 /* Add event listener for WiFi signal icons */
 	window.onresize = function(event){checkSize()}
 	function checkSize() {
-		try() {
+		try {
 			var w = document.getElementById('resizeEventTD');
 			if (w.clientWidth <= 99) {
 				document.getElementById('apscan').className = 'pointUp'
