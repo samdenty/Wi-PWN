@@ -1,0 +1,259 @@
+# Wi-PWN translation file template
+# 
+# When you see 
+#              $$
+# This means it's going to be replaced with HTML
+# # # # # # # # # # # # # # # # # # # # # # # # #
+# For example
+# `$$click here$$` => `<a href="mypage">click here</a>`
+# 
+
+nav:
+    scan: "Scansione"
+    users: "Dispositivi"
+    attack: "Attacco"
+    detector: "Rilevatore"
+    control: "Controllo"
+    settings: "Impostazioni"
+
+global:
+    save: "Salva"
+    reset: "Ripristina"
+    ssid: "SSID"
+    password: "Password"
+    start: "Avvia"
+    stop: "Stop"
+    name: "Nome"
+    reboot: "Riavvia"
+    guide: "Guida"
+    footer: "Creato da Sam Denty - @samdenty99"
+
+setup:
+    page-1:
+        header: "Termini e Condizioni"
+        card:
+            title: "Benvenuto in Wi-PWN"
+            paragraph-1: "Questo software è stato creato solo per testare la sicurezza!"
+            paragraph-2: "Wi-PWN può eseguire attacchi di deautenticazione su reti non protette, <i>in modo simile all'utilizzo di un Jammer Wi-Fi.</i>"
+            paragraph-3: "Usa questo software solo su reti che ne hanno consentito l'utilizzo."
+            button: "Accetta"
+
+    page-2:
+        header: "Configura Wi-PWN"
+        card:
+            field-1: "Password"
+            toggle-1: "Abilita modalità scura"
+            button: "Continua"
+
+    page-3:
+        header: "Configurazione Completata"
+        message-1: "Configurazione completata!"
+        message-2: "Riconnetti alla nuova rete"
+
+    attribution: "Creato da Sam Denty"
+
+scan:
+    title: "Scansione"
+    card-1:
+        header: "Scansiona reti disponibili ($$)"
+        table:
+            signal: "Segnale"
+            security: "Sicurezza"
+            channel: "Ch."
+    strings:
+        A: "Aperta"
+
+users:
+    title: "Dispositivi"
+    card-1:
+        header: "Scansiona dispositivi Wi-Fi ($$)"
+        table:
+            info: "Info dispositivo"
+            packets: "Pacchetti"
+    card-2:
+        header: "Dispositivi salvati ($$)"
+    card-3:
+        field-1: "Indirizzo MAC"
+        button-1: "Aggiungi"
+    strings:
+        A: "La lista dei dispositivi salvati è corrotta, vuoi cancellarla?"
+        B: "Cancellando la lista dei dispositivi..."
+        C: "Scansione completata! Riconnetti e ricarica la pagina"
+        D: "Cercando dispositivi ~ $$s rimanenti"
+
+attack:
+    title: "Attacco"
+    card-1:
+        header: "Inizia Attacco"
+        table:
+            attack: "Attacco"
+            status: "Stato"
+            switch: "Interruttore"
+            random: "Casuale"
+    card-2:
+        header: "Reti &amp; dispositivi selezionati"
+        button: "Clona"
+    card-3:
+        header-1: "Indirizzo MAC"
+        header-2: "Produttore"
+    card-4:
+        header: "Aggiungi SSID"
+        toggle-1: "Genera casuale"
+        field-1: "Numero di cloni"
+        toggle-2: "Protetto"
+        button: "Aggiungi"
+    card-5:
+        header: "SSID salvati $$"
+        button-1: "Cancella"
+        button-2: "Salva"
+        button-3: "Annulla cambiamenti"
+    strings:
+        A: "Intervallo di attacco casuale"
+        B: "pronto"
+        C: "in corso"
+
+detector:
+    title: "Rilevatore"
+    card-1:
+        header: "Rilevatore deautenticazione"
+        field-1: "Canale del rilevatore"
+        toggle-1: "Tutti i canali"
+        field-2: "Pin GPIO di allarme"
+        toggle-2: "Inverti HIGH/LOW"
+        field-3: "Tempo scansione canale (ms)"
+        button-1: "Salva &amp; avvia"
+    strings:
+        A: "Rilevatore in funzione! Riavvia il dispositivo per tornare al funzionamento normale"
+
+control:
+    title: "Controllo GPIO"
+    card-1:
+        header: "Controllo GPIO"
+        button-1: "Ripristina valori"
+        table:
+            pin: "PIN"
+            high: "HIGH"
+    strings:
+        A: "Errore nel cambiare il PIN"
+        B: "Nome del PIN"
+        C: "Massimo 10 caratteri!"
+        D: "Ripristinare i valori?"
+
+settings:
+    title: "Impostazioni"
+    card-1:
+        header: "Server Wi-Fi"
+        field-1: "Canale"
+        toggle-1: "Nascondi SSID"
+    card-2:
+        header: "Client Wi-Fi"
+        field-1: "SSID rete"
+        field-2: "Password rete"
+        field-3: "Nome dispositivo ESP"
+        toggle-1: "Abilita client WiFi"
+    card-3:
+        header: "Personalizzazione"
+        field-1: "Tempo scadenza cache"
+        field-2: "Pin del LED"
+        toggle-1: "Abilita modalità scura"
+        toggle-2: "Abilita cache server"
+        toggle-3: "Abilita indicatore LED"
+    card-4:
+        header: "Opzioni interfaccia"
+        toggle-1: "Semplifica interfaccia"
+        toggle-2: "Righe tabelle più piccole"
+        toggle-3: "Mostra pulsante riavvio"
+    card-5:
+        header: "Scansione &amp; Attacco"
+        field-1: "Timeout scansione"
+        field-2: "Timeout attacco"
+        field-3: "Indirizzo MAC"
+        toggle-1: "Indirizzo MAC casuale"
+        toggle-2: "Scansiona reti nascoste" 
+        toggle-3: "Seleziona reti multiple"
+        toggle-4: "Attacchi simultanei"
+    card-6:
+        header: "Avanzate"
+        field-1: "Reason-code deautenticazione"
+        field-2: "Velocità pacchetti (pkts/s)"
+        field-3: "Intervallo cambiamento MAC"
+        toggle-1: "Intervallo Beacon di 1s"
+    strings:
+        A: "Vuoi resettare Wi-PWN alle impostazioni iniziali?"
+        B: "Tutte le modifiche verranno perse!"
+
+info:
+    title: "Info"
+    card-1:
+        header: "Creatore di Wi-PWN"
+        about: "Wi-PWN è stato creato da $$Sam Denty$$, a partire dal progetto originale di $$spacehuhn &#128020;$$. Wi-PWN è rilasciato sotto la licenza $$CC BY-NC 4.0$$."
+    card-2:
+        header: "Wi-PWN"
+        table:
+            A: "Versione Wi-PWN"
+            B: "Controlla aggiornamenti"
+            C: "Aggiorna"
+            D: "Tempo di funzionamento / memoria"
+            E: "Pacchetti inviati"
+            F: "IP / gateway"
+            G: "Versioni"
+            H: "ID Flash &amp; Chip"
+    card-3:
+        header: "Impostazioni avanzate"
+        get: "esegui"
+    card-4:
+        header: "Collaboratori"
+        paragraph-1: "Questo software è basato sul lavoro di Stefan Kremser (Spacehuhn)"
+        paragraph-2: "Per più informazioni vai alla $$pagina dei collaboratori$$ su GitHub."
+    card-5:
+        header: "Librerie incluse"
+    strings:
+        A: "Caricamento sysinfo.json fallito"
+        B: "Aggiornamento OTA"
+        C: "Carica"
+        D: "Altri progetti"
+        E: "Riporta bug"
+        F: "Altri progetti"
+
+error:
+    title: "404"
+    page-header: "Pagina non trovata"
+
+errors:
+    bad-response: "ERRORE: Risposta scorretta"
+    E0: "Scansione reti fallita!"
+    E6: "Riconnetti alla rete Wi-Fi"
+    E7: "INFO: Nessuna rete Wi-Fi selezionata!"
+    E10: "Indirizzo MAC non valido"
+    E15: "Nessuna rete selezionata!"
+    E16: "Lista SSID piena (E16)"
+    E17: "ERRORE: Ripristina le impostazioni"
+    E18: "Salvataggio impostazioni fallito!"
+    E19: "Salvataggio impostazioni fallito!"
+    E20: "Ripristino impostazioni fallito!"
+    E21: "Ripristino impostazioni fallito!"
+    E22: "Riconnetti e ricarica la pagina"
+    E23: "Riavvio Wi-PWN fallito!"
+    E24: "Riavvio Wi-PWN fallito!"
+    E25: "ERRORE: Ripristina le impostazioni"
+    E26: "Riavvio Wi-PWN fallito!"
+    E27: "Riavvio Wi-PWN fallito!"
+    E28: "Salvataggio impostazioni fallito!"
+    E29: "Salvataggio impostazioni fallito!"
+    E30: "Avvio rilevatore fallito!"
+    E31: "Avvio rilevatore fallito!"
+    E32: "Salvataggio fallito!"
+    E33: "Salvataggio fallito!"
+    E34: "Caricamento control.json fallito"
+    E37: "ERRORE: Cambiamento nome del PIN fallito"
+    E39: "Aggiornamento nome del PIN fallito!"
+    E40: "Aggiornamento nome del PIN fallito!"
+    E41: "Ripristino valori salvato fallito!"
+    E42: "Ripristino valori salvato fallito!"
+    E95: "ERRORE: Caricamento settings.json fallito"
+    E96: "Riconnetti e ricarica la pagina"
+    E97: "Nessuna risposta ricevuta!"
+    E98: "Analisi dei risultati della scansione fallita!"
+    E99: "Cancellato, non dimenticare di premere salva!"
+    E100: "Analisi degli SSID salvati fallita, cancello..."
+    S1: "Sei sicuro di voler riavviare Wi-PWN?"
