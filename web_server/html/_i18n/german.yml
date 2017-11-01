@@ -161,8 +161,8 @@ settings:
     card-4:
         header: "UI Anpassungen"
         toggle-1: "Einfache Benutzeroberfläche"
-        toggle-2: "Kleinere Tabellen Reihen"
-        toggle-3: "Show reboot button"
+        toggle-2: "Kleinere Tabellen-Reihen"
+        toggle-3: "Zeige Neustart-Button an"
     card-5:
         header: "Scan &amp; Attack"
         field-1: "Scan timeout"
