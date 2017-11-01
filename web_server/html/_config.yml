@@ -6,6 +6,11 @@ destination: ../output/html
 languages: ["english"]
 
 
+# Jekyll tidy HTML plugin
+jekyll_tidy:
+    exclude: ["*.js"]
+
+
 # Gem plugin(s)
 plugins: [jekyll-tidy, jekyll-multiple-languages-plugin]
 # Compress outputted sass

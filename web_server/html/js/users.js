@@ -1,3 +1,5 @@
+---
+---
 var table = document.getElementsByTagName('table')[0],
 	scanBtn = getE("startScan"),
 	clientsFound = getE("clientsFound"),
@@ -9,7 +11,7 @@ var table = document.getElementsByTagName('table')[0],
 	selectAllState = 'not-checked',
 	countdownRemaining = 0,
 	startCountdown,
-	tableHeaderHTML = '<tr><th width="11%"></th><th>Name</th><th>Client info</th><th>Pkts</th></tr>';
+	tableHeaderHTML = '<tr><th width="11%"></th><th>{% t users.card-1.table.name %}</th><th>{% t users.card-1.table.info %}</th><th>{% t users.card-1.table.packets %}</th></tr>';
 
 function compare(a, b) {
 	if (a.p > b.p) return -1;
@@ -34,8 +36,8 @@ function getResults() {
 		} catch(err) {
 			log("INVALID   ~ ", responseText, false)
 			console.error(err)
-			if (confirm("Saved client list is corrupt, reset it?") == true) {
-				notify("Clearing the client list...");
+			if (confirm("{% t users.strings.1 %}") == true) {
+				notify("{% t users.strings.2 %}");
 				clearNameList(true);
 				getResults();
 			}
@@ -47,7 +49,7 @@ function getResults() {
 		clientsFound.innerHTML = '(' + res.clients.length + ')';
 
 		var tr = '';
-		if (res.clients.length > 1) tableHeaderHTML = '<tr><th width="11%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th><th>Name</th><th>Client info</th><th>Pkts</th></tr>';
+		if (res.clients.length > 1) tableHeaderHTML = '<tr><th width="11%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th><th>{% t users.card-1.table.name %}</th><th>{% t users.card-1.table.info %}</th><th>{% t users.card-1.table.packets %}</th></tr>';
 		tr += tableHeaderHTML;
 
 		for (var i = 0; i < res.clients.length; i++) {
@@ -59,7 +61,7 @@ function getResults() {
 			if (res.clients[i].l >= 0) {
 				tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><span class="a b">' + escapeHTML(res.clients[i].n) + '</span><br>' +  escapeHTML(res.clients[i].v)  +'</td>';
 			} else {
-				tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><span class="a light-6">save</span><br>' + escapeHTML(res.clients[i].v) + '</td>';
+				tr += '<td class="darken-on-hover" onclick="setName(' + res.clients[i].i + ')"><span class="a light-6">{% t global.save %}</span><br>' + escapeHTML(res.clients[i].v) + '</td>';
 			}
 			tr += '<td onclick="select(' + res.clients[i].i + ')"><b>' + res.clients[i].m + '</b><br>' +  escapeHTML(res.clients[i].a) + '</td>';
 			tr += '<td onclick="select(' + res.clients[i].i + ')">' + res.clients[i].p + '</td>';
@@ -71,7 +73,7 @@ function getResults() {
 			document.getElementById('saved-users').className = "";
 		}
 		clientNames.innerHTML = "(" + res.nameList.length + "/50)";
-		var tr = '<tr><th>Name</th><th><a onclick="clearNameList()" class="button secondary right">Reset</a></th></tr>';
+		var tr = '<tr><th>{% t users.card-1.table.name %}</th><th><a onclick="clearNameList()" class="button secondary right">{% t global.reset %}</a></th></tr>';
 		for (var i = 0; i < res.nameList.length; i++) {
 
 			tr += '<tr>';
@@ -86,7 +88,7 @@ function getResults() {
 
 	}, function() {
 		fadeIn();
-		notify("Reconnect to Wi-Fi network (E6)");
+		notify("{% t errors.E6 %} (E6)");
 		checkConnection();
 	}, 3000);
 
@@ -100,7 +102,7 @@ function scan() {
 			toggleBtn(true);
 			
 		} else {
-			notify("INFO: No Wi-Fi network(s) selected! (E7)");
+			notify("{% t errors.E7 %} (E7)");
 			countdown(true);
 		}
 	});
@@ -112,7 +114,7 @@ function select(num) {
 		previousCall = time;
 		getResponse("clientSelect.json?num=" + num, function(responseText) {
 			if (responseText == "true") getResults();
-			else notify("ERROR: Bad response 'clientSelect.json' (E8)");
+			else notify("{% t errors.bad-response %} 'clientSelect.json' (E8)");
 		});
 	}
 }
@@ -131,7 +133,7 @@ function clearNameList(bypass) {
 	if (bypass || confirm("Remove all saved users?") == true) {
 		getResponse("clearNameList.json", function(responseText) {
 			if (responseText == "true") getResults();
-			else notify("ERROR: Bad response 'clearNameList.json' (E9)");
+			else notify("{% t errors.bad-response %} 'clearNameList.json' (E9)");
 		});
 	}
 }
@@ -144,7 +146,7 @@ function addClient() {
 			var nameReset = document.getElementById('cName');
 			macReset.value = '';
 			nameReset.value = '';
-		} else notify("Invalid MAC address (E10)");
+		} else notify("{% t errors.E10 %} (E10)");
 	});
 }
 
@@ -153,7 +155,7 @@ function setName(id) {
 	if (newName != null) {
 		getResponse("setName.json?id=" + id + "&name=" + newName, function(responseText) {
 			if (responseText == "true") getResults();
-			else notify("ERROR: Bad response 'editNameList.json' (E11)");
+			else notify("{% t errors.bad-response %}e 'editNameList.json' (E11)");
 		});
 	}
 }
@@ -164,7 +166,7 @@ function editNameList(id) {
 	if (newName != null) {
 		getResponse("editNameList.json?id=" + id + "&name=" + newName, function(responseText) {
 			if (responseText == "true") getResults();
-			else notify("ERROR: Bad response 'editNameList.json' (E12)");
+			else notify("{% t errors.bad-response %} 'editNameList.json' (E12)");
 		});
 	}
 }
@@ -172,27 +174,27 @@ function editNameList(id) {
 function deleteName(id) {
 	getResponse("deleteName.json?num=" + id, function(responseText) {
 		if (responseText == "true") getResults();
-		else notify("ERROR: Bad response 'deleteName.json' (E13)");
+		else notify("{% t errors.bad-response %} 'deleteName.json' (E13)");
 	});
 }
 
 function add(id) {
 	getResponse("addClientFromList.json?num=" + id, function(responseText) {
 		if (responseText == "true") getResults();
-		else notify("ERROR: Bad response 'addClientFromList.json' (E14)");
+		else notify("{% t errors.bad-response %} 'addClientFromList.json' (E14)");
 	});
 }
 function countdown(stop) {
 	if (stop == true) {
 		clearInterval(startCountdown)
 	} else if (countdownRemaining == 0) {
-		notify("Scan complete! Reconnect and reload the page");
+		notify("{% t users.strings.3 %}");
 		indicate(true);
 		clearInterval(startCountdown);
 		autoReload();
 	} else {
 		if (countdownRemaining == '') countdownRemaining = scanTime;
-		notify("Scanning for users ~ "+countdownRemaining+"s remaining");
+		notify("{% t users.strings.4 %} ~ "+countdownRemaining+"s {% t users.strings.4.1 %}");
 		countdownRemaining--;
 	}
 }

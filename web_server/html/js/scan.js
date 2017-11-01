@@ -1,3 +1,5 @@
+---
+---
 var table = document.getElementsByTagName('table')[0],
 	networkInfo = getE('networksFound'),
 	scanInfo = getE('spinner-container'),
@@ -5,7 +7,7 @@ var table = document.getElementsByTagName('table')[0],
 	startStopScan = getE('startStopScan'),
 	selectAll = getE('selectAll'),
 	autoScan = false,
-	tableHeaderHTML = '<tr><th width="8%"></th><th width="17%">Signal</th><th width="22%">SSID</th><th width="15%">Security</th><th width="8%">Ch.</th></tr>',
+	tableHeaderHTML = '<tr><th width="8%"></th><th width="17%">{% t scan.card-1.table.signal %}</th><th width="22%">{% t global.ssid %}</th><th width="15%">{% t scan.card-1.table.security %}</th><th width="8%">{% t scan.card-1.table.channel %}</th></tr>',
 	selectAllState = 'not-checked',
 	previousCall = new Date().getTime(),
 	url = window.location.href,
@@ -30,7 +32,7 @@ function getStatus(enc, hid) {
 		  if (enc == 8) buff = "WPA* &nbsp;&#128274;";
 	else  if (enc == 4) buff = "WPA2 &nbsp;&#128274;";
 	else  if (enc == 2) buff = "WPA";
-	else  if (enc == 7) buff = "Open";
+	else  if (enc == 7) buff = "{% t scan.strings.1 %}";
 	else  if (enc == 5) buff = "WEP";
 		  if (hid == 1) buff += "&#128123;";
 	return buff
@@ -46,14 +48,14 @@ function getResults() {
 		} catch(err) {
 			log("INVALID   ~ ", responseText, false)
 			console.error(err)
-			notify('Failed to parse scan results!');
+			notify('{% t errors.E98 %}');
 			return
 		}
 		res.aps = res.aps.sort(compare);
 		networkInfo.innerHTML = '(' + res.aps.length + ')';
 		if (res.aps.length == 0) scan()
 		apMAC.innerHTML = "";
-		if (res.multiAPs == 1) tableHeaderHTML = '<tr><th width="8%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" ' + selectAllState + '><label class="checkbox" for="selectAll"></th><th width="17%">Signal</th><th width="22%">SSID</th><th width="15%">Security</th><th width="8%">Ch.</th></tr>';
+		if (res.multiAPs == 1) tableHeaderHTML = '<tr><th width="8%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" ' + selectAllState + '><label class="checkbox" for="selectAll"></th><th width="17%">{% t scan.card-1.table.signal %}</th><th width="22%">{% t global.ssid %}</th><th width="15%">{% t scan.card-1.table.security %}</th><th width="8%">{% t scan.card-1.table.channel %}</th></tr>';
 		var tr = '';
 		if (res.aps.length > 0) tr += tableHeaderHTML;
 
@@ -95,7 +97,7 @@ function getResults() {
 	}, function() {
 		toggleScan(true);
 		fadeIn();
-		notify("Failed to scan for networks E0")
+		notify("{% t errors.E0 %} E0")
 	});
 }
 
@@ -114,7 +116,7 @@ function scan() {
 	toggleScan(false);
 	getResponse("APScan.json", function(responseText) {
 		if (responseText == "true") getResults();
-		else notify("ERROR: Bad response 'APScan.json' (E3)");
+		else notify("{% t errors.bad-response %} 'APScan.json' (E3)");
 		setTimeout(function(){toggleScan(true)}, 700);
 	});
 }
@@ -125,7 +127,7 @@ function select(num) {
 		previousCall = time;
 		getResponse("APSelect.json?num=" + num, function(responseText) {
 			if (responseText == "true") getResults();
-			else notify("ERROR: Bad response 'APSelect.json' (E4)");
+			else notify("{% t errors.bad-response %} 'APSelect.json' (E4)");
 		});
 	}
 }

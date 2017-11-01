@@ -1,3 +1,5 @@
+---
+---
 var selectedAPs = getE("selectedAPs"),
 	selectedClients = getE("selectedClients"),
 	table = document.getElementsByTagName("table")[0],
@@ -23,15 +25,15 @@ function getResults() {
 		} catch(err) {
 			log("INVALID   ~ ", responseText, false)
 			console.error(err)
-			notify('Failed to parse saved SSIDs, clearing...')
+			notify('{% t errors.E100 %}')
 			clearSSID()
 			return
 		}
 		if (res.aps.length == 0) {document.getElementById("selectedNetworksDevices").className = "dn";var aps = ""} else {document.getElementById("selectedNetworksDevices").className = "card-container";var aps = "<tr><th>SSID</th><th></th></tr>"}
-		var clients = "<tr><th>MAC Address</th><th>Vendor</th></tr>";
-		var tr = "<tr><th>Attack</th><th>Status</th><th>Switch</th></tr>";
+		var clients = "<tr><th>{% t attack.card-3.header-1 %}</th><th>{% t attack.card-3.header-2 %}</th></tr>";
+		var tr = "<tr><th>{% t attack.card-1.table.attack %}</th><th>{% t attack.card-1.table.status %}</th><th>{% t attack.card-1.table.switch %}</th></tr>";
 		for (var i = 0; i < res.aps.length; i++) {
-			aps += "<tr><td>" + res.aps[i] + "</td><td><button class='clone' onclick=\"cloneSSID('" + escapeHTML(res.aps[i]) + "')\"><svg viewBox='0 0 1000 1000'xmlns=http://www.w3.org/2000/svg><path d='M700.5,10H165.9c-49.2,0-89.1,39.9-89.1,89.1v623.6h89.1V99.1h534.5V10L700.5,10z M834.1,188.2h-490c-49.2,0-89.1,39.9-89.1,89.1v623.6c0,49.2,39.9,89.1,89.1,89.1h490c49.2,0,89.1-39.9,89.1-89.1V277.3C923.2,228.1,883.3,188.2,834.1,188.2z M834.1,900.9h-490V277.3h490V900.9z'/></svg>clone</button></td></tr>";
+			aps += "<tr><td>" + res.aps[i] + "</td><td><button class='clone' onclick=\"cloneSSID('" + escapeHTML(res.aps[i]) + "')\"><svg viewBox='0 0 1000 1000'xmlns=http://www.w3.org/2000/svg><path d='M700.5,10H165.9c-49.2,0-89.1,39.9-89.1,89.1v623.6h89.1V99.1h534.5V10L700.5,10z M834.1,188.2h-490c-49.2,0-89.1,39.9-89.1,89.1v623.6c0,49.2,39.9,89.1,89.1,89.1h490c49.2,0,89.1-39.9,89.1-89.1V277.3C923.2,228.1,883.3,188.2,834.1,188.2z M834.1,900.9h-490V277.3h490V900.9z'/></svg>{% t attack.card-2.button %}</button></td></tr>";
 		}
 		for (var i = 0; i < res.clients.length; i++) {
 			clients += "<tr><td>" + res.clients[i].substr(0,res.clients[i].indexOf(' ')) + "</td><td>" + res.clients[i].substr(res.clients[i].indexOf(' ')+1).split("-", 1) + "</td></tr>";
@@ -59,20 +61,20 @@ function getResults() {
 				tr += "<td class='red' id='status" + i + "'>" + res.attacks[i].status + "</td>";
 			}
 			if (res.attacks[i].running) {
-				tr += "<td><button class='redBtn' onclick='startStop(" + i + ")'>stop</button></td>";
+				tr += "<td><button class='redBtn' onclick='startStop(" + i + ")'>{% t global.stop %}</button></td>";
 			} else {
 				if(res.attacks[i].status == "No network(s)") {
-					tr += "<td><button disabled=''>start</button></td>";
+					tr += "<td><button disabled=''>{% t global.start %}</button></td>";
 				} else {
-					tr += "<td><button class='secondary' onclick='startStop(" + i + ")'>start</button></td>";
+					tr += "<td><button class='secondary' onclick='startStop(" + i + ")'>{% t global.start %}</button></td>";
 				}
 			}
 			tr += "</tr>";
 			if (~res.attacks[i].name.indexOf('Beacon')) {
 				if (res.randomMode == 1) {
-					tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>running</td><td><button class='redBtn' id='randomBtn' onclick='random()'>stop</button></td></tr>"
+					tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>{% t attack.card-1.table.random %} <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>{% t attack.strings.3 %}</td><td><button class='redBtn' id='randomBtn' onclick='random()'>{% t global.stop %}</button></td></tr>"
 				} else {
-					tr += "<tr><td class='darken-on-hover' onclick='changeInterval()'>Random <span class='light'>"+randomIntrvl+"s</span></td><td class='green'>ready</td><td><button id='randomBtn' class='secondary' onclick='random()'>start</button></td></tr>"
+					tr += "<tr><td class='darken-on-hover' onclick='changeInterval()'>{% t attack.card-1.table.random %} <span class='light'>"+randomIntrvl+"s</span></td><td class='green'>{% t attack.strings.2 %}</td><td><button id='randomBtn' class='secondary' onclick='random()'>{% t global.start %}</button></td></tr>"
 				}
 			}
 		}
@@ -83,7 +85,7 @@ function getResults() {
 			data = res.ssid;
 			ssidCounter.innerHTML = " ("+ data.length + "/48)";
 
-			var tr = "<tr><th>SSID</th><th><a class='button secondary right' onclick='resetSSID()'>discard changes</a></th></tr>";
+			var tr = "<tr><th>{% t global.ssid %}</th><th><a class='button secondary right' onclick='resetSSID()'>{% t attack.card-5.button-3 %}</a></th></tr>";
 			for (var i = 0; i < data.length; i++) {
 				tr += "<tr>";
 				tr += "<td>" + escapeHTML(data[i][0]) + "</td>";
@@ -110,7 +112,7 @@ function startStop(num) {
 	getResponse("attackStart.json?num=" + num, function(responseText) {
 		getE("status" + num).innerHTML = "...";
 		if (responseText == "true") getResults();
-		else notify("No network(s) selected! (E15)");
+		else notify("{% t errors.E15 %} (E15)");
 	});
 }
 
@@ -121,7 +123,7 @@ function addSSID() {
 	} else {
 		var _ssidName = ssid.value;
 		if (_ssidName.length > 0) {
-			if (data.length >= 64) notify("SSID list full (E16)", 2500);
+			if (data.length >= 64) notify("{% t errors.E16 %}", 2500);
 			else {
 				getResponse("addSSID.json?ssid=" + _ssidName + "&num=" + num.value + "&enc=" + enc.checked, getResults);
 			}
@@ -144,7 +146,7 @@ function deleteSSID(num) {
 function clearSSID() {
 	indicate(true);
 	getResponse("clearSSID.json", getResults);
-	notify("Cleared, don't forget to click save!", 4000)
+	notify("{% t errors.E99 %}", 4000)
 }
 
 function saveSSID() {
@@ -161,7 +163,7 @@ function random() {
 }
 
 function changeInterval() {
-	var newRandomIntrvl = prompt("Random attack interval", randomIntrvl);
+	var newRandomIntrvl = prompt("{% t attack.strings.1 %}", randomIntrvl);
 	if (isNaN(newRandomIntrvl)=== false && newRandomIntrvl) {
 		randomIntrvl = newRandomIntrvl;
 		getResults();

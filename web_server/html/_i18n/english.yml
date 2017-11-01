@@ -8,6 +8,10 @@ nav:
 
 global:
     save: "Save"
+    reset: "Reset"
+    ssid: "SSID"
+    start: "Start"
+    stop: "Stop"
 
 setup:
     page-1:
@@ -22,8 +26,7 @@ setup:
     page-2:
         header: "Setup Wi-PWN"
         card:
-            field-1: "SSID"
-            field-2: "Password"
+            field-1: "Password"
             toggle-1: "Enable dark mode"
             button: "Continue"
 
@@ -38,17 +41,33 @@ scan:
     title: "Scan"
     card-1:
         header: "Scan for networks"
+        table:
+            signal: "Signal"
+            security: "Security"
+            channel: "Ch."
+    strings:
+        1: "Open"
 
 users:
     title: "Users"
     card-1:
         header: "Scan for Wi-Fi users"
+        table:
+            name: "Name"
+            info: "Client info"
+            packets: "Pkts"
     card-2:
         header: "Saved users"
     card-3:
         field-1: "MAC Address"
         field-2: "Name"
         button-1: "Add"
+    strings:
+        1: "Saved client list is corrupt, reset it?"
+        2: "Clearing the client list..."
+        3: "Scan complete! Reconnect and reload the page"
+        4: "Scanning for users" # ~ 10s
+        4.1: "remaining"
 
 attack:
     title: "Attack"
@@ -58,28 +77,28 @@ attack:
             attack: "Attack"
             status: "Status"
             switch: "Switch"
-        attacks:
-            deauth: "Deauth"
-            beacon: "Beacon"
             random: "Random"
-            probe: "Probe-Request"
-            start: "Start"
-            stop: "Stop"
     card-2:
         header: "Selected networks &amp; users"
+        button: "Clone"
     card-3:
-        header:
+        header-1: "MAC Address"
+        header-2: "Vendor"
     card-4:
         header: "Add SSID"
-        field-1: "SSID"
         toggle-1: "Generate random"
-        field-2: "Number of clones"
+        field-1: "Number of clones"
         toggle-2: "Encrypted"
         button: "Add"
     card-5:
         header: "Saved SSIDs"
         button-1: "Clear"
         button-2: "Save"
+        button-3: "Discard changes"
+    strings:
+        1: "Random attack interval"
+        2: "ready"
+        3: "running"
 
 detector:
     title: "Deauth detector"
@@ -111,7 +130,17 @@ error:
     page-header: "Page not found"
 
 errors:
+    bad-response: "ERROR: Bad response"
+    E0: "Failed to scan for networks!"
+    E6: "Reconnect to Wi-Fi network"
+    E7: "INFO: No Wi-Fi network(s) selected!"
+    E10: "Invalid MAC address"
+    E15: "No network(s) selected!"
+    E16: "SSID list full (E16)"
     E26: "Failed to restart Wi-PWN!"
     E27: "Failed to restart Wi-PWN!"
     E28: "Failed to save settings!"
     E29: "Failed to save settings!"
+    E98: "Failed to parse scan results!"
+    E99: "Cleared, don't forget to click save!"
+    E100: "Failed to parse saved SSIDs, clearing..."

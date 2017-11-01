@@ -6,7 +6,7 @@ layout: page
 <div class="card-container">
 	<div class="settingsHeader">{% t attack.card-1.header %}</div>
 	<div class="card">
-		<table><tbody><tr><th>{% t attack.card-1.table.attack %}</th><th>{% t attack.card-1.table.status %}</th><th>{% t attack.card-1.table.switch %}</th></tr><tr><td>{% t attack.card-1.attacks.deauth %}</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(0)" disabled="">{% t attack.card-1.attacks.start %}</button></td></tr><tr><td>{% t attack.card-1.attacks.beacon %}</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">{% t attack.card-1.attacks.start %}</button></td></tr><tr><td>{% t attack.card-1.attacks.random %} <span class='light'>5s</span></td><td></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">{% t attack.card-1.attacks.start %}</button></td></tr><tr><td>{% t attack.card-1.attacks.probe %}</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(2)" disabled="">{% t attack.card-1.attacks.start %}</button></td></tr></tbody></table>
+		<table><tbody><tr><th>{% t attack.card-1.table.attack %}</th><th>{% t attack.card-1.table.status %}</th><th>{% t attack.card-1.table.switch %}</th></tr><tr><td>Deauth</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(0)" disabled="">{% t global.start %}</button></td></tr><tr><td>Beacon</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">{% t global.start %}</button></td></tr><tr><td>{% t attack.card-1.table.random %} <span class='light'>5s</span></td><td></td><td><button class="attackBtn" onclick="startStop(1)" disabled="">{% t global.start %}</button></td></tr><tr><td>Probe-Request</td><td class="red"></td><td><button class="attackBtn" onclick="startStop(2)" disabled="">{% t global.start %}</button></td></tr></tbody></table>
 	</div>
 	<hr>
 </div>
@@ -27,7 +27,7 @@ layout: page
 				<div class="col-6">
 					<div class="input-container" id="ssidContainer">
 						<input placeholder=" " id="ssid" required="" type="text" minlength="1" maxlength="32">
-						<label for="ssid">{% t attack.card-4.field-1 %}</label>
+						<label for="ssid">{% t global.ssid %}</label>
 					</div>
 				</div>
 				<div class="col-6">
@@ -42,7 +42,7 @@ layout: page
 				<div class="col-6">
 					<div class="input-container">
 						<input placeholder=" " type="number" required="" id="num" min="0" max="48" value="48">
-						<label for="num">{% t attack.card-4.field-2 %}</label>
+						<label for="num">{% t attack.card-4.field-1 %}</label>
 					</div>
 				</div>
 				<div class="col-6">
