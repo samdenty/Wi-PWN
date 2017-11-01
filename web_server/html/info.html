@@ -16,6 +16,14 @@ layout: page
 				| replace_first: '$$', '<a href="https://creativecommons.org/licenses/by-nc/4.0/">'
 				| replace_first: '$$', '</a>'
 				}}
+				{% if site.translations[site.lang].translation.name %}
+					{% if site.translations[site.lang].translation.url %}
+						{% capture translated-by %}<a href="{% t translation.url %}" target="blank_">{% t translation.name %} &#128150;</a>.{% endcapture %}
+						{{site.translations[site.lang].global.translated-by | replace_first: '$$', translated-by | capitalize }}
+					{% else %}
+						{{site.translations[site.lang].global.translated-by | replace_first: '$$', site.translations[site.lang].translation.name | capitalize }} &#128150;.
+					{% endif %}
+				{% endif %}
 			</p>
 			<a href="https://samdenty99.github.io">
 				<h2 class="center a light-text">
