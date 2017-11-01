@@ -20,7 +20,7 @@
 */
 
 // Including some libraries we need //
-#include <Arduino.h>
+#include <Arduino.h>e
 
 #include <ESP8266WiFi.h>
 #ifdef USE_CAPTIVE_PORTAL
@@ -235,7 +235,7 @@ void loadSettingsHTML() {
   sendFile(200, "text/html", data_settings_HTML, sizeof(data_settings_HTML), false);
 }
 void load404() {
-  sendFile(404, "text/html", data_error_HTML, sizeof(data_error_HTML), false);
+  sendFile(404, "text/html", data_404_HTML, sizeof(data_404_HTML), false);
 }
 void loadInfoHTML(){
   sendFile(200, "text/html", data_info_HTML, sizeof(data_info_HTML), false);

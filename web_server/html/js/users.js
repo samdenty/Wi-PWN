@@ -46,7 +46,7 @@ function getResults() {
 
 		res.clients = res.clients.sort(compare);
 
-		clientsFound.innerHTML = '(' + res.clients.length + ')';
+		clientsFound.innerHTML = res.clients.length;
 
 		var tr = '';
 		if (res.clients.length > 1) tableHeaderHTML = '<tr><th width="11%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th><th>{% t global.name %}</th><th>{% t users.card-1.table.info %}</th><th>{% t users.card-1.table.packets %}</th></tr>';
@@ -72,7 +72,7 @@ function getResults() {
 		if (res.nameList.length != 0) {
 			document.getElementById('saved-users').className = "";
 		}
-		clientNames.innerHTML = "(" + res.nameList.length + "/50)";
+		clientNames.innerHTML = res.nameList.length + "/50";
 		var tr = '<tr><th>{% t global.name %}</th><th><a onclick="clearNameList()" class="button secondary right">{% t global.reset %}</a></th></tr>';
 		for (var i = 0; i < res.nameList.length; i++) {
 

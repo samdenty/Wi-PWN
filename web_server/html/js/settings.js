@@ -46,7 +46,7 @@ function getData() {
 			res = JSON.parse(responseText);
 		} catch (e) {
 			fadeIn();
-			notify("ERROR: Reset the settings.  (E17)");
+			notify("{% t error.E17 %}  (E17)");
 			return;
 		}
 		try {
@@ -56,7 +56,7 @@ function getData() {
 			log("INVALID   ~ ", responseText, false)
 			console.error(err)
 			fadeIn();
-			notify("ERROR: Reset the settings.  (E17)");
+			notify("{% t error.E17 %}  (E17)");
 			return
 		}
 		ssid.value = res.ssid;
@@ -90,7 +90,7 @@ function getData() {
 		switchClient();
 		fadeIn();
 	}, function () {
-		notify("ERROR: Failed to load settings.json  (E40)");
+		notify("{% t error.E95 %}  (E95)");
 		fadeIn();
 	});
 }
@@ -135,7 +135,7 @@ function saveSettings() {
 			checkboxChanges = false;
 		} else {
 			indicate(false);
-			notify("Failed to save settings! (E18)");
+			notify("{% t error.E18 %} (E18)");
 		}
 	}, function() {
 		getResponse("settings.json", function(responseText) {
@@ -148,13 +148,13 @@ function saveSettings() {
 			checkboxChanges = false;
 		}, function () {
 			indicate(false);
-			notify("Failed to save settings! (E19)");
+			notify("{% t error.E19 %} (E19)");
 		});
 	});
 }
 
 function resetSettings() {
-	if (confirm("Reset Wi-PWN to default settings?") == true) {
+	if (confirm("{% t settings.strings.A %}") == true) {
 		showLoading();
 		getResponse("settingsReset.json", function(responseText) {
 			if (responseText == "true") {
@@ -163,11 +163,11 @@ function resetSettings() {
 				restart(true);
 				setTimeout(function() { window.location = "/" }, 3000)
 			} else {
-				notify("Failed to reset settings! (E20)");
+				notify("{% t error.E20 %} (E20)");
 				indicate(false);
 			}
 		}, function() {
-			notify("Failed to reset settings! (E21)");
+			notify("{% t error.E21 %} (E21)");
 			indicate(false);
 		});
 	}
@@ -216,7 +216,7 @@ getData();
 
 	window.addEventListener("beforeunload", function(e) {
 		if (inputChanges || checkboxChanges) {
-			var confirmationMessage = 'All changes will be lost!';
+			var confirmationMessage = '{% t settings.strings.B %}';
 			(e || window.event).returnValue = confirmationMessage;
 			return confirmationMessage;
 		}

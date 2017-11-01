@@ -20,6 +20,7 @@ global:
     save: "Save"
     reset: "Reset"
     ssid: "SSID"
+    password: "Password"
     start: "Start"
     stop: "Stop"
     name: "Name"
@@ -54,7 +55,7 @@ setup:
 scan:
     title: "Scan"
     card-1:
-        header: "Scan for networks $$"
+        header: "Scan for networks ($$)"
         table:
             signal: "Signal"
             security: "Security"
@@ -65,12 +66,12 @@ scan:
 users:
     title: "Users"
     card-1:
-        header: "Scan for Wi-Fi users $$"
+        header: "Scan for Wi-Fi users ($$)"
         table:
             info: "Client info"
             packets: "Pkts"
     card-2:
-        header: "Saved users $$"
+        header: "Saved users ($$)"
     card-3:
         field-1: "MAC Address"
         button-1: "Add"
@@ -140,7 +141,46 @@ control:
 
 settings:
     title: "Settings"
-    page-header: 
+    card-1:
+        header: "Wi-Fi server"
+        field-1: "Channel"
+        toggle-1: "Hide SSID"
+    card-2:
+        header: "Wi-Fi client"
+        field-1: "Network SSID"
+        field-2: "Network password"
+        field-3: "ESP hostname"
+        toggle-1: "Enable WiFi client"
+    card-3:
+        header: "Customization"
+        field-1: "Cache expiration time"
+        field-2: "LED Pin"
+        toggle-1: "Enable dark mode"
+        toggle-2: "Enable server caching"
+        toggle-3: "Enable LED indicator"
+    card-4:
+        header: "UI tweaks"
+        toggle-1: "Simplify interface"
+        toggle-2: "Smaller table rows"
+        toggle-3: "Show reboot button"
+    card-5:
+        header: "Scan &amp; Attack"
+        field-1: "Scan timeout"
+        field-2: "Attack timeout"
+        field-3: "MAC address"
+        toggle-1: "Random MAC address"
+        toggle-2: "Scan for hidden networks" 
+        toggle-3: "Select multiple networks"
+        toggle-4: "Simultaneous attacks"
+    card-6:
+        header: "Advanced"
+        field-1: "Deauth reason-code"
+        field-2: "Packet rate (pkts/s)"
+        field-3: "MAC Change Interval"
+        toggle-1: "1s Beacon interval"
+    strings:
+        A: "Reset Wi-PWN to default settings?"
+        B: "All changes will be lost!"
 
 info:
     title: "Info"
@@ -187,6 +227,11 @@ errors:
     E10: "Invalid MAC address"
     E15: "No network(s) selected!"
     E16: "SSID list full (E16)"
+    E17: "ERROR: Reset the settings"
+    E18: "Failed to save settings!"
+    E19: "Failed to save settings!"
+    E20: Failed to reset settings!
+    E21: "Failed to reset settings!"
     E22: "Reconnect and reload this page"
     E23: "Failed to restart Wi-PWN!"
     E24: "Failed to restart Wi-PWN!"
@@ -205,8 +250,10 @@ errors:
     E40: "Failed to update PIN name!"
     E41: "Failed to reset saved entries!"
     E42: "Failed to reset saved entries!"
+    E95: "ERROR: Failed to load settings.json"
     E96: "Reconnect and reload this page"
     E97: "Didn't receive a response!"
     E98: "Failed to parse scan results!"
     E99: "Cleared, don't forget to click save!"
     E100: "Failed to parse saved SSIDs, clearing..."
+    S1: "Are you sure you want to reboot Wi-PWN?"

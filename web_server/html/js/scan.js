@@ -52,7 +52,7 @@ function getResults() {
 			return
 		}
 		res.aps = res.aps.sort(compare);
-		networkInfo.innerHTML = '(' + res.aps.length + ')';
+		networkInfo.innerHTML = res.aps.length;
 		if (res.aps.length == 0) scan()
 		apMAC.innerHTML = "";
 		if (res.multiAPs == 1) tableHeaderHTML = '<tr><th width="8%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" ' + selectAllState + '><label class="checkbox" for="selectAll"></th><th width="17%">{% t scan.card-1.table.signal %}</th><th width="22%">{% t global.ssid %}</th><th width="15%">{% t scan.card-1.table.security %}</th><th width="8%">{% t scan.card-1.table.channel %}</th></tr>';

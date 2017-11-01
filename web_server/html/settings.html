@@ -6,43 +6,43 @@ layout: page
 ---
 <form id="settings" class="container">
 	<div class="card-container">
-		<div class="settingsHeader">Wi-Fi server</div>
+		<div class="settingsHeader">{% t settings.card-1.header %}</div>
 		<div class="card-small smaller">
 			<div class="row">
 				<div class="col-12">
 					<div class="input-container">
 						<input placeholder=" " id="ssid" type="text" required="" minlength="1" maxlength="32" autocorrect="off" autocapitalize="none" spellcheck="false">
-						<label for="ssid">SSID</label>
+						<label for="ssid">{% t global.ssid %}</label>
 					</div>
 				</div>
 				<div class="col-12">
 					<div class="input-container">
 						<input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32" autocorrect="off" autocapitalize="none" spellcheck="false">
-						<label for="password">Password</label>
+						<label for="password">{% t global.password %}</label>
 					</div>
 				</div>
 				<div class="col-6">
 					<div class="input-container">
 						<input placeholder=" " id="apChannel" type="number" required="" min="1" max="14">
-						<label for="apChannel">Channel</label>
+						<label for="apChannel">{% t settings.card-1.field-1 %}</label>
 					</div>
 				</div>
 				<div class="col-6">
 					<label for="ssidHidden" class="checkboxContainer invert">
 						<input type="checkbox" name="ssidHidden" id="ssidHidden" value="false">
 						<label class="checkbox" for="ssidHidden"></label>
-						Hide SSID
+						{% t settings.card-1.toggle-1 %}
 					</label>
 				</div>
 			</div>
 		</div>
 	</div><div class="card-container">
-		<div class="settingsHeader">Wi-Fi client</div>
+		<div class="settingsHeader">{% t settings.card-2.header %}</div>
 		<div class="card-small smaller">
 			<div class="row">
 				<div class="col-12">
 					<label for="wifiClient" class="checkboxContainer">
-						Enable WiFi client
+						{% t settings.card-2.toggle-1 %}
 						<input type="checkbox" name="wifiClient" id="wifiClient" value="false">
 						<label class="checkbox" for="wifiClient"></label>
 					</label>
@@ -52,38 +52,38 @@ layout: page
 						<br>
 						<div class="input-container">
 							<input placeholder=" " id="ssidClient" type="text" required="" minlength="1" maxlength="32" autocorrect="off" autocapitalize="none" spellcheck="false">
-							<label for="ssidClient">Network SSID</label>
+							<label for="ssidClient">{% t settings.card-2.field-1 %}</label>
 						</div>
 					</div>
 					<div class="col-12">
 						<div class="input-container">
 							<input placeholder=" " id="passwordClient" type="text" required="" minlength="8" maxlength="32" autocorrect="off" autocapitalize="none" spellcheck="false">
-							<label for="passwordClient">Network password</label>
+							<label for="passwordClient">{% t settings.card-2.field-2 %}</label>
 						</div>
 					</div>
 					<div class="col-12">
 						<div class="input-container">
 							<input placeholder=" " id="hostname" type="text" required="" minlength="1" maxlength="12" autocorrect="off" autocapitalize="none" spellcheck="false">
-							<label for="hostname">ESP hostname</label>
+							<label for="hostname">{% t settings.card-2.field-3 %}</label>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div><div class="card-container">
-		<div class="settingsHeader">Customization</div>
+		<div class="settingsHeader">{% t settings.card-3.header %}</div>
 		<div class="card-small smaller">
 			<div class="row">
 				<div class="col-12">
 					<label for="darkMode" class="checkboxContainer">
-						Enable dark mode
+						{% t settings.card-3.toggle-1 %}
 						<input type="checkbox" name="darkMode" id="darkMode" value="false">
 						<label class="checkbox" for="darkMode">
 					</label>
 				</div>
 				<div class="col-12">
 					<label for="cache" class="checkboxContainer">
-						Enable server caching
+						{% t settings.card-3.toggle-2 %}
 						<input type="checkbox" name="cache" id="cache" value="false">
 						<label class="checkbox" for="cache">
 					</label>
@@ -91,13 +91,13 @@ layout: page
 				<div class="col-12">
 					<div class="input-container" id="cacheContainer">
 						<input placeholder=" " id="serverCache" type="number" required="" min="0" max="9999">
-						<label for="serverCache">Cache expiration time</label>
+						<label for="serverCache">{% t settings.card-3.field-1 %}</label>
 					</div>
 				</div>
 				<br><br><hr>
 				<div class="col-12">
 					<label for="useLed" class="checkboxContainer">
-						Enable LED indicator
+						{% t settings.card-3.toggle-3 %}
 						<input type="checkbox" name="useLed" id="useLed" value="false">
 						<label class="checkbox" for="useLed">
 					</label>
@@ -105,32 +105,32 @@ layout: page
 				<div class="col-12">
 					<div class="input-container" id="ledContainer">
 						<input placeholder=" " id="ledPin" type="number" required="" min="0" max="18">
-						<label for="ledPin">LED Pin</label>
+						<label for="ledPin">{% t settings.card-3.field-2 %}</label>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div><div class="card-container">
-		<div class="settingsHeader">UI tweaks</div>
+		<div class="settingsHeader">{% t settings.card-4.header %}</div>
 		<div class="card-small smaller">
 			<div class="row">
 				<div class="col-12">
 					<label for="simplify" class="checkboxContainer">
-						Simplify interface
+						{% t settings.card-4.toggle-1 %}
 						<input type="checkbox" name="simplify" id="simplify" value="false">
 						<label class="checkbox" for="simplify">
 					</label>
 				</div>
 				<div class="col-12">
 					<label for="smaller" class="checkboxContainer">
-						Smaller table rows
+						{% t settings.card-4.toggle-2 %}
 						<input type="checkbox" name="smaller" id="smaller" value="false">
 						<label class="checkbox" for="smaller">
 					</label>
 				</div>
 				<div class="col-12">
 					<label for="showReboot" class="checkboxContainer">
-						Show reboot button
+						{% t settings.card-4.toggle-3 %}
 						<input type="checkbox" name="showReboot" id="showReboot" value="false">
 						<label class="checkbox" for="showReboot">
 					</label>
@@ -138,50 +138,50 @@ layout: page
 			</div>
 		</div>
 	</div><div class="card-container">
-		<div class="settingsHeader">Scan &amp; Attack</div>
+		<div class="settingsHeader">{% t settings.card-5.header %}</div>
 		<div class="card-small">
 			<div class="row">
 				<div class="col-12">
 					<div class="input-container">
 						<input placeholder=" " id="scanTime" type="number" required="" min="1" max="255">
-						<label for="scanTime">Scan timeout</label>
+						<label for="scanTime">{% t settings.card-5.field-1 %}</label>
 					</div>
 				</div>
 				<div class="col-12">
 					<div class="input-container">
 						<input placeholder=" " id="timeout" type="number" required="" min="-1" max="65536">
-						<label for="timeout">Attack timeout</label>
+						<label for="timeout">{% t settings.card-5.field-2 %}</label>
 					</div>
 				</div>
 				<div class="col-12">
 					<div class="input-container" id="macContainer">
 						<input placeholder=" " id="macAp" type="text" required="" minLength="1" maxLength="14" autocorrect="off" autocapitalize="none" spellcheck="false">
-						<label for="macAp">MAC address</label>
+						<label for="macAp">{% t settings.card-5.field-3 %}</label>
 					</div>
 				</div>
 				<div class="col-12">
-					<label for="randMacAp" class="checkboxContainer">Random MAC address
+					<label for="randMacAp" class="checkboxContainer">{% t settings.card-5.toggle-1 %}
 						<input type="checkbox" name="randMacAp" id="randMacAp" value="false">
 						<label class="checkbox" for="randMacAp">
 					</label>
 				</div>
 				<div class="col-12">
 					<label for="apScanHidden" class="checkboxContainer">
-						Scan for hidden networks
+						{% t settings.card-5.toggle-2 %}
 						<input type="checkbox" name="apScanHidden" id="apScanHidden" value="false">
 						<label class="checkbox" for="apScanHidden">
 					</label>
 				</div>
 				<div class="col-12">
 					<label for="multiAPs" class="checkboxContainer">
-						Select multiple networks
+						{% t settings.card-5.toggle-3 %}
 						<input type="checkbox" name="multiAPs" id="multiAPs" value="false">
 						<label class="checkbox" for="multiAPs">
 					</label>
 				</div>
 				<div class="col-12">
 					<label for="multiAttacks" class="checkboxContainer">
-						Simultaneous attacks
+						{% t settings.card-5.toggle-4 %}
 						<input type="checkbox" name="multiAttacks" id="multiAttacks" value="false">
 						<label class="checkbox" for="multiAttacks">
 					</label>
@@ -189,30 +189,30 @@ layout: page
 			</div>
 		</div>
 	</div><div class="card-container">
-		<div class="settingsHeader">Advanced</div>
+		<div class="settingsHeader">{% t settings.card-6.header %}</div>
 		<div class="card-small">
 			<div class="row">
 				<div class="col-12">
 					<div class="input-container">
 						<input placeholder=" " id="deauthReason" type="number" required="" min="1" max="45">
-						<label for="deauthReason">Deauth reason-code</label>
+						<label for="deauthReason">{% t settings.card-6.field-1 %}</label>
 					</div>
 				</div>
 				<div class="col-12">
 					<div class="input-container">
 						<input placeholder=" " id="packetRate" type="number" required="" min="1" max="300">
-						<label for="packetRate">Packet rate (pkts/s)</label>
+						<label for="packetRate">{% t settings.card-6.field-2 %}</label>
 					</div>
 				</div>
 				<div class="col-12">
 					<div class="input-container">
 						<input placeholder=" " id="macInterval" type="number" required="" min="0" max="65000">
-						<label for="packetRate">MAC Change Interval</label>
+						<label for="packetRate">{% t settings.card-6.field-3 %}</label>
 					</div>
 				</div>
 				<div class="col-12">
 					<label for="beaconInterval" class="checkboxContainer">
-						1s Beacon interval
+						{% t settings.card-6.toggle-1 %}
 						<input type="checkbox" name="beaconInterval" id="beaconInterval" value="false">
 						<label class="checkbox" for="beaconInterval">
 					</label>
@@ -222,7 +222,7 @@ layout: page
 	</div>
 	<div class="card-container dual">
 		<!-- Leave type="button", it prevents the form defaulting to submit buttons -->
-		<button onclick="resetSettings()" class="redBtn" type="button">reset</button>
-		<button class="button-primary right" onclick="saveSettings()" type="button">save</button>
+		<button onclick="resetSettings()" class="redBtn" type="button">{% t global.reset %}</button>
+		<button class="button-primary right" onclick="saveSettings()" type="button">{% t global.save %}</button>
 	</div>
 </form>

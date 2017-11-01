@@ -69,7 +69,7 @@ function log(one, two, three) {
 
 
 function checkConnection() {
-	setTimeout(function() {getResponse("ClientScanTime.json", function(responseText) {window.location.reload()}, function() {notify("{% t error.E22 %} (E22)");checkConnection()}, 2000)}, 1300);
+	setTimeout(function() {getResponse("ClientScanTime.json", function(responseText) {window.location.reload()}, function() {notify("{% t errors.E22 %} (E22)");checkConnection()}, 2000)}, 1300);
 }
 
 function autoReload() {
@@ -80,26 +80,26 @@ function restart(noIndication) {
 	if (noIndication == true) {
 		getResponse("restartESP.json?", function(responseText) {
 			if (responseText !== "true") {
-				notify("{% t error.E23 %} (E23)");
+				notify("{% t errors.E23 %} (E23)");
 				showLoading("hide");
 			}
 		}, function() {
-			notify("{% t error.E24 %} (E24)");
+			notify("{% t errors.E24 %} (E24)");
 			showLoading("hide");
 		});
 	} else {
-		if (confirm("Are you sure you want to reboot Wi-PWN?") == true) {
+		if (confirm("{% t errors.S1 %}") == true) {
 			vibrate();
 			sL.className = "";
 			showLoading();
 			autoReload();
 			getResponse("restartESP.json?", function(responseText) {
 				if (responseText !== "true") {
-					notify("{% t error.E23 %} (E23)");
+					notify("{% t errors.E23 %} (E23)");
 					showLoading("hide");
 				}
 			}, function() {
-				notify("{% t error.E24 %} (E24)");
+				notify("{% t errors.E24 %} (E24)");
 				showLoading("hide");
 			});
 		}
@@ -133,9 +133,9 @@ function getResponse(adr, callback, timeoutCallback, timeout, method) {
 	if (timeoutCallback == null) {
 		timeoutCallback = function() {
 			getResponse("ClientScanTime.json", function() {
-				notify("{% t error.E97 %} (E97)");
+				notify("{% t errors.E97 %} (E97)");
 			}, function() {
-				notify("{% t error.E96 %} (E96)");
+				notify("{% t errors.E96 %} (E96)");
 				autoReload();
 			})
 		};
