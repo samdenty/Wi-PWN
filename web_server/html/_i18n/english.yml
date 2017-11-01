@@ -61,7 +61,7 @@ scan:
             security: "Security"
             channel: "Ch."
     strings:
-        A: "Open"
+        A: "Open" # As in `WPA2` / security
 
 users:
     title: "Users"
