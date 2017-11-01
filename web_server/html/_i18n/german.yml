@@ -1,12 +1,4 @@
-# Wi-PWN translation file template
-# 
-# When you see 
-#              $$
-# This means it's going to be replaced with HTML
-# # # # # # # # # # # # # # # # # # # # # # # # #
-# For example
-# `$$click here$$` => `<a href="mypage">click here</a>`
-# 
+
 
 nav:
     scan: "Scannen"
@@ -121,7 +113,7 @@ detector:
         field-2: "GPIO Alarm Pin"
         toggle-2: "Invertiere HIGH/LOW"
         field-3: "Kanal Scann-Zeit (ms)"
-        button-1: "Speichern &amp; Starten"
+        button-1: "Speichern &amp; starten"
     strings:
         A: "Detector läuft! Starte das Gerät neu um ihn auszuschalten"
 
@@ -164,53 +156,53 @@ settings:
         toggle-2: "Kleinere Tabellen-Reihen"
         toggle-3: "Zeige Neustart-Button an"
     card-5:
-        header: "Scan &amp; Attack"
-        field-1: "Scan timeout"
-        field-2: "Attack timeout"
-        field-3: "MAC address"
-        toggle-1: "Random MAC address"
-        toggle-2: "Scan for hidden networks" 
-        toggle-3: "Select multiple networks"
-        toggle-4: "Simultaneous attacks"
+        header: "Scannen &amp; angreifen"
+        field-1: "Scann Timeout"
+        field-2: "Angriffs Timeout"
+        field-3: "MAC Adresse"
+        toggle-1: "Zufällige MAC Adresse"
+        toggle-2: "Scanne nach verborgenen Netzweken" 
+        toggle-3: "Wähle mehrere Netzwerke"
+        toggle-4: "Gleichzeitige Angriffe"
     card-6:
-        header: "Advanced"
+        header: "Erweitert"
         field-1: "Deauth reason-code"
-        field-2: "Packet rate (pkts/s)"
-        field-3: "MAC Change Interval"
-        toggle-1: "1s Beacon interval"
+        field-2: "Paket Rate (pkts/s)"
+        field-3: "MAC Änderungs Intervall"
+        toggle-1: "1s Beacon Intervall"
     strings:
-        A: "Reset Wi-PWN to default settings?"
-        B: "All changes will be lost!"
+        A: "Setze Wi-PWN auf die Standarteinstellungen zurück?"
+        B: "Alle Änderungen gehen verloren!"
 
 info:
     title: "Info"
     card-1:
-        header: "Wi-PWN creator"
-        about: "Wi-PWN was designed by $$Sam Denty$$, from the original project by $$spacehuhn &#128020;$$. Wi-PWN is released under the $$CC BY-NC 4.0$$ license."
+        header: "Wi-PWN Ersteller"
+        about: "Wi-PWN wurde von $$Sam Denty$$ designed, aus dem originalen Projekt von $$spacehuhn &#128020;$$. Wi-PWN steht unter der $$CC BY-NC 4.0$$ Lizenz."
     card-2:
         header: "Wi-PWN"
         table:
-            A: "Wi-PWN version"
-            B: "Check for updates"
-            C: "Update"
-            D: "Uptime / memory"
-            E: "Sent packets"
-            F: "IP / gateway"
-            G: "Versions"
+            A: "Wi-PWN Version"
+            B: "Suche nach Updates"
+            C: "Updaten"
+            D: "Upzeit / Speicher"
+            E: "Gesendete Pakete"
+            F: "IP / Gateway"
+            G: "Versionen"
             H: "Flash &amp; Chip ID"
     card-3:
-        header: "Advanced options"
-        get: "get"
+        header: "Erweiterte Optionen"
+        get: "bekommen"
     card-4:
-        header: "Contributors"
-        paragraph-1: "This software is based upon the work of Stefan Kremser (Spacehuhn)"
-        paragraph-2: "For more information go to $$contributors page$$ on GitHub."
+        header: "Mitwirkende"
+        paragraph-1: "Diese Software basiert auf der Arbeit von Stefan Kremser (Spacehuhn)"
+        paragraph-2: "Weitere Informationen finden Sie unter $$contributors page$$ auf GitHub."
     card-5:
-        header: "Included libraries"
+        header: "Beinhaltete Librarys"
     strings:
-        A: "Failed to load sysinfo.json"
-        B: "OTA update"
-        C: "upload"
+        A: "Das Laden von sysinfo.json ist fahlgeschlagen"
+        B: "OTA Update"
+        C: "Uploaden"
         D: "Other projects"
         E: "Report bug"
         F: "Other projects"
