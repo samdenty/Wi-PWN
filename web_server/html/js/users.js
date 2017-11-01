@@ -11,7 +11,7 @@ var table = document.getElementsByTagName('table')[0],
 	selectAllState = 'not-checked',
 	countdownRemaining = 0,
 	startCountdown,
-	tableHeaderHTML = '<tr><th width="11%"></th><th>{% t users.card-1.table.name %}</th><th>{% t users.card-1.table.info %}</th><th>{% t users.card-1.table.packets %}</th></tr>';
+	tableHeaderHTML = '<tr><th width="11%"></th><th>{% t global.name %}</th><th>{% t users.card-1.table.info %}</th><th>{% t users.card-1.table.packets %}</th></tr>';
 
 function compare(a, b) {
 	if (a.p > b.p) return -1;
@@ -49,7 +49,7 @@ function getResults() {
 		clientsFound.innerHTML = '(' + res.clients.length + ')';
 
 		var tr = '';
-		if (res.clients.length > 1) tableHeaderHTML = '<tr><th width="11%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th><th>{% t users.card-1.table.name %}</th><th>{% t users.card-1.table.info %}</th><th>{% t users.card-1.table.packets %}</th></tr>';
+		if (res.clients.length > 1) tableHeaderHTML = '<tr><th width="11%"><input type="checkbox" name="selectAll" id="selectAll" value="false" onclick="selAll()" '+selectAllState+'><label class="checkbox" for="selectAll"></th><th>{% t global.name %}</th><th>{% t users.card-1.table.info %}</th><th>{% t users.card-1.table.packets %}</th></tr>';
 		tr += tableHeaderHTML;
 
 		for (var i = 0; i < res.clients.length; i++) {
@@ -73,7 +73,7 @@ function getResults() {
 			document.getElementById('saved-users').className = "";
 		}
 		clientNames.innerHTML = "(" + res.nameList.length + "/50)";
-		var tr = '<tr><th>{% t users.card-1.table.name %}</th><th><a onclick="clearNameList()" class="button secondary right">{% t global.reset %}</a></th></tr>';
+		var tr = '<tr><th>{% t global.name %}</th><th><a onclick="clearNameList()" class="button secondary right">{% t global.reset %}</a></th></tr>';
 		for (var i = 0; i < res.nameList.length; i++) {
 
 			tr += '<tr>';

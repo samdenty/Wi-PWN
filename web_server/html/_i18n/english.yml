@@ -12,6 +12,7 @@ global:
     ssid: "SSID"
     start: "Start"
     stop: "Stop"
+    name: "Name"
 
 setup:
     page-1:
@@ -53,14 +54,12 @@ users:
     card-1:
         header: "Scan for Wi-Fi users"
         table:
-            name: "Name"
             info: "Client info"
             packets: "Pkts"
     card-2:
         header: "Saved users"
     card-3:
         field-1: "MAC Address"
-        field-2: "Name"
         button-1: "Add"
     strings:
         1: "Saved client list is corrupt, reset it?"
@@ -110,12 +109,22 @@ detector:
         toggle-2: "Invert HIGH/LOW"
         field-3: "Channel scan time (ms)"
         button-1: "Save &amp; start"
+    strings:
+        1: "Detector running! Restart device to return to normal"
 
 control:
     title: "GPIO Control"
     card-1:
         header: "GPIO Control"
         button-1: "Reset entries"
+        table:
+            pin: "PIN"
+            high: "HIGH"
+    strings:
+        1: "Failed to switch PIN"
+        2: "Name for PIN"
+        3: "Maximum of 10 characters!"
+        4: "Reset saved entries?"
 
 settings:
     title: "Settings"
@@ -137,10 +146,21 @@ errors:
     E10: "Invalid MAC address"
     E15: "No network(s) selected!"
     E16: "SSID list full (E16)"
+    E25: "ERROR: Reset the settings"
     E26: "Failed to restart Wi-PWN!"
     E27: "Failed to restart Wi-PWN!"
     E28: "Failed to save settings!"
     E29: "Failed to save settings!"
+    E30: "Failed to start detector!"
+    E31: "Failed to start detector!"
+    E32: "Failed to save!"
+    E33: "Failed to save!"
+    E34: "Failed to load control.json"
+    E37: "ERROR: Failed to change PIN name"
+    E39: "Failed to update PIN name!"
+    E40: "Failed to update PIN name!"
+    E41: "Failed to reset saved entries!"
+    E42: "Failed to reset saved entries!"
     E98: "Failed to parse scan results!"
     E99: "Cleared, don't forget to click save!"
     E100: "Failed to parse saved SSIDs, clearing..."

@@ -1,3 +1,5 @@
+---
+---
 var tr,
 	pin,
 	high,
@@ -18,7 +20,7 @@ function getData() {
 			notify("ERROR: Reset the settings (E36)");
 			return
 		}
-		tr = "<tr><th>Name</th><th>PIN</th><th>HIGH</th></tr>";
+		tr = "<tr><th>{% t global.name %}</th><th>{% t control.card-1.table.pin %}</th><th>{% t control.card-1.table.high %}</th></tr>";
 		pin = 3;
 		var split = res.pinNames.split(';');
 		for (var i = 0; i < split.length; i++) {
@@ -31,7 +33,7 @@ function getData() {
 		fadeIn();
 	}, function() {
 		fadeIn();
-		notify('Failed to load control.json E0')
+		notify('{% t errors.E34 %} (E34)')
 	});
 }
 
@@ -43,7 +45,7 @@ function switchPin(pin, id) {
 		try {
 			res = JSON.parse(responseText);
 		} catch (e) {
-			notify("Failed to switch PIN " + pin + "! (E37)");
+			notify("{% t control.strings.1 %} " + pin + "! (E37)");
 			showLoading('hide')
 			return;
 		}
@@ -66,30 +68,30 @@ function switchPin(pin, id) {
 				getData();
 				showLoading('hide')
 			} else {
-				notify("Failed to switch PIN " + pin + "! (E41)");
+				notify("{% t control.strings.1 %} " + pin + "! (E41)");
 				showLoading('hide')
 				pinCheckbox.checked = prevState;
 			}
 		}, function() {
-			notify("Failed to switch PIN " + pin + "! (E42)");
+			notify("{% t control.strings.1 %} " + pin + "! (E42)");
 			showLoading('hide')
 			pinCheckbox.checked = prevState;
 		});
 	}, function() {
-		notify("Failed to switch PIN " + pin + "! (E38)");
+		notify("{% t control.strings.1 %} " + pin + "! (E38)");
 		showLoading('hide')
 	});
 }
 
 function setPin(pin, id) {
-	var newName = prompt("Name for PIN D" + pin);
+	var newName = prompt("{% t control.strings.2 %} D" + pin);
 	if (newName) {
 		if (newName.length <= 10) {
 			getResponse("settings.json", function(responseText) {
 				try {
 					res = JSON.parse(responseText);
 				} catch (e) {
-					notify("ERROR: Failed to change PIN name (E37)");
+					notify("{% t errors.E37 %} (E37)");
 					return;
 				}
 				var split = res.pinNames.split(';');
@@ -106,31 +108,31 @@ function setPin(pin, id) {
 					if (responseText == "true") {
 						getData();
 					} else {
-						notify("Failed to update PIN name! (E39)");
+						notify("{% t errors.E39 %} (E39)");
 					}
 				}, function() {
-					notify("Failed to update PIN name! (E40)");
+					notify("{% t errors.E40 %} (E40)");
 				});
 			});
 		} else {
-			notify('Maximum of 10 characters!')
+			notify('{% t control.strings.3 %}')
 		}
 	}
 }
 
 function resetPins() {
-	if (confirm("Reset saved entries?") == true) {
+	if (confirm("{% t control.strings.4 %}") == true) {
 		showLoading();
 		getResponse("settingsSave.json?pinNames=Pin%203%3BPin%204%3BPin%205%3BPin%206%3BPin%207%3BPin%208&pins=000000", function(responseText) {
 			if (responseText == "true") {
 				getData();
 				indicate(true);
 			} else {
-				notify("Failed to reset saved entries! (E34)");
+				notify("{% t errors.E41 %} (E41)");
 				indicate();
 			}
 		}, function() {
-			notify("Failed to reset saved entries (E35)");
+			notify("{% t errors.E42 %} (E42)");
 			indicate();
 		});
 	}

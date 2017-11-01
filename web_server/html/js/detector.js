@@ -1,3 +1,5 @@
+---
+---
 var allChannels = document.getElementById("detectorAllChannels");
 var channel = document.getElementById("detectorChannel");
 var alertPin = document.getElementById("alertPin");
@@ -13,7 +15,7 @@ getResponse("settings.json", function(responseText) {
 	} catch(err) {
 		log("INVALID   ~ ", responseText, false)
 		console.error(err)
-		notify("ERROR: Reset the settings.  (E25)");
+		notify("{% t errors.E25 %} (E25)");
 		return
 	}
 	if (res.detectorAllChannels == 1) { allChannels.checked = true;
@@ -54,15 +56,15 @@ function saveSettings(run) {
 					if (responseText == "true") {
 						showLoading("hide");
 						indicate(true)
-						notify("Detector running! Restart device to return to normal");
+						notify("{% t detector.strings.1 %}");
 						var card = document.getElementsByClassName("card-content")[0];
 						card.className = "card-content disabled"
 					} else {
-						notify("Failed to start detector! (E30)");
+						notify("{% t errors.E30 %} (E30)");
 						indicate()
 					}
 				}, function() {
-					notify("Failed to start detector! (E31)");
+					notify("{% t errors.E31 %} (E31)");
 					indicate()
 				});
 			} else {
@@ -70,12 +72,12 @@ function saveSettings(run) {
 			}
 		} else {
 			if (run == false) saveStatus.classList.add("failed-save");
-			notify("Failed to save! (E32)");
+			notify("{% t errors.E32 %} (E32)");
 			indicate()
 		}
 	}, function() {
 		if (run == false) saveStatus.classList.add("failed-save");
-		notify("Failed to save! (E33)");
+		notify("{% t errors.E33 %} (E33)");
 		indicate()
 	});
 }
