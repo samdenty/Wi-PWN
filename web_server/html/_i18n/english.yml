@@ -230,7 +230,7 @@ errors:
     E17: "ERROR: Reset the settings"
     E18: "Failed to save settings!"
     E19: "Failed to save settings!"
-    E20: Failed to reset settings!
+    E20: "Failed to reset settings!"
     E21: "Failed to reset settings!"
     E22: "Reconnect and reload this page"
     E23: "Failed to restart Wi-PWN!"

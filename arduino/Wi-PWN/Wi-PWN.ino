@@ -20,7 +20,7 @@
 */
 
 // Including some libraries we need //
-#include <Arduino.h>e
+#include <Arduino.h>
 
 #include <ESP8266WiFi.h>
 #ifdef USE_CAPTIVE_PORTAL

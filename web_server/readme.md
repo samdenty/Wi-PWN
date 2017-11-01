@@ -10,14 +10,7 @@ In order to do any development (or even run the webserver) you need to do the fo
 ## How to run a local server of Wi-PWN
 - Make sure you have Jekyll & Gems installed (see above)
 - Run `jekyll serve` in the `/web_server/html` folder
-
-## How to initiate a local demo of Wi-PWN
-- Open `localhost_server.bat` which will start a server accessible on your PC.
-- Your default browser will open up and display the Wi-PWN local demo.
-
-NOTE: You can just directly open the HTML files, but the pages won't load properly as you need a server to allow requests to be made.
-
-**NOTE:** The included `.json` file are there to simulate example output from the ESP8266 module. Do not include them in the final binary! 
+- Navigate over to `http://127.0.0.1:1337` and see changes you make to the files happen in real-time (make sure to refresh the page though)
 
 
 ## How to update web-server files
