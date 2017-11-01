@@ -56,7 +56,7 @@ function saveSettings(run) {
 					if (responseText == "true") {
 						showLoading("hide");
 						indicate(true)
-						notify("{% t detector.strings.1 %}");
+						notify("{% t detector.strings.A %}");
 						var card = document.getElementsByClassName("card-content")[0];
 						card.className = "card-content disabled"
 					} else {

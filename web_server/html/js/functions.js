@@ -1,3 +1,5 @@
+---
+---
 var version = "9.0",
 	sL = getE('spinner-container'),
 	notification = document.getElementById("notification"),
@@ -67,7 +69,7 @@ function log(one, two, three) {
 
 
 function checkConnection() {
-	setTimeout(function() {getResponse("ClientScanTime.json", function(responseText) {window.location.reload()}, function() {notify("Reconnect and reload this page (E22)");checkConnection()}, 2000)}, 1300);
+	setTimeout(function() {getResponse("ClientScanTime.json", function(responseText) {window.location.reload()}, function() {notify("{% t error.E22 %} (E22)");checkConnection()}, 2000)}, 1300);
 }
 
 function autoReload() {
@@ -78,11 +80,11 @@ function restart(noIndication) {
 	if (noIndication == true) {
 		getResponse("restartESP.json?", function(responseText) {
 			if (responseText !== "true") {
-				notify("Failed to restart Wi-PWN! (E23)");
+				notify("{% t error.E23 %} (E23)");
 				showLoading("hide");
 			}
 		}, function() {
-			notify("Failed to restart Wi-PWN! (E24)");
+			notify("{% t error.E24 %} (E24)");
 			showLoading("hide");
 		});
 	} else {
@@ -93,11 +95,11 @@ function restart(noIndication) {
 			autoReload();
 			getResponse("restartESP.json?", function(responseText) {
 				if (responseText !== "true") {
-					notify("Failed to restart Wi-PWN! (E23)");
+					notify("{% t error.E23 %} (E23)");
 					showLoading("hide");
 				}
 			}, function() {
-				notify("Failed to restart Wi-PWN! (E24)");
+				notify("{% t error.E24 %} (E24)");
 				showLoading("hide");
 			});
 		}
@@ -131,9 +133,9 @@ function getResponse(adr, callback, timeoutCallback, timeout, method) {
 	if (timeoutCallback == null) {
 		timeoutCallback = function() {
 			getResponse("ClientScanTime.json", function() {
-				notify("Didn't receive a response! (E25)");
+				notify("{% t error.E97 %} (E97)");
 			}, function() {
-				notify("Reconnect and reload this page (E25)");
+				notify("{% t error.E96 %} (E96)");
 				autoReload();
 			})
 		};
@@ -198,7 +200,7 @@ function fadeIn() {
 	document.getElementsByTagName('head')[0].appendChild(link);
 
 /* Dynamically add footer */
-	document.getElementsByTagName("footer")[0].innerHTML = "<div class=footer><ul><li><a href=https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN?wi-pwn=" + version + " target=blank_ style=color:#fff;font-weight:400><b>Wi-PWN</b> &copy; 2017</a><li><a href=https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN?wi-pwn=" + version + " target=blank_>GitHub</a><li><a href=https://samdenty99.github.io/r?https://wi-pwn.samdd.me/discord?wi-pwn=" + version + " target=blank_>Discord</a><li><a href=https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki?wi-pwn=" + version + " target=blank_>Guide</a></ul></div><a href=https://samdenty99.github.io/about?wi-pwn=" + version + " target=blank_ class=sub-section-attribution>Designed by Sam Denty - @samdenty99</a>";
+	document.getElementsByTagName("footer")[0].innerHTML = "<div class=footer><ul><li><a href=https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN?wi-pwn=" + version + " target=blank_ style=color:#fff;font-weight:400><b>Wi-PWN</b> &copy; 2017</a><li><a href=https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN?wi-pwn=" + version + " target=blank_>GitHub</a><li><a href=https://samdenty99.github.io/r?https://wi-pwn.samdd.me/discord?wi-pwn=" + version + " target=blank_>Discord</a><li><a href=https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki?wi-pwn=" + version + " target=blank_>{% t global.guide %}</a></ul></div><a href=https://samdenty99.github.io/about?wi-pwn=" + version + " target=blank_ class=sub-section-attribution>{% t global.footer %}</a>";
 
 /* Dynamically add spinner */
 	document.getElementById("spinner-container").innerHTML = "<svg class=spinner viewBox='0 0 66 66'><circle class=path cx=33 cy=33 fill=none r=30 stroke-linecap=round stroke-width=6></circle></svg> <svg class=success-svg viewBox='0 0 1000 1000'><path d=M908.3,132.5L336.7,704.2l-245-245L10,540.8l326.7,326.7l81.7-81.7L990,214.2L908.3,132.5z /></svg> <svg class=failed-svg viewBox='0 0 19 19'><line stroke-width=2 x1=1 x2=18 y1=1 y2=18></line><line stroke-width=2 x1=18 x2=1 y1=1 y2=18></line></svg>"
@@ -208,7 +210,7 @@ function fadeIn() {
 	document.getElementById("logo-img").innerHTML = svgLogo;
 
 /* Dynamically add reboot button */
-	document.body.insertAdjacentHTML('afterbegin','<div class="reboot-container"><div class=reboot-inner><svg onclick="restart()" class=reboot viewBox="0 0 24 24"><path d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z"/></svg></div><span class="tooltip">Reboot</span></div>');
+	document.body.insertAdjacentHTML('afterbegin','<div class="reboot-container"><div class=reboot-inner><svg onclick="restart()" class=reboot viewBox="0 0 24 24"><path d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z"/></svg></div><span class="tooltip">{% t global.reboot %}</span></div>');
 
 /* Compressed Material design WiFi icons generator
  * AUTHOR: SAM DENTY         github.com/samdenty99

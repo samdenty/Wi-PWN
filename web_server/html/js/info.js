@@ -54,7 +54,7 @@ function getData() {
 		versionCell.innerHTML = version;
 		fadeIn();
 	}, function() {
-		notify('Failed to load sysinfo.json');
+		notify('{% t info.strings.A %}');
 		fadeIn();
 	});
 }

@@ -36,8 +36,8 @@ function getResults() {
 		} catch(err) {
 			log("INVALID   ~ ", responseText, false)
 			console.error(err)
-			if (confirm("{% t users.strings.1 %}") == true) {
-				notify("{% t users.strings.2 %}");
+			if (confirm("{% t users.strings.A %}") == true) {
+				notify("{% t users.strings.B %}");
 				clearNameList(true);
 				getResults();
 			}
@@ -188,13 +188,13 @@ function countdown(stop) {
 	if (stop == true) {
 		clearInterval(startCountdown)
 	} else if (countdownRemaining == 0) {
-		notify("{% t users.strings.3 %}");
+		notify("{% t users.strings.C %}");
 		indicate(true);
 		clearInterval(startCountdown);
 		autoReload();
 	} else {
 		if (countdownRemaining == '') countdownRemaining = scanTime;
-		notify("{% t users.strings.4 %} ~ "+countdownRemaining+"s {% t users.strings.4.1 %}");
+		notify("{{site.translations[site.lang].users.strings.D | replace_first: '$$', '"+countdownRemaining+"'}}");
 		countdownRemaining--;
 	}
 }

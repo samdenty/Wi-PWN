@@ -1,3 +1,13 @@
+# Wi-PWN translation file template
+# 
+# When you see 
+#              $$
+# This means it's going to be replaced with HTML
+# # # # # # # # # # # # # # # # # # # # # # # # #
+# For example
+# `$$click here$$` => `<a href="mypage">click here</a>`
+# 
+
 nav:
     scan: "Scan"
     users: "Users"
@@ -13,6 +23,9 @@ global:
     start: "Start"
     stop: "Stop"
     name: "Name"
+    reboot: "Reboot"
+    guide: "Guide"
+    footer: "Designed by Sam Denty - @samdenty99"
 
 setup:
     page-1:
@@ -41,32 +54,31 @@ setup:
 scan:
     title: "Scan"
     card-1:
-        header: "Scan for networks"
+        header: "Scan for networks $$"
         table:
             signal: "Signal"
             security: "Security"
             channel: "Ch."
     strings:
-        1: "Open"
+        A: "Open"
 
 users:
     title: "Users"
     card-1:
-        header: "Scan for Wi-Fi users"
+        header: "Scan for Wi-Fi users $$"
         table:
             info: "Client info"
             packets: "Pkts"
     card-2:
-        header: "Saved users"
+        header: "Saved users $$"
     card-3:
         field-1: "MAC Address"
         button-1: "Add"
     strings:
-        1: "Saved client list is corrupt, reset it?"
-        2: "Clearing the client list..."
-        3: "Scan complete! Reconnect and reload the page"
-        4: "Scanning for users" # ~ 10s
-        4.1: "remaining"
+        A: "Saved client list is corrupt, reset it?"
+        B: "Clearing the client list..."
+        C: "Scan complete! Reconnect and reload the page"
+        D: "Scanning for users ~ $$s remaining"
 
 attack:
     title: "Attack"
@@ -90,14 +102,14 @@ attack:
         toggle-2: "Encrypted"
         button: "Add"
     card-5:
-        header: "Saved SSIDs"
+        header: "Saved SSIDs $$"
         button-1: "Clear"
         button-2: "Save"
         button-3: "Discard changes"
     strings:
-        1: "Random attack interval"
-        2: "ready"
-        3: "running"
+        A: "Random attack interval"
+        B: "ready"
+        C: "running"
 
 detector:
     title: "Deauth detector"
@@ -110,7 +122,7 @@ detector:
         field-3: "Channel scan time (ms)"
         button-1: "Save &amp; start"
     strings:
-        1: "Detector running! Restart device to return to normal"
+        A: "Detector running! Restart device to return to normal"
 
 control:
     title: "GPIO Control"
@@ -121,10 +133,10 @@ control:
             pin: "PIN"
             high: "HIGH"
     strings:
-        1: "Failed to switch PIN"
-        2: "Name for PIN"
-        3: "Maximum of 10 characters!"
-        4: "Reset saved entries?"
+        A: "Failed to switch PIN"
+        B: "Name for PIN"
+        C: "Maximum of 10 characters!"
+        D: "Reset saved entries?"
 
 settings:
     title: "Settings"
@@ -132,7 +144,36 @@ settings:
 
 info:
     title: "Info"
-    page-header: 
+    card-1:
+        header: "Wi-PWN creator"
+        about: "Wi-PWN was designed by $$Sam Denty$$, from the original project by $$spacehuhn &#128020;$$. Wi-PWN is released under the $$CC BY-NC 4.0$$ license."
+    card-2:
+        header: "Wi-PWN"
+        table:
+            A: "Wi-PWN version"
+            B: "Check for updates"
+            C: "Update"
+            D: "Uptime / memory"
+            E: "Sent packets"
+            F: "IP / gateway"
+            G: "Versions"
+            H: "Flash &amp; Chip ID"
+    card-3:
+        header: "Advanced options"
+        get: "get"
+    card-4:
+        header: "Contributors"
+        paragraph-1: "This software is based upon the work of Stefan Kremser (Spacehuhn)"
+        paragraph-2: "For more information go to $$contributors page$$ on GitHub."
+    card-5:
+        header: "Included libraries"
+    strings:
+        A: "Failed to load sysinfo.json"
+        B: "OTA update"
+        C: "upload"
+        D: "Other projects"
+        E: "Report bug"
+        F: "Other projects"
 
 error:
     title: "404"
@@ -146,6 +187,9 @@ errors:
     E10: "Invalid MAC address"
     E15: "No network(s) selected!"
     E16: "SSID list full (E16)"
+    E22: "Reconnect and reload this page"
+    E23: "Failed to restart Wi-PWN!"
+    E24: "Failed to restart Wi-PWN!"
     E25: "ERROR: Reset the settings"
     E26: "Failed to restart Wi-PWN!"
     E27: "Failed to restart Wi-PWN!"
@@ -161,6 +205,8 @@ errors:
     E40: "Failed to update PIN name!"
     E41: "Failed to reset saved entries!"
     E42: "Failed to reset saved entries!"
+    E96: "Reconnect and reload this page"
+    E97: "Didn't receive a response!"
     E98: "Failed to parse scan results!"
     E99: "Cleared, don't forget to click save!"
     E100: "Failed to parse saved SSIDs, clearing..."

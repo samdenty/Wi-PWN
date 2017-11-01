@@ -72,9 +72,9 @@ function getResults() {
 			tr += "</tr>";
 			if (~res.attacks[i].name.indexOf('Beacon')) {
 				if (res.randomMode == 1) {
-					tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>{% t attack.card-1.table.random %} <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>{% t attack.strings.3 %}</td><td><button class='redBtn' id='randomBtn' onclick='random()'>{% t global.stop %}</button></td></tr>"
+					tr += "<tr class='selected'><td class='darken-on-hover' onclick='changeInterval()'>{% t attack.card-1.table.random %} <span class='light'>"+randomIntrvl+"s</span></td><td class='red'>{% t attack.strings.C %}</td><td><button class='redBtn' id='randomBtn' onclick='random()'>{% t global.stop %}</button></td></tr>"
 				} else {
-					tr += "<tr><td class='darken-on-hover' onclick='changeInterval()'>{% t attack.card-1.table.random %} <span class='light'>"+randomIntrvl+"s</span></td><td class='green'>{% t attack.strings.2 %}</td><td><button id='randomBtn' class='secondary' onclick='random()'>{% t global.start %}</button></td></tr>"
+					tr += "<tr><td class='darken-on-hover' onclick='changeInterval()'>{% t attack.card-1.table.random %} <span class='light'>"+randomIntrvl+"s</span></td><td class='green'>{% t attack.strings.B %}</td><td><button id='randomBtn' class='secondary' onclick='random()'>{% t global.start %}</button></td></tr>"
 				}
 			}
 		}
@@ -163,7 +163,7 @@ function random() {
 }
 
 function changeInterval() {
-	var newRandomIntrvl = prompt("{% t attack.strings.1 %}", randomIntrvl);
+	var newRandomIntrvl = prompt("{% t attack.strings.A %}", randomIntrvl);
 	if (isNaN(newRandomIntrvl)=== false && newRandomIntrvl) {
 		randomIntrvl = newRandomIntrvl;
 		getResults();

@@ -32,7 +32,7 @@ function getStatus(enc, hid) {
 		  if (enc == 8) buff = "WPA* &nbsp;&#128274;";
 	else  if (enc == 4) buff = "WPA2 &nbsp;&#128274;";
 	else  if (enc == 2) buff = "WPA";
-	else  if (enc == 7) buff = "{% t scan.strings.1 %}";
+	else  if (enc == 7) buff = "{% t scan.strings.A %}";
 	else  if (enc == 5) buff = "WEP";
 		  if (hid == 1) buff += "&#128123;";
 	return buff

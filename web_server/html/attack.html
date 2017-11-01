@@ -60,7 +60,9 @@ layout: page
 	</div>
 </div>
 <div class="card-container">
-	<div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">{% t attack.card-5.header %}<span id="ssidCounter"> (0/48)</span></div>
+	<div class="settingsHeader" style="display:inline-block;margin-bottom: 30px">
+		{{site.translations[site.lang].attack.card-5.header | replace_first: '$$', '<span id="ssidCounter"> (0/48)</span>'}}
+	</div>
 	<div class="card">
 		<table>
 			<tr>

@@ -4,14 +4,18 @@ js: users
 layout: page
 ---
 <div class="card-container">
-	<div class="settingsHeader button-header-2" style="display:inline-block;margin-bottom: 30px">{% t users.card-1.header %} <span id="clientsFound"></span></div>
+	<div class="settingsHeader button-header-2" style="display:inline-block;margin-bottom: 30px">
+		{{site.translations[site.lang].users.card-1.header | replace_first: '$$', '<span id="clientsFound"></span>'}}
+	</div>
 	<button onclick="scan()" id="startScan" class="button-primary right button-header-2">{% t nav.scan %}</button>
 	<div class="card">
 		<table id="users"></table>
 	</div>
 	<hr>
 	<div id="saved-users" class="dn">
-		<div class="settingsHeader button-header" style="display:inline-block;margin-bottom: 30px">{% t users.card-2.header %} <span id="clientNames"></span></div>
+		<div class="settingsHeader button-header" style="display:inline-block;margin-bottom: 30px">
+			{{site.translations[site.lang].users.card-2.header | replace_first: '$$', '<span id="clientNames"></span>'}}
+		</div>
 		<div class="card">
 			<table id="nameList"></table>
 		</div>

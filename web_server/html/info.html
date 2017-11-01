@@ -4,11 +4,18 @@ js: info
 layout: page
 ---
 <div class="card-container">
-	<div class="settingsHeader">Wi-PWN creator</div>
+	<div class="settingsHeader">{% t info.card-1.header %}</div>
 	<div class="card">
 		<div class="card-content">
 			<p>
-				Wi-PWN was designed by <a href="https://samdenty99.github.io/about" tabindex="-1" target="blank_"><b>Sam Denty</b></a>, from the original project by <a href="https://spacehuhn.de" tabindex="-1" target="blank_">spacehuhn &#128020;</a>. Wi-PWN is released under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> license.
+				{{site.translations[site.lang].info.card-1.about
+				| replace_first: '$$', '<a href="https://samdenty99.github.io/about" tabindex="-1" target="blank_"><b>'
+				| replace_first: '$$', '</b></a>'
+				| replace_first: '$$', '<a href="https://spacehuhn.de" tabindex="-1" target="blank_">'
+				| replace_first: '$$', '</a>'
+				| replace_first: '$$', '<a href="https://creativecommons.org/licenses/by-nc/4.0/">'
+				| replace_first: '$$', '</a>'
+				}}
 			</p>
 			<a href="https://samdenty99.github.io">
 				<h2 class="center a light-text">
@@ -20,13 +27,13 @@ layout: page
 		<table>
 			<form method="POST" action="/update" enctype="multipart/form-data" id="ota">
 				<tr>
-					<td class="onlgr2">OTA update</td>
+					<td class="onlgr2">{% t info.strings.B %}</td>
 					<td>
 						<input type="file" name="update" id="update" accept=".bin">
 						<label for="update" class="button no-caps" tabindex="0"></label>
 					</td>
 					<td>
-						<button onclick="document.getElementById('ota').submit()">upload</button>
+						<button onclick="document.getElementById('ota').submit()">{% t info.strings.C %}</button>
 					</td>
 				</tr>
 			</form>
@@ -34,82 +41,82 @@ layout: page
 		</table>
 		{% endcomment %}
 		<div class="card-action">
-			<a href="https://samdenty99.github.io/r?github" target="blank_" class="button">Github</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">Other projects</a>
+			<a href="https://samdenty99.github.io/r?github" target="blank_" class="button">Github</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">{% t info.strings.D %}</a>
 		</div>
 	</div>
 </div>
 <div class="card-container">
-	<div class="settingsHeader">Wi-PWN</div>
+	<div class="settingsHeader">{% t info.card-2.header %}</div>
 	<div class="card">
 		<table>
 			<tr>
-				<td>Wi-PWN version</td>
+				<td>{% t info.card-2.table.A %}</td>
 				<td><b id="version"></b></td>
-				<td><button onclick="checkUpdate()" class="secondary onlgr">Check for updates</button><button onclick="checkUpdate()" class="onsmr">Update</button></td>
+				<td><button onclick="checkUpdate()" class="secondary onlgr">{% t info.card-2.table.B %}</button><button onclick="checkUpdate()" class="onsmr">{% t info.card-2.table.C %}</button></td>
 			</tr>
 			<tr>
-				<td>Uptime / memory</td>
+				<td>{% t info.card-2.table.D %}</td>
 				<td><b id="uptime"></b></td>
 				<td id="freememory"></td>
 			</tr>
 			<tr>
-				<td>Sent packets</td>
+				<td>{% t info.card-2.table.E %}</td>
 				<td><b id="deauthpackets"></b> <i>(deauth)</i></td>
 				<td><b id="beaconpackets"></b> <i>(beacon)</i></td>
 			</tr>
 			<tr>
-				<td>IP / gateway</td>
+				<td>{% t info.card-2.table.F %}</td>
 				<td><b id="ipaddress"></b></td>
 				<td id="gateway"></td>
 			</tr>
 			<tr>
-				<td>Versions</td>
+				<td>{% t info.card-2.table.G %}</td>
 				<td>Boot <b>v.<span id="bootversion"></span></b>_m.<span id="bootmode"></span></td>
 				<td>SDK <b id="sdk"></b></td>
 			</tr>
 			<tr>
-				<td>Flash &amp; Chip ID</td>
+				<td>{% t info.card-2.table.H %}</td>
 				<td><span id="flashid"></span> <i id="flashsize"></i></td>
 				<td><span id="chipid"></span></td>
 			</tr>
 		</table>
 		<div class="card-action">
-			<a href="https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/discord" target="blank_" class="button">Report bug</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">Other projects</a>
+			<a href="https://samdenty99.github.io/r?https://Wi-PWN.samdd.me/discord" target="blank_" class="button">{% t info.strings.E %}</a><a href="https://samdenty99.github.io/projects" class="button right" target="blank_">{% t info.strings.F %}</a>
 		</div>
 	</div>
 </div>
 <div class="card-container">
-	<div class="settingsHeader">Advanced options</div>
+	<div class="settingsHeader">{% t info.card-3.header %}</div>
 	<div class="card oh">
 		<table>
 			<tr>
 				<td>restartESP.json</td>
-				<td onclick="getResponse('restartESP.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+				<td onclick="getResponse('restartESP.json', function(){notify('Request sent!')})"><button class="secondary">{% t info.card-3.get %}</button></td>
 			</tr>
 			<tr>
 				<td>resetSSID.json</td>
-				<td onclick="getResponse('resetSSID.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+				<td onclick="getResponse('resetSSID.json', function(){notify('Request sent!')})"><button class="secondary">{% t info.card-3.get %}</button></td>
 			</tr>
 			<tr>
 				<td>clearSSID.json</td>
-				<td onclick="getResponse('clearSSID.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+				<td onclick="getResponse('clearSSID.json', function(){notify('Request sent!')})"><button class="secondary">{% t info.card-3.get %}</button></td>
 			</tr>
 			<tr>
 				<td>saveSSID.json</td>
-				<td onclick="getResponse('saveSSID.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+				<td onclick="getResponse('saveSSID.json', function(){notify('Request sent!')})"><button class="secondary">{% t info.card-3.get %}</button></td>
 			</tr>
 			<tr>
 				<td>clearNameList.json</td>
-				<td onclick="getResponse('clearNameList.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+				<td onclick="getResponse('clearNameList.json', function(){notify('Request sent!')})"><button class="secondary">{% t info.card-3.get %}</button></td>
 			</tr>
 			<tr>
 				<td>settingsReset.json</td>
-				<td onclick="getResponse('settingsReset.json', function(){notify('Request sent!')})"><button class="secondary">get</button></td>
+				<td onclick="getResponse('settingsReset.json', function(){notify('Request sent!')})"><button class="secondary">{% t info.card-3.get %}</button></td>
 			</tr>
 		</table>
 	</div>
 	<hr>
-	<div class="settingsHeader">Contributors</div>
+	<div class="settingsHeader">{% t info.card-4.header %}</div>
 	<div class="card">
 		<div class="card-content">
 			<a href="https://github.com/spacehuhn/esp8266_deauther"><b>@spacehuhn</b></a> (Stefan Kremser) 
@@ -136,10 +143,10 @@ layout: page
 			<br>
 			<br>
 			<div class="divider"></div>
-			<br>This software is based upon the work of Stefan Kremser (Spacehuhn)<br>For more information go to <a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">contributors page</a> on GitHub.
+			<br>{% t info.card-4.paragraph-1 %}<br>{{site.translations[site.lang].info.card-4.paragraph-2 | replace_first: '$$', '<a href="https://github.com/samdenty99/Wi-PWN/graphs/contributors">' | replace_first: '$$', '</a>'}}
 		</div>
 	</div>
-	<div class="settingsHeader">Included libraries</div>
+	<div class="settingsHeader">{% t info.card-5.header %}</div>
 	<div class="card oh">
 		<div class="card-content">
 			<div class="row">

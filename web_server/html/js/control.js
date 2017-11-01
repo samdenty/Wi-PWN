@@ -45,7 +45,7 @@ function switchPin(pin, id) {
 		try {
 			res = JSON.parse(responseText);
 		} catch (e) {
-			notify("{% t control.strings.1 %} " + pin + "! (E37)");
+			notify("{% t control.strings.A %} " + pin + "! (E37)");
 			showLoading('hide')
 			return;
 		}
@@ -68,23 +68,23 @@ function switchPin(pin, id) {
 				getData();
 				showLoading('hide')
 			} else {
-				notify("{% t control.strings.1 %} " + pin + "! (E41)");
+				notify("{% t control.strings.A %} " + pin + "! (E41)");
 				showLoading('hide')
 				pinCheckbox.checked = prevState;
 			}
 		}, function() {
-			notify("{% t control.strings.1 %} " + pin + "! (E42)");
+			notify("{% t control.strings.A %} " + pin + "! (E42)");
 			showLoading('hide')
 			pinCheckbox.checked = prevState;
 		});
 	}, function() {
-		notify("{% t control.strings.1 %} " + pin + "! (E38)");
+		notify("{% t control.strings.A %} " + pin + "! (E38)");
 		showLoading('hide')
 	});
 }
 
 function setPin(pin, id) {
-	var newName = prompt("{% t control.strings.2 %} D" + pin);
+	var newName = prompt("{% t control.strings.B %} D" + pin);
 	if (newName) {
 		if (newName.length <= 10) {
 			getResponse("settings.json", function(responseText) {
@@ -115,13 +115,13 @@ function setPin(pin, id) {
 				});
 			});
 		} else {
-			notify('{% t control.strings.3 %}')
+			notify('{% t control.strings.C %}')
 		}
 	}
 }
 
 function resetPins() {
-	if (confirm("{% t control.strings.4 %}") == true) {
+	if (confirm("{% t control.strings.D %}") == true) {
 		showLoading();
 		getResponse("settingsSave.json?pinNames=Pin%203%3BPin%204%3BPin%205%3BPin%206%3BPin%207%3BPin%208&pins=000000", function(responseText) {
 			if (responseText == "true") {
