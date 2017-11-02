@@ -1,3 +1,37 @@
+#  _ _ _ _     _____ _ _ _ _____ 
+# | | | |_|___|  _  | | | |   | |
+# | | | | |___|   __| | | | | | |
+# |_____|_|   |__|  |_____|_|___|
+#        TRANSLATION FILE
+# 
+# Format:
+#   What is '$$'?
+#       '$$' is a variable thats replaced with HTML
+#       For example:
+#          `$$click here$$`     =>   `<a href="mypage">click here</a>`
+#          `translated by $$`   =>   `translated by sam`
+#
+#   DO NOT REMOVE THE INDENTATION!
+#       The indentation is critical to YAML, so please don't change it
+#   
+#   Try and retain the case, for example:
+#       If it is capitalized keep it capitalized
+#   
+#   What are the `translation.name` & `translation.url`?
+#       These are strings that will be added to the footer & info page
+#   
+#   I'm unsure about how to translate something / I have a question
+#       No problem! feel free to ask something over at
+#       https://wi-pwn.samdd.me/discord/
+# 
+
+translation:
+    # Uncomment & insert your name here
+    name: "PappleTec"
+    # Uncomment & insert a link to your Github / site
+    url: "https://github.com/PappleTec"
+
+
 nav:
     scan: "Scannen"
     users: "Benutzer"
@@ -5,6 +39,7 @@ nav:
     detector: "Detektor"
     control: "Kontrolle"
     settings: "Einstellungen"
+    info: "Info"
 
 global:
     save: "Speichern"
@@ -17,6 +52,7 @@ global:
     reboot: "Neustarten"
     guide: "Guide"
     footer: "Designed by Sam Denty - @samdenty99"
+    translated-by: "Übersetzt von $$"
 
 setup:
     page-1:
