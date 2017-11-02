@@ -83,7 +83,7 @@ setup:
 scan:
     title: "סריקת רשתות"
     card-1:
-        header: "סריקת רשתות ($$)"
+        header: "סריקת רשתות (&#x200E;$$)&#x200E;"
         table:
             signal: "עוצמת אות"
             security: "אבטחה"
@@ -94,12 +94,12 @@ scan:
 users:
     title: "מכשירים"
     card-1:
-        header: "סרוק מכשירים ברשתות נבחרות ($$)"
+        header: "סרוק מכשירים ברשתות נבחרות (&#x200E;$$)&#x200E;"
         table:
             info: "פרטי מכשיר"
             packets: "מנות משודרות"
     card-2:
-        header: "מכשירים שמורים ($$)"
+        header: "מכשירים שמורים (&#x200E;$$)&#x200E;"
     card-3:
         field-1: "MAC כתובת"
         button-1: "הוסף מכשיר"
