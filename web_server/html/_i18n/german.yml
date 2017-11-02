@@ -198,7 +198,7 @@ info:
     card-5:
         header: "Beinhaltete Librarys"
     strings:
-        A: "Das Laden von sysinfo.json ist fahlgeschlagen"
+        A: "Das Laden von sysinfo.json ist fehlgeschlagen"
         B: "OTA Update"
         C: "Uploaden"
         D: "Andere Projekte"
