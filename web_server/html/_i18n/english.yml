@@ -23,6 +23,9 @@
 #   I'm unsure about how to translate something / I have a question
 #       No problem! feel free to ask something over at
 #       https://wi-pwn.samdd.me/discord/
+#       
+#   What encoding should I use?
+#       UTF-8 ~ jekyll doesn't support any other encodings
 # 
 
 translation:
@@ -84,7 +87,7 @@ scan:
         table:
             signal: "Signal"
             security: "Security"
-            channel: "Ch."
+            channel: "Ch." # Try and abbreviate, column is small
     strings:
         A: "Open" # As in `WPA2` / security
 
