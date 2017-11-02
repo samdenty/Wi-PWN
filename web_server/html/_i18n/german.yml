@@ -57,6 +57,7 @@ global:
     translated-by: "Übersetzt von $$"
 
 setup:
+    title: "Konfiguration"
     page-1:
         header: "Geschäftsbedingungen"
         card:

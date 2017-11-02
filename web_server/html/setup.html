@@ -1,249 +1,242 @@
 ---
+title: setup.title
+layout: html
 ---
-<head>
-	<meta charset="UTF-8">
-	<title>Wi-PWN</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-	<link rel="stylesheet" href="./main.css">
-	<meta name="theme-color" content="#106CC8">
-</head>
 
-<body>
-	<div id="notification"></div>
-	<div class="main-wrap">
-		<div id="spinner-container"></div>
-		<div class="container setup">
-			<div class="card-container">
-				<div class="settingsHeader" id="h">{% t setup.page-1.header %}</div>
-				<div id="ss" class="card horizontal">
-					<div id="card-wrapper">
-						<div id="c1">
-							<div class="card-aside" id="logo-img">
+<div id="notification"></div>
+<div class="main-wrap">
+	<div id="spinner-container"></div>
+	<div class="container setup">
+		<div class="card-container">
+			<div class="settingsHeader" id="h">{% t setup.page-1.header %}</div>
+			<div id="ss" class="card horizontal">
+				<div id="card-wrapper">
+					<div id="c1">
+						<div class="card-aside" id="logo-img">
+						</div>
+						<div class="card-stacked">
+							<div class="card-content">
+								<div class="card-title">
+									{% t setup.page-1.card.title %}
+								</div>
+								<p>{% t setup.page-1.card.paragraph-1 %}</p>
+								<p>{% t setup.page-1.card.paragraph-2 %}</p>
+								<br>
+								<p>{% t setup.page-1.card.paragraph-3 %}</p>
 							</div>
-							<div class="card-stacked">
-								<div class="card-content">
-									<div class="card-title">
-										{% t setup.page-1.card.title %}
+							<div class="card-action" onclick="accept()">
+								<a class="button right">{% t setup.page-1.card.button %}</a>
+							</div>
+						</div>
+					</div><div id="c2">
+						<div class="card-header">
+							<svg viewBox="0 0 24 24" onclick="back()">
+								<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+							</svg>
+						</div>
+						<div class="card-content">
+							<div class="row">
+								<div class="col-6">
+									<div class="input-container">
+										<input placeholder=" " id="ssid" type="text" required="" minlength="1" maxlength="32" value="Wi-PWN">
+										<label for="ssid">{% t global.ssid %}</label>
 									</div>
-									<p>{% t setup.page-1.card.paragraph-1 %}</p>
-									<p>{% t setup.page-1.card.paragraph-2 %}</p>
-									<br>
-									<p>{% t setup.page-1.card.paragraph-3 %}</p>
 								</div>
-								<div class="card-action" onclick="accept()">
-									<a class="button right">{% t setup.page-1.card.button %}</a>
+								<div class="col-6">
+									<div class="input-container">
+										<input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32" value="rootaccess">
+										<label for="ssid">{% t setup.page-2.card.field-1 %}</label>
+									</div>
+								</div>
+								<br>
+								<div class="col-12">
+									<label for="darkMode" class="checkboxContainer">
+										{% t setup.page-2.card.toggle-1 %}
+										<input type="checkbox" name="darkMode" id="darkMode" value="false" onclick="toggleDarkmode();">
+										<label class="checkbox" for="darkMode"></label>
+									</label>
 								</div>
 							</div>
-						</div><div id="c2">
-							<div class="card-header">
-								<svg viewBox="0 0 24 24" onclick="back()">
-									<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+						</div>
+						<div class="card-action" onclick="cont()">
+							<a class="button right">{% t setup.page-2.card.button %}</a>
+						</div>
+					</div><div id="c3">
+						<div class="card-content">
+							<div class="row" style="text-align:center;padding-top:32px">
+								<svg class=success-svg viewBox='0 0 1000 1000'>
+									<path d=M908.3,132.5L336.7,704.2l-245-245L10,540.8l326.7,326.7l81.7-81.7L990,214.2L908.3,132.5z />
 								</svg>
-							</div>
-							<div class="card-content">
-								<div class="row">
-									<div class="col-6">
-										<div class="input-container">
-											<input placeholder=" " id="ssid" type="text" required="" minlength="1" maxlength="32" value="Wi-PWN">
-											<label for="ssid">{% t global.ssid %}</label>
-										</div>
-									</div>
-									<div class="col-6">
-										<div class="input-container">
-											<input placeholder=" " id="password" type="text" required="" minlength="8" maxlength="32" value="rootaccess">
-											<label for="ssid">{% t setup.page-2.card.field-1 %}</label>
-										</div>
-									</div>
-									<br>
-									<div class="col-12">
-										<label for="darkMode" class="checkboxContainer">
-											{% t setup.page-2.card.toggle-1 %}
-											<input type="checkbox" name="darkMode" id="darkMode" value="false" onclick="toggleDarkmode();">
-											<label class="checkbox" for="darkMode"></label>
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="card-action" onclick="cont()">
-								<a class="button right">{% t setup.page-2.card.button %}</a>
-							</div>
-						</div><div id="c3">
-							<div class="card-content">
-								<div class="row" style="text-align:center;padding-top:32px">
-									<svg class=success-svg viewBox='0 0 1000 1000'>
-										<path d=M908.3,132.5L336.7,704.2l-245-245L10,540.8l326.7,326.7l81.7-81.7L990,214.2L908.3,132.5z />
-									</svg>
-									<br>
-									<b style="font-size:18px">{% t setup.page-3.message-1 %}</b>
-									<br><span style="font-weight: 300">{% t setup.page-3.message-2 %}</span>
-								</div>
+								<br>
+								<b style="font-size:18px">{% t setup.page-3.message-1 %}</b>
+								<br><span style="font-weight: 300">{% t setup.page-3.message-2 %}</span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="center">
-					<button class="secondary center" onclick="location.href='https://samdenty99.github.io/about'">{% t setup.attribution %}</a>
-				</div>
+			</div>
+			<div class="center">
+				<button class="secondary center" onclick="location.href='https://samdenty99.github.io/about'">{% t setup.attribution %}</a>
 			</div>
 		</div>
-		<footer></footer>
-		<script src="./js/functions.js"></script>
-		<script>
-		var ssid = getE('ssid'),
-			password = getE('password'),
-			darkMode = document.getElementById('darkMode'),
-			link = document.createElement("link");
-
-		function accept() {
-			toTop()
-			document.getElementById("card-wrapper").className = "accept";
-			document.getElementById("h").innerHTML = "{% t setup.page-2.header %}";
-			document.title = "{% t setup.page-2.header %}";
-			push("configure")
-			setTimeout(function() { document.getElementById("c3").className = "away" }, 500);
-		}
-		function back() {
-			document.getElementById("card-wrapper").className = "";
-			document.getElementById("c1").setAttribute("style", "");
-			push()
-		}
-		if (window.location.search == "?configure") {
-			document.getElementById("c1").setAttribute("style", "transition: none");
-			accept();
-		}
-
-		function toggleDarkmode() {
-			if (darkMode.checked) {
-				link.href = "/dark.css";
-				link.type = "text/css";
-				link.rel = "stylesheet";
-				link.media = "screen,print";
-				link.onload = function() {
-					defaultMetaColor()
-				};
-				link.setAttribute("id", "darkModeCSS");
-				document.getElementsByTagName("head")[0].appendChild(link);
-				setTimeout(function() {
-					defaultMetaColor()
-				}, 600);
-			} else {
-				var dM = document.getElementById("darkModeCSS");
-				dM.remove();
-				setTimeout(function() {
-					defaultMetaColor()
-				}, 600);
-			}
-		}
-
-		function cont() {
-			showLoading();
-			toTop()
-			var url = "settingsSave.json";
-			url += "?ssid=" + ssid.value;
-			url += "&password=" + password.value;
-			url += "&darkMode=" + darkMode.checked;
-			url += "&newUser=false";
-			getResponse(url, function(responseText) {
-				if (responseText == "true") {
-					vibrate();
-					autoReload();
-					getResponse("restartESP.json?", function(responseText) {
-						if (responseText == "true") {
-							document.getElementById("ss").className = "card horizontal s-s";
-							document.getElementById("h").innerHTML = "{% t setup.page-3.header %}";
-							showLoading("hide");
-						} else {
-							notify("{% t errors.E26 %} (E26)");
-							showLoading("hide");
-						}
-					}, function() {
-						notify("{% t errors.E27 %} (E27)");
-						showLoading("hide");
-					});
-				} else {
-					notify("{% t errors.E28 %} (E28)");
-					showLoading("hide");
-				}
-			}, function() {
-				notify("{% t errors.E29 %} (E29)");
-				showLoading("hide");
-			});
-		}
-
-		function toTop() {
-			try {
-				window.scrollTo({
-					'behavior': 'smooth',
-					'left': 0,
-					'top': 10
-				});
-			} catch (err) {
-				scroll(0, 0)
-			}
-		}
-
-		// Window URL listener (Eg. History back + forward keys)
-		var currentPage = window.location.href;
-
-		// listen for changes
-		setInterval(function() {
-			if (currentPage != window.location.href) {
-				// page has changed, set new page as 'current'
-				currentPage = window.location.href;
-			}
-		}, 500);
-		fadeIn();
-		</script>
-		<style>
-		body {
-			transition: background-color 0.3s ease;
-			padding-bottom: 15px;
-			overflow-y: initial;
-		}
-		.main-wrap {
-			overflow: initial;
-			top: 0 !important;
-		}
-		footer,
-		.reboot-container {
-			display: none;
-		}
-		@media (min-width:850px) {
-			.container {
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				transform: -webkit-translate(-50%, -50%);
-				transform: -moz-translate(-50%, -50%);
-				transform: -ms-translate(-50%, -50%)
-			}
-		}
-		.success-svg {
-			opacity: 1;
-			height: 90px;
-			margin-bottom: 30px;
-		}
-		.show-loading {
-			margin-top: 15px !important;
-		}
-		#spinner-container .success-svg {
-			display: none;
-		}
-		.container {
-			min-height: initial;
-		}
-		html {
-			overflow: scroll;
-			overflow-x: hidden;
-		}
-		::-webkit-scrollbar {
-			width: 0px;
-			background: transparent;
-		}
-		::-webkit-scrollbar-thumb {
-			background: #FF0000;
-		}
-		</style>
 	</div>
-</body>
+	<footer></footer>
+	<script src="./js/functions.js"></script>
+	<script>
+	var ssid = getE('ssid'),
+		password = getE('password'),
+		darkMode = document.getElementById('darkMode'),
+		link = document.createElement("link");
+
+	function accept() {
+		toTop()
+		document.getElementById("card-wrapper").className = "accept";
+		document.getElementById("h").innerHTML = "{% t setup.page-2.header %}";
+		document.title = "{% t setup.page-2.header %}";
+		push("configure")
+		setTimeout(function() { document.getElementById("c3").className = "away" }, 500);
+	}
+	function back() {
+		document.getElementById("card-wrapper").className = "";
+		document.getElementById("c1").setAttribute("style", "");
+		push()
+	}
+	if (window.location.search == "?configure") {
+		document.getElementById("c1").setAttribute("style", "transition: none");
+		accept();
+	}
+
+	function toggleDarkmode() {
+		if (darkMode.checked) {
+			link.href = "/dark.css";
+			link.type = "text/css";
+			link.rel = "stylesheet";
+			link.media = "screen,print";
+			link.onload = function() {
+				defaultMetaColor()
+			};
+			link.setAttribute("id", "darkModeCSS");
+			document.getElementsByTagName("head")[0].appendChild(link);
+			setTimeout(function() {
+				defaultMetaColor()
+			}, 600);
+		} else {
+			var dM = document.getElementById("darkModeCSS");
+			dM.remove();
+			setTimeout(function() {
+				defaultMetaColor()
+			}, 600);
+		}
+	}
+
+	function cont() {
+		showLoading();
+		toTop()
+		var url = "settingsSave.json";
+		url += "?ssid=" + ssid.value;
+		url += "&password=" + password.value;
+		url += "&darkMode=" + darkMode.checked;
+		url += "&newUser=false";
+		getResponse(url, function(responseText) {
+			if (responseText == "true") {
+				vibrate();
+				autoReload();
+				getResponse("restartESP.json?", function(responseText) {
+					if (responseText == "true") {
+						document.getElementById("ss").className = "card horizontal s-s";
+						document.getElementById("h").innerHTML = "{% t setup.page-3.header %}";
+						showLoading("hide");
+					} else {
+						notify("{% t errors.E26 %} (E26)");
+						showLoading("hide");
+					}
+				}, function() {
+					notify("{% t errors.E27 %} (E27)");
+					showLoading("hide");
+				});
+			} else {
+				notify("{% t errors.E28 %} (E28)");
+				showLoading("hide");
+			}
+		}, function() {
+			notify("{% t errors.E29 %} (E29)");
+			showLoading("hide");
+		});
+	}
+
+	function toTop() {
+		try {
+			window.scrollTo({
+				'behavior': 'smooth',
+				'left': 0,
+				'top': 10
+			});
+		} catch (err) {
+			scroll(0, 0)
+		}
+	}
+
+	// Window URL listener (Eg. History back + forward keys)
+	var currentPage = window.location.href;
+
+	// listen for changes
+	setInterval(function() {
+		if (currentPage != window.location.href) {
+			// page has changed, set new page as 'current'
+			currentPage = window.location.href;
+		}
+	}, 500);
+	fadeIn();
+	</script>
+	<style>
+	body {
+		transition: background-color 0.3s ease;
+		padding-bottom: 15px;
+		overflow-y: initial;
+	}
+	.main-wrap {
+		overflow: initial;
+		top: 0 !important;
+	}
+	footer,
+	.reboot-container {
+		display: none;
+	}
+	@media (min-width:850px) {
+		.container {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transform: -webkit-translate(-50%, -50%);
+			transform: -moz-translate(-50%, -50%);
+			transform: -ms-translate(-50%, -50%)
+		}
+	}
+	.success-svg {
+		opacity: 1;
+		height: 90px;
+		margin-bottom: 30px;
+	}
+	.show-loading {
+		margin-top: 15px !important;
+	}
+	#spinner-container .success-svg {
+		display: none;
+	}
+	.container {
+		min-height: initial;
+	}
+	html {
+		overflow: scroll;
+		overflow-x: hidden;
+	}
+	::-webkit-scrollbar {
+		width: 0px;
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #FF0000;
+	}
+	</style>
+</div>

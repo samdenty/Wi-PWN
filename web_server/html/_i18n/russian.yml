@@ -57,6 +57,7 @@ global:
     translated-by: "Переведено $$"
 
 setup:
+    title: "настроить"
     page-1:
         header: "Условия и положения"
         card:

@@ -57,6 +57,7 @@ global:
     translated-by: "tradotto da $$"
 
 setup:
+    title: "Impostare"
     page-1:
         header: "Termini e Condizioni"
         card:

@@ -57,6 +57,7 @@ global:
     translated-by: "$$ תורגם על ידי"
 
 setup:
+    title: "להכין"
     page-1:
         header: "תנאים והגבלות"
         card:
