@@ -131,7 +131,7 @@ attack:
         toggle-2: "Encrypted"
         button: "Add"
     card-5:
-        header: "Saved SSIDs $$"
+        header: "Saved SSIDs ($$)"
         button-1: "Clear"
         button-2: "Save"
         button-3: "Discard changes"

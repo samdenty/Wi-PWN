@@ -1,9 +1,11 @@
 # Exclude some folders & files
+baseurl: ""
 exclude: ["_*", "package.json", "node_modules", "Gemfile*"]
 destination: ../output/html
 
-# Language plugin
-languages: ["english"]
+# Language plugin 
+# "english", "german", "russian", "italian", "hebrew"
+languages: ["english", "german", "russian", "italian", "hebrew"]
 
 
 # Jekyll tidy HTML plugin

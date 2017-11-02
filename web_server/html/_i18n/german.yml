@@ -34,7 +34,6 @@ translation:
     # Uncomment & insert a link to your Github / site
     url: "https://github.com/PappleTec"
 
-
 nav:
     scan: "Scannen"
     users: "Benutzer"
@@ -132,7 +131,7 @@ attack:
         toggle-2: "Verschlüsselt"
         button: "Hinzufügen"
     card-5:
-        header: "Gespeicherte SSIDs $$"
+        header: "Gespeicherte SSIDs ($$)"
         button-1: "Löschen"
         button-2: "Speichern"
         button-3: "Änderungen verwerfen"
@@ -283,6 +282,6 @@ errors:
     E96: "Verbinden Sie sich neu und laden Sie die Seite neu"
     E97: "Keine Antwort erhalten!"
     E98: "Scanergebnisse konnten nicht analysiert werden!"
-    E99: "Gelöscht, vergessen Sie nicht, auf "Speichern" zu klicken!"
+    E99: "Gelöscht, vergessen Sie nicht, auf 'Speichern' zu klicken!"
     E100: "Fehler beim Analysieren der gespeicherten SSIDs, bereinige..."
-S1: "Sind Sie sicher dass Sie Wi-PWN neustarten möchten?"
+    S1: "Sind Sie sicher dass Sie Wi-PWN neustarten möchten?"

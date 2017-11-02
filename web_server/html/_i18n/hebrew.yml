@@ -1,0 +1,287 @@
+﻿#  _ _ _ _     _____ _ _ _ _____ 
+# | | | |_|___|  _  | | | |   | |
+# | | | | |___|   __| | | | | | |
+# |_____|_|   |__|  |_____|_|___|
+#        TRANSLATION FILE
+# 
+# Format:
+#   What is '$$'?
+#       '$$' is a variable thats replaced with HTML
+#       For example:
+#          `$$click here$$`     =>   `<a href="mypage">click here</a>`
+#          `translated by $$`   =>   `translated by sam`
+#
+#   DO NOT REMOVE THE INDENTATION!
+#       The indentation is critical to YAML, so please don't change it
+#   
+#   Try and retain the case, for example:
+#       If it is capitalized keep it capitalized
+#   
+#   What are the `translation.name` & `translation.url`?
+#       These are strings that will be added to the footer & info page
+#   
+#   I'm unsure about how to translate something / I have a question
+#       No problem! feel free to ask something over at
+#       https://wi-pwn.samdd.me/discord/
+# 
+#   What encoding should I use?
+#       UTF-8 ~ jekyll doesn't support any other encodings
+# 
+# 
+translation:
+    # Uncomment & insert your name here
+    name: "Itsik Bitran"
+    # Uncomment & insert a link to your Github / site
+    url: "https://github.com/itsik-b"
+
+nav:
+    scan: "סריקה"
+    users: "משתמשים"
+    attack: "תקיפה"
+    detector: "איתור ניתוקים"
+    control: "בקרה"
+    settings: "הגדרות"
+    info: "אודות"
+
+global:
+    save: "שמור"
+    reset: "איפוס נתונים"
+    ssid: "SSID"
+    password: "סיסמה"
+    start: "התחל"
+    stop: "עצור"
+    name: "שם מכשיר"
+    reboot: "איתחול מחדש"
+    guide: "הוראות"
+    footer: "Sam Denty - @samdenty99 - עוצב על-ידי"
+    translated-by: "$$ תורגם על ידי"
+
+setup:
+    page-1:
+        header: "תנאים והגבלות"
+        card:
+            title: "Wi-PWN ברוכים הבאים ל"
+            paragraph-1: "!תוכנה זו מיועדת לבדיקות אבטחה בלבד"
+            paragraph-2: "יכול לבצע התקפות ניתוק על רשתות, בדומה לשימוש במשבש רשתות אלחוטיות Wi-PWN"
+            paragraph-3: "השתמש בתוכנה זו רק על רשתות בהן אתה מורשה לעשות שימוש חסימה כזה"
+            button: "אשר תנאי שימוש"
+
+    page-2:
+        header: "Wi-PWN הגדרות"
+        card:
+            field-1: "סיסמה"
+            toggle-1: "הפעל מצב כהה"
+            button: "המשך"
+
+    page-3:
+        header: "הגדרה ראשונית"
+        message-1: "הגדרה ראשונית הושלמה"
+        message-2: "התחבר מחדש לרשת החדשה שהגדרת"
+
+    attribution: "Sam Denty עוצב על ידי"
+
+scan:
+    title: "סריקת רשתות"
+    card-1:
+        header: "סריקת רשתות ($$)"
+        table:
+            signal: "עוצמת אות"
+            security: "אבטחה"
+            channel: "ערוץ"
+    strings:
+        A: "לא מאובטח" # As in `WPA2` / security
+
+users:
+    title: "מכשירים"
+    card-1:
+        header: "סרוק מכשירים ברשתות נבחרות ($$)"
+        table:
+            info: "פרטי מכשיר"
+            packets: "מנות משודרות"
+    card-2:
+        header: "מכשירים שמורים ($$)"
+    card-3:
+        field-1: "MAC כתובת"
+        button-1: "הוסף מכשיר"
+    strings:
+        A: "רשימת משתמשים שמורים פגומה, לאפס אותה?"
+        B: "מנקה רשימת משתמשים..."
+        C: "הסריקה הושלמה! התחבר מחדש ורענן את הדף"
+        D: "סורק משתמשים ~$$ שניות נותרו לסיום"
+
+attack:
+    title: "תקיפה"
+    card-1:
+        header: "התחלת תקיפה"
+        table:
+            attack: "סוג תקיפה"
+            status: "סטטוס"
+            switch: "התחל / עצור"
+            random: "אקראי"
+    card-2:
+        header: "רשתות נבחרות &amp; מכשירים"
+        button: "שכפל רשת"
+    card-3:
+        header-1: "MAC כתובת"
+        header-2: "יצרן"
+    card-4:
+        header: "הוסף רשתות"
+        toggle-1: "צור רשתות אקראיות"
+        field-1: "מספר מופעים"
+        toggle-2: "הצג כמוצפן"
+        button: "הוסף רשתות"
+    card-5:
+        header: "שמורים SSIDs ($$)"
+        button-1: "נקה רשימה"
+        button-2: "שמור רשימה"
+        button-3: "בטל שינויים"
+    strings:
+        A: "מרווחי זמן לתקיפה אקראית"
+        B: "מוכן לפעולה"
+        C: "פעיל"
+
+detector:
+    title: "איתור ניתוקים"
+    card-1:
+        header: "מאתר ניתוקים"
+        field-1: "ערוץ לאיתור"
+        toggle-1: "כל הערוצים"
+        field-2: "GPIO פין התראה"
+        toggle-2: "הפוך דלוק/כבוי"
+        field-3: "(ms) זמן לסריקת ערוצים"
+        button-1: "שמור והפעל"
+    strings:
+        A: "מאתר ניתוקים פעיל! הפעל מחדש את המכשיר לחזרה למצב רגיל"
+
+control:
+    title: "GPIO בקרת"
+    card-1:
+        header: "GPIO בקרת"
+        button-1: "אפס נתונים"
+        table:
+            pin: "פין"
+            high: "דלוק"
+    strings:
+        A: "נכשל בהפעלת PIN"
+        B: "שם ל PIN"
+        C: "10 תוים מקסימום!"
+        D: "האם לאפס נתונים שמורים ?"
+
+settings:
+    title: "הגדרות"
+    card-1:
+        header: "Wi-Fi שרת"
+        field-1: "ערוץ"
+        toggle-1: "SSID הסתר"
+    card-2:
+        header: "Wi-Fi לקוח"
+        field-1: "לחיבור לקוח SSID"
+        field-2: "סיסמה לחיבור לקוח"
+        field-3: "ESP שם מכשיר"
+        toggle-1: "WiFi הפעל לקוח"
+    card-3:
+        header: "התאמה אישית"
+        field-1: "זמן לזכירת שמות שרתים"
+        field-2: "מספר פין לנורת לד"
+        toggle-1: "הפעלת מצב כהה"
+        toggle-2: "זכור שמות שרתים"
+        toggle-3: "הפעל חיווי בנורת לד"
+    card-4:
+        header: "ממשק משתמש"
+        toggle-1: "הפעל ממשק פשוט"
+        toggle-2: "שורות קטנות יותר בטבלה"
+        toggle-3: "הצג כפתור הפעלה מחדש"
+    card-5:
+        header: "סריקה &amp; ניתוק"
+        field-1: "פסק זמן לסריקה"
+        field-2: "(פסק זמן לניתוק (0 ללא הגבלה"
+        field-3: "MAC כתובת"
+        toggle-1: "רנדומאלית MAC כתובת"
+        toggle-2: "הצג רשתות מוסתרות" 
+        toggle-3: "אפשר לבחור יותר מרשת אחת"
+        toggle-4: "אפשר להפעיל כמה סוגי תקיפה"
+    card-6:
+        header: "הגדרות מתקדמות"
+        field-1: "קוד תשובה לניתוק"
+        field-2: "כמות מנות לשידור בשניה"
+        field-3: "MAC תיזמון לשינוי כתובת"
+        toggle-1: "הגדל מרווח שידור ל-1 שניות"
+    strings:
+        A: "האם לאפס את כל ההגדרות לברירת מחדל ?"
+        B: "השינויים שבוצעו לא ישמרו !"
+
+info:
+    title: "אודות"
+    card-1:
+        header: "Wi-PWN יוצר"
+        about: "Wi-PWN עוצב על ידי $$Sam Denty$$, מהפרוייקט המקורי של $$spacehuhn &#128020;$$. Wi-PWN מופץ תחת רשיון $$CC BY-NC 4.0$$"
+    card-2:
+        header: "Wi-PWN"
+        table:
+            A: "Wi-PWN גרסה"
+            B: "בדוק עדכונים"
+            C: "עדכן"
+            D: "זמן עבודה / זיכרון"
+            E: "מנות ששודרו"
+            F: "IP / שער"
+            G: "גרסאות"
+            H: "זיכרון &amp; מספר מעבד"
+    card-3:
+        header: "אפשרויות מתקדמות"
+        get: "הפעל"
+    card-4:
+        header: "תורמים"
+        paragraph-1: "(Spacehuhn) Stefan Kremser תוכנה זו מבוססת על עבודתו של"
+        paragraph-2: "GitHub - $$contributors page$$ למידע נוסף ניתן לגשת ל"
+    card-5:
+        header: "ספריות הכלולות בתוכנה"
+    strings:
+        A: "sysinfo.json שגיאת בטעינת קובץ"
+        B: "OTA עדכון"
+        C: "להעלות"
+        D: "פרוייקטים נוספים"
+        E: "דווח על תקלה"
+        F: "פרוייקטים נוספים"
+
+error:
+    title: "404"
+    page-header: "דף לא נמצא!"
+
+errors:
+    bad-response: "ERROR: Bad response"
+    E0: "Failed to scan for networks!"
+    E6: "Reconnect to Wi-Fi network"
+    E7: "INFO: No Wi-Fi network(s) selected!"
+    E10: "Invalid MAC address"
+    E15: "No network(s) selected!"
+    E16: "SSID list full (E16)"
+    E17: "ERROR: Reset the settings"
+    E18: "Failed to save settings!"
+    E19: "Failed to save settings!"
+    E20: "Failed to reset settings!"
+    E21: "Failed to reset settings!"
+    E22: "Reconnect and reload this page"
+    E23: "Failed to restart Wi-PWN!"
+    E24: "Failed to restart Wi-PWN!"
+    E25: "ERROR: Reset the settings"
+    E26: "Failed to restart Wi-PWN!"
+    E27: "Failed to restart Wi-PWN!"
+    E28: "Failed to save settings!"
+    E29: "Failed to save settings!"
+    E30: "Failed to start detector!"
+    E31: "Failed to start detector!"
+    E32: "Failed to save!"
+    E33: "Failed to save!"
+    E34: "Failed to load control.json"
+    E37: "ERROR: Failed to change PIN name"
+    E39: "Failed to update PIN name!"
+    E40: "Failed to update PIN name!"
+    E41: "Failed to reset saved entries!"
+    E42: "Failed to reset saved entries!"
+    E95: "ERROR: Failed to load settings.json"
+    E96: "Reconnect and reload this page"
+    E97: "Didn't receive a response!"
+    E98: "Failed to parse scan results!"
+    E99: "Cleared, don't forget to click save!"
+    E100: "Failed to parse saved SSIDs, clearing..."
+    S1: "Are you sure you want to reboot Wi-PWN?"

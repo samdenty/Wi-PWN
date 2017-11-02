@@ -131,7 +131,7 @@ attack:
         toggle-2: "Защищён"
         button: "Добавить"
     card-5:
-        header: "Сохранённые SSIDs $$"
+        header: "Сохранённые SSIDs ($$)"
         button-1: "Очистить"
         button-2: "Сохранить"
         button-3: "Отменить изменения"

@@ -83,7 +83,7 @@ function getResults() {
 
 		if (typeof res.ssid != 'undefined') {
 			data = res.ssid;
-			ssidCounter.innerHTML = " ("+ data.length + "/48)";
+			ssidCounter.innerHTML = ""+ data.length + "/48";
 
 			var tr = "<tr><th>{% t global.ssid %}</th><th><a class='button secondary right' onclick='resetSSID()'>{% t attack.card-5.button-3 %}</a></th></tr>";
 			for (var i = 0; i < data.length; i++) {

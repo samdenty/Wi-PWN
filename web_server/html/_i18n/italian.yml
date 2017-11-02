@@ -131,7 +131,7 @@ attack:
         toggle-2: "Protetto"
         button: "Aggiungi"
     card-5:
-        header: "SSID salvati $$"
+        header: "SSID salvati ($$)"
         button-1: "Cancella"
         button-2: "Salva"
         button-3: "Annulla cambiamenti"
