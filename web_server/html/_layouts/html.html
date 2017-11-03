@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="./main.css">
 	{% if page.url != "/setup.html" %}<link rel="stylesheet" href="./dark.css" id="darkStyle">{% endif %}
 	<meta name="theme-color" content="#106CC8">
+	{% if jekyll.environment == "development" %}<script src="./debugger.js"></script>{% endif %}
 </head>
 
 <body>
