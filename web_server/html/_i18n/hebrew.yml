@@ -54,21 +54,20 @@ global:
     reboot: "איתחול מחדש"
     guide: "הוראות"
     footer: "Sam Denty - @samdenty99 - עוצב על-ידי"
-    translated-by: "$$ תורגם על ידי"
+    translated-by: "<p style='text-align:center;'>$$ תורגם על ידי</p>"
 
 setup:
-    title: "להכין"
     page-1:
         header: "תנאים והגבלות"
         card:
-            title: "Wi-PWN ברוכים הבאים ל"
-            paragraph-1: "!תוכנה זו מיועדת לבדיקות אבטחה בלבד"
-            paragraph-2: "יכול לבצע התקפות ניתוק על רשתות, בדומה לשימוש במשבש רשתות אלחוטיות Wi-PWN"
-            paragraph-3: "השתמש בתוכנה זו רק על רשתות בהן אתה מורשה לעשות שימוש חסימה כזה"
+            title: "<p style='text-align:center;'>Wi-PWN ברוכים הבאים ל</p>"
+            paragraph-1: "<p style='text-align:right;'>!תוכנה זו מיועדת לבדיקות אבטחה בלבד</p>"
+            paragraph-2: "<p style='text-align:right;'>יכול לבצע התקפות ניתוק על רשתות, בדומה לשימוש במשבש רשתות אלחוטיות Wi-PWN</p>"
+            paragraph-3: "<p style='text-align:right;'>השתמש בתוכנה זו רק על רשתות בהן אתה מורשה לעשות שימוש חסימה כזה</p>"
             button: "אשר תנאי שימוש"
 
     page-2:
-        header: "Wi-PWN הגדרות"
+        header: "<p style='text-align:right;'>Wi-PWN הגדרות</p>"
         card:
             field-1: "סיסמה"
             toggle-1: "הפעל מצב כהה"
@@ -84,7 +83,7 @@ setup:
 scan:
     title: "סריקת רשתות"
     card-1:
-        header: "סריקת רשתות (&#x200E;$$)&#x200E;"
+        header: "(סריקת רשתות ($$"
         table:
             signal: "עוצמת אות"
             security: "אבטחה"
@@ -95,12 +94,12 @@ scan:
 users:
     title: "מכשירים"
     card-1:
-        header: "סרוק מכשירים ברשתות נבחרות (&#x200E;$$)&#x200E;"
+        header: "(סרוק מכשירים ברשתות נבחרות ($$"
         table:
             info: "פרטי מכשיר"
             packets: "מנות משודרות"
     card-2:
-        header: "מכשירים שמורים (&#x200E;$$)&#x200E;"
+        header: "(מכשירים שמורים ($$"
     card-3:
         field-1: "MAC כתובת"
         button-1: "הוסף מכשיר"
@@ -132,7 +131,7 @@ attack:
         toggle-2: "הצג כמוצפן"
         button: "הוסף רשתות"
     card-5:
-        header: "שמורים SSIDs ($$)"
+        header: "שמורים SSIDs $$"
         button-1: "נקה רשימה"
         button-2: "שמור רשימה"
         button-3: "בטל שינויים"
@@ -215,7 +214,11 @@ info:
     title: "אודות"
     card-1:
         header: "Wi-PWN יוצר"
-        about: "Wi-PWN עוצב על ידי $$Sam Denty$$, מהפרוייקט המקורי של $$spacehuhn &#128020;$$. Wi-PWN מופץ תחת רשיון $$CC BY-NC 4.0$$"
+        about: "<p style='text-align:center;'>
+        $$Sam Denty$$ עוצב על ידי Wi-PWN <BR>
+        $$spacehuhn &#128020;$$ מהפרוייקט המקורי של <BR> 
+        $$CC BY-NC 4.0$$ מופץ תחת רשיון Wi-PWN 
+         </p>"
     card-2:
         header: "Wi-PWN"
         table:
@@ -226,14 +229,14 @@ info:
             E: "מנות ששודרו"
             F: "IP / שער"
             G: "גרסאות"
-            H: "זיכרון &amp; מספר מעבד"
+            H: "זיכרון / מס' מעבד"
     card-3:
         header: "אפשרויות מתקדמות"
         get: "הפעל"
     card-4:
         header: "תורמים"
-        paragraph-1: "(Spacehuhn) Stefan Kremser תוכנה זו מבוססת על עבודתו של"
-        paragraph-2: "GitHub - $$contributors page$$ למידע נוסף ניתן לגשת ל"
+        paragraph-1: "<p style='text-align:right;'>(Spacehuhn) Stefan Kremser תוכנה זו מבוססת על עבודתו של"
+        paragraph-2: "GitHub - $$contributors page$$ למידע נוסף ניתן לגשת ל</p>"
     card-5:
         header: "ספריות הכלולות בתוכנה"
     strings:
