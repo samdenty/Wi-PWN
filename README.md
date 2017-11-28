@@ -6,7 +6,7 @@
   <h3 align="center">Wi-PWN</h3>
 
   <p align="center">
-    ESP8266 Deauther with a clean & minimalistic web interface 
+    ESP8266 Deauther with a clean &amp; minimalistic web interface 
     <br>
     <b><a href="https://wi-pwn.samdd.me/?ref=online-demo">Online demo</a> | <a href="https://discord.gg/yN2x7sp">Discord</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">Browse the docs</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">Upcoming features</a></b>
     <br>
@@ -14,7 +14,7 @@
     <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
 		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">
 	</a>
-    <a href="https://wi-pwn.samdd.me/discord/?ref=chat">
+    <a href="https://samdd.me/r?https://discord.gg/yN2x7sp">
 		<img src="https://img.shields.io/discord/335836376031428618.svg?colorB=0082ff&style=flat">
 	</a>
     <a href="https://samdenty99.github.io/r?http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
@@ -32,7 +32,8 @@
 </p>
 <h2></h2>
 
-**[Wi-PWN on the Google Play store](https://play.google.com/store/apps/details?id=samdd.wipwn)**
+[<img src="https://canary.discordapp.com/api/guilds/335836376031428618/widget.png?style=banner2" height="60px">](https://samdd.me/r?https://discord.gg/yN2x7sp)
+[<img src="https://i.imgur.com/SHwUics.png" height="60px">](https://play.google.com/store/apps/details?id=samdd.wipwn)
 
 ## Advantages
 
