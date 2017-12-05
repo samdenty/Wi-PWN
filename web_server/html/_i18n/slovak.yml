@@ -51,8 +51,8 @@ global:
     name: "Meno"
     reboot: "Reštart"
     guide: "Návod"
-    footer: "Designované Samom Dentym - @samdenty99"
-    translated-by: "translated by digm0repaka"
+    footer: "Designované Sam Denty - @samdenty99"
+    translated-by: "translated by $$"
 
 setup:
     title: "Nastavenie"
