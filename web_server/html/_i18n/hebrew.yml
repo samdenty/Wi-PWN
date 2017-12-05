@@ -57,6 +57,7 @@ global:
     translated-by: "<p style='text-align:center;'>$$ תורגם על ידי</p>"
 
 setup:
+    title: "להכין"
     page-1:
         header: "תנאים והגבלות"
         card:
