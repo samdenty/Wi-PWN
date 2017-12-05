@@ -62,7 +62,7 @@ setup:
             title: "Vitajte v Wi-PWN"
             paragraph-1: "Tento software je určený pre testovanie bezpečnosti!"
             paragraph-2: "Wi-PWN dokáže zaútočit na siete Wi-Fi, <i>Podobne ako rušička signálou.</i>"
-            paragraph-3: "Pre použitie iba na sitach s povolením."
+            paragraph-3: "Pre použitie iba na sietach s povolením."
             button: "Súhlasím"
 
     page-2:
