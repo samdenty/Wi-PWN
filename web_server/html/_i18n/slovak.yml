@@ -1,0 +1,286 @@
+#  _ _ _ _     _____ _ _ _ _____ 
+# | | | |_|___|  _  | | | |   | |
+# | | | | |___|   __| | | | | | |
+# |_____|_|   |__|  |_____|_|___|
+#        TRANSLATION FILE
+# 
+# Format:
+#   What is '$$'?
+#       '$$' is a variable thats replaced with HTML
+#       For example:
+#          `$$click here$$`     =>   `<a href="mypage">click here</a>`
+#          `translated by $$`   =>   `translated by sam`
+#
+#   DO NOT REMOVE THE INDENTATION!
+#       The indentation is critical to YAML, so please don't change it
+#   
+#   Try and retain the case, for example:
+#       If it is capitalized keep it capitalized
+#   
+#   What are the `translation.name` & `translation.url`?
+#       These are strings that will be added to the footer & info page
+#   
+#   I'm unsure about how to translate something / I have a question
+#       No problem! feel free to ask something over at
+#       https://wi-pwn.samdd.me/discord/
+#       
+#   What encoding should I use?
+#       UTF-8 ~ jekyll doesn't support any other encodings
+# 
+
+translation:
+    name: "digm0repaka"
+    url: "https://github.com/digmorepaka"
+
+nav:
+    scan: "Sken"
+    users: "Používatelia"
+    attack: "Útok"
+    detector: "Detekcia"
+    control: "Ovládanie"
+    settings: "Nastavenia"
+    info: "Informácie"
+
+global:
+    save: "Uložit"
+    reset: "Reset"
+    ssid: "SSID"
+    password: "Heslo"
+    start: "Štart"
+    stop: "Stop"
+    name: "Meno"
+    reboot: "Reštart"
+    guide: "Návod"
+    footer: "Designované Samom Dentym - @samdenty99"
+    translated-by: "translated by digm0repaka"
+
+setup:
+    title: "Nastavenie"
+    page-1:
+        header: "Podmienky používania"
+        card:
+            title: "Vitajte v Wi-PWN"
+            paragraph-1: "Tento software je určený pre testovanie bezpečnosti!"
+            paragraph-2: "Wi-PWN dokáže zaútočit na siete Wi-Fi, <i>Podobne ako rušička signálou.</i>"
+            paragraph-3: "Pre použitie iba na sitach s povolením."
+            button: "Súhlasím"
+
+    page-2:
+        header: "Nastavenie Wi-PWN"
+        card:
+            field-1: "Heslo"
+            toggle-1: "Zapnúť tmavý režim"
+            button: "Pokračovať"
+
+    page-3:
+        header: "Nastavenie hotové"
+        message-1: "Nastavenie hotové!"
+        message-2: "Znova sa pripojte ku sieti"
+
+    attribution: "Designovane Samom Dentym"
+
+scan:
+    title: "Sken"
+    card-1:
+        header: "Sken sietí Wi-Fi ($$)"
+        table:
+            signal: "Intenzita signálu"
+            security: "Typ bezpečnosti"
+            channel: "Kanál"
+    strings:
+        A: "Otvorená" # As in `WPA2` / security
+
+users:
+    title: "Používatelia"
+    card-1:
+        header: "Sken pre Wi-Fi používateľou ($$)"
+        table:
+            info: "Informácie klienta"
+            packets: "Pkts"
+    card-2:
+        header: "Uloźený používatelia ($$)"
+    card-3:
+        field-1: "Adresa MAC"
+        button-1: "Pridať"
+    strings:
+        A: "Uložený zoznam klientou bol poškodený, zresetovať ho?"
+        B: "Mazanie zoznamu klientou..."
+        C: "Sken hotový! Znova sa pripojte a znova načítajte stránku."
+        D: "Skenovanie užívatelou, zostáva ~ $$s"
+
+attack:
+    title: "Útok"
+    card-1:
+        header: "Spustiť Útok"
+        table:
+            attack: "Útok"
+            status: "Stav"
+            switch: "Spínače"
+            random: "Náhodné názvy sietí"
+    card-2:
+        header: "Zvolené siete &amp; používatelia"
+        button: "Klonovať"
+    card-3:
+        header-1: "Adresa MAC"
+        header-2: "Výrobca"
+    card-4:
+        header: "Pridať SSID"
+        toggle-1: "Vytvoriť náhodné"
+        field-1: "Počet klonou"
+        toggle-2: "Encrytované"
+        button: "Pridať"
+    card-5:
+        header: "Počet uloženích SSID ($$)"
+        button-1: "Zmazať"
+        button-2: "Uložiť"
+        button-3: "Zmazať zmeny"
+    strings:
+        A: "Náhodný interval útokou"
+        B: "pripravené"
+        C: "spustené"
+
+detector:
+    title: "Detektor deauthentifikácie"
+    card-1:
+        header: "Detektor Deauthentifikácie"
+        field-1: "Kanál detekcie"
+        toggle-1: "Všetky kanály"
+        field-2: "Výstražný pin GPIO"
+        toggle-2: "Invertovať HIGH/LOW"
+        field-3: "Čas skenovania kanálu (ms)"
+        button-1: "Uložit &amp; spustiť"
+    strings:
+        A: "Detektor spustení! Reštartujte zariadenie pre vrátenie do normálneho stavu."
+
+control:
+    title: "Ovládanie pinou GPIO"
+    card-1:
+        header: "Ovládanie pinou GPIO"
+        button-1: "Resetovať vstupy"
+        table:
+            pin: "PIN"
+            high: "HIGH"
+    strings:
+        A: "Chyba zopnutia/rozopnutia PIN"
+        B: "Názov pre PIN"
+        C: "Maximum 10 písmen!"
+        D: "Zresetovat uložené vstupy?"
+
+settings:
+    title: "Nastavenia"
+    card-1:
+        header: "Wi-Fi server"
+        field-1: "Kanál"
+        toggle-1: "Skryť SSID"
+    card-2:
+        header: "Wi-Fi klient"
+        field-1: "SSID siete"
+        field-2: "Heslo siete"
+        field-3: "Meno zariadenia ESP"
+        toggle-1: "Spustiť klient Wi-Fi"
+    card-3:
+        header: "Úprava"
+        field-1: "Expiračná doba mädzipamäte"
+        field-2: "LED pin"
+        toggle-1: "Povoliť tmavý mód"
+        toggle-2: "Povoliť ukladanie do mädzipamäte"
+        toggle-3: "Povoliť LED indikátor"
+    card-4:
+        header: "Úpravy pre UI"
+        toggle-1: "Jednoduchý mód"
+        toggle-2: "Smaller table rows"
+        toggle-3: "Viditeľné tlačítko reštart"
+    card-5:
+        header: "Sken &amp; Útok"
+        field-1: "Časový limit skenu"
+        field-2: "Časový limit útoku"
+        field-3: "Adresa MAC"
+        toggle-1: "Náhodná adresa MAC"
+        toggle-2: "Sken skrytých sietí" 
+        toggle-3: "Zvoliť viacej sietí"
+        toggle-4: "Simultánne útoky"
+    card-6:
+        header: "Rozšírené"
+        field-1: "Dôvod deauthentifikácie"
+        field-2: "Rýchlosť posielania paketou (pkts/s)"
+        field-3: "Interval zmeny adresy MAC"
+        toggle-1: "1sekundovy Interval prístupového bodu"
+    strings:
+        A: "Zresetovať Wi-PWN na továrenské nastavenia?"
+        B: "Všetky zmeny budú stratené!"
+
+info:
+    title: "Informácie"
+    card-1:
+        header: "Tvorca Wi-PWN"
+        about: "Wi-PWN bol designovaný $$Samom Dentym$$, z originálneho projektu ktorý vytvoril $$spacehuhn &#128020;$$. Wi-PWN je vydaný pod $$CC BY-NC 4.0$$ licenciou."
+    card-2:
+        header: "Wi-PWN"
+        table:
+            A: "Wi-PWN verzia"
+            B: "Skontrolovať dostupné aktualizácie"
+            C: "Aktualizovať"
+            D: "Doba prevádzky / využitie pamäte"
+            E: "Poslané pakety"
+            F: "IP / gateway"
+            G: "Verzie"
+            H: "Flash &amp; Chip ID"
+    card-3:
+        header: "Advanced options"
+        get: "get"
+    card-4:
+        header: "Contributors"
+        paragraph-1: "This software is based upon the work of Stefan Kremser (Spacehuhn)"
+        paragraph-2: "For more information go to $$contributors page$$ on GitHub."
+    card-5:
+        header: "Included libraries"
+    strings:
+        A: "Failed to load sysinfo.json"
+        B: "OTA update"
+        C: "upload"
+        D: "Other projects"
+        E: "Report bug"
+        F: "Other projects"
+
+error:
+    title: "404"
+    page-header: "Page not found"
+
+errors:
+    bad-response: "ERROR: Bad response"
+    E0: "Failed to scan for networks!"
+    E6: "Reconnect to Wi-Fi network"
+    E7: "INFO: No Wi-Fi network(s) selected!"
+    E10: "Invalid MAC address"
+    E15: "No network(s) selected!"
+    E16: "SSID list full (E16)"
+    E17: "ERROR: Reset the settings"
+    E18: "Failed to save settings!"
+    E19: "Failed to save settings!"
+    E20: "Failed to reset settings!"
+    E21: "Failed to reset settings!"
+    E22: "Reconnect and reload this page"
+    E23: "Failed to restart Wi-PWN!"
+    E24: "Failed to restart Wi-PWN!"
+    E25: "ERROR: Reset the settings"
+    E26: "Failed to restart Wi-PWN!"
+    E27: "Failed to restart Wi-PWN!"
+    E28: "Failed to save settings!"
+    E29: "Failed to save settings!"
+    E30: "Failed to start detector!"
+    E31: "Failed to start detector!"
+    E32: "Failed to save!"
+    E33: "Failed to save!"
+    E34: "Failed to load control.json"
+    E37: "ERROR: Failed to change PIN name"
+    E39: "Failed to update PIN name!"
+    E40: "Failed to update PIN name!"
+    E41: "Failed to reset saved entries!"
+    E42: "Failed to reset saved entries!"
+    E95: "ERROR: Failed to load settings.json"
+    E96: "Reconnect and reload this page"
+    E97: "Didn't receive a response!"
+    E98: "Failed to parse scan results!"
+    E99: "Cleared, don't forget to click save!"
+    E100: "Failed to parse saved SSIDs, clearing..."
+    S1: "Are you sure you want to reboot Wi-PWN?"
