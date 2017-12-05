@@ -1,38 +1,56 @@
 <p align="center">
-  <a href="https://wi-pwn.samdd.me/?ref=logo">
-    <img src="https://github.com/samdenty99/Wi-PWN/raw/master/pictures/Wi-PWN.png" width="100">
-  </a>
-
-  <h3 align="center">Wi-PWN</h3>
-
-  <p align="center">
-    ESP8266 Deauther with a clean & minimalistic web interface 
-    <br>
-    <b><a href="https://wi-pwn.samdd.me/?ref=online-demo">Online demo</a> | <a href="https://discord.gg/yN2x7sp">Discord</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">Browse the docs</a> | <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">Upcoming features</a></b>
-    <br>
-    <br>
-    <a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
+	<a href="https://wi-pwn.samdd.me/?ref=logo">
+		<img src="https://github.com/samdenty99/Wi-PWN/raw/master/pictures/Wi-PWN.png" width="100">
+	</a>
+    <h3 align="center">Wi-PWN</h3>
+    <p align="center">
+    ESP8266 Deauther with a clean &amp; minimalistic web interface 
+    </p>
+</p>
+<p align="center">
+	<b>
+		<a href="https://wi-pwn.samdd.me/?ref=online-demo">
+			Online demo
+		</a>&nbsp;|
+		<a href="https://discord.gg/yN2x7sp">
+			Discord
+		</a>&nbsp;|
+		<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">
+			Browse the docs
+		</a>&nbsp;|
+		<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">
+			Upcoming features
+		</a>
+	</b>
+	<br><br>
+	<a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
 		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">
 	</a>
-    <a href="https://wi-pwn.samdd.me/discord/?ref=chat">
+	<a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp">
 		<img src="https://img.shields.io/discord/335836376031428618.svg?colorB=0082ff&style=flat">
 	</a>
-    <a href="https://samdenty99.github.io/r?http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
+	<a href="https://samdenty99.github.io/r?http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
 		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
 	</a>
 	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription">
-    	<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch&style=flat">
+		<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch&style=flat">
 	</a>
-    <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN">
+	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN">
 		<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star&style=flat">
 	</a>
 	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/fork">
 		<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork&style=flat">
-	</a>
+    </a>
 </p>
 <h2></h2>
-
-**[Wi-PWN on the Google Play store](https://play.google.com/store/apps/details?id=samdd.wipwn)**
+<p align="center">
+    <a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp">
+        <img src="https://canary.discordapp.com/api/guilds/335836376031428618/widget.png?style=banner2" height="60px">
+    </a>
+    <a href="https://samdenty99.github.io/r?https://play.google.com/store/apps/details?id=samdd.wipwn">
+        <img src="https://i.imgur.com/SHwUics.png" height="60px">
+    </a>
+</p>
 
 ## Advantages
 
