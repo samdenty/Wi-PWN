@@ -240,4 +240,4 @@ If it can send packets but your target doesn't lose its connection, then the Wi-
 
 #### If you have other questions or problems with the ESP8266 you can also check out the official [community forum](http://www.esp8266.com/).
 
-[![Analytics](https://ga-beacon.appspot.com/UA-85426772-5/Wi-PWN/?flat)](https://github.com/igrigorik/ga-beacon)
+[![Analytics](https://ga-beacon.appspot.com/UA-85426772-5/Wi-PWN/?pixel)](https://github.com/igrigorik/ga-beacon)
