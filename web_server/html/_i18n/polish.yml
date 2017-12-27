@@ -36,7 +36,7 @@ translation:
 
 nav:
     scan: "Skanuj"
-    users: "Użytlownicy"
+    users: "Użytkownicy"
     attack: "Atak"
     detector: "Wykrywacz"
     control: "Control"
