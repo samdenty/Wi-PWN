@@ -54,7 +54,7 @@ global:
     reboot: "Restart"
     guide: "Instrukcja"
     footer: "Zaprojektowane przez Sama Dentyego - @samdenty99"
-    translated-by: "Przetłumaczone przez the4anoni"
+    translated-by: "Przetłumaczone przez $$"
 
 setup:
     title: "Konfiguracja"
