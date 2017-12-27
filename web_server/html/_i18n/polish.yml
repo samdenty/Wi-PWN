@@ -97,7 +97,7 @@ users:
     card-1:
         header: "Skanuj użytkowników Wi-Fi ($$)"
         table:
-            info: "Informacje o Kliętach"
+            info: "Informacje o klientach"
             packets: "Pkts"
     card-2:
         header: "Zapisani Użytkownicy ($$)"
@@ -105,8 +105,8 @@ users:
         field-1: "Adres MAC"
         button-1: "Dodaj"
     strings:
-        A: "Zapisana lista kliętów jest uszkodzona, wyczyścić ją?"
-        B: "Czyszczenie listy kliętów"
+        A: "Zapisana lista klientów jest uszkodzona, wyczyścić ją?"
+        B: "Czyszczenie listy klientów"
         C: "Skanowanie zakończone! Podłącz się i odśwież stronę."
         D: "Szukanie użytkowników ~ $$s zostało"
 
@@ -179,7 +179,7 @@ settings:
         field-1: "SSID"
         field-2: "Hasło Sieci"
         field-3: "ESP hostname"
-        toggle-1: "Włącz klięta Wi-Fi"
+        toggle-1: "Włącz klienta Wi-Fi"
     card-3:
         header: "Personalizacja"
         field-1: "Cache expiration time"
