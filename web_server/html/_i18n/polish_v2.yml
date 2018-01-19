@@ -1,0 +1,288 @@
+#  _ _ _ _     _____ _ _ _ _____ 
+# | | | |_|___|  _  | | | |   | |
+# | | | | |___|   __| | | | | | |
+# |_____|_|   |__|  |_____|_|___|
+#        TRANSLATION FILE
+# 
+# Format:
+#   What is '$$'?
+#       '$$' is a variable thats replaced with HTML
+#       For example:
+#          `$$click here$$`     =>   `<a href="mypage">click here</a>`
+#          `translated by $$`   =>   `translated by sam`
+#
+#   DO NOT REMOVE THE INDENTATION!
+#       The indentation is critical to YAML, so please don't change it
+#   
+#   Try and retain the case, for example:
+#       If it is capitalized keep it capitalized
+#   
+#   What are the `translation.name` & `translation.url`?
+#       These are strings that will be added to the footer & info page
+#   
+#   I'm unsure about how to translate something / I have a question
+#       No problem! feel free to ask something over at
+#       https://wi-pwn.samdd.me/discord/
+#       
+#   What encoding should I use?
+#       UTF-8 ~ jekyll doesn't support any other encodings
+# 
+
+translation:
+    # Uncomment & insert your name here
+    name: "Eric00x"
+    # Uncomment & insert a link to your Github / site
+    url: "https://github.com/Eric00x"
+
+nav:
+    scan: "Skanuj"
+    users: "Użytkownicy"
+    attack: "Atak"
+    detector: "Wykrywacz"
+    control: "Kontrola"
+    settings: "Ustawienia"
+    info: "Informacje"
+
+global:
+    save: "Zapisz"
+    reset: "Reset"
+    ssid: "SSID"
+    password: "Hasło"
+    start: "Start"
+    stop: "Stop"
+    name: "Nazwa"
+    reboot: "Restart"
+    guide: "Instrukcja"
+    footer: "Zaprojektowane przez Sama Dentyego - @samdenty99"
+    translated-by: "Przetłumaczone przez $$"
+
+setup:
+    title: "Konfiguracja"
+    page-1:
+        header: "Regulamin Użytkowania"
+        card:
+            title: "Witaj w Wi-PWN"
+            paragraph-1: "To oprogramowanie służy wyłącznie do testów zabezpieczeń !"
+            paragraph-2: "Wi-PWN może przeprowadzić ataki deuwierzytelniające, <i>efekt jest podobny do tego z Wi-Fi jammera</i>"
+            paragraph-3: "Używaj tego oprogramowania wyłącznie na sieciach ,na których jesteś do tego autoryzowany!"
+            button: "Akceptuj"
+
+    page-2:
+        header: "Konfiguracja Wi-PWN"
+        card:
+            field-1: "Hasło"
+            toggle-1: "Włącz ciemny motyw"
+            button: "Dalej"
+
+    page-3:
+        header: "Konfiguracja zakończona!"
+        message-1: "Konfiguracja zakończona!"
+        message-2: "Połącz się z nową siecią!"
+
+    attribution: "Zaprojektowane przez Sama Dentyego"
+
+scan:
+    title: "Skanuj"
+    card-1:
+        header: "Skanuj Wi-Fi ($$)"
+        table:
+            signal: "Sygnał"
+            security: "Zabezpieczenia"
+            channel: "Kn." # Try and abbreviate, column is small
+    strings:
+        A: "Otwarta" # As in `WPA2` / security
+
+users:
+    title: "Użytkownicy"
+    card-1:
+        header: "Skanuj użytkowników Wi-Fi ($$)"
+        table:
+            info: "Informacje o klientach"
+            packets: "Pkty"
+    card-2:
+        header: "Zapisani Użytkownicy ($$)"
+    card-3:
+        field-1: "Adres MAC"
+        button-1: "Dodaj"
+    strings:
+        A: "Zapisana lista klientów jest uszkodzona, wyczyścić ją?"
+        B: "Czyszczenie listy klientów"
+        C: "Skanowanie zakończone! Podłącz się i odśwież stronę."
+        D: "Szukanie użytkowników ~ $$s zostało"
+
+attack:
+    title: "Atak"
+    card-1:
+        header: "Zainicjuj atak"
+        table:
+            attack: "Typ ataku"
+            status: "Status"
+            switch: "Przełącznik"
+            random: "Losowo"
+    card-2:
+        header: "Zaznaczone sieci &amp; użytkownicy"
+        button: "Klonuj"
+    card-3:
+        header-1: "Adres MAC"
+        header-2: "Dostawca"
+    card-4:
+        header: "Dodaj SSID"
+        toggle-1: "Wygeneruj losowo"
+        field-1: "Ilość klonów"
+        toggle-2: "Zabezpieczone"
+        button: "Dodaj"
+    card-5:
+        header: "Zapisane SSID ($$)"
+        button-1: "Wyczyść"
+        button-2: "Zapisz"
+        button-3: "Nie zapisuj zmian"
+    strings:
+        A: "Częstotliwość losowego ataku"
+        B: "gotowy"
+        C: "uruchomiony"
+
+detector:
+    title: "Wykrywacz ataków Deauth"
+    card-1:
+        header: "Wykrywacz Deauth"
+        field-1: "Kanał detektora"
+        toggle-1: "Wszyskie kanały"
+        field-2: "GPIO Alert Pin"
+        toggle-2: "Zamień HIGH/LOW"
+        field-3: "Czas skanowania kanału (ms)"
+        button-1: "Zapisz &amp; start"
+    strings:
+        A: "Detektor uruchomiony! Zrestartuj urządzenie by wyłączyć!"
+
+control:
+    title: "Kontrola GPIO"
+    card-1:
+        header: "Kontrola GPIO"
+        button-1: "Zrestartuj wejścia"
+        table:
+            pin: "PIN"
+            high: "HIGH"
+    strings:
+        A: "Błąd w zmianiu PINu"
+        B: "Nazwa dla PINu"
+        C: "Maksymalnie 10 liter!"
+        D: "Zresetować zachowane wejścia?"
+
+settings:
+    title: "Ustawienia"
+    card-1:
+        header: "Serwer Wi-Fi"
+        field-1: "Kanał"
+        toggle-1: "Ukryj SSID"
+    card-2:
+        header: "Klien Wi-Fi"
+        field-1: "SSID"
+        field-2: "Hasło sieci"
+        field-3: "Nazwa hosta ESP"
+        toggle-1: "Włącz klienta Wi-Fi"
+    card-3:
+        header: "Personalizacja"
+        field-1: "Czas do przeterminowania cache"
+        field-2: "LED Pin"
+        toggle-1: "Włącz ciemny motyw"
+        toggle-2: "Włącz serwerowe cache"
+        toggle-3: "Włącz diodę LED"
+    card-4:
+        header: "Ustawienia UI"
+        toggle-1: "Uprość interfejs"
+        toggle-2: "Mniejsze kolumny tabel"
+        toggle-3: "Pokaż przycisk Restartu"
+    card-5:
+        header: "Skanuj &amp; Atak"
+        field-1: "Czas do skanowania"
+        field-2: "Czas do ataku"
+        field-3: "Adres MAC"
+        toggle-1: "Losowy adres MAC"
+        toggle-2: "Skanuj w poszukiwaniu ukrytych sieci" 
+        toggle-3: "Zaznacz wiele sieci"
+        toggle-4: "Jednoczesne ataki"
+    card-6:
+        header: "Zaawansowane"
+        field-1: "Powód rozłączenia"
+        field-2: "Ilość pakietów (pkty/s)"
+        field-3: "Szybkość zmiany adresu MAC"
+        toggle-1: "1sek zmiana Beacon"
+    strings:
+        A: "Przywrócić ustawienia domyślne?"
+        B: "Wszystkie zmiany zostaną utracone!"
+
+info:
+    title: "Informacje"
+    card-1:
+        header: "O Wi-PWN"
+        about: "Wi-PWN został stworzony przez $$Sama Dentyego$$, na podstawie projektu stworzonego przez $$spacehuhn &#128020;$$. Wi-PWN jest na licencji $$CC BY-NC 4.0$$."
+    card-2:
+        header: "Wi-PWN"
+        table:
+            A: "Wersja Wi-PWN"
+            B: "Sprawdź aktualizacje"
+            C: "Aktualizuj"
+            D: "Czas pracy / wykorzystanie pamięci"
+            E: "Wysłane pakiety"
+            F: "IP / gateway"
+            G: "Wersja"
+            H: "Flash &amp; Chip ID"
+    card-3:
+        header: "Opcje zaawansowane"
+        get: "get"
+    card-4:
+        header: "Contributors"
+        paragraph-1: "Te oprogramowanie opiera się na pracy Stefan Kremsera (Spacehuhn)"
+        paragraph-2: "Po więcej informacji idź do $$strony współpracowników$$ na GitHubie."
+    card-5:
+        header: "Dołączone biblioteki"
+    strings:
+        A: "Nie można załadować sysinfo.json"
+        B: "Aktualizacja OTA"
+        C: "upload"
+        D: "Inne Projekty"
+        E: "Zgłoś błędy"
+        F: "Inne projekty"
+
+error:
+    title: "404"
+    page-header: "Strona nie znaleziona!"
+
+errors:
+    bad-response: "Błąd: Zła odpowiedź"
+    E0: "Nie można znaleźć sieci!"
+    E6: "Podłacz się ponownie do sieci Wi-Fi"
+    E7: "INFO: Nie zaznaczono sieci Wi-Fi!"
+    E10: "Niepoprawny adres MAC"
+    E15: "Nie zaznaczono sieci!"
+    E16: "Lista SSID pełna! (E16)"
+    E17: "Błąd: Zresetuj ustawienia"
+    E18: "Nie można zapisać ustawień!"
+    E19: "Nie można zapisać ustawień!"
+    E20: "Nie można zresetować ustawień!"
+    E21: "Nie można zresetować ustawień!"
+    E22: "Połacz się i załaduj stronę ponownie!"
+    E23: "Nie można zrestartować Wi-PWN!"
+    E24: "Nie można zrestartować Wi-PWN!"
+    E25: "Błąd: Zresetuj ustawienia"
+    E26: "Nie można zrestartować Wi-PWN!"
+    E27: "Nie można zrestartować Wi-PWN!"
+    E28: "Nie można zapisać ustaweień!"
+    E29: "Nie można zapisać ustaweień!"
+    E30: "Nie można uruchomić wykrywacza!"
+    E31: "Nie można uruchomić wykrywacza!"
+    E32: "Nie można zapisać!"
+    E33: "Nie można zapisać!"
+    E34: "Nie można załadować control.json"
+    E37: "Błąd: Nie udało się zmienić nazwę PINu"
+    E39: "Nie udało się zaktualizować nazwy PINu"
+    E40: "Nie udało się zaktualizować nazwy PINu"
+    E41: "Nie można zresetować zapisanych wartości!"
+    E42: "Nie można zresetować zapisanych wartości!"
+    E95: "Nie można załadować settings.json"
+    E96: "Połacz się i załaduj stronę ponownie!"
+    E97: "Nie otrzymano odpowiedzi!"
+    E98: "Nie można wyświetlić wyników skanowania!"
+    E99: "Wyczyszczono, nie zapomnij zapisać!"
+    E100: "Błąd w pobieraniu zapisanych SSID, czyszczenie..."
+    S1: "Czy jesteś pewny, że chcesz zresetować Wi-PWN?"
