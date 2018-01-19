@@ -5,7 +5,7 @@ destination: ../output/html
 
 # Language plugin 
 # "english", "german", "russian", "italian", "hebrew"
-languages: ["english", "german", "russian", "italian", "dutch", "portuguese", "slovak", "polish", "hebrew"]
+languages: ["english", "german", "russian", "italian", "dutch", "chinese", "portuguese", "slovak", "polish", "hebrew"]
 
 
 # Jekyll tidy HTML plugin
