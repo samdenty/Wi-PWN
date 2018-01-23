@@ -1,3 +1,5 @@
+---
+---
 var ssid = getE('ssid'),
 	ssidHidden = getE('ssidHidden'),
 	password = getE('password'),
