@@ -48,7 +48,7 @@ function getData() {
 			res = JSON.parse(responseText);
 		} catch (e) {
 			fadeIn();
-			notify("{% t error.E17 %}  (E17)");
+			notify("{% t errors.E17 %}  (E17)");
 			return;
 		}
 		try {
@@ -58,7 +58,7 @@ function getData() {
 			log("INVALID   ~ ", responseText, false)
 			console.error(err)
 			fadeIn();
-			notify("{% t error.E17 %}  (E17)");
+			notify("{% t errors.E17 %}  (E17)");
 			return
 		}
 		ssid.value = res.ssid;
@@ -92,7 +92,7 @@ function getData() {
 		switchClient();
 		fadeIn();
 	}, function () {
-		notify("{% t error.E95 %}  (E95)");
+		notify("{% t errors.E95 %}  (E95)");
 		fadeIn();
 	});
 }
@@ -137,7 +137,7 @@ function saveSettings() {
 			checkboxChanges = false;
 		} else {
 			indicate(false);
-			notify("{% t error.E18 %} (E18)");
+			notify("{% t errors.E18 %} (E18)");
 		}
 	}, function() {
 		getResponse("settings.json", function(responseText) {
@@ -150,7 +150,7 @@ function saveSettings() {
 			checkboxChanges = false;
 		}, function () {
 			indicate(false);
-			notify("{% t error.E19 %} (E19)");
+			notify("{% t errors.E19 %} (E19)");
 		});
 	});
 }
@@ -165,11 +165,11 @@ function resetSettings() {
 				restart(true);
 				setTimeout(function() { window.location = "/" }, 3000)
 			} else {
-				notify("{% t error.E20 %} (E20)");
+				notify("{% t errors.E20 %} (E20)");
 				indicate(false);
 			}
 		}, function() {
-			notify("{% t error.E21 %} (E21)");
+			notify("{% t errors.E21 %} (E21)");
 			indicate(false);
 		});
 	}
