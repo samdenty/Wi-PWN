@@ -3,9 +3,9 @@ baseurl: ""
 exclude: ["_*", "package.json", "node_modules", "Gemfile*"]
 destination: ../output/html
 
-# Language plugin 
+# Language plugin
 # "english", "german", "russian", "italian", "hebrew"
-languages: ["english", "german", "russian", "italian", "dutch", "chinese", "portuguese", "slovak", "polish", "hebrew"]
+languages: ["english", "german", "russian", "italian", "dutch", "chinese", "portuguese", "slovak", "polish", "estonian", "hebrew"]
 
 
 # Jekyll tidy HTML plugin

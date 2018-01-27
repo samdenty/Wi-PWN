@@ -4,7 +4,7 @@
 	</a>
     <h3 align="center">Wi-PWN</h3>
     <p align="center">
-    ESP8266 Deauther with a clean &amp; minimalistic web interface 
+    ESP8266 Deauther with a clean &amp; minimalistic web interface
     </p>
 </p>
 <p align="center">
@@ -52,7 +52,7 @@
 </p>
 <h2></h2>
 
-### <a href="http://wi-pwn.samdd.me"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ec-1f1e7.png" alt="English translation" height=40></a> <a href="http://wi-pwn.samdd.me/german"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png" alt="German translation" height=40></a> <a href="http://wi-pwn.samdd.me/chinese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1f3.png" alt="Chinese translation" height=40></a> <a href="http://wi-pwn.samdd.me/dutch"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png" alt="Dutch translation" height=40></a> <a href="http://wi-pwn.samdd.me/russian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1fa.png" alt="Russian translation" height=40></a> <a href="http://wi-pwn.samdd.me/italian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f9.png" alt="Italian translation" height=40></a> <a href="http://wi-pwn.samdd.me/slovak"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f8-1f1f0.png" alt="Slovakian translation" height=40></a> <a href="http://wi-pwn.samdd.me/portuguese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f9.png" alt="Portuguese translation" height=40></a> <a href="http://wi-pwn.samdd.me/polish"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f1.png" alt="Polish translation" height=40></a> <a href="http://wi-pwn.samdd.me/hebrew"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f1.png" alt="Hebrew translation" height=40></a>
+### <a href="http://wi-pwn.samdd.me"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ec-1f1e7.png" alt="English translation" height=40></a> <a href="http://wi-pwn.samdd.me/german"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png" alt="German translation" height=40></a> <a href="http://wi-pwn.samdd.me/chinese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1f3.png" alt="Chinese translation" height=40></a> <a href="http://wi-pwn.samdd.me/dutch"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png" alt="Dutch translation" height=40></a> <a href="http://wi-pwn.samdd.me/russian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1fa.png" alt="Russian translation" height=40></a> <a href="http://wi-pwn.samdd.me/italian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f9.png" alt="Italian translation" height=40></a> <a href="http://wi-pwn.samdd.me/slovak"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f8-1f1f0.png" alt="Slovakian translation" height=40></a> <a href="http://wi-pwn.samdd.me/portuguese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f9.png" alt="Portuguese translation" height=40></a> <a href="http://wi-pwn.samdd.me/polish"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f1.png" alt="Polish translation" height=40></a> <a href="http://wi-pwn.samdd.me/estonian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ea-1f1ea.png" alt="Estonian translation" height=40></a> <a href="http://wi-pwn.samdd.me/hebrew"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f1.png" alt="Hebrew translation" height=40></a>
 
 - Fast & responsive Material Design UI, with optional dark mode
 - Integrated [Deauth Detector](https://github.com/spacehuhn/DeauthDetector) (with full customization)
@@ -70,7 +70,7 @@
   - [How it works](#how-it-works)
   - [How to protect against it](#how-to-protect-against-it)
 - [Installation](#installation)
-  - [Flashing with NodeMCU-Flasher](#nodemcu)  
+  - [Flashing with NodeMCU-Flasher](#nodemcu)
   - [Compiling with Arduino](#arduino)
 - [How to use it](#how-to-use)
 - [FAQ](#faq)
@@ -105,11 +105,11 @@ Updating to the [802.11w](https://en.wikipedia.org/wiki/IEEE_802.11w-2009) stand
 
 Requirements:
 
-- ESP8266 module (any board)  
+- ESP8266 module (any board)
 - Micro-USB cable
 - Computer
 
-I would recommend getting a USB breakout/developer board, mainly due to the 4Mb of flash and simplicity.  
+I would recommend getting a USB breakout/developer board, mainly due to the 4Mb of flash and simplicity.
 
 In order to upload the Wi-PWN firmware, you can use one of two methods. The first method is easier overall but using Arduino is better for debugging.
 **YOU ONLY NEED TO DO ONE OF THE INSTALLATION METHODS!**
@@ -124,7 +124,7 @@ There are two variants of UART converters that ESP8266 boards use:
 |<img src="drivers/CP210x-board.png" height="200px">|<img src="drivers/CH34x-board.png" height="200px">|
 
 
-### <a name="nodemcu"></a>Method 1: Flashing with NodeMCU-Flasher  
+### <a name="nodemcu"></a>Method 1: Flashing with NodeMCU-Flasher
 
 1. [Download](https://github.com/samdenty99/Wi-PWN/releases/latest) the current release of Wi-PWN
 
@@ -180,7 +180,7 @@ There are two variants of UART converters that ESP8266 boards use:
 
 16. Open `arduino/Wi-PWN/Wi-PWN.ino` in Arduino
 
-17. Select your ESP8266 board at `Tools` > `Board` and the right port at `Tools` > `Port`  
+17. Select your ESP8266 board at `Tools` > `Board` and the right port at `Tools` > `Port`
 **If no port shows up you need to reinstall the drivers**, search online for chip part number + 'driver Windows'
 
 18. Depending on your board you may have to adjust the `Tools` > `Board` > `Flash Frequency` and the `Tools` > `Board` > `Flash Size`. I used the `80MHz` Flash Frequency, and the `4M (1M SPIFFS)` Flash Size
@@ -193,9 +193,9 @@ There are two variants of UART converters that ESP8266 boards use:
 
 1. Connect your ESP8266 to a USB power source (you can power it with your phone using an OTG cable)
 
-2. Scan for Wi-Fi networks on your device and connect to `Wi-PWN` (no password by default).  
+2. Scan for Wi-Fi networks on your device and connect to `Wi-PWN` (no password by default).
 
-3. Once connected, open up your browser and go to `http://192.168.4.1`  
+3. Once connected, open up your browser and go to `http://192.168.4.1`
 
 4. Click on <kbd>ACCEPT</kbd> to accept the Terms &amp; Conditions<br><br>
 ![](pictures/windows/chrome/default/index.png)
