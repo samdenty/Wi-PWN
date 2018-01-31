@@ -1,0 +1,288 @@
+#  _ _ _ _     _____ _ _ _ _____ 
+# | | | |_|___|  _  | | | |   | |
+# | | | | |___|   __| | | | | | |
+# |_____|_|   |__|  |_____|_|___|
+#        TRANSLATION FILE
+# 
+# Format:
+#   What is '$$'?
+#       '$$' is a variable thats replaced with HTML
+#       For example:
+#          `$$click here$$`     =>   `<a href="mypage">click here</a>`
+#          `translated by $$`   =>   `translated by sam`
+#
+#   DO NOT REMOVE THE INDENTATION!
+#       The indentation is critical to YAML, so please don't change it
+#   
+#   Try and retain the case, for example:
+#       If it is capitalized keep it capitalized
+#   
+#   What are the `translation.name` & `translation.url`?
+#       These are strings that will be added to the footer & info page
+#   
+#   I'm unsure about how to translate something / I have a question
+#       No problem! feel free to ask something over at
+#       https://wi-pwn.samdd.me/discord/
+#       
+#   What encoding should I use?
+#       UTF-8 ~ jekyll doesn't support any other encodings
+# 
+
+translation:
+    # Uncomment & insert your name here
+    #name: "my-name"
+    # Uncomment & insert a link to your Github / site
+    #url: "https://github.com/my-name"
+
+nav:
+    scan: "Scan"
+    users: "Users"
+    attack: "Attack"
+    detector: "Detector"
+    control: "Control"
+    settings: "Settings"
+    info: "Info"
+
+global:
+    save: "Save"
+    reset: "Reset"
+    ssid: "SSID"
+    password: "Password"
+    start: "Start"
+    stop: "Stop"
+    name: "Name"
+    reboot: "Reboot"
+    guide: "Guide"
+    footer: "Designed by Sam Denty - @samdenty99"
+    translated-by: "translated by $$"
+
+setup:
+    title: "Setup"
+    page-1:
+        header: "Terms and Conditions"
+        card:
+            title: "Welcome to Wi-PWN"
+            paragraph-1: "This software is meant for pentesting only!"
+            paragraph-2: "Wi-PWN can perform deauth attacks on unprotected networks, <i>similar to using a Wi-Fi Jammer.</i>"
+            paragraph-3: "Only use this software on networks you are authorized to use it on."
+            button: "Accept"
+
+    page-2:
+        header: "Setup Wi-PWN"
+        card:
+            field-1: "Password"
+            toggle-1: "Enable dark mode"
+            button: "Continue"
+
+    page-3:
+        header: "Setup Complete"
+        message-1: "Setup complete!"
+        message-2: "Reconnect to the new network"
+
+    attribution: "Designed by Sam Denty"
+
+scan:
+    title: "Scan"
+    card-1:
+        header: "Scan for networks ($$)"
+        table:
+            signal: "Signal"
+            security: "Security"
+            channel: "Ch." # Try and abbreviate, column is small
+    strings:
+        A: "Open" # As in `WPA2` / security
+
+users:
+    title: "Users"
+    card-1:
+        header: "Scan for Wi-Fi users ($$)"
+        table:
+            info: "Client info"
+            packets: "Pkts"
+    card-2:
+        header: "Saved users ($$)"
+    card-3:
+        field-1: "MAC Address"
+        button-1: "Add"
+    strings:
+        A: "Saved client list is corrupt, reset it?"
+        B: "Clearing the client list..."
+        C: "Scan complete! Reconnect and reload the page"
+        D: "Scanning for users ~ $$s remaining"
+
+attack:
+    title: "Attack"
+    card-1:
+        header: "Initiate Attack"
+        table:
+            attack: "Attack"
+            status: "Status"
+            switch: "Switch"
+            random: "Random"
+    card-2:
+        header: "Selected networks &amp; users"
+        button: "Clone"
+    card-3:
+        header-1: "MAC Address"
+        header-2: "Vendor"
+    card-4:
+        header: "Add SSID"
+        toggle-1: "Generate random"
+        field-1: "Number of clones"
+        toggle-2: "Encrypted"
+        button: "Add"
+    card-5:
+        header: "Saved SSIDs ($$)"
+        button-1: "Clear"
+        button-2: "Save"
+        button-3: "Discard changes"
+    strings:
+        A: "Random attack interval"
+        B: "ready"
+        C: "running"
+
+detector:
+    title: "Deauth detector"
+    card-1:
+        header: "Deauth Detector"
+        field-1: "Detector channel"
+        toggle-1: "All channels"
+        field-2: "GPIO Alert Pin"
+        toggle-2: "Invert HIGH/LOW"
+        field-3: "Channel scan time (ms)"
+        button-1: "Save &amp; start"
+    strings:
+        A: "Detector running! Restart device to return to normal"
+
+control:
+    title: "GPIO Control"
+    card-1:
+        header: "GPIO Control"
+        button-1: "Reset entries"
+        table:
+            pin: "PIN"
+            high: "HIGH"
+    strings:
+        A: "Failed to switch PIN"
+        B: "Name for PIN"
+        C: "Maximum of 10 characters!"
+        D: "Reset saved entries?"
+
+settings:
+    title: "Settings"
+    card-1:
+        header: "Wi-Fi server"
+        field-1: "Channel"
+        toggle-1: "Hide SSID"
+    card-2:
+        header: "Wi-Fi client"
+        field-1: "Network SSID"
+        field-2: "Network password"
+        field-3: "ESP hostname"
+        toggle-1: "Enable WiFi client"
+    card-3:
+        header: "Customization"
+        field-1: "Cache expiration time"
+        field-2: "LED Pin"
+        toggle-1: "Enable dark mode"
+        toggle-2: "Enable server caching"
+        toggle-3: "Enable LED indicator"
+    card-4:
+        header: "UI tweaks"
+        toggle-1: "Simplify interface"
+        toggle-2: "Smaller table rows"
+        toggle-3: "Show reboot button"
+    card-5:
+        header: "Scan &amp; Attack"
+        field-1: "Scan timeout"
+        field-2: "Attack timeout"
+        field-3: "MAC address"
+        toggle-1: "Random MAC address"
+        toggle-2: "Scan for hidden networks" 
+        toggle-3: "Select multiple networks"
+        toggle-4: "Simultaneous attacks"
+    card-6:
+        header: "Advanced"
+        field-1: "Deauth reason-code"
+        field-2: "Packet rate (pkts/s)"
+        field-3: "MAC Change Interval"
+        toggle-1: "1s Beacon interval"
+    strings:
+        A: "Reset Wi-PWN to default settings?"
+        B: "All changes will be lost!"
+
+info:
+    title: "Info"
+    card-1:
+        header: "Wi-PWN creator"
+        about: "Wi-PWN was designed by $$Sam Denty$$, from the original project by $$spacehuhn &#128020;$$. Wi-PWN is released under the $$CC BY-NC 4.0$$ license."
+    card-2:
+        header: "Wi-PWN"
+        table:
+            A: "Wi-PWN version"
+            B: "Check for updates"
+            C: "Update"
+            D: "Uptime / memory"
+            E: "Sent packets"
+            F: "IP / gateway"
+            G: "Versions"
+            H: "Flash &amp; Chip ID"
+    card-3:
+        header: "Advanced options"
+        get: "get"
+    card-4:
+        header: "Contributors"
+        paragraph-1: "This software is based upon the work of Stefan Kremser (Spacehuhn)"
+        paragraph-2: "For more information go to $$contributors page$$ on GitHub."
+    card-5:
+        header: "Included libraries"
+    strings:
+        A: "Failed to load sysinfo.json"
+        B: "OTA update"
+        C: "upload"
+        D: "Other projects"
+        E: "Report bug"
+        F: "Other projects"
+
+error:
+    title: "404"
+    page-header: "Page not found"
+
+errors:
+    bad-response: "ERROR: Bad response"
+    E0: "Failed to scan for networks!"
+    E6: "Reconnect to Wi-Fi network"
+    E7: "INFO: No Wi-Fi network(s) selected!"
+    E10: "Invalid MAC address"
+    E15: "No network(s) selected!"
+    E16: "SSID list full (E16)"
+    E17: "ERROR: Reset the settings"
+    E18: "Failed to save settings!"
+    E19: "Failed to save settings!"
+    E20: "Failed to reset settings!"
+    E21: "Failed to reset settings!"
+    E22: "Reconnect and reload this page"
+    E23: "Failed to restart Wi-PWN!"
+    E24: "Failed to restart Wi-PWN!"
+    E25: "ERROR: Reset the settings"
+    E26: "Failed to restart Wi-PWN!"
+    E27: "Failed to restart Wi-PWN!"
+    E28: "Failed to save settings!"
+    E29: "Failed to save settings!"
+    E30: "Failed to start detector!"
+    E31: "Failed to start detector!"
+    E32: "Failed to save!"
+    E33: "Failed to save!"
+    E34: "Failed to load control.json"
+    E37: "ERROR: Failed to change PIN name"
+    E39: "Failed to update PIN name!"
+    E40: "Failed to update PIN name!"
+    E41: "Failed to reset saved entries!"
+    E42: "Failed to reset saved entries!"
+    E95: "ERROR: Failed to load settings.json"
+    E96: "Reconnect and reload this page"
+    E97: "Didn't receive a response!"
+    E98: "Failed to parse scan results!"
+    E99: "Cleared, don't forget to click save!"
+    E100: "Failed to parse saved SSIDs, clearing..."
+    S1: "Are you sure you want to reboot Wi-PWN?"
