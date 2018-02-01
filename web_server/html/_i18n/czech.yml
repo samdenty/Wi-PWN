@@ -1,9 +1,9 @@
-#  _ _ _ _     _____ _ _ _ _____ 
+#  _ _ _ _     _____ _ _ _ _____
 # | | | |_|___|  _  | | | |   | |
 # | | | | |___|   __| | | | | | |
 # |_____|_|   |__|  |_____|_|___|
 #        TRANSLATION FILE
-# 
+#
 # Format:
 #   What is '$$'?
 #       '$$' is a variable thats replaced with HTML
@@ -13,24 +13,24 @@
 #
 #   DO NOT REMOVE THE INDENTATION!
 #       The indentation is critical to YAML, so please don't change it
-#   
+#
 #   Try and retain the case, for example:
 #       If it is capitalized keep it capitalized
-#   
+#
 #   What are the `translation.name` & `translation.url`?
 #       These are strings that will be added to the footer & info page
-#   
+#
 #   I'm unsure about how to translate something / I have a question
 #       No problem! feel free to ask something over at
 #       https://wi-pwn.semdd.me/discord/
-#       
+#
 #   What encoding should I use?
 #       UTF-8 ~ jekyll doesn't support any other encodings
-# 
+#
 
 translation:
-    name: "digm0repaka"
-    url: "https://github.com/digmorepaka"
+    name: "M4R3Kcracks"
+    url: "https://github.com/M4R3Kcracks"
 
 nav:
     scan: "Sken"
@@ -196,7 +196,7 @@ settings:
         field-2: "Časový limit útoku"
         field-3: "Adrese MAC"
         toggle-1: "Náhodná adrese MAC"
-        toggle-2: "Sken skrytých sítí" 
+        toggle-2: "Sken skrytých sítí"
         toggle-3: "Zvolit více sítí"
         toggle-4: "Mnohonásobné útoky"
     card-6:

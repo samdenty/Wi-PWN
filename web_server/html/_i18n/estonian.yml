@@ -1,9 +1,9 @@
-#  _ _ _ _     _____ _ _ _ _____ 
+#  _ _ _ _     _____ _ _ _ _____
 # | | | |_|___|  _  | | | |   | |
 # | | | | |___|   __| | | | | | |
 # |_____|_|   |__|  |_____|_|___|
 #        TRANSLATION FILE
-# 
+#
 # Format:
 #   What is '$$'?
 #       '$$' is a variable thats replaced with HTML
@@ -13,20 +13,20 @@
 #
 #   DO NOT REMOVE THE INDENTATION!
 #       The indentation is critical to YAML, so please don't change it
-#   
+#
 #   Try and retain the case, for example:
 #       If it is capitalized keep it capitalized
-#   
+#
 #   What are the `translation.name` & `translation.url`?
 #       These are strings that will be added to the footer & info page
-#   
+#
 #   I'm unsure about how to translate something / I have a question
 #       No problem! feel free to ask something over at
 #       https://wi-pwn.samdd.me/discord/
-#       
+#
 #   What encoding should I use?
 #       UTF-8 ~ jekyll doesn't support any other encodings
-# 
+#
 
 translation:
     # Uncomment & insert your name here
@@ -54,7 +54,7 @@ global:
     reboot: "Taaskäivita"
     guide: "Juhend"
     footer: "Disainitud Sam Denty poolt - @samdenty99"
-    translated-by: "tõlgitud treier57lol poolt"
+    translated-by: "tõlgitud $$ poolt"
 
 setup:
     title: "Seadistamine"
@@ -198,7 +198,7 @@ settings:
         field-2: "Rünnaku aegumistähtaeg"
         field-3: "MAC aadress"
         toggle-1: "Juhuslik MAC aadress"
-        toggle-2: "Skaneeri peidetud võrke" 
+        toggle-2: "Skaneeri peidetud võrke"
         toggle-3: "Vali mitu võrku"
         toggle-4: "Samaaegsed rünnakud"
     card-6:
