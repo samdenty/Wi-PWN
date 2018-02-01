@@ -42,7 +42,7 @@ nav:
     info: "Informace"
 
 global:
-    seve: "Uložit"
+    save: "Uložit"
     reset: "Reset"
     ssid: "SSID"
     password: "Heslo"
@@ -74,8 +74,8 @@ setup:
 
     page-3:
         header: "Nastavení hotové"
-        messege-1: "Nastavení hotové!"
-        messege-2: "Znova se pripojte k síti"
+        message-1: "Nastavení hotové!"
+        message-2: "Znova se pripojte k síti"
 
     attribution: "Designoval Sam Denty"
 
