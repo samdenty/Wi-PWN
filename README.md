@@ -4,7 +4,8 @@
 	</a>
     <h3 align="center">Wi-PWN</h3>
     <p align="center">
-    ESP8266 Deauther with a clean &amp; minimalistic web interface
+    ESP8266 Deauther with a clean &amp; minimalistic web interface<br>
+		✨ Support development on <a href="https://patreon.com/samdd">Patreon</a> or one-time via <a href="https://paypal.me/thesamdd">Paypal</a>
     </p>
 </p>
 <p align="center">
