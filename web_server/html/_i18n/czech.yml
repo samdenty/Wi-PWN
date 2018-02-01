@@ -119,7 +119,7 @@ attack:
             random: "Náhodné názvy sítí"
     card-2:
         header: "Zvolené sítě &amp; uživatelé"
-        button: "Klonovať"
+        button: "Klonovat"
     card-3:
         header-1: "Adrese MAC"
         header-2: "Výrobce"
