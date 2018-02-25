@@ -51,9 +51,9 @@ global:
     start: "Start"
     stop: "Stopp"
     name: "Name"
-    reboot: "Neustarten"
-    guide: "Guide"
-    footer: "Designed by Sam Denty - @samdenty99"
+    reboot: "Neu starten"
+    guide: "Anleitung"
+    footer: "Entwickelt von Sam Denty - @samdenty99"
     translated-by: "Übersetzt von $$"
 
 setup:
@@ -68,18 +68,18 @@ setup:
             button: "Akzeptieren"
 
     page-2:
-        header: "Wi-PWN Setup"
+        header: "Wi-PWN Einrichtung"
         card:
             field-1: "Passwort"
-            toggle-1: "Dunkles Theme aktivieren"
+            toggle-1: "Dunkles Thema aktivieren"
             button: "Weiter"
 
     page-3:
-        header: "Setup Vollständig"
-        message-1: "Setup vollständig!"
+        header: "Einrichtung Vollständig"
+        message-1: "Einrichtung vollständig!"
         message-2: "Verbinden Sie sich mit dem neuen Netzwerk"
 
-    attribution: "Designed by Sam Denty"
+    attribution: "Entwickelt von Sam Denty"
 
 scan:
     title: "Scannen"
@@ -95,14 +95,14 @@ scan:
 users:
     title: "Benutzer"
     card-1:
-        header: "Scanne nach WLAN Benutzern ($$)"
+        header: "Scanne nach WLAN-Benutzern ($$)"
         table:
             info: "Client Info"
             packets: "Pakete"
     card-2:
         header: "Gespeicherte Benutzer ($$)"
     card-3:
-        field-1: "MAC Addresse"
+        field-1: "MAC-Addresse"
         button-1: "Hinzufügen"
     strings:
         A: "Gespeicherte Client-Liste ist beschädigt, zurücksetzen?"
@@ -123,7 +123,7 @@ attack:
         header: "Ausgewählte Netzwerke &amp; Benutzer"
         button: "Klonen"
     card-3:
-        header-1: "MAC Addresse"
+        header-1: "MAC-Addresse"
         header-2: "Vertreiber"
     card-4:
         header: "SSID hinzufügen"
@@ -137,7 +137,7 @@ attack:
         button-2: "Speichern"
         button-3: "Änderungen verwerfen"
     strings:
-        A: "Zufälliger Angriffs Intervall"
+        A: "Zufälliger Angriffsintervall"
         B: "bereit"
         C: "durchführung"
 
@@ -149,10 +149,10 @@ detector:
         toggle-1: "Alle Kanäle"
         field-2: "GPIO Alarm Pin"
         toggle-2: "Invertiere HIGH/LOW"
-        field-3: "Kanal Scann-Zeit (ms)"
+        field-3: "Kanal Scan-Zeit (ms)"
         button-1: "Speichern &amp; starten"
     strings:
-        A: "Detector läuft! Starte das Gerät neu um ihn auszuschalten"
+        A: "Detector läuft! Starten Sie das Gerät neu um ihn auszuschalten."
 
 control:
     title: "GPIO Kontrolle"
@@ -171,7 +171,7 @@ control:
 settings:
     title: "Einstellungen"
     card-1:
-        header: "WLAN Server"
+        header: "WLAN-Server"
         field-1: "Kanal"
         toggle-1: "SSID verbergen"
     card-2:
@@ -190,21 +190,21 @@ settings:
     card-4:
         header: "UI Anpassungen"
         toggle-1: "Einfache Benutzeroberfläche"
-        toggle-2: "Kleinere Tabellen-Reihen"
+        toggle-2: "Kleinere Tabellenreihen"
         toggle-3: "Zeige Neustart-Button an"
     card-5:
         header: "Scannen &amp; angreifen"
-        field-1: "Scann Timeout"
-        field-2: "Angriffs Timeout"
-        field-3: "MAC Adresse"
-        toggle-1: "Zufällige MAC Adresse"
+        field-1: "Scan Timeout"
+        field-2: "Angriffstimeout"
+        field-3: "MAC-Adresse"
+        toggle-1: "Zufällige MAC-Adresse"
         toggle-2: "Scanne nach verborgenen Netzweken" 
         toggle-3: "Wähle mehrere Netzwerke"
         toggle-4: "Gleichzeitige Angriffe"
     card-6:
         header: "Erweitert"
         field-1: "Deauth reason-code"
-        field-2: "Paket Rate (pkts/s)"
+        field-2: "Paketrate (pkts/s)"
         field-3: "MAC Änderungs Intervall"
         toggle-1: "1s Beacon Intervall"
     strings:
@@ -215,7 +215,7 @@ info:
     title: "Info"
     card-1:
         header: "Wi-PWN Ersteller"
-        about: "Wi-PWN wurde von $$Sam Denty$$ designed, aus dem originalen Projekt von $$spacehuhn &#128020;$$. Wi-PWN steht unter der $$CC BY-NC 4.0$$ Lizenz."
+        about: "Wi-PWN wurde von $$Sam Denty$$ entwickelt, aus dem originalen Projekt von $$spacehuhn &#128020;$$. Wi-PWN steht unter der $$CC BY-NC 4.0$$ Lizenz."
     card-2:
         header: "Wi-PWN"
         table:
@@ -235,11 +235,11 @@ info:
         paragraph-1: "Diese Software basiert auf der Arbeit von Stefan Kremser (Spacehuhn)"
         paragraph-2: "Weitere Informationen finden Sie unter $$contributors page$$ auf GitHub."
     card-5:
-        header: "Beinhaltete Librarys"
+        header: "Beinhaltete Bibliotheken"
     strings:
         A: "Das Laden von sysinfo.json ist fehlgeschlagen"
         B: "OTA Update"
-        C: "Uploaden"
+        C: "Hochladen"
         D: "Andere Projekte"
         E: "Fehler melden"
         F: "Andere Projekte"
@@ -253,18 +253,18 @@ errors:
     E0: "Scannen nach Netzwerken fehlgeschlagen!"
     E6: "Mit WLAN neu verbinden"
     E7: "INFO: Keine WLAN Netzwerke ausgewählt!"
-    E10: "Ungültige MAC Adresse"
-    E15: "Kein(e) Nzwerk(e) ausgewählt!"
-    E16: "SSID Liste voll (E16)"
-    E17: "ERROR: Setzen Sie die Einstellungen zurück"
+    E10: "Ungültige MAC-Adresse"
+    E15: "Kein(e) Netzwerk(e) ausgewählt!"
+    E16: "SSID-Liste voll (E16)"
+    E17: "ERROR: Setzen Sie die Einstellungen zurück."
     E18: "Speichern der Einstellungen fehlgeschlagen!"
     E19: "Speichern der Einstellungen fehlgeschlagen!"
     E20: "Zurücksetzen der Einstellungen fehlgeschlagen!"
     E21: "Zurücksetzen der Einstellungen fehlgeschlagen!"
-    E22: "Verbinden Sie sich neu und laden Sie die Seite neu"
+    E22: "Verbinden Sie sich neu und laden Sie die Seite neu."
     E23: "Fehler beim Neustarten von Wi-PWN!"
     E24: "Fehler beim Neustarten von Wi-PWN!"
-    E25: "ERROR: Setzen Sie die Einstellungen zurück"
+    E25: "ERROR: Setzen Sie die Einstellungen zurück."
     E26: "Fehler beim Neustarten von Wi-PWN!"
     E27: "Fehler beim Neustarten von Wi-PWN!"
     E28: "Speichern der Einstellungen fehlgeschlagen!"
@@ -285,4 +285,4 @@ errors:
     E98: "Scanergebnisse konnten nicht analysiert werden!"
     E99: "Gelöscht, vergessen Sie nicht, auf 'Speichern' zu klicken!"
     E100: "Fehler beim Analysieren der gespeicherten SSIDs, bereinige..."
-    S1: "Sind Sie sicher dass Sie Wi-PWN neustarten möchten?"
+    S1: "Sind Sie sicher, dass Sie Wi-PWN neu starten möchten?"
