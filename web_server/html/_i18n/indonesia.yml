@@ -30,9 +30,9 @@
 
 translation:
     # Uncomment & insert your name here
-    #name: "davinhanif"
+    name: "davinhanif"
     # Uncomment & insert a link to your Github / site
-    #url: "https://instagram.com/davinhanif"
+    url: "https://instagram.com/davinhanif"
 
 nav:
     scan: "Pindai"
@@ -57,7 +57,7 @@ global:
     translated-by: "diterjemahkan oleh $$"
 
 setup:
-    title: "Setup"
+    title: "Persiapan"
     page-1:
         header: "Syarat dan Ketentuan"
         card:
@@ -68,15 +68,15 @@ setup:
             button: "Setuju"
 
     page-2:
-        header: "Setup Wi-PWN"
+        header: "Mempersiapkan Wi-PWN"
         card:
             field-1: "Kata Sandi"
             toggle-1: "Aktifkan mode gelap"
             button: "Lanjutkan"
 
     page-3:
-        header: "Setup Complete"
-        message-1: "Setup complete!"
+        header: "Persiapan selesai"
+        message-1: "Persiapan selesai!"
         message-2: "Hubungkan ulang ke jaringan yang baru"
 
     attribution: "Dirancang oleh Sam Denty"
@@ -249,14 +249,14 @@ error:
     page-header: "Halaman tidak ditemukan"
 
 errors:
-    bad-response: "ERROR: Bad response"
+    bad-response: "GALAT: Respon buruk"
     E0: "Gagal memindai jaringan!"
     E6: "Hubungkan ulang ke jaringan Wi-Fi"
     E7: "INFO: Tidak ada jaringan yang dipilih!"
     E10: "MAC address tidak sah"
     E15: "Tidak ada jaringan yang dipilih!"
     E16: "Daftar SSID penuh (E16)"
-    E17: "ERROR: Atur ulang pengaturan"
+    E17: "GALAT: Atur ulang pengaturan"
     E18: "Gagal menyimpan pengaturan!"
     E19: "Gagal menyimpan pengaturan!"
     E20: "Gagal mengatur ulang pengaturan!"
@@ -274,7 +274,7 @@ errors:
     E32: "Gagal menyimpan!"
     E33: "Gagal menyimpan!"
     E34: "Gagal memuat control.json"
-    E37: "ERROR:Gagal mengubah nama PIN"
+    E37: "GALAT:Gagal mengubah nama PIN"
     E39: "Gagal memperbarui nama PIN!"
     E40: "Gagal memperbarui nama PIN!"
     E41: "Gagal mengatur ulang entri!"
