@@ -1,0 +1,288 @@
+#  _ _ _ _     _____ _ _ _ _____ 
+# | | | |_|___|  _  | | | |   | |
+# | | | | |___|   __| | | | | | |
+# |_____|_|   |__|  |_____|_|___|
+#        TRANSLATION FILE
+# 
+# Format:
+#   What is '$$'?
+#       '$$' is a variable thats replaced with HTML
+#       For example:
+#          `$$click here$$`     =>   `<a href="mypage">click here</a>`
+#          `translated by $$`   =>   `translated by sam`
+#
+#   DO NOT REMOVE THE INDENTATION!
+#       The indentation is critical to YAML, so please don't change it
+#   
+#   Try and retain the case, for example:
+#       If it is capitalized keep it capitalized
+#   
+#   What are the `translation.name` & `translation.url`?
+#       These are strings that will be added to the footer & info page
+#   
+#   I'm unsure about how to translate something / I have a question
+#       No problem! feel free to ask something over at
+#       https://wi-pwn.samdd.me/discord/
+#       
+#   What encoding should I use?
+#       UTF-8 ~ jekyll doesn't support any other encodings
+# 
+
+translation:
+    # Uncomment & insert your name here
+    name: "davinhanif"
+    # Uncomment & insert a link to your Github / site
+    url: "https://instagram.com/davinhanif"
+
+nav:
+    scan: "Pindai"
+    users: "Pengguna"
+    attack: "Serang"
+    detector: "Pendeteksi"
+    control: "Kontrol"
+    settings: "Pengaturan"
+    info: "Info"
+
+global:
+    save: "Simpan"
+    reset: "Atur Ulang"
+    ssid: "SSID"
+    password: "Kata Sandi"
+    start: "Mulai"
+    stop: "Hentikan"
+    name: "Nama"
+    reboot: "Mulai Ulang"
+    guide: "Panduan"
+    footer: "Dirancang oleh Sam Denty - @samdenty99"
+    translated-by: "diterjemahkan oleh $$"
+
+setup:
+    title: "Persiapan"
+    page-1:
+        header: "Syarat dan Ketentuan"
+        card:
+            title: "Selamat Datang di Wi-PWN"
+            paragraph-1: "Perangkat lunak ini hanya dimaksudkan untuk pentesting!"
+            paragraph-2: "Wi-PWN dapat melakukan serangan deauth di jaringan yang tidak dilindungi, <i>mirip seperti menggunakan Wi-Fi Jammer.</i>"
+            paragraph-3: "Hanya gunakan perangkat lunak ini pada jaringan yang Anda diizinkan untuk menggunakannya."
+            button: "Setuju"
+
+    page-2:
+        header: "Mempersiapkan Wi-PWN"
+        card:
+            field-1: "Kata Sandi"
+            toggle-1: "Aktifkan mode gelap"
+            button: "Lanjutkan"
+
+    page-3:
+        header: "Persiapan selesai"
+        message-1: "Persiapan selesai!"
+        message-2: "Hubungkan ulang ke jaringan yang baru"
+
+    attribution: "Dirancang oleh Sam Denty"
+
+scan:
+    title: "Pindai"
+    card-1:
+        header: "Memindai jaringan ($$)"
+        table:
+            signal: "Siyal"
+            security: "Pengamanan"
+            channel: "Ch." # Try and abbreviate, column is small
+    strings:
+        A: "Terbuka" # As in `WPA2` / security
+
+users:
+    title: "Pengguna"
+    card-1:
+        header: "Memindai pengguna Wi-Fi ($$)"
+        table:
+            info: "Info klien"
+            packets: "Pkts"
+    card-2:
+        header: "Pengguna tersimpan ($$)"
+    card-3:
+        field-1: "MAC Address"
+        button-1: "Tambahkan"
+    strings:
+        A: "Daftar klien tersimpan rusak, atur ulang?"
+        B: "Membersihkan daftar klien..."
+        C: "Pemindaian selesai! Hubungkan ulang dan muat ulang halaman"
+        D: "Memindai pengguna ~ $$ detik lagi"
+
+attack:
+    title: "Penyerangan"
+    card-1:
+        header: "Memulai Penyerangan"
+        table:
+            attack: "Penyerangan"
+            status: "Status"
+            switch: "Tombol"
+            random: "Acak"
+    card-2:
+        header: "Jaringan dan pengguna &amp; terpilih"
+        button: "Gandakan"
+    card-3:
+        header-1: "MAC Address"
+        header-2: "Vendor"
+    card-4:
+        header: "Tambahkan SSID"
+        toggle-1: "Hasilkan acak"
+        field-1: "Jumlah penggandaan (clone)"
+        toggle-2: "Terenkripsi"
+        button: "Tambahkan"
+    card-5:
+        header: "SSID tersimpan ($$)"
+        button-1: "Bersihkan"
+        button-2: "Simpan"
+        button-3: "Buang perubahan"
+    strings:
+        A: "Selang waktu serangan acak"
+        B: "siap"
+        C: "sedang berjalan"
+
+detector:
+    title: "Pendeteksi deauth"
+    card-1:
+        header: "Pendeteksi deauth"
+        field-1: "Pendeteksi saluran (channel)"
+        toggle-1: "Semua saluran"
+        field-2: "Pin peringatan GPIO"
+        toggle-2: "Balikkan (invert) HIGH/LOW"
+        field-3: "Waktu pindai saluran (milidetik / ms)"
+        button-1: "Simpan &amp; mulai"
+    strings:
+        A: "Pendeteksi sedang berjalan! Mulai ulang perangkat untuk kembali normal"
+
+control:
+    title: "Kontrol GPIO"
+    card-1:
+        header: "Kontrol GPIO"
+        button-1: "Atur ulang entri"
+        table:
+            pin: "PIN"
+            high: "HIGH"
+    strings:
+        A: "Gagal untuk mengganti PIN"
+        B: "Nama untuk PIN"
+        C: "Maksimum 10 karakter!"
+        D: "Atur ulang entri tersimpan?"
+
+settings:
+    title: "Pengaturan"
+    card-1:
+        header: "Peladen (server) Wi-Fi"
+        field-1: "Saluran"
+        toggle-1: "Sembunyikan SSID"
+    card-2:
+        header: "Klien Wi-Fi"
+        field-1: "SSID jaringan"
+        field-2: "Kata sandi jaringan"
+        field-3: "ESP hostname"
+        toggle-1: "Aktifkan klien WiFi"
+    card-3:
+        header: "Kustomisasi"
+        field-1: "Waktu kedaluarsa tembolok (cache)"
+        field-2: "LED Pin"
+        toggle-1: "Aktifkan mode gelap"
+        toggle-2: "Aktifkan tembolok server (server caching)"
+        toggle-3: "Aktifkan indikator LED"
+    card-4:
+        header: "Penyesuaian antarmuka pengguna"
+        toggle-1: "Sederhanakan antarmuka"
+        toggle-2: "Baris tabel lebih kecil"
+        toggle-3: "Tampilkan tombol mulai ulang"
+    card-5:
+        header: "Pindai &amp; Serang"
+        field-1: "Waktu habis pemindaian"
+        field-2: "Waktu habis penyerangan"
+        field-3: "MAC address"
+        toggle-1: "MAC address acak"
+        toggle-2: "Pindai jaringan tersembunyi" 
+        toggle-3: "Pilih banyak jaringan sekaligus"
+        toggle-4: "Serangan serentak (simultan)"
+    card-6:
+        header: "Tingkat lanjut"
+        field-1: "Deauth reason-code"
+        field-2: "Laju paket (pkts/detik)"
+        field-3: "Selang waktu perubahan MAC"
+        toggle-1: "Selang waktu Beacon 1 detik"
+    strings:
+        A: "Atur ulang Wi-PWN ke pengaturan bawaan?"
+        B: "Semua pengaturan akan hilang!"
+
+info:
+    title: "Info"
+    card-1:
+        header: "Pencipta Wi-PWN"
+        about: "Wi-PWN dirancang oleh $$Sam Denty$$, dari proyek asli oleh $$spacehuhn &#128020;$$. Wi-PWN dirilis dibawah lisensi $$CC BY-NC 4.0$$."
+    card-2:
+        header: "Wi-PWN"
+        table:
+            A: "Versi Wi-PWN"
+            B: "Persiksa pembaruan"
+            C: "Perbarui"
+            D: "Uptime / memory"
+            E: "Paket terkirim"
+            F: "IP / gateway"
+            G: "Versi"
+            H: "Flash &amp; Chip ID"
+    card-3:
+        header: "Opsi tingkat lanjut"
+        get: "dapatkan"
+    card-4:
+        header: "Kontributor"
+        paragraph-1: "Perangkat lunak ini berdasarkan pada karya Stefan Kremser (Spacehuhn)"
+        paragraph-2: "Untuk informasi lebih lanjut buka $$contributors page$$ di GitHub."
+    card-5:
+        header: "Included libraries"
+    strings:
+        A: "Gagal memuat sysinfo.json"
+        B: "Pembaruan OTA"
+        C: "unggah"
+        D: "Proyek lainnya"
+        E: "Laporkan kutu (bug)"
+        F: "Proyek lainnya"
+
+error:
+    title: "404"
+    page-header: "Halaman tidak ditemukan"
+
+errors:
+    bad-response: "GALAT: Respon buruk"
+    E0: "Gagal memindai jaringan!"
+    E6: "Hubungkan ulang ke jaringan Wi-Fi"
+    E7: "INFO: Tidak ada jaringan yang dipilih!"
+    E10: "MAC address tidak sah"
+    E15: "Tidak ada jaringan yang dipilih!"
+    E16: "Daftar SSID penuh (E16)"
+    E17: "GALAT: Atur ulang pengaturan"
+    E18: "Gagal menyimpan pengaturan!"
+    E19: "Gagal menyimpan pengaturan!"
+    E20: "Gagal mengatur ulang pengaturan!"
+    E21: "Gagal mengatur ulang pengaturan!"
+    E22: "Hubungkan ulang dan muat ulang halaman ini"
+    E23: "Gagal memulai ulang Wi-PWN!"
+    E24: "Gagal memulai ulang Wi-PWN!"
+    E25: "GALAT: Atur ulang pengaturan"
+    E26: "Gagal memulai ulang Wi-PWN!"
+    E27: "Gagal memulai ulang Wi-PWN!"
+    E28: "Gagal menyimpan pengaturan!"
+    E29: "Gagal menyimpan pengaturan!"
+    E30: "Gagal memulai pendeteksi!"
+    E31: "Gagal memulai pendeteksi!"
+    E32: "Gagal menyimpan!"
+    E33: "Gagal menyimpan!"
+    E34: "Gagal memuat control.json"
+    E37: "GALAT:Gagal mengubah nama PIN"
+    E39: "Gagal memperbarui nama PIN!"
+    E40: "Gagal memperbarui nama PIN!"
+    E41: "Gagal mengatur ulang entri!"
+    E42: "Gagal mengatur ulang entri!"
+    E95: "GALAT: Gagal memuat settings.json"
+    E96: "Hubungkan ulang dan muat ulang halaman ini"
+    E97: "Tidak menerima respon!"
+    E98: "Gagal menguraikan hasil pemindaian!"
+    E99: "Dibersihkan, jangan lupa untuk klik simpan!"
+    E100: "Gagal menguraikan SSID tersimpan, membersihkan..."
+    S1: "Apakah Anda yakin untuk memulai ulang Wi-PWN?"
