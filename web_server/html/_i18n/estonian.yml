@@ -39,7 +39,7 @@ nav:
     users: "Kasutajad"
     attack: "Ründa"
     detector: "Avastaja"
-    control: "Kontroll"
+    control: "Juhi"
     settings: "Seaded"
     info: "Info"
 
@@ -105,7 +105,7 @@ users:
         field-1: "MAC Aadress"
         button-1: "Lisa"
     strings:
-        A: "Salvestatud klientide nimekiri on korrumpeerunud, kas lähestada see?"
+        A: "Salvestatud klientide nimekiri on korrupteerunud, kas lähestada see?"
         B: "Klientide nimekirja lähestamine..."
         C: "Skaneerimine lõpetatud! Taasühenda ja värskenda lehte"
         D: "Kasutajate skaneerimine ~ $$s jäänud"
@@ -142,12 +142,12 @@ attack:
         C: "töötab"
 
 detector:
-    title: "Deauth tuvastaja"
+    title: "Deauth'imise tuvastaja"
     card-1:
-        header: "Deauth Tuvastaja"
+        header: "Deauth'imise tuvastaja"
         field-1: "Tuvastaja kanal"
         toggle-1: "Kõik kanalid"
-        field-2: "GPIO Hoiatus Pin"
+        field-2: "GPIO hoiatus PIN"
         toggle-2: "Inverteeri HIGH/LOW"
         field-3: "Kanali skaneerimis aeg (ms)"
         button-1: "Salvesta &amp; alusta"
@@ -155,9 +155,9 @@ detector:
         A: "Tuvastaja töötab! Taaskäivita seade et naaseda normaalseks"
 
 control:
-    title: "GPIO Kontroll"
+    title: "GPIO juhtimine"
     card-1:
-        header: "GPIO Kontroll"
+        header: "GPIO juhtimine"
         button-1: "Lähesta sissekanded"
         table:
             pin: "PIN"
@@ -183,17 +183,17 @@ settings:
     card-3:
         header: "Kohandamine"
         field-1: "Vahemälu aegumistähtaeg"
-        field-2: "LED Pin"
+        field-2: "LED PIN"
         toggle-1: "Luba tume režiim"
         toggle-2: "Luba serveri vahemällu salvestamine"
         toggle-3: "Luba LED indikaator"
     card-4:
-        header: "UI näpistused"
+        header: "UI kohandused"
         toggle-1: "Lihtsusta liidest"
         toggle-2: "Väiksemad tabeli read"
         toggle-3: "Näita taaskäivitus nuppu"
     card-5:
-        header: "Skaneeri &amp; Ründa"
+        header: "Skaneeri &amp; ründa"
         field-1: "Skaneerimise aegumistähtaeg"
         field-2: "Rünnaku aegumistähtaeg"
         field-3: "MAC aadress"
@@ -215,31 +215,31 @@ info:
     title: "Info"
     card-1:
         header: "Wi-PWN looja"
-        about: "Wi-PWN on disainitud $$Sam Denty$$ poolt, orginaalse projekti järgi $$spacehuhn'i &#128020;$$ poolt. Wi-PWN on avaldatud $$CC BY-NC 4.0$$ litsensi all."
+        about: "Wi-PWN on disainitud $$Sam Denty$$ poolt, $$spacehuhn'i &#128020;$$ orginaalse projekti järgi. Wi-PWN on avaldatud $$CC BY-NC 4.0$$ litsensi all."
     card-2:
         header: "Wi-PWN"
         table:
             A: "Wi-PWN versioon"
             B: "Kontrolli uuendusi"
             C: "Uuenda"
-            D: "Uptime / mälu"
+            D: "Uptime / Mälu"
             E: "Saadetud pakettid"
-            F: "IP / värav"
+            F: "IP / Värav"
             G: "Versioonid"
-            H: "Välgu &amp; Kiibi ID"
+            H: "Välgu &amp; kiibi ID"
     card-3:
         header: "Edasijõudnute seaded"
         get: "käivita"
     card-4:
         header: "Kaasautorid"
-        paragraph-1: "See tarkvara on põhinenud Stefan Kremser (Spacehuhn) töödest"
+        paragraph-1: "See tarkvara on põhinenud Stefan Kremser (Spacehuhn) töödest."
         paragraph-2: "Lisainfoks mine $$kaasautorite lehele$$ GitHub'is."
     card-5:
         header: "Kaasas olevad raamatukogud"
     strings:
         A: "sysinfo.json laadimine ebaõnnestus"
         B: "OTA uuendus"
-        C: "lae üles"
+        C: "Lae üles"
         D: "Teised projektid"
         E: "Teatage veast"
         F: "Teised projektid"
@@ -252,9 +252,9 @@ errors:
     bad-response: "VIGA: Halb vaste"
     E0: "Võrkude skaneerimine ebaõnnestus!"
     E6: "Taasühenda Wi-Fi võrgule"
-    E7: "INFO: Ühtegi Wi-Fi võrk(u/e) pole valitud!"
+    E7: "INFO: Wi-Fi võrku/e pole valitud!"
     E10: "Kehtetu MAC aadress"
-    E15: "Ühtegi võrk(u/e) pole valitud!"
+    E15: "Võrku/e pole valitud!"
     E16: "SSID nimekiri täis (E16)"
     E17: "VIGA: Lähesta seaded"
     E18: "Seadete salvestamine ebaõnnestus!"
@@ -273,16 +273,16 @@ errors:
     E31: "Tuvastaja alustamine ebaõnnestus!"
     E32: "Salvestamine ebaõnnestus!"
     E33: "Salvestamine ebaõnnestus!"
-    E34: "control.json ladimine ebaõnnestus"
+    E34: "control.json laadimine ebaõnnestus"
     E37: "VIGA: PIN'i nime muutmine ebaõnnestus"
     E39: "PIN'i nime uuendamine ebaõnnestus!"
     E40: "PIN'i nime uuendamine ebaõnnestus!"
     E41: "Salvestatud sissekannete lähestamine ebaõnnestus!"
     E42: "Salvestatud sissekannete lähestamine ebaõnnestus!"
-    E95: "VIGA: settings.json ladimine ebaõnnestus"
+    E95: "VIGA: settings.json laadimine ebaõnnestus"
     E96: "Taasühenda ja värskenda lehte"
     E97: "Ei saanud vastust!"
     E98: "Skaneerimise tulemuste parsimine ebaõnnestus!"
     E99: "Puhastatud, ära unusta salvestada!"
     E100: "Salvestatud SSID'e parsimine ebaõnnestus, puhastan..."
-    S1: "Kas oled kindel et tahad Wi-PWN'i taaskäivitada?"
+    S1: "Kas oled kindel, et tahad Wi-PWN'i taaskäivitada?"
