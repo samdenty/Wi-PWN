@@ -45,7 +45,7 @@ nav:
 
 global:
     save: "保存"
-    reset: "重置"
+    reset: "重設"
     ssid: "SSID"
     password: "密碼"
     start: "開始"
@@ -76,8 +76,8 @@ setup:
 
     page-3:
         header: "設定完成"
-        message-1: "配置完成！"
-        message-2: "重新連接到新的網絡"
+        message-1: "設定完成！"
+        message-2: "請重新連接到剛才設定的網絡。"
 
     attribution: "由 Sam Denty 設計"
 
@@ -256,7 +256,7 @@ errors:
     E10: "MAC地址無效！"
     E15: "沒有選擇網絡！"
     E16: "SSID列表已滿 (E16)"
-    E17: "錯誤： 重置設置"
+    E17: "錯誤： 重置設定"
     E18: "保存設設失敗！"
     E19: "保存設定失敗！"
     E20: "重置設定失敗！"
