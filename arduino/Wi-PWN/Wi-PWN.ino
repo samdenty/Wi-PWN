@@ -501,8 +501,10 @@ void enableRandom() {
 }
 
 void startDetector() {
-  Serial.println("Starting Deauth Detector...");
+  Serial.println("Starting Deauth Detector in 1 second...");
   server.send( 200, "text/json", "true");
+
+  delay(1000); //TODO: Fix this
 
   wifi_set_opmode(STATION_MODE);
   wifi_promiscuous_enable(0);
