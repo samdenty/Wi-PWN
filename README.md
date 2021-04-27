@@ -4,7 +4,7 @@
 	</a>
     <h3 align="center">Wi-PWN</h3>
     <p align="center">
-    	ESP8266 Deauther with a clean &amp; minimalistic web interface<br>
+    	Firmware for ESP8266 SoC that lets you perform deauthentication attacks, with ease.<br>
 	<a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
 		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
 	</a>
