@@ -4,56 +4,18 @@
 	</a>
     <h3 align="center">Wi-PWN</h3>
     <p align="center">
-    ESP8266 Deauther with a clean &amp; minimalistic web interface<br>
-		✨ Support development on <a href="https://patreon.com/samdd">Patreon</a> or one-time via <a href="https://paypal.me/thesamdd">Paypal</a>
+    	ESP8266 Deauther with a clean &amp; minimalistic web interface<br>
+	<a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
+		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
+	</a>
     </p>
 </p>
 <p align="center">
-	<b>
-		<a href="https://wi-pwn.samdd.me/?ref=online-demo">
-			Online demo
-		</a>&nbsp;|
-		<a href="https://discord.gg/yN2x7sp">
-			Discord
-		</a>&nbsp;|
-		<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/wiki">
-			Browse the docs
-		</a>&nbsp;|
-		<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/projects/1?fullscreen=true">
-			Upcoming features
-		</a>
-	</b>
-	<br><br>
-	<a href="https://samdenty99.github.io/r?https://travis-ci.org/samdenty99/Wi-PWN">
-		<img src="https://img.shields.io/travis/samdenty99/Wi-PWN.svg?colorB=0082ff&style=flat">
-	</a>
-	<a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp">
-		<img src="https://img.shields.io/discord/335836376031428618.svg?colorB=0082ff&style=flat">
-	</a>
-	<a href="https://samdenty99.github.io/r?http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
-		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
-	</a>
-	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/subscription">
-		<img src="https://img.shields.io/github/watchers/samdenty99/Wi-PWN.svg?style=social&label=Watch&style=flat">
-	</a>
-	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN">
-		<img src="https://img.shields.io/github/stars/samdenty99/Wi-PWN.svg?style=social&label=Star&style=flat">
-	</a>
-	<a href="https://samdenty99.github.io/r?https://github.com/samdenty99/Wi-PWN/fork">
-		<img src="https://img.shields.io/github/forks/samdenty99/Wi-PWN.svg?style=social&label=Fork&style=flat">
-    </a>
-</p>
-<p align="center">
-    <a href="https://samdenty99.github.io/r?https://discord.gg/yN2x7sp">
-        <img src="https://canary.discordapp.com/api/guilds/335836376031428618/widget.png?style=banner2" height="60px">
-    </a>
     <a href="https://samdenty99.github.io/r?https://play.google.com/store/apps/details?id=samdd.wipwn">
         <img src="https://i.imgur.com/SHwUics.png" height="60px">
     </a>
 </p>
 <h2></h2>
-
-### <a href="http://wi-pwn.samdd.me"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ec-1f1e7.png" alt="English translation" height=40></a> <a href="http://wi-pwn.samdd.me/german"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png" alt="German translation" height=40></a> <a href="http://wi-pwn.samdd.me/chinese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1f3.png" alt="Chinese translation" height=40></a> <a href="http://wi-pwn.samdd.me/dutch"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png" alt="Dutch translation" height=40></a> <a href="http://wi-pwn.samdd.me/russian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1fa.png" alt="Russian translation" height=40></a> <a href="http://wi-pwn.samdd.me/italian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f9.png" alt="Italian translation" height=40></a> <a href="http://wi-pwn.samdd.me/slovak"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f8-1f1f0.png" alt="Slovakian translation" height=40></a> <a href="http://wi-pwn.samdd.me/portuguese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f9.png" alt="Portuguese translation" height=40></a> <a href="http://wi-pwn.samdd.me/polish"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f1.png" alt="Polish translation" height=40></a> <a href="http://wi-pwn.samdd.me/estonian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ea-1f1ea.png" alt="Estonian translation" height=40></a> <a href="http://wi-pwn.samdd.me/turkish"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f9-1f1f7.png" alt="Turkish translation" height=40></a> <a href="http://wi-pwn.samdd.me/czech"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1ff.png" alt="Czech translation" height=40></a> <a href="http://wi-pwn.samdd.me/hebrew"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f1.png" alt="Hebrew translation" height=40></a>
 
 - Fast & responsive Material Design UI, with optional dark mode
 - Integrated [Deauth Detector](https://github.com/spacehuhn/DeauthDetector) (with full customization)
@@ -63,6 +25,8 @@
 
 
 <img src="pictures/secondary-banner.png">
+
+### <a href="http://wi-pwn.samdd.me"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ec-1f1e7.png" alt="English translation" height=40></a> <a href="http://wi-pwn.samdd.me/german"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png" alt="German translation" height=40></a> <a href="http://wi-pwn.samdd.me/chinese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1f3.png" alt="Chinese translation" height=40></a> <a href="http://wi-pwn.samdd.me/dutch"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png" alt="Dutch translation" height=40></a> <a href="http://wi-pwn.samdd.me/russian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1fa.png" alt="Russian translation" height=40></a> <a href="http://wi-pwn.samdd.me/italian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f9.png" alt="Italian translation" height=40></a> <a href="http://wi-pwn.samdd.me/slovak"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f8-1f1f0.png" alt="Slovakian translation" height=40></a> <a href="http://wi-pwn.samdd.me/portuguese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f9.png" alt="Portuguese translation" height=40></a> <a href="http://wi-pwn.samdd.me/polish"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f1.png" alt="Polish translation" height=40></a> <a href="http://wi-pwn.samdd.me/estonian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ea-1f1ea.png" alt="Estonian translation" height=40></a> <a href="http://wi-pwn.samdd.me/turkish"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f9-1f1f7.png" alt="Turkish translation" height=40></a> <a href="http://wi-pwn.samdd.me/czech"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1ff.png" alt="Czech translation" height=40></a> <a href="http://wi-pwn.samdd.me/hebrew"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f1.png" alt="Hebrew translation" height=40></a>
 
 
 ## Table of Contents
