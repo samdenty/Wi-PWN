@@ -2,12 +2,11 @@
 	<a href="https://wi-pwn.samdd.me/?ref=logo">
 		<img src="https://github.com/samdenty99/Wi-PWN/raw/master/pictures/Wi-PWN.png" width="100">
 	</a>
-    <h3 align="center">Wi-PWN</h3>
+    <h3 align="center">Wi-PWN	<a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
+		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
+	</a></h3>
     <p align="center">
     	ESP8266 firmware for performing deauthentication attacks, with ease.
-	<a href="http://www.somsubhra.com/github-release-stats/?username=samdenty99&repository=Wi-PWN">
-		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
-	</a>
     </p>
 </p>
 <p align="center">
