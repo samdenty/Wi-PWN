@@ -6,6 +6,7 @@
 		<img src="https://img.shields.io/github/downloads/samdenty99/Wi-PWN/total.svg?colorB=437FB9&style=flat">
 	</a></h3>
     <p align="center">
+	<a href="https://github.com/sponsors/samdenty">Sponsor this project</a><br/>
     	ESP8266 firmware for performing deauthentication attacks, with ease.
     </p>
 </p>
