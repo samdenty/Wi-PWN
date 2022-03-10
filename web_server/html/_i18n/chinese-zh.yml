@@ -1,0 +1,288 @@
+#  _ _ _ _     _____ _ _ _ _____ 
+# | | | |_|___|  _  | | | |   | |
+# | | | | |___|   __| | | | | | |
+# |_____|_|   |__|  |_____|_|___|
+#        TRANSLATION FILE
+# 
+# Format:
+#   What is '$$'?
+#       '$$' is a variable thats replaced with HTML
+#       For example:
+#          `$$click here$$`     =>   `<a href="mypage">click here</a>`
+#          `translated by $$`   =>   `translated by sam`
+#
+#   DO NOT REMOVE THE INDENTATION!
+#       The indentation is critical to YAML, so please don't change it
+#   
+#   Try and retain the case, for example:
+#       If it is capitalized keep it capitalized
+#   
+#   What are the `translation.name` & `translation.url`?
+#       These are strings that will be added to the footer & info page
+#   
+#   I'm unsure about how to translate something / I have a question
+#       No problem! feel free to ask something over at
+#       https://wi-pwn.samdd.me/discord/
+#       
+#   What encoding should I use?
+#       UTF-8 ~ jekyll doesn't support any other encodings
+# 
+
+translation:
+    # Uncomment & insert your name here
+    name: "danielchim"
+    # Uncomment & insert a link to your Github / site
+    url: "https://github.com/danielchim"
+
+nav:
+    scan: "掃描"
+    users: "使用者"
+    attack: "攻擊"
+    detector: "偵測"
+    control: "控制"
+    settings: "設定"
+    info: "關於"
+
+global:
+    save: "保存"
+    reset: "重設"
+    ssid: "SSID"
+    password: "密碼"
+    start: "開始"
+    stop: "停止"
+    name: "裝置名稱"
+    reboot: "重啟"
+    guide: "教學"
+    footer: "由 Sam Denty 設計 - @samdenty99"
+    translated-by: "由 $$ 翻譯為繁體中文，基於xSadData的簡體中文翻譯。"
+
+setup:
+    title: "首次設定"
+    page-1:
+        header: "用戶使用條款"
+        card:
+            title: "歡迎使用Wi-PWN！"
+            paragraph-1: "警告：本系統僅可作滲透測試用途，本系統不會承擔一切因不當使用本系統而導致的損失."
+            paragraph-2: "Wi-PWN 可以用作對沒有經過保護的Wi-Fi網絡進行攻擊, 以達致類似Wi-Fi干擾器(Wi-Fi Jammer)的效果。"
+            paragraph-3: "如要用本系統滲透測試，請先獲得相關人士的授權。"
+            button: "接受"
+
+    page-2:
+        header: "首次設定Wi-PWN"
+        card:
+            field-1: "密碼"
+            toggle-1: "使用深色主題"
+            button: "繼續"
+
+    page-3:
+        header: "設定完成"
+        message-1: "設定完成！"
+        message-2: "請重新連接到剛才設定的網絡。"
+
+    attribution: "由 Sam Denty 設計"
+
+scan:
+    title: "掃描"
+    card-1:
+        header: "掃描網絡 ($$)"
+        table:
+            signal: "信號強度"
+            security: "安全性"
+            channel: "頻道" # Try and abbreviate, column is small
+    strings:
+        A: "開放" # As in `WPA2` / security
+
+users:
+    title: "用戶端"
+    card-1:
+        header: "掃描Wi-Fi用戶端 ($$)"
+        table:
+            info: "用戶端資料"
+            packets: "數據封包數目"
+    card-2:
+        header: "保存的用戶端 ($$)"
+    card-3:
+        field-1: "MAC地址"
+        button-1: "新增"
+    strings:
+        A: "警告：保存列表文件已損毀，是否立刻重設？"
+        B: "正在清空客戶端列表中..."
+        C: "掃描完成！請重新連接到網絡，並重新載入本頁面。"
+        D: "掃描客戶端中... 剩下 $$秒 "
+
+attack:
+    title: "攻擊"
+    card-1:
+        header: "攻擊列表："
+        table:
+            attack: "攻擊"
+            status: "狀態"
+            switch: "切換"
+            random: "隨機攻擊"
+    card-2:
+        header: "已選擇的Wi-Fi網絡和用戶端："
+        button: "複製"
+    card-3:
+        header-1: "MAC地址"
+        header-2: "生產商"
+    card-4:
+        header: "新增SSID"
+        toggle-1: "隨機產生一個SSID"
+        field-1: "複製的數目"
+        toggle-2: "加密？"
+        button: "新增"
+    card-5:
+        header: "已保存的SSID ($$)"
+        button-1: "清除"
+        button-2: "保存"
+        button-3: "撤銷"
+    strings:
+        A: "開始隨機攻擊"
+        B: "就緒"
+        C: "運行中"
+
+detector:
+    title: "Deauth偵測"
+    card-1:
+        header: "Deauth偵測"
+        field-1: "偵測頻道"
+        toggle-1: "所有頻道"
+        field-2: "GPIO提示接腳"
+        toggle-2: "高低電平轉換"
+        field-3: "掃描頻道時間間隔 (毫秒)"
+        button-1: "保存並開始偵測"
+    strings:
+        A: "正在偵測中! 如要回到正常的工作模式，請重新啟動設備。"
+
+control:
+    title: "GPIO控制"
+    card-1:
+        header: "GPIO控制"
+        button-1: "重設"
+        table:
+            pin: "接腳"
+            high: "高電平"
+    strings:
+        A: "切換引腳失敗"
+        B: "引腳名稱"
+        C: "最多只可以輸入10個字符！"
+        D: "確定重設？"
+
+settings:
+    title: "設定"
+    card-1:
+        header: "Wi-Fi熱點"
+        field-1: "頻道"
+        toggle-1: "隱藏SSID"
+    card-2:
+        header: "Wi-Fi用戶端"
+        field-1: "SSID"
+        field-2: "密碼"
+        field-3: "ESP主機名稱"
+        toggle-1: "啟用WiFi用戶端"
+    card-3:
+        header: "自定義"
+        field-1: "快取緩存過期時間"
+        field-2: "LED引腳"
+        toggle-1: "啟用夜間模式"
+        toggle-2: "啟用伺服器快取"
+        toggle-3: "啟用LED指示燈（如有）"
+    card-4:
+        header: "UI設定"
+        toggle-1: "使用簡化界面"
+        toggle-2: "縮小表格的列位"
+        toggle-3: "顯示重啟按鈕"
+    card-5:
+        header: "掃描和攻擊"
+        field-1: "掃描時限"
+        field-2: "攻擊時限"
+        field-3: "MAC地址"
+        toggle-1: "MAC地址隨機化"
+        toggle-2: "掃描隱藏網絡" 
+        toggle-3: "掃描多重網絡"
+        toggle-4: "同時攻擊"
+    card-6:
+        header: "進階："
+        field-1: "Deatuth 報文的原因代碼（Reason-code)"
+        field-2: "封包發送速率 (包/秒)"
+        field-3: "MAC地址更換間隔"
+        toggle-1: "設定Beacon的攻擊間隔為1秒鐘"
+    strings:
+        A: "確定要恢復至原來的設定嗎？"
+        B: "所有的更動將會被丟失！"
+
+info:
+    title: "關於"
+    card-1:
+        header: "關於Wi-PWN開發者"
+        about: "Wi-PWN 由 $$Sam Denty$$ 設計, 基於$$spacehuhn &#128020;$$的項目。 本項目在 $$CC BY-NC 4.0$$ 協議下發布。"
+    card-2:
+        header: "關於Wi-PWN"
+        table:
+            A: "Wi-PWN 版本"
+            B: "檢查更新"
+            C: "更新"
+            D: "運行時間 + 記憶體使用量："
+            E: "發出的數據封包："
+            F: "IP + 預設閘道："
+            G: "版本"
+            H: "固件 &amp; 芯片 ID"
+    card-3:
+        header: "進階選項"
+        get: "獲取"
+    card-4:
+        header: "貢獻人員"
+        paragraph-1: "本系統由 Stefan Kremser (Spacehuhn) 所開發。"
+        paragraph-2: "獲取更多資訊，請前往Github上的頁面： $$contributors page$$ 。"
+    card-5:
+        header: "本項目使用的第三方軟件庫："
+    strings:
+        A: "無法載入 sysinfo.json。 "
+        B: "OTA 更新"
+        C: "上載"
+        D: "其他項目"
+        E: "錯誤回饋"
+        F: "其他項目"
+
+error:
+    title: "404"
+    page-header: "頁面未找到"
+
+errors:
+    bad-response: "錯誤： 未知的回應"
+    E0: "掃描網絡失敗！"
+    E6: "請重新連接到網絡"
+    E7: "提示： 沒有選擇Wi-Fi網絡！"
+    E10: "MAC地址無效！"
+    E15: "沒有選擇網絡！"
+    E16: "SSID列表已滿 (E16)"
+    E17: "錯誤： 重置設定"
+    E18: "保存設設失敗！"
+    E19: "保存設定失敗！"
+    E20: "重置設定失敗！"
+    E21: "重置設定失敗！"
+    E22: "請重新連接，並重新載入本頁面。"
+    E23: "重啟Wi-PWN失敗！"
+    E24: "重啟Wi-PWN失敗！"
+    E25: "錯誤： 請重設設定"
+    E26: "重啟Wi-PWN失敗！"
+    E27: "重啟Wi-PWN失敗！"
+    E28: "保存設定失敗！"
+    E29: "保存設定失敗！"
+    E30: "啟動檢測器失敗！"
+    E31: "啟動檢測器失敗！"
+    E32: "警告：無法保存"
+    E33: "保存失敗！"
+    E34: "無法載入 control.json！"
+    E37: "錯誤： 更改引腳名失敗！"
+    E40: "更新引腳名失敗！"
+    E41: "重置保存項失敗！"
+    E39: "更新引腳名失敗！"
+    E42: "重設保存項失敗！"
+    E95: "警告：無法載入 settings.json！"
+    E96: "請重新連接，並重新載入本頁面。"
+    E97: "沒有接收到回應！"
+    E98: "解析掃描結果失敗！"
+    E99: "已成功清空。請按下保存以保存項目。"
+    E100: "無法解析SSID, 正在清除中..."
+    S1: "你真的要重啟Wi-PWN嗎？"
