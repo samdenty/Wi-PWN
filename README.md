@@ -26,7 +26,23 @@
 
 <img src="pictures/secondary-banner.png">
 
-### <a href="http://wi-pwn.samdd.me"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ec-1f1e7.png" alt="English translation" height=40></a> <a href="http://wi-pwn.samdd.me/german"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png" alt="German translation" height=40></a> <a href="http://wi-pwn.samdd.me/chinese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1f3.png" alt="Chinese translation" height=40></a> <a href="http://wi-pwn.samdd.me/dutch"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png" alt="Dutch translation" height=40></a> <a href="http://wi-pwn.samdd.me/russian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1fa.png" alt="Russian translation" height=40></a> <a href="http://wi-pwn.samdd.me/italian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f9.png" alt="Italian translation" height=40></a> <a href="http://wi-pwn.samdd.me/slovak"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f8-1f1f0.png" alt="Slovakian translation" height=40></a> <a href="http://wi-pwn.samdd.me/portuguese"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f9.png" alt="Portuguese translation" height=40></a> <a href="http://wi-pwn.samdd.me/polish"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f1.png" alt="Polish translation" height=40></a> <a href="http://wi-pwn.samdd.me/estonian"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ea-1f1ea.png" alt="Estonian translation" height=40></a> <a href="http://wi-pwn.samdd.me/turkish"><img src="https://twemoji.maxcdn.com/2/72x72/1f1f9-1f1f7.png" alt="Turkish translation" height=40></a> <a href="http://wi-pwn.samdd.me/czech"><img src="https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1ff.png" alt="Czech translation" height=40></a> <a href="http://wi-pwn.samdd.me/hebrew"><img src="https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f1.png" alt="Hebrew translation" height=40></a>
+<div align = 'center'>
+
+[![Badge UK]][Lang EN]  
+[![Badge DE]][Lang DE]  
+[![Badge CN]][Lang CN]  
+[![Badge NL]][Lang NL]  
+[![Badge RU]][Lang RU] <br>
+[![Badge IT]][Lang IT]  
+[![Badge SK]][Lang SK]  
+[![Badge PT]][Lang PT]  
+[![Badge PL]][Lang PL]  
+[![Badge ET]][Lang ET] <br>
+[![Badge TR]][Lang TR]  
+[![Badge CS]][Lang CS]  
+[![Badge HE]][Lang HE]
+
+</div>
 
 
 ## Table of Contents
@@ -206,3 +222,33 @@ If it can send packets but your target doesn't lose its connection, then the Wi-
 #### If you have other questions or problems with the ESP8266 you can also check out the official [community forum](http://www.esp8266.com/).
 
 [![Analytics](https://ga-beacon.appspot.com/UA-85426772-5/Wi-PWN/?pixel)](https://github.com/igrigorik/ga-beacon)
+
+
+<!----------------------------------------------------------------------------->
+
+[Lang EN]: http://wi-pwn.samdd.me 'English Translation'
+[Badge UK]: https://twemoji.maxcdn.com/2/72x72/1f1ec-1f1e7.png
+[Lang DE]: http://wi-pwn.samdd.me/german 'German Translation'
+[Badge DE]: https://twemoji.maxcdn.com/2/72x72/1f1e9-1f1ea.png
+[Lang CN]: http://wi-pwn.samdd.me/chinese 'Chinese Translation'
+[Badge CN]: https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1f3.png
+[Lang NL]: http://wi-pwn.samdd.me/dutch 'Dutch Translation'
+[Badge NL]: https://twemoji.maxcdn.com/2/72x72/1f1f3-1f1f1.png
+[Lang RU]: http://wi-pwn.samdd.me/russian 'Russian Translation'
+[Badge RU]: https://twemoji.maxcdn.com/2/72x72/1f1f7-1f1fa.png
+[Lang IT]: http://wi-pwn.samdd.me/italian 'Italian Translation'
+[Badge IT]: https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f9.png
+[Lang SK]: http://wi-pwn.samdd.me/slovak 'Slovakian Translation'
+[Badge SK]: https://twemoji.maxcdn.com/2/72x72/1f1f8-1f1f0.png
+[Lang PT]: http://wi-pwn.samdd.me/portuguese 'Portuguese Translation'
+[Badge PT]: https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f9.png
+[Lang PL]: http://wi-pwn.samdd.me/polish 'Polish Translation'
+[Badge PL]: https://twemoji.maxcdn.com/2/72x72/1f1f5-1f1f1.png
+[Lang ET]: http://wi-pwn.samdd.me/estonian 'Estonian Translation'
+[Badge ET]: https://twemoji.maxcdn.com/2/72x72/1f1ea-1f1ea.png
+[Lang TR]: http://wi-pwn.samdd.me/turkish 'Turkish Translation'
+[Badge TR]: https://twemoji.maxcdn.com/2/72x72/1f1f9-1f1f7.png
+[Lang CS]: http://wi-pwn.samdd.me/czech 'Czech Translation'
+[Badge CS]: https://twemoji.maxcdn.com/2/72x72/1f1e8-1f1ff.png
+[Lang HE]: http://wi-pwn.samdd.me/hebrew 'Hebrew Translation'
+[Badge HE]: https://twemoji.maxcdn.com/2/72x72/1f1ee-1f1f1.png
