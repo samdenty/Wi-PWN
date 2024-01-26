@@ -57,8 +57,8 @@ String NameList::get(int num) {
       if (names[num][h] != 0x00) returnStr += (char)names[num][h];
     }
     returnStr.trim();
-    return returnStr;
   }
+  return returnStr;
 }
 
 Mac NameList::getMac(int num) {
